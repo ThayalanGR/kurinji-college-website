@@ -12,9 +12,17 @@ body {
     height: 100vh;
 }
 
+.mtspace {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .header-row {
     top: 8%;
-    position: relative;
+    position: absolute;
     z-index: 1000;
     min-height: 150px;
 }
