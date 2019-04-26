@@ -2,7 +2,7 @@
 website for kurinji college of engineering
 
 **technology used:-**
-React
-Redux
-PHP for rest api
-sql - database
+1. React
+2. Redux
+3. PHP for rest api
+4. sql - database
