@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "e32f98bb5bc8b2a06672e8e70014c442",
+    "revision": "1205a58fa1acc8b8ea67a704e4cadb9b",
     "url": "/kurinji-college-website/index.html"
   },
   {
@@ -8,7 +8,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/kurinji-college-website/static/css/2.c489bcc4.chunk.css"
   },
   {
-    "revision": "38736545b2d1e6d5a83e",
+    "revision": "1d3a912bde17032b844f",
     "url": "/kurinji-college-website/static/css/main.5b1790f7.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/kurinji-college-website/static/js/2.b265422f.chunk.js"
   },
   {
-    "revision": "38736545b2d1e6d5a83e",
-    "url": "/kurinji-college-website/static/js/main.480a645f.chunk.js"
+    "revision": "1d3a912bde17032b844f",
+    "url": "/kurinji-college-website/static/js/main.f0a09df0.chunk.js"
   },
   {
     "revision": "a0d4848aecff82cb4433",

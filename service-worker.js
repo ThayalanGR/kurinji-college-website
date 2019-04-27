@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.0/workbox-sw.js");
 
 importScripts(
-  "/kurinji-college-website/precache-manifest.6521681de8f526ff9b32384f7e626faa.js"
+  "/kurinji-college-website/precache-manifest.e79353f05e09e38cc0fe862fb9b3c96a.js"
 );
 
 self.addEventListener('message', (event) => {
