@@ -22,22 +22,22 @@ export default class Navbar extends Component {
               <Link className="nav-link  text-light" to="/aboutus">About Us</Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link  text-light" to="/">Academics</Link>
+              <Link className="nav-link  text-light" to="/courses">Courses</Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link  text-light" to="/">Admission</Link>
+              <Link className="nav-link  text-light" to="/infrastructure">Infrastructure</Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link  text-light" to="/">Facilities</Link>
+              <Link className="nav-link  text-light" to="/placement">Placement Cell</Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link  text-light" to="/">Campus Life</Link>
+              <Link className="nav-link  text-light" to="/rankholders">Rank Holders</Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link  text-light" to="/">Alumini</Link>
+              <Link className="nav-link  text-light" to="/alumini">Alumini</Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link  text-light" to="/contact">Contact</Link>
+              <Link className="nav-link  text-light" to="/contact">Contact Us</Link>
             </li>
           </ul>
 

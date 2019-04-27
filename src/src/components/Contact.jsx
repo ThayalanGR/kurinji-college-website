@@ -1,11 +1,32 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
+import {Loader, Navbar} from '../components' 
 
 export default class Contact extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      isLoading: true
+    }
+  }
+  componentDidMount() {
+
+    setTimeout(() => {
+      this.setState({ isLoading: false });
+    }, 500)
+
+  }
+
+
   render() {
     return (
+      this.state.isLoading ? <Loader type={"bars"} /> : <Fragment>
+        <Navbar />
       <div className="mtspace">
-        i am contact route
-      </div>
+        
+        
+        contact us</div>
+      </Fragment>
+
     )
   }
 }

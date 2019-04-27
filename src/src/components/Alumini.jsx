@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react'
 import {Loader, Navbar} from '../components' 
 
-export default class Aboutus extends Component {
+export default class Alumini extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -24,7 +24,7 @@ export default class Aboutus extends Component {
       <div className="mtspace">
         
         
-        aboutus</div>
+        Alumini</div>
       </Fragment>
 
     )
