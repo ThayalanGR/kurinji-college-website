@@ -17,7 +17,9 @@ toast.configure();
 
 
 ReactDOM.render(
-    <BrowserRouter>
+    <BrowserRouter
+        basename={process.env.PUBLIC_URL}
+    >
 
         <Route exact path="/" component={Home} />
         <Route exact path="/aboutus" component={Aboutus} />

@@ -1,0 +1,18 @@
+{
+  "files": {
+    "main.css": "/kurinji/static/css/main.5b1790f7.chunk.css",
+    "main.js": "/kurinji/static/js/main.f72e3707.chunk.js",
+    "main.js.map": "/kurinji/static/js/main.f72e3707.chunk.js.map",
+    "runtime~main.js": "/kurinji/static/js/runtime~main.f1b3ed8c.js",
+    "runtime~main.js.map": "/kurinji/static/js/runtime~main.f1b3ed8c.js.map",
+    "static/css/2.c489bcc4.chunk.css": "/kurinji/static/css/2.c489bcc4.chunk.css",
+    "static/js/2.b265422f.chunk.js": "/kurinji/static/js/2.b265422f.chunk.js",
+    "static/js/2.b265422f.chunk.js.map": "/kurinji/static/js/2.b265422f.chunk.js.map",
+    "index.html": "/kurinji/index.html",
+    "precache-manifest.51d5a6dfd50b145703d209451b02ac42.js": "/kurinji/precache-manifest.51d5a6dfd50b145703d209451b02ac42.js",
+    "service-worker.js": "/kurinji/service-worker.js",
+    "static/css/2.c489bcc4.chunk.css.map": "/kurinji/static/css/2.c489bcc4.chunk.css.map",
+    "static/css/main.5b1790f7.chunk.css.map": "/kurinji/static/css/main.5b1790f7.chunk.css.map",
+    "static/media/kurinji.png": "/kurinji/static/media/kurinji.76937f67.png"
+  }
+}
