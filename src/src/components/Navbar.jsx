@@ -28,7 +28,7 @@ export default class Navbar extends Component {
               <Link className="nav-link  text-light" to="/infrastructure">Infrastructure</Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link  text-light" to="/placement">Placement Cell</Link>
+              <Link className="nav-link  text-light" to="/placement">Placement</Link>
             </li>
             <li className="nav-item">
               <Link className="nav-link  text-light" to="/rankholders">Rank Holders</Link>

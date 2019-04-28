@@ -15,8 +15,26 @@ import Placement from './Placement';
 
 
 import Admin from "./admin/Admin";
+import Login from "./admin/Login";
+import Dashboard from "./admin/Dashboard";
 
 
 
 
-export {Navbar, Home, Loader, Aboutus, Contact, Footer, FirstSection, Admin, Courses, Infrastructure, Alumini, RankHolders, Placement}
+export {
+    Navbar,
+    Home,
+    Loader,
+    Aboutus,
+    Contact,
+    Footer,
+    FirstSection,
+    Admin,
+    Courses,
+    Infrastructure,
+    Alumini,
+    RankHolders,
+    Placement,
+    Login,
+    Dashboard
+}

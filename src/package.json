@@ -4,10 +4,13 @@
   "private": true,
   "homepage": "https://thayalangr.github.io/kurinji-college-website",
   "dependencies": {
+    "axios": "^0.18.0",
     "bootstrap": "^4.3.1",
+    "mdbreact": "^4.13.0",
     "react": "^16.8.6",
     "react-bootstrap": "^1.0.0-beta.8",
     "react-dom": "^16.8.6",
+    "react-image-gallery": "^0.8.16",
     "react-loading": "^2.0.3",
     "react-scripts": "3.0.0",
     "react-toastify": "^5.1.0"
@@ -18,7 +21,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
-   "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": "react-app"

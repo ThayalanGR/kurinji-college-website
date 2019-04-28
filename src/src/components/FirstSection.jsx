@@ -1,36 +1,43 @@
 import React, { Component } from 'react'
 import { toast } from 'react-toastify';
 import kurinji from '../images/kurinji.png';
+import axios from 'axios';
 
+const baseUrl = 'http://localhost/kurinji';
 
 export default class FirstSection extends Component {
-
     constructor(props) {
         super(props)
         this.state = {
-          carouselDataStore: [
-            {
-            imageUrl: "http://localhost/kurinji/api/uploads/collegeimages/sample1.JPG",
-            information: "this is information about event"
-          },
-          {
-            imageUrl: "http://localhost/kurinji/api/uploads/collegeimages/image.JPG",
-            information: "this is information about event one"
-          },
-          {
-            imageUrl: "http://localhost/kurinji/api/uploads/collegeimages/image1.JPG",
-            information: "this is information about event one asdf asdf v aswe wersdf  sdf  dsfsfd"
-          }
-        ],
+          carouselDataStore: [],
           carouselData: {
             imageUrl: '',
             information: ''
-          }
+          },
+          news: []
        }
+       this.fetchEvents = this.fetchEvents.bind(this);
+       this.initiateCarousel = this.initiateCarousel.bind(this);
+    }
+
+    componentWillMount() {
+      this.fetchEvents();
+
+    }
+
+    fetchEvents() {
+      axios
+          .get("http://localhost/kurinji/api/homesectionone.php")
+          .then(data => {
+                this.setState({ carouselDataStore: data.data })
+                this.initiateCarousel()
+
+          })
+          .catch(err => console.log(err))
     }
     
     componentDidMount() {
-        
+
         setTimeout(() => {
           toast.dismiss();
           toast(<div className="container-fluid">
@@ -90,86 +97,22 @@ export default class FirstSection extends Component {
           </div>, {
             position: toast.POSITION.BOTTOM_LEFT,
             className: "bg-danger text-white",
-            autoClose: 5000
+            autoClose: false
           });
         }, 3000)
-    
+        
+    }
 
-        setInterval(() => {
-          toast.dismiss();
-          toast(<div className="container-fluid">
-              <div className="row">
-                <div className="col text-center font-weight-bold">
-                  courses offered
-                  <hr className="white text-white" />
-                </div>
-              </div>
-          
-              <div className="row">
-                <div className="col text-center font-weight-bolder">
-                    UG - Courses
-                    <hr className="text-white white"/>
-                </div>
-              </div>
-              <div className="row">
-                <div className="col text-center font-weight-bolder">
-                    <span className="white shadow-lg p-2 text-danger rounded m-2">MECH</span>  
-                </div>
-                <div className="col text-center font-weight-bolder">
-                <span className="white shadow-lg p-2 text-danger rounded m-2">EEE</span>  
-                </div>
-              </div>
-              <div className="row mt-2 pt-4">
-                <div className="col text-center font-weight-bolder">
-                <span className="white shadow-lg p-2 text-danger rounded m-2">ECE</span>  
-                </div>
-                <div className="col text-center font-weight-bolder">
-                <span className="white shadow-lg p-2 text-danger rounded m-2">CSE</span>  
-                </div>
-                <div className="col text-center font-weight-bolder">
-                <span className="white shadow-lg p-2 text-danger rounded m-2">IT</span>  
-                </div>
-              </div>
-    
-              <div className="row mt-2 pt-3">
-                <div className="col text-center font-weight-bolder">
-                    UG - Courses
-                    <hr className="text-white white"/>
-                </div>
-              </div>
-    
-              <div className="row">
-                <div className="col text-center font-weight-bolder">
-                    <span className="white shadow-lg p-2 text-danger rounded m-2">ME - CSE</span>  
-                </div>
-                <div className="col text-center font-weight-bolder">
-                <span className="white shadow-lg p-2 text-danger rounded m-2">Eng Design</span>  
-                </div>
-              </div>
-              <div className="row mt-3 pt-3">
-                <div className="col text-center font-weight-bolder">
-                    <span className="white shadow-lg p-2 text-danger rounded m-2">MBA</span>  
-                </div>
-              </div>
-          </div>, {
-            position: toast.POSITION.BOTTOM_LEFT,
-            className: "bg-danger text-white",
-            autoClose: 5000
-          });
-        }, 20000)
-    
-    
+
+    initiateCarousel() {
         let i = 0;
-    
         this.setState({
           carouselData: {
-            imageUrl: this.state.carouselDataStore[i].imageUrl,
-            information: this.state.carouselDataStore[i].information
+            imageUrl: `${baseUrl}${this.state.carouselDataStore[i][2]}`,
+            information: this.state.carouselDataStore[i][1]
           }
         })
-    
         setInterval(() => {
-          console.log(i);
           if (i < this.state.carouselDataStore.length - 1) {
             i++;
           } else {
@@ -177,18 +120,16 @@ export default class FirstSection extends Component {
           }
           this.setState({
             carouselData: {
-              imageUrl: this.state.carouselDataStore[i].imageUrl,
-              information: this.state.carouselDataStore[i].information
+              imageUrl: `${baseUrl}${this.state.carouselDataStore[i][2]}`,
+              information: this.state.carouselDataStore[i][1]
             }
           })
-        }, 3000)
-        
-        
-      }
+        }, 5000)
+     }
 
   render() {
     return (
-        <div className="row background-image" style={{ backgroundImage: `url(${this.state.carouselData.imageUrl})` }}>
+      <div className="row background-image" style={{ backgroundImage: `url(${this.state.carouselData.imageUrl})` }}>
         <div className="col d-flex justify-content-between flex-column align-items-center
         " style={{marginTop: "30vh"}}>
 
@@ -215,7 +156,7 @@ export default class FirstSection extends Component {
                 <div>
                   <i className="fas fa-map-marker-alt text-danger fa-2x pr-3 mb-4"></i>
                 </div>
-                <p className="text-center" style={{ fontSize: "13px" }}>
+                <p className="text-center  font-weight-bold h6" style={{ }}>
                   Trichy-Dindigul NH-Road,
                 Manapparai - 621 307 <br />
                   Trichirappalli Dt.
@@ -226,7 +167,7 @@ export default class FirstSection extends Component {
                 <div>
                   <i className="fas fa-phone text-danger fa-2x pr-3 mb-4"></i>
                 </div>
-                <p className="text-center" style={{ fontSize: "13px" }}>
+                <p className="text-center h6 font-weight-bold" style={{  }}>
                   04332&nbsp;292338
                   76038&nbsp;44448
               </p>
@@ -235,7 +176,7 @@ export default class FirstSection extends Component {
                 <div>
                   <i className="far fa-envelope text-danger fa-2x pr-3 mb-4"></i>
                 </div>
-                <p className="" style={{ fontSize: "13px" }}>
+                <p className="font-weight-bold" style={{ }}>
                   kcet@kurinjiengg.org
                   &nbsp;
                   principal@kurinjiengg.org
@@ -246,7 +187,6 @@ export default class FirstSection extends Component {
     
         </div>
       </div>
-
     )
   }
 }

@@ -48,7 +48,7 @@ export default function Footer() {
               <div className="gmap_canvas">
                 <hr className="font-weight-bold text-white white" />
                 {/* eslint-disable-next-line */}
-                <iframe className="img-fluid mapshow" id="gmap_canvas" src="https://maps.google.com/maps?q=kurinji%20college%20of%20engineering%20and%20technology&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0">
+                <iframe className="img-fluid mapshow" id="gmap_canvas" src="https://maps.google.com/maps?q=kurinji%20college%20of%20engineering%20and%20technology&t=&z=13&ie=UTF8&iwloc=&output=embed" frameBorder="0" scrolling="no" marginHeight="0" marginWidth="0">
                 </iframe>
               </div>
             </div>
@@ -61,7 +61,7 @@ export default function Footer() {
             All rights reserved @ kurinjiengg.org © 2019
         </div>
           <div className="col-md-6 col-sm-12 text-center text-white font-weight-normal">
-            Designed and Developed by <a className="text-warning font-weight-bolder" style={{ fontSize: "18px" }} href="https://thayalangr.in"><strong>Thayalan GR</strong></a>
+            Designed and Developed by <a className="text-warning font-weight-bolder" style={{ fontSize: "18px" }} href="https://thayalangr.in" target="_blank" without="true" rel="noopener noreferrer"><strong>Thayalan GR</strong></a>
           </div>
         </div>
       </div>

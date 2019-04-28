@@ -8,6 +8,7 @@ import { toast } from 'react-toastify';
 
 import './css/main.css'
 import 'react-toastify/dist/ReactToastify.css';
+import "react-image-gallery/styles/css/image-gallery.css";
 
 
 import { Home, Aboutus, Contact, Admin, Courses, Infrastructure, Placement, RankHolders, Alumini } from './components';
