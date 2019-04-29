@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Fragment} from 'react';
 import ReactDOM from 'react-dom';
 
 
@@ -21,16 +21,16 @@ ReactDOM.render(
     <BrowserRouter
         basename={process.env.PUBLIC_URL}
     >
+        <Fragment>
+            <Route exact path="/" component={Home} />
+            <Route exact path="/aboutus" component={Aboutus} />
+            <Route exact path="/courses" component={Courses} />
+            <Route exact path="/infrastructure" component={Infrastructure} />
+            <Route exact path="/placement" component={Placement} />
+            <Route exact path="/rankholders" component={RankHolders} />
+            <Route exact path="/alumini" component={Alumini} />
+            <Route exact path="/contact" component={Contact} />
 
-        <Route exact path="/" component={Home} />
-        <Route exact path="/aboutus" component={Aboutus} />
-        <Route exact path="/courses" component={Courses} />
-        <Route exact path="/infrastructure" component={Infrastructure} />
-        <Route exact path="/placement" component={Placement} />
-        <Route exact path="/rankholders" component={RankHolders} />
-        <Route exact path="/alumini" component={Alumini} />
-        <Route exact path="/contact" component={Contact} />
-
-        <Route exact path="/admin" component={Admin} />
-
+            <Route exact path="/admin" component={Admin} />
+        </Fragment>
     </BrowserRouter>, document.getElementById('root'));
