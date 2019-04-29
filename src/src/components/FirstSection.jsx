@@ -4,7 +4,7 @@ import kurinji from '../images/kurinji.png';
 import axios from 'axios';
 import '../css/toastmod.css'
 
-const baseUrl = 'http://localhost/kurinji';
+const baseUrl = 'http://erp.epizy.com';
 
 export default class FirstSection extends Component {
 
@@ -34,7 +34,7 @@ export default class FirstSection extends Component {
 
   fetchEvents() {
     axios
-      .get("http://localhost/kurinji/api/homesectionone.php")
+      .get(`${baseUrl}/api/homesectionone.php`)
       .then(data => {
         this.setState({ carouselDataStore: data.data })
         this.initiateCarousel()
@@ -45,7 +45,7 @@ export default class FirstSection extends Component {
 
   fetchNews() {
     axios
-      .get("http://localhost/kurinji/api/homenews.php")
+      .get(`${baseUrl}/api/homenews.php`)
       .then(data => {
         this.setState({ news: data.data })
         this.initiateNews()

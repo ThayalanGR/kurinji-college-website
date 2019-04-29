@@ -5,6 +5,8 @@ import { Link } from "react-router-dom";
 
 import { Loader, Footer, FirstSection, Navbar } from '../components';
 
+const baseUrl = "http://erp.epizy.com";
+
 
 export default class Home extends Component {
 
@@ -60,7 +62,7 @@ export default class Home extends Component {
               <div className="card mb-4">
 
                 <div className="view overlay">
-                  <img className="card-img-top" src="http://localhost/kurinji/api/uploads/departments/mech.jpeg" alt="" />
+                  <img className="card-img-top" src={`${baseUrl}/api/uploads/departments/mech.jpeg`} alt="" />
                   <a href="#!">
                     <div className="mask rgba-white-slight"></div>
                   </a>
@@ -81,7 +83,7 @@ export default class Home extends Component {
               <div className="card mb-4">
 
                 <div className="view overlay">
-                  <img className="card-img-top" height="180" src="http://localhost/kurinji/api/uploads/departments/eee.jpg" alt="" />
+                  <img className="card-img-top" height="180" src={`${baseUrl}/api/uploads/departments/eee.jpg`} alt="" />
                   <a href="#!">
                     <div className="mask rgba-white-slight"></div>
                   </a>
@@ -102,7 +104,7 @@ export default class Home extends Component {
               <div className="card mb-4">
 
                 <div className="view overlay">
-                  <img className="card-img-top" src="http://localhost/kurinji/api/uploads/departments/ece.jpg" alt="" />
+                  <img className="card-img-top" src={`${baseUrl}/api/uploads/departments/ece.jpg`} alt="" />
 
                   <a href="#!">
                     <div className="mask rgba-white-slight"></div>
@@ -124,7 +126,7 @@ export default class Home extends Component {
               <div className="card mb-4">
 
                 <div className="view overlay">
-                  <img className="card-img-top" src="http://localhost/kurinji/api/uploads/departments/cse.jpg" alt="" />
+                  <img className="card-img-top" src={`${baseUrl}/api/uploads/departments/cse.jpg`} alt="" />
 
                   <a href="#!">
                     <div className="mask rgba-white-slight"></div>
@@ -145,7 +147,7 @@ export default class Home extends Component {
               <div className="card mb-4">
 
                 <div className="view overlay">
-                  <img className="card-img-top" src="http://localhost/kurinji/api/uploads/departments/it.jpg" alt="" />
+                  <img className="card-img-top" src={`${baseUrl}/api/uploads/departments/it.jpg`} alt="" />
 
                   <a href="#!">
                     <div className="mask rgba-white-slight"></div>
@@ -180,7 +182,7 @@ export default class Home extends Component {
 
               <div className="row">
                 <div className="col-md-4 p-3">
-                  <div className="card card-image" style={{ backgroundImage: `url(http://localhost/kurinji/api/uploads/departments/ece.jpg)` }}>
+                  <div className="card card-image" style={{ backgroundImage: `url(${baseUrl}/api/uploads/departments/ece.jpg)` }}>
                     <div className="text-white text-center d-flex align-items-center rgba-black-strong py-5 px-4">
                       <div>
                         <h3 className="card-title pt-2"><strong> M.E. CSE</strong></h3>
@@ -192,7 +194,7 @@ export default class Home extends Component {
 
                 </div>
                 <div className="col-md-4 p-3">
-                <div className="card card-image" style={{ backgroundImage: `url(http://localhost/kurinji/api/uploads/departments/ece.jpg)` }}>
+                <div className="card card-image" style={{ backgroundImage: `url(${baseUrl}/api/uploads/departments/ece.jpg)` }}>
                     <div className="text-white text-center d-flex align-items-center rgba-black-strong py-5 px-4">
                       <div>
                         <h3 className="card-title pt-2"><strong>Engineering Design</strong></h3>
@@ -205,7 +207,7 @@ export default class Home extends Component {
                   </div>
                 </div>
                 <div className="col-md-4 p-3">
-                   <div className="card card-image" style={{ backgroundImage: `url(http://localhost/kurinji/api/uploads/departments/ece.jpg)` }}>
+                   <div className="card card-image" style={{ backgroundImage: `url(${baseUrl}/api/uploads/departments/ece.jpg)` }}>
                     <div className="text-white text-center d-flex align-items-center rgba-black-strong py-5 px-4">
                       <div>
                         <h3 className="card-title pt-2"><strong>MBA</strong></h3>
@@ -234,56 +236,55 @@ export default class Home extends Component {
             <div className="row container-fluid  ml-5 pl-5">
               <div className="col-md-3">
                 <div className="view overlay zoom">
-                  <img src="http://localhost/kurinji/api/uploads/companies/1.jpg" className="img-fluid " alt="zoom" />
+                  <img src={`${baseUrl}/api/uploads/companies/1.jpg`} className="img-fluid " alt="zoom" />
                   <div className="mask flex-center waves-effect waves-light">
                   </div>
                 </div>
               </div>
               <div className="col-md-3">
                 <div className="view overlay zoom">
-                  <img src="http://localhost/kurinji/api/uploads/companies/2.jpg" className="img-fluid " alt="zoom" />
+                  <img src={`${baseUrl}/api/uploads/companies/2.jpg`} className="img-fluid " alt="zoom" />
                   <div className="mask flex-center waves-effect waves-light">
                   </div>
                 </div>
               </div>
               <div className="col-md-3">
                 <div className="view overlay zoom">
-                  <img src="http://localhost/kurinji/api/uploads/companies/3.jpg" className="img-fluid " alt="zoom" />
+                  <img src={`${baseUrl}/api/uploads/companies/3.jpg`} className="img-fluid " alt="zoom" />
                   <div className="mask flex-center waves-effect waves-light">
                   </div>
                 </div>
               </div>
               <div className="col-md-3">
                 <div className="view overlay zoom">
-                  <img src="http://localhost/kurinji/api/uploads/companies/4.jpg" className="img-fluid " alt="zoom" />
+                  <img src={`${baseUrl}/api/uploads/companies/4.jpg`} className="img-fluid " alt="zoom" />
                   <div className="mask flex-center waves-effect waves-light">
                   </div>
                 </div>
               </div>
               <div className="col-md-3">
                 <div className="view overlay zoom">
-                  <img src="http://localhost/kurinji/api/uploads/companies/5.jpg" className="img-fluid " alt="zoom" />
+                  <img src={`${baseUrl}/api/uploads/companies/5.jpg`} className="img-fluid " alt="zoom" />
                   <div className="mask flex-center waves-effect waves-light">
                   </div>
                 </div>
               </div>
               <div className="col-md-3">
                 <div className="view overlay zoom">
-                  <img src="http://localhost/kurinji/api/uploads/companies/6.jpg" className="img-fluid " alt="zoom" />
+                  <img src={`${baseUrl}/api/uploads/companies/6.jpg`} className="img-fluid " alt="zoom" />
                   <div className="mask flex-center waves-effect waves-light">
                   </div>
                 </div>
               </div>
               <div className="col-md-3">
                 <div className="view overlay zoom">
-                  <img src="http://localhost/kurinji/api/uploads/companies/7.jpg" className="img-fluid " alt="zoom" />
+                  <img src={`${baseUrl}/api/uploads/companies/7.jpg`} className="img-fluid " alt="zoom" />
                   <div className="mask flex-center waves-effect waves-light">
                   </div>
                 </div>
               </div>
               <div className="col-12 mb-5">
                 <hr className="font-weight-bold text-danger" />
-
               </div>
 
             </div>

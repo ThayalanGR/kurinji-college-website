@@ -6,6 +6,8 @@ import axios from 'axios';
 import { toast } from 'react-toastify';
 import qs from 'querystring';
 
+const baseUrl = "http://erp.epizy.com"
+
 export default class Dashboard extends Component {
     constructor(props) {
         super(props)
@@ -39,7 +41,7 @@ export default class Dashboard extends Component {
 
     fetchEvents() {
         axios
-            .get("http://localhost/kurinji/api/homesectionone.php")
+            .get(`${baseUrl}/api/homesectionone.php`)
             .then(data => {
                 this.setState({ existingEvents: data.data })
             })
@@ -48,7 +50,7 @@ export default class Dashboard extends Component {
 
     fetchNews() {
         axios
-            .get("http://localhost/kurinji/api/homenews.php")
+            .get(`${baseUrl}/api/homenews.php`)
             .then(data => {
                 this.setState({ existingNews: data.data })
             })
@@ -79,7 +81,7 @@ export default class Dashboard extends Component {
         var toastId = null;
         axios.request({
             method: "post",
-            url: "http://localhost/kurinji/api/homesectionone.php",
+            url: `${baseUrl}/api/homesectionone.php`,
             data: data,
             onUploadProgress: p => {
                 const progress = p.loaded / p.total;
@@ -110,7 +112,7 @@ export default class Dashboard extends Component {
         })
         axios.request({
             method: "post",
-            url: "http://localhost/kurinji/api/homenews.php",
+            url: `${baseUrl}/api/homenews.php`,
             data: data
         }).then(data => {
             if (data.data.response) {
@@ -150,7 +152,7 @@ export default class Dashboard extends Component {
             id: id
         })
         axios
-            .delete(`http://localhost/kurinji/api/homesectionone.php`, { headers, data })
+            .delete(`${baseUrl}/api/homesectionone.php`, { headers, data })
             .then(data => {
                 if (data.data.response) {
                     this.fetchEvents();
@@ -181,7 +183,7 @@ export default class Dashboard extends Component {
         })
 
         axios
-            .delete(`http://localhost/kurinji/api/homenews.php`, { headers, data })
+            .delete(`${baseUrl}/api/homenews.php`, { headers, data })
             .then(data => {
                 if (data.data.response) {
                     this.fetchNews();
@@ -308,7 +310,7 @@ export default class Dashboard extends Component {
                                                 return (
                                                     <div className="row" key={index}>
                                                         <div className="col-md-3">
-                                                            <img src={`http://localhost/kurinji/${item[2]}`} className="img-thumbnail" alt="" />
+                                                            <img src={`${baseUrl}/${item[2]}`} className="img-thumbnail" alt="" />
                                                         </div>
                                                         <div className="col-md-5 p-3">
                                                             {item[1]}
