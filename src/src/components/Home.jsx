@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 import { Loader, Footer, FirstSection, Navbar } from '../components';
 
-const baseUrl = "http://erp.epizy.com";
+const baseUrl = "http://localhost/kurinji";
 
 
 export default class Home extends Component {

@@ -4,7 +4,7 @@ import kurinji from '../images/kurinji.png';
 import axios from 'axios';
 import '../css/toastmod.css'
 
-const baseUrl = 'http://erp.epizy.com';
+const baseUrl = 'http://localhost/kurinji';
 
 export default class FirstSection extends Component {
 
@@ -102,7 +102,7 @@ export default class FirstSection extends Component {
             <span className="bg-warning shadow-lg p-2 text-white rounded m-2">ME - CSE</span>
           </div>
           <div className="col text-center font-weight-bolder">
-            <span className="bg-warning shadow-lg p-2 text-white rounded m-2">Eng Design</span>
+            <span className="bg-warning shadow-lg p-2 text-white rounded ">Eng - Design</span>
           </div>
         </div>
         <div className="row mt-3 pt-3 mb-3">
@@ -180,7 +180,7 @@ export default class FirstSection extends Component {
             <span className="bg-warning shadow-lg p-2 text-white rounded m-2">ME - CSE</span>
           </div>
           <div className="col text-center font-weight-bolder">
-            <span className="bg-warning shadow-lg p-2 text-white rounded m-2">Eng Design</span>
+            <span className="bg-warning shadow-lg p-2 text-white rounded ">Eng - Design</span>
           </div>
         </div>
         <div className="row mt-3 pt-3 mb-3">
@@ -235,7 +235,7 @@ export default class FirstSection extends Component {
   render() {
     return (
       <div className="row background-image" style={{ backgroundImage: `url(${this.state.carouselData.imageUrl})` }}>
-        <div className="col d-flex justify-content-between flex-column align-items-center"
+        <div className="col d-flex justify-content-between flex-column align-items-center p-0"
           style={{ marginTop: "30vh" }}>
           <div className="align-self-start">
             <div className="mask pattern-3 rounded">
@@ -247,7 +247,7 @@ export default class FirstSection extends Component {
             </div>
           </div>
 
-          <div className="alert text-danger align-self-end  mb-0 background-transparent p-0 m-0" role="alert">
+          <div className="alert text-danger  mb-0 background-transparent p-0 m-0" role="alert">
 
             <div className="mask rgba-white-strong pattern-5">
               <p className="font-weight-bold animated flash infinite text-warning slower delay-3s mt-3 pt-3 pl-3 h5">

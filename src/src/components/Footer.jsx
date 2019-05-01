@@ -44,7 +44,7 @@ export default function Footer() {
           </div>
           <div className="col-md-6 p-5 col-sm-12 col-xs-12">
             <h4 className="font-weight-bold text-white mr-5">Location</h4>
-            <div className="mapouter">
+            <div className="">
               <div className="gmap_canvas">
                 <hr className="font-weight-bold text-white white" />
                 {/* eslint-disable-next-line */}

@@ -1,12 +1,10 @@
 import React, { Component, Fragment } from 'react'
 import { Loader, Admin } from '../../components'
 import logo from '../../images/favicon.png'
-import "../../css/main.css"
 import axios from 'axios';
 import { toast } from 'react-toastify';
-import qs from 'querystring';
 
-const baseUrl = "http://erp.epizy.com"
+const baseUrl = "http://localhost/kurinji"
 
 export default class Dashboard extends Component {
     constructor(props) {
@@ -71,6 +69,7 @@ export default class Dashboard extends Component {
 
     addNewEvent() {
         var data = new FormData()
+        data.append("method", "post")
         data.append('file', this.state.eventFile)
         data.append('caption', this.state.eventCaption)
         this.setState({
@@ -106,6 +105,7 @@ export default class Dashboard extends Component {
     }
     addNewNews() {
         var data = new FormData()
+        data.append("method", "post")
         data.append('news', this.state.newsText)
         this.setState({
             newsText: ''
@@ -143,28 +143,26 @@ export default class Dashboard extends Component {
 
 
     removeEvent(id) {
+        var data = new FormData();
+        data.append("method", "delete")
+        data.append("id", id)
 
-        var headers = {
-            'Content-Type': 'application/x-www-form-urlencoded'
-        }
-
-        var data = qs.stringify({
-            id: id
+        axios.request({
+            method: "post",
+            url: `${baseUrl}/api/homesectionone.php`,
+            data: data
+        }).then(data => {
+            if (data.data.response) {
+                this.fetchEvents();
+                toast.success("event deleted successfully!", {
+                    position: "bottom-left"
+                })
+            } else {
+                toast.error("something went wrong !", {
+                    position: "bottom-left"
+                })
+            }
         })
-        axios
-            .delete(`${baseUrl}/api/homesectionone.php`, { headers, data })
-            .then(data => {
-                if (data.data.response) {
-                    this.fetchEvents();
-                    toast.success("event deleted successfully!", {
-                        position: "bottom-left"
-                    })
-                } else {
-                    toast.error("something went wrong !", {
-                        position: "bottom-left"
-                    })
-                }
-            })
             .catch(err => {
                 toast.error("something went wrong !", {
                     position: "bottom-left"
@@ -174,28 +172,26 @@ export default class Dashboard extends Component {
     }
     removeNews(id) {
 
-        var headers = {
-            'Content-Type': 'application/x-www-form-urlencoded'
-        }
+        var data = new FormData();
+        data.append("method", "delete")
+        data.append("id", id)
 
-        var data = qs.stringify({
-            id: id
+        axios.request({
+            method: "post",
+            url: `${baseUrl}/api/homenews.php`,
+            data: data
+        }).then(data => {
+            if (data.data.response) {
+                this.fetchNews();
+                toast.success("news deleted successfully!", {
+                    position: "bottom-left"
+                })
+            } else {
+                toast.error("something went wrong !", {
+                    position: "bottom-left"
+                })
+            }
         })
-
-        axios
-            .delete(`${baseUrl}/api/homenews.php`, { headers, data })
-            .then(data => {
-                if (data.data.response) {
-                    this.fetchNews();
-                    toast.success("news deleted successfully!", {
-                        position: "bottom-left"
-                    })
-                } else {
-                    toast.error("something went wrong !", {
-                        position: "bottom-left"
-                    })
-                }
-            })
             .catch(err => {
                 toast.error("something went wrong !", {
                     position: "bottom-left"
@@ -370,7 +366,7 @@ export default class Dashboard extends Component {
                                         </div>
                                                 </div>
 
-                                               
+
 
                                                 <div className="mt-2 mb-3">
                                                     <button className="text-white btn btn-sm btn-danger" name="submit" onClick={(e) => {
