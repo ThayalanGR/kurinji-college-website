@@ -4,7 +4,7 @@ import logo from '../../images/favicon.png'
 import axios from 'axios';
 import { toast } from 'react-toastify';
 
-const baseUrl = "http://localhost/kurinji"
+const baseUrl = "http://erp.epizy.com"
 
 export default class Dashboard extends Component {
     constructor(props) {

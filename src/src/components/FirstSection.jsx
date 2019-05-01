@@ -4,7 +4,7 @@ import kurinji from '../images/kurinji.png';
 import axios from 'axios';
 import '../css/toastmod.css'
 
-const baseUrl = 'http://localhost/kurinji';
+const baseUrl = 'http://erp.epizy.com';
 
 export default class FirstSection extends Component {
 
