@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
 import { toast } from 'react-toastify';
 import kurinji from '../images/kurinji.png';
+import constants from "../components/constants"
 import axios from 'axios';
 import '../css/toastmod.css'
 
-const baseUrl = 'http://erp.epizy.com';
+const baseUrl = constants.baseUrl;
 
 export default class FirstSection extends Component {
 
