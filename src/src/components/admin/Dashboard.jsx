@@ -1,10 +1,10 @@
 import React, { Component, Fragment } from 'react'
-import { Loader, Admin } from '../../components'
+import { Loader, Admin, constants } from '../../components'
 import logo from '../../images/favicon.png'
 import axios from 'axios';
 import { toast } from 'react-toastify';
 
-const baseUrl = "http://erp.epizy.com"
+const baseUrl = constants.baseUrl;
 
 export default class Dashboard extends Component {
     constructor(props) {

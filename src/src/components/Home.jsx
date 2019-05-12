@@ -3,9 +3,9 @@ import React, { Component, Fragment } from 'react';
 import { Link } from "react-router-dom";
 
 
-import { Loader, Footer, FirstSection, Navbar } from '../components';
+import { Loader, Footer, FirstSection, Navbar, constants } from '../components';
 
-const baseUrl = "http://erp.epizy.com";
+const baseUrl = constants.baseUrl;;
 
 
 export default class Home extends Component {

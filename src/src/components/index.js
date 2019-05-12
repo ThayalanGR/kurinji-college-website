@@ -2,6 +2,7 @@ import Navbar from "./Navbar";
 import Footer from './Footer';
 import Loader from './Loader';
 import FirstSection from "./FirstSection";
+import constants from './constants';
 
 
 import Home from "./Home";
@@ -36,5 +37,6 @@ export {
     RankHolders,
     Placement,
     Login,
-    Dashboard
+    Dashboard,
+    constants
 }
