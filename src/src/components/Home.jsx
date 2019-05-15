@@ -3,7 +3,7 @@ import React, { Component, Fragment } from 'react';
 import { Link } from "react-router-dom";
 
 
-import { Loader, Footer, FirstSection, Navbar, constants } from '../components';
+import { Loader, Footer, FirstSection, constants } from '../components';
 
 const baseUrl = constants.baseUrl;;
 
@@ -31,7 +31,6 @@ export default class Home extends Component {
       this.state.isLoading ? <Loader type={"bars"} /> :
         <Fragment>
 
-          <Navbar />
 
           <div className="container-fluid">
 
@@ -42,7 +41,7 @@ export default class Home extends Component {
                 <div className="row">
                   <div className="col text-center p-3 mt-3 text-danger">
                     <h2>Courses Offered</h2>
-                    <hr className="red font-weight-bold" />
+                    <hr className="base-orange font-weight-bold" />
                   </div>
                 </div>
                 <div className="row">
@@ -74,7 +73,7 @@ export default class Home extends Component {
                   <p className="card-text">
                     Mechanical engineering is one of the oldest and greatest courses of study in Engineering. The department of Mechanical Engineering in our Kurinji College of Engineering and Technology was estab....
                   </p>
-                  <Link to="/courses" type="button" className="btn btn-light-red red btn-md text-white">Read more</Link>
+                  <Link to="/courses" type="button" className="btn  base-orange btn-md text-white">Read more</Link>
 
                 </div>
 
@@ -95,7 +94,7 @@ export default class Home extends Component {
                   <p className="card-text">
                   To impart training with the best of teaching expertise supported by excellent laboratory infrastructure and exposure to recent trends in the industry, to ensure that the students are moul...
                   </p>
-                  <Link to="/courses" type="button" className="btn btn-light-red red btn-md text-white">Read more</Link>
+                  <Link to="/courses" type="button" className="btn  base-orange btn-md text-white">Read more</Link>
 
                 </div>
 
@@ -118,7 +117,7 @@ export default class Home extends Component {
                   To provide a quality education in the field of engineering, management, communication, information technology and other engineering fields.To set High standards of Compreh...
                   
                   </p>
-                  <Link to="/courses" type="button" className="btn btn-light-red red btn-md text-white">Read more</Link>
+                  <Link to="/courses" type="button" className="btn  base-orange btn-md text-white">Read more</Link>
 
                 </div>
 
@@ -139,29 +138,7 @@ export default class Home extends Component {
                   <p className="card-text">
                   To dedicate the work to advance and communicate the specific knowledge and understanding to the Medicore and Excellent students with a systematic scientific approach and coordi...
                   </p>
-                  <Link to="/courses" type="button" className="btn btn-light-red red btn-md text-white">Read more</Link>
-
-                </div>
-
-              </div>
-              <div className="card mb-4">
-
-                <div className="view overlay">
-                  <img className="card-img-top" src={`${baseUrl}/api/uploads/departments/it.jpg`} alt="" />
-
-                  <a href="#!">
-                    <div className="mask rgba-white-slight"></div>
-                  </a>
-                </div>
-
-                <div className="card-body">
-
-                  <h4 className="card-title">IT</h4>
-                  <p className="card-text">
-                  To provide our students with quality engineering education in Information Technology, to undertake research at the frontiers of computing technologies, and to serve the comm...
-                  
-                  </p>
-                  <Link to="/courses" type="button" className="btn btn-light-red red btn-md text-white">Read more</Link>
+                  <Link to="/courses" type="button" className="btn base-orange btn-md text-white">Read more</Link>
 
                 </div>
 
@@ -182,39 +159,39 @@ export default class Home extends Component {
 
               <div className="row">
                 <div className="col-md-4 p-3">
-                  <div className="card card-image" style={{ backgroundImage: `url(${baseUrl}/api/uploads/departments/ece.jpg)` }}>
+                  <div className="card card-image" style={{ backgroundImage: `url(${baseUrl}/api/uploads/departments/mecse.jpg)` }}>
                     <div className="text-white text-center d-flex align-items-center rgba-black-strong py-5 px-4">
                       <div>
                         <h3 className="card-title pt-2"><strong> M.E. CSE</strong></h3>
                         <p> To dedicate the work to advance and communicate the specific knowledge and understanding to the Medicore and Excellent students with a systematic scientific approach and coordication of acti...</p>
-                        <Link className="btn btn-red" to="/courses"><i className="fas fa-clone left"></i> Read more</Link>
+                        <Link className="btn base-orange" to="/courses"><i className="fas fa-clone left"></i> Read more</Link>
                       </div>
                     </div>
                   </div>
 
                 </div>
                 <div className="col-md-4 p-3">
-                <div className="card card-image" style={{ backgroundImage: `url(${baseUrl}/api/uploads/departments/ece.jpg)` }}>
+                <div className="card card-image" style={{ backgroundImage: `url(${baseUrl}/api/uploads/departments/design.jpg)` }}>
                     <div className="text-white text-center d-flex align-items-center rgba-black-strong py-5 px-4">
                       <div>
                         <h3 className="card-title pt-2"><strong>Engineering Design</strong></h3>
                         <p>
                         To dedicate the work to advance and communicate the specific knowledge and understanding to the Medicore and Excellent students with a systematic scientific approach and coordi...
                         </p>
-                        <Link className="btn btn-red" to="/courses"><i className="fas fa-clone left"></i> Read more</Link>
+                        <Link className="btn base-orange" to="/courses"><i className="fas fa-clone left"></i> Read more</Link>
                       </div>
                     </div>
                   </div>
                 </div>
                 <div className="col-md-4 p-3">
-                   <div className="card card-image" style={{ backgroundImage: `url(${baseUrl}/api/uploads/departments/ece.jpg)` }}>
+                   <div className="card card-image" style={{ backgroundImage: `url(${baseUrl}/api/uploads/departments/mba.jpg)` }}>
                     <div className="text-white text-center d-flex align-items-center rgba-black-strong py-5 px-4">
                       <div>
                         <h3 className="card-title pt-2"><strong>MBA</strong></h3>
                         <p>
                         To impart training with the best of teaching expertise supported by excellent laboratory infrastructure and exposure to recent trends in the industry, to ensure that the students are moul...
                         </p>
-                        <Link className="btn btn-red" to="/courses"><i className="fas fa-clone left"></i>Read more</Link>
+                        <Link className="btn base-orange" to="/courses"><i className="fas fa-clone left"></i>Read more</Link>
                       </div>
                     </div>
                   </div>

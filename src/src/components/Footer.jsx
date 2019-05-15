@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 export default function Footer() {
   return (
     <div className="row">
-      <div className="col container bg-danger text-center" style={{ width: "100vw", height: "auto" }}>
+      <div className="col container base-orange text-center" style={{ width: "100vw", height: "auto" }}>
         <div className="row">
           <div className="col-md-6 col-sm-12 p-5 mt-2 text-center font-weight-bold">
             <h4 className="font-weight-bold text-white mr-5">Quick Links
@@ -17,7 +17,7 @@ export default function Footer() {
                 </Link>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link  text-light" to="/aboutus">About Us</Link>
+                  <Link className="nav-link  text-light" to="/historyofcollege">About Us</Link>
                 </li>
                 <li className="nav-item">
                   <Link className="nav-link  text-light" to="/courses">Courses</Link>

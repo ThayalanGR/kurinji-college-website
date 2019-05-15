@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react'
-import { Loader, Navbar } from '../components'
+import { Loader } from '../components'
 import ImageGallery from 'react-image-gallery';
 
 export default class Infrastructure extends Component {
@@ -38,7 +38,7 @@ export default class Infrastructure extends Component {
 
     return (
       this.state.isLoading ? <Loader type={"bars"} /> : <Fragment>
-        <Navbar />
+        
         <div className="mtspace">
           <ul class="nav nav-tabs nav-tabs-expanded nav-justified ul-scroll" id="myTab" role="tablist">
             <li class="nav-item">

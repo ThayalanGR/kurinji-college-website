@@ -24,7 +24,7 @@ body {
     background-size: cover;
     width: 100vw;
     height: 100vh;
-    transition: 0.8s ease-in;
+    transition: 0.5s ease-in;
 }
 
 .mtop {
@@ -37,6 +37,10 @@ body {
     padding-left: 10px;
     padding-right: 10px;
     text-align: center;
+}
+
+.imgstyle {
+    width: 400px;
 }
 
 .header-row {
@@ -56,14 +60,22 @@ body {
 .bg-mask {
     top: -32%;
     position: absolute;
-    /* background: black; */
-    background: url("https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.7.7/img/overlays/05.png") fixed;
-    /* opacity: 0.10; */
+    background: rgb(218, 86, 45);
+    /* background: url("../images/overlay1.png") fixed; */
+    opacity: 0.80;
     min-width: 100vw;
     overflow: hidden;
     min-height: 170px;
     z-index: 999;
 
+}
+
+.pattern-5 {
+    background: url("../images/overlay1.png") fixed;
+}
+
+.pattern-3 {
+    background: url("../images/overlay2.png") fixed;
 }
 
 .header-image {
@@ -92,6 +104,49 @@ body {
     overflow-x: scroll;
     overflow-y: hidden;
 
+}
+
+.base-orange {
+    background-color: rgb(218, 86, 45);
+}
+
+.text-orange {
+    
+    color: #1F2073;
+    -webkit-text-stroke: 0.8px white;
+}
+
+.nav-size {
+    box-sizing: border-box;
+    max-height: 60px;
+}
+
+.main-text-logo {
+    color: #1F2073;
+    font-weight: bold;
+    font-size: 50px;
+    letter-spacing: 15px;
+    text-transform: uppercase;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    -webkit-text-stroke: 0.8px white;
+}
+.main-text-sub-logo {
+    color: #1F2073;
+    font-weight: bold;
+    font-size: 30px;
+    letter-spacing: 5px;
+    text-transform: capitalize;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    -webkit-text-stroke: 0.2px white;
+}
+
+
+
+.base-text {
+    color: #1F2073;
+    font-weight: bolder;
+    font-size: 28px;
+    -webkit-text-stroke: 0.3px white;
 }
 .ul-scroll::-webkit-scrollbar-track
 {
@@ -165,6 +220,17 @@ body {
         width: 350px;
         height: 350px;
     }   
+
+    .main-text-sub-logo {
+        color: #1F2073;
+        font-weight: bold;
+        font-size: 20px;
+        letter-spacing: 5px;
+        text-transform: capitalize;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        -webkit-text-stroke: 0.2px white;
+    }
+    
 }
 
 

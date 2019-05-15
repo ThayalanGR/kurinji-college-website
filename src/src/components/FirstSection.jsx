@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { toast } from 'react-toastify';
-import kurinji from '../images/kurinji.png';
 import constants from "../components/constants"
+import kurinji from "../images/favicon.png"
 import axios from 'axios';
 import '../css/toastmod.css'
 
@@ -66,28 +66,25 @@ export default class FirstSection extends Component {
         </div>
 
         <div className="row">
-          <div className="col text-center font-weight-bolder h5">
+          <div className="col text-center font-weight-bold h5">
             UG - Courses
                   <hr className="text-white white" />
           </div>
         </div>
         <div className="row">
           <div className="col text-center font-weight-bolder">
-            <span className="red shadow-lg p-2 text-white rounded m-2">MECH</span>
+            <span className="base-orange shadow-lg p-2 text-white rounded m-2">MECH</span>
           </div>
           <div className="col text-center font-weight-bolder">
-            <span className="red shadow-lg p-2 text-white rounded m-2">EEE</span>
+            <span className="base-orange shadow-lg p-2 text-white rounded m-2">EEE</span>
           </div>
         </div>
         <div className="row mt-2 pt-4">
           <div className="col text-center font-weight-bolder">
-            <span className="red shadow-lg p-2 text-white rounded m-2">ECE</span>
+            <span className="base-orange shadow-lg p-2 text-white rounded m-2">ECE</span>
           </div>
           <div className="col text-center font-weight-bolder">
-            <span className="red shadow-lg p-2 text-white rounded m-2">CSE</span>
-          </div>
-          <div className="col text-center font-weight-bolder">
-            <span className="red shadow-lg p-2 text-white rounded m-2">IT</span>
+            <span className="base-orange shadow-lg p-2 text-white rounded m-2">CSE</span>
           </div>
         </div>
 
@@ -100,15 +97,15 @@ export default class FirstSection extends Component {
 
         <div className="row">
           <div className="col text-center font-weight-bolder">
-            <span className="bg-warning shadow-lg p-2 text-white rounded m-2">ME - CSE</span>
+            <span className="base-orange shadow-lg p-2 text-white rounded m-2">ME - CSE</span>
           </div>
           <div className="col text-center font-weight-bolder">
-            <span className="bg-warning shadow-lg p-2 text-white rounded ">Eng - Design</span>
+            <span className="base-orange shadow-lg p-2 text-white rounded ">Eng - Design</span>
           </div>
         </div>
         <div className="row mt-3 pt-3 mb-3">
           <div className="col text-center font-weight-bolder">
-            <span className="bg-warning shadow-lg p-2 text-white rounded m-2">MBA</span>
+            <span className="base-orange shadow-lg p-2 text-white rounded m-2">MBA</span>
           </div>
         </div>
       </div>, {
@@ -134,6 +131,14 @@ export default class FirstSection extends Component {
 
 
     setTimeout(() => {
+      if (this.state.carouselData.length === 0)
+        this.fetchEvents()
+      if (this.state.news.length === 0)
+        this.fetchNews()
+    }, 3000)
+
+
+    setTimeout(() => {
       toast.dismiss();
       toast(<div className="container-fluid">
         <div className="row">
@@ -151,21 +156,18 @@ export default class FirstSection extends Component {
         </div>
         <div className="row">
           <div className="col text-center font-weight-bolder">
-            <span className="red shadow-lg p-2 text-white rounded m-2">MECH</span>
+            <span className="base-orange shadow-lg p-2 text-white rounded m-2">MECH</span>
           </div>
           <div className="col text-center font-weight-bolder">
-            <span className="red shadow-lg p-2 text-white rounded m-2">EEE</span>
+            <span className="base-orange shadow-lg p-2 text-white rounded m-2">EEE</span>
           </div>
         </div>
         <div className="row mt-2 pt-4">
           <div className="col text-center font-weight-bolder">
-            <span className="red shadow-lg p-2 text-white rounded m-2">ECE</span>
+            <span className="base-orange shadow-lg p-2 text-white rounded m-2">ECE</span>
           </div>
           <div className="col text-center font-weight-bolder">
-            <span className="red shadow-lg p-2 text-white rounded m-2">CSE</span>
-          </div>
-          <div className="col text-center font-weight-bolder">
-            <span className="red shadow-lg p-2 text-white rounded m-2">IT</span>
+            <span className="base-orange shadow-lg p-2 text-white rounded m-2">CSE</span>
           </div>
         </div>
 
@@ -178,15 +180,15 @@ export default class FirstSection extends Component {
 
         <div className="row">
           <div className="col text-center font-weight-bolder">
-            <span className="bg-warning shadow-lg p-2 text-white rounded m-2">ME - CSE</span>
+            <span className="base-orange shadow-lg p-2 text-white rounded m-2">ME - CSE</span>
           </div>
           <div className="col text-center font-weight-bolder">
-            <span className="bg-warning shadow-lg p-2 text-white rounded ">Eng - Design</span>
+            <span className="base-orange shadow-lg p-2 text-white rounded ">Eng - Design</span>
           </div>
         </div>
         <div className="row mt-3 pt-3 mb-3">
           <div className="col text-center font-weight-bolder">
-            <span className="bg-warning shadow-lg p-2 text-white rounded m-2">MBA</span>
+            <span className="base-orange shadow-lg p-2 text-white rounded m-2">MBA</span>
           </div>
         </div>
       </div>, {
@@ -256,25 +258,35 @@ export default class FirstSection extends Component {
                 Latest News
                  </p>
               {/* eslint-disable-next-line  */}
-              <marquee><p className="text-white" style={{ fontFamily: "Impact", fontSize: "15pt" }}>
+              <marquee><p className="text-white" style={{ fontSize: "15pt" }}>
                 {this.state.newsText}
               </p></marquee>
             </div>
 
           </div>
-
           <div className="bg-mask p-0 m-0"></div>
 
-
-
-          <div className="row header-row d-flex justify-content-center align-items-center">
+          <div className="row header-row" style={{ width: "100%" }}>
             <div className="col-md-6 col-sm-12">
-              <img className="header-image mt-1 img-fluid" src={kurinji} alt="" srcSet="" />
+              <div className="d-flex justify-content-center align-items-center flex-md-row">
+                <img src={kurinji} className="img-fluid img-responsive pb-2 pl-4" height="90" alt="" srcset=""/>
+                <div className="text-center">
+                  <h1 className="main-text-logo">
+                    Kurinji
+                  </h1>
+                  <h4 className="main-text-sub-logo">
+                  college of engineering and technology
+                  </h4>
+                </div>
+              </div>
+
+
+              {/* <img className="header-image mt-1 img-fluid" src={kurinji} alt="" srcSet="" /> */}
             </div>
-            <div className="col-md-6 col-sm-0 d-flex justify-content-between align-items-center p-4 headershow">
+            <div className="col-md-6 d-flex flex-row justify-content-between headershow">
               <div className="d-flex justify-content-center align-items-center header-info " >
                 <div>
-                  <i className="fas fa-map-marker-alt text-danger fa-2x pr-3 mb-4"></i>
+                  <i className="fas fa-map-marker-alt text-orange fa-2x mb-4"></i>
                 </div>
                 <p className="text-center text-white font-weight-bold h6" style={{}}>
                   Trichy-Dindigul NH-Road,
@@ -285,7 +297,7 @@ export default class FirstSection extends Component {
               </div>
               <div className="d-flex justify-content-center align-items-center header-info " >
                 <div>
-                  <i className="fas fa-phone text-danger fa-2x pr-3 mb-4"></i>
+                  <i className="fas fa-phone text-orange fa-2x pr-3 mb-4"></i>
                 </div>
                 <p className="text-center h6 font-weight-bold text-white" style={{}}>
                   04332&nbsp;292338
@@ -294,7 +306,7 @@ export default class FirstSection extends Component {
               </div>
               <div className="d-flex justify-content-center align-items-center header-info " >
                 <div>
-                  <i className="far fa-envelope text-danger fa-2x pr-3 mb-4"></i>
+                  <i className="fas fa-envelope text-orange fa-2x pr-3 mb-4"></i>
                 </div>
                 <p className="font-weight-bold text-white" style={{}}>
                   kcet@kurinjiengg.org
@@ -309,5 +321,5 @@ export default class FirstSection extends Component {
       </div>
     )
   }
-  
+
 }

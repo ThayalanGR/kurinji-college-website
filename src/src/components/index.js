@@ -6,13 +6,15 @@ import constants from './constants';
 
 
 import Home from "./Home";
-import Aboutus from './Aboutus';
 import Contact from './Contact';
 import Courses from './Courses';
 import Infrastructure from "./Infrastructure";
 import Alumini from './Alumini';
 import RankHolders from './RankHolders';
 import Placement from './Placement';
+import Historyofcollege from './Historyofcollege'
+import Principal from './Principal'
+import Chairman from './Chairman'
 
 
 import Admin from "./admin/Admin";
@@ -21,12 +23,10 @@ import Dashboard from "./admin/Dashboard";
 
 
 
-
 export {
     Navbar,
     Home,
     Loader,
-    Aboutus,
     Contact,
     Footer,
     FirstSection,
@@ -38,5 +38,8 @@ export {
     Placement,
     Login,
     Dashboard,
-    constants
+    constants,
+    Historyofcollege,
+    Principal,
+    Chairman
 }

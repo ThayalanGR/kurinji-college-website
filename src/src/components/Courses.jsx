@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react'
-import { Loader, Navbar } from '../components'
+import { Loader,  } from '../components'
 
 export default class Courses extends Component {
   constructor(props) {
@@ -20,7 +20,7 @@ export default class Courses extends Component {
   render() {
     return (
       this.state.isLoading ? <Loader type={"bars"} /> : <Fragment>
-        <Navbar />
+        
         <div className="mtspace">
           courses
         </div>

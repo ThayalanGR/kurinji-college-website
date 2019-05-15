@@ -5,9 +5,9 @@ import { Link } from "react-router-dom";
 export default class Navbar extends Component {
   render() {
     return (
-      <nav className="mb-1 navbar navbar-expand-lg navbar-dark red lighten-1 fixed-top " >
-        <Link className="navbar-brand text-light animated pulse infinite slow" to="/"> <img src="./favicon.png" className="rounded-circle z-depth-0 mr-2 shadow-lg "
-          alt="" height="35" /><span className="text-white"> Counselling code : </span><span className="font-weight-bold text-white"> 3809 </span></Link>
+      <nav className="mb-1 navbar navbar-expand-lg navbar-dark nav-size base-orange lighten-1 fixed-top " >
+        <Link className="navbar-brand text-light animated pulse infinite slow" to="/"> <img src="./favicon.png" className="rounded-circle z-depth-0 mt-0 mr-0 shadow-lg "
+          alt="" height="50" /><span className="base-text h4"> Counselling code : </span><span className="font-weight-bold base-text h4"> 3809 </span></Link>
         <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-555"
           aria-controls="navbarSupportedContent-555" aria-expanded="false" aria-label="Toggle navigation">
           <span className="navbar-toggler-icon"></span>
@@ -18,12 +18,37 @@ export default class Navbar extends Component {
               <Link className="nav-link  text-light" to="/">Home
                 </Link>
             </li>
-            <li className="nav-item">
-              <Link className="nav-link  text-light" to="/aboutus">About Us</Link>
+            {/* <li className="nav-item"> */}
+            <li class="nav-item dropdown">
+              <button class="nav-link dropdown-toggle bg-transparent text-light" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                About Us
+                </button>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <Link className="dropdown-item  text-dark" to="/historyofcollege">History of College</Link>
+                <Link className="dropdown-item  text-dark" to="/chairmanmessage">Chairman Message</Link>
+                <Link className="dropdown-item  text-dark" to="/principalmessage">Principal Message</Link>
+              </div>
+              {/* </div> */}
             </li>
-            <li className="nav-item">
-              <Link className="nav-link  text-light" to="/courses">Courses</Link>
+
+            {/* departments start */}
+
+            <li class="nav-item dropdown">
+              <button class="nav-link dropdown-toggle bg-transparent text-light" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Departments
+                </button>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <Link className="dropdown-item  text-dark" to="/mech">MECH</Link>
+                <Link className="dropdown-item  text-dark" to="/eee">EEE</Link>
+                <Link className="dropdown-item  text-dark" to="/ece">ECE</Link>
+                <Link className="dropdown-item  text-dark" to="/cse">CSE</Link>
+                <Link className="dropdown-item  text-dark" to="/mecse">M.E. - CSE</Link>
+                <Link className="dropdown-item  text-dark" to="/engdesign">ENG - DESIGN</Link>
+                <Link className="dropdown-item  text-dark" to="/mba">MBA</Link>
+              </div>
+              {/* </div> */}
             </li>
+            {/* departments end */}
             <li className="nav-item">
               <Link className="nav-link  text-light" to="/infrastructure">Infrastructure</Link>
             </li>
