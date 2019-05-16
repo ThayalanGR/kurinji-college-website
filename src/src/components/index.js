@@ -16,7 +16,16 @@ import Historyofcollege from './Historyofcollege'
 import Principal from './Principal'
 import Chairman from './Chairman'
 
+// Departments
+import Mech from './Mech'
+import Eee from './Eee'
+import Ece from './Ece'
+import Cse from './Cse'
+import Mecse from './Mecse'
+import Engdesign from './Engdesign'
+import Mba from './Mba'
 
+// Admin
 import Admin from "./admin/Admin";
 import Login from "./admin/Login";
 import Dashboard from "./admin/Dashboard";
@@ -41,5 +50,13 @@ export {
     constants,
     Historyofcollege,
     Principal,
-    Chairman
+    Chairman,
+    Mech,
+    Eee,
+    Ece,
+    Cse,
+    Mecse,
+    Engdesign,
+    Mba
+    
 }

@@ -6,12 +6,13 @@ import { BrowserRouter, Route } from "react-router-dom";
 import { toast } from 'react-toastify';
 
 
-import './css/main.css'
+import './css/main.css';
 import 'react-toastify/dist/ReactToastify.css';
 import "react-image-gallery/styles/css/image-gallery.css";
+import "./css/dept.css";
 
 
-import { Home, Contact, Admin, Courses, Infrastructure, Placement, RankHolders, Alumini, Navbar, Historyofcollege, Principal, Chairman } from './components';
+import { Home, Contact, Admin, Courses, Infrastructure, Placement, RankHolders, Alumini, Navbar, Historyofcollege, Principal, Chairman, Mech, Eee, Ece, Cse, Mecse, Engdesign, Mba } from './components';
 
 
 toast.configure();
@@ -28,6 +29,13 @@ ReactDOM.render(
             <Route exact path="/rankholders" component={RankHolders} />
             <Route exact path="/alumini" component={Alumini} />
             <Route exact path="/contact" component={Contact} />
+            <Route exact path="/mech" component={Mech}/>
+            <Route exact path="/eee" component={Eee}/>
+            <Route exact path="/ece" component={Ece}/>
+            <Route exact path="/cse" component={Cse}/>
+            <Route exact path="/mecse" component={Mecse}/>
+            <Route exact path="/engdesign" component={Engdesign}/>
+            <Route exact path="/mba" component={Mba}/> 
             <Route exact path="/historyofcollege" component={Historyofcollege} />
             <Route exact path="/principalmessage" component={Principal} />
             <Route exact path="/chairmanmessage" component={Chairman} />

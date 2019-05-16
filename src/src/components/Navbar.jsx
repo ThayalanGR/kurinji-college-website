@@ -12,32 +12,30 @@ export default class Navbar extends Component {
           aria-controls="navbarSupportedContent-555" aria-expanded="false" aria-label="Toggle navigation">
           <span className="navbar-toggler-icon"></span>
         </button>
-        <div className="collapse navbar-collapse" id="navbarSupportedContent-555">
+        <div className="collapse navbar-collapse base-orange" id="navbarSupportedContent-555">
           <ul className="navbar-nav ml-auto d-flex justify-content-around align-items-center" style={{ width: "100%" }}>
             <li className="nav-item ">
               <Link className="nav-link  text-light" to="/">Home
                 </Link>
             </li>
-            {/* <li className="nav-item"> */}
-            <li class="nav-item dropdown">
-              <button class="nav-link dropdown-toggle bg-transparent text-light" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <li className="nav-item dropdown">
+              <button className="nav-link dropdown-toggle bg-transparent text-light" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 About Us
                 </button>
-              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
                 <Link className="dropdown-item  text-dark" to="/historyofcollege">History of College</Link>
                 <Link className="dropdown-item  text-dark" to="/chairmanmessage">Chairman Message</Link>
                 <Link className="dropdown-item  text-dark" to="/principalmessage">Principal Message</Link>
               </div>
-              {/* </div> */}
             </li>
 
             {/* departments start */}
 
-            <li class="nav-item dropdown">
-              <button class="nav-link dropdown-toggle bg-transparent text-light" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <li className="nav-item dropdown">
+              <button className="nav-link dropdown-toggle bg-transparent text-light" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Departments
                 </button>
-              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
                 <Link className="dropdown-item  text-dark" to="/mech">MECH</Link>
                 <Link className="dropdown-item  text-dark" to="/eee">EEE</Link>
                 <Link className="dropdown-item  text-dark" to="/ece">ECE</Link>

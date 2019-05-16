@@ -1,0 +1,36 @@
+.side-section {
+    height: 100vw;
+    background: #DA562D;
+    left: 0;
+    position: fixed;
+    top: 60px;
+    width: 300px;
+}
+
+
+.side-nav-content {
+    list-style: none;
+    text-decoration: none;
+    line-height: 3.2;
+}
+
+.side-nav-content li {
+    cursor: pointer;
+    text-decoration: none;
+    border-bottom: 2px solid #f3f3f3;
+}
+
+.side-nav-content li:hover {
+    background: #4d4c4c;
+}
+
+
+.main-section {
+    position: relative;
+    z-index: -1;
+    left: 290px;
+    margin-top: -10px;
+    padding: 50px;
+    margin-right: 250px;    
+    height: 300vh;
+}
