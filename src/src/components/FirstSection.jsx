@@ -269,7 +269,7 @@ export default class FirstSection extends Component {
           <div className="row header-row" style={{ width: "100%" }}>
             <div className="col-md-6 col-sm-12">
               <div className="d-flex justify-content-center align-items-center flex-md-row">
-                <img src={kurinji} className="img-fluid img-responsive pb-2 pl-4" height="90" alt="" srcset=""/>
+                <img src={kurinji} className="img-fluid img-responsive pb-2 pl-4" height="90" alt=""/>
                 <div className="text-center">
                   <h1 className="main-text-logo">
                     Kurinji

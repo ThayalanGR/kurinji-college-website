@@ -97,89 +97,85 @@ export default class News extends Component {
 
     render() {
         return (
-            <div className="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                <div className="container-fluid p-2">
-                    <div className="row mtspace ">
-                        <div className="col text-center text-danger h5">
-                            News Upload
-                                        <hr />
-                        </div>
-                    </div>
-                    <div className="row" style={{ maxWidth: "100vw" }} >
-
-                        <div className="col-md-6 " style={{ width: "100%" }}>
-
-                            <div className="text-center text-danger">
-                                Add new News
-                                            <hr />
-                            </div>
-
-                            <div className="d-flex justify-content-center">
-                                <form className="was-validated" style={{ width: "350px" }}>
-                                    <div className="mb-3">
-                                        <label htmlFor="validationTextarea ">Event Caption</label>
-                                        <textarea className="form-control is-invalid" id="validationTextarea" placeholder="Required textarea"
-                                            value={this.state.newsText}
-                                            onChange={(e) => {
-                                                this.setState({ newsText: e.target.value })
-                                            }}
-                                            required></textarea>
-                                        <div className="invalid-feedback">
-                                            Please enter some News
-                                        </div>
-                                    </div>
-
-
-
-                                    <div className="mt-2 mb-3">
-                                        <button className="text-white btn btn-sm btn-danger" name="submit" onClick={(e) => {
-                                            e.preventDefault();
-                                            this.addNewNews();
-                                        }}> Add News </button>
-                                    </div>
-
-                                </form>
-
-                            </div>
-                        </div>
-                        <div className="col-md-6">
-
-                            <div className="text-center text-danger">
-                                Existing News
-                                    <hr />
-                            </div>
-
-                            <div className="p-1 container">
-                                {this.state.existingNews.map((item, index) => {
-
-                                    return (
-                                        <div className="row" key={index}>
-                                            <div className="col-md-8 p-3">
-                                                {item[1]}
-                                                <hr />
-                                                On:- {item[2]}
-                                            </div>
-                                            <div className="col-4 text-center d-flex justify-content-center align-items-center">
-                                                <button
-                                                    value={item[0]}
-                                                    onClick={(e) => {
-                                                        this.removeNews(e.target.value)
-                                                    }} className="btn btn-sm btn-danger text-white">delete</button>
-                                            </div>
-                                            <div className="col-12">
-                                                <hr />
-                                            </div>
-                                        </div>
-                                    );
-
-                                })}
-                            </div>
-
-                        </div>
+            <div className="container-fluid p-2">
+                <div className="row mtspace ">
+                    <div className="col text-center text-danger h5">
+                        News Upload
+                        <hr />
                     </div>
                 </div>
+                <div className="row" style={{ maxWidth: "100vw" }} >
+
+                    <div className="col-md-6 " style={{ width: "100%" }}>
+
+                        <div className="text-center text-danger">
+                            Add new News
+                                            <hr />
+                        </div>
+
+                        <div className="d-flex justify-content-center">
+                            <form className="was-validated" style={{ width: "350px" }}>
+                                <div className="mb-3">
+                                    <label htmlFor="validationTextarea ">Event Caption</label>
+                                    <textarea className="form-control is-invalid" id="validationTextarea" placeholder="Required textarea"
+                                        value={this.state.newsText}
+                                        onChange={(e) => {
+                                            this.setState({ newsText: e.target.value })
+                                        }}
+                                        required></textarea>
+                                    <div className="invalid-feedback">
+                                        Please enter some News
+                                        </div>
+                                </div>
 
 
+
+                                <div className="mt-2 mb-3">
+                                    <button className="text-white btn btn-sm btn-danger" name="submit" onClick={(e) => {
+                                        e.preventDefault();
+                                        this.addNewNews();
+                                    }}> Add News </button>
+                                </div>
+
+                            </form>
+
+                        </div>
+                    </div>
+                    <div className="col-md-6">
+
+                        <div className="text-center text-danger">
+                            Existing News
+                                    <hr />
+                        </div>
+
+                        <div className="p-1 container">
+                            {this.state.existingNews.map((item, index) => {
+
+                                return (
+                                    <div className="row" key={index}>
+                                        <div className="col-md-8 p-3">
+                                            {item[1]}
+                                            <hr />
+                                            On:- {item[2]}
+                                        </div>
+                                        <div className="col-4 text-center d-flex justify-content-center align-items-center">
+                                            <button
+                                                value={item[0]}
+                                                onClick={(e) => {
+                                                    this.removeNews(e.target.value)
+                                                }} className="btn btn-sm btn-danger text-white">delete</button>
+                                        </div>
+                                        <div className="col-12">
+                                            <hr />
+                                        </div>
+                                    </div>
+                                );
+
+                            })}
+                        </div>
+
+                    </div>
+                </div>
             </div>
         )
     }

@@ -112,142 +112,140 @@ export default class Staff extends Component {
 
     render() {
         return (
-            <div className="tab-pane fade show active" id="staffs" role="tabpanel" aria-labelledby="staffs-tab">
-                <div className="container-fluid p-2">
-                    <div className="row mtspace ">
-                        <div className="col text-center text-danger h5">
-                            Staff Details Upload
+            <div className="container-fluid p-2">
+                <div className="row mtspace ">
+                    <div className="col text-center text-danger h5">
+                        Staff Details Upload
                             <hr />
-                        </div>
-                    </div>
-                    <div className="row" style={{ maxWidth: "100vw" }} >
-
-                        <div className="col-md-6 " style={{ width: "100%" }}>
-
-                            <div className="text-center text-danger">
-                                Add new Staff
-                                <hr />
-                            </div>
-
-                            <div className="d-flex justify-content-center">
-                                <form className="was-validated" style={{ width: "350px" }}>
-                                    <div className="mb-3">
-                                        <label htmlFor="validationTextarea ">Staff Name</label>
-                                        <input type="text" className="form-control is-invalid" id="validationTextarea" placeholder="Required  textarea"
-                                            value={this.state.staffName}
-                                            onChange={(e) => {
-                                                this.setState({ staffName: e.target.value })
-                                            }}
-                                            required></input>
-                                    </div>
-                                    <div className="mb-3">
-                                        <label htmlFor="validationTextarea ">Staff Designation</label>
-                                        <input type="text" className="form-control is-invalid" id="validationTextarea" placeholder="Required  textarea"
-                                            value={this.state.staffDesignation}
-                                            onChange={(e) => {
-                                                this.setState({ staffDesignation: e.target.value })
-                                            }}
-                                            required></input>
-                                    </div>
-                                    <div className="mb-3">
-                                        <label htmlFor="validationTextarea ">Staff Department</label>
-                                        <select name="" className="form-control is-invalid"
-                                            value={this.state.staffDepartment}
-                                            onChange={(e) => {
-                                                this.setState({ staffDepartment: e.target.value })
-                                            }}
-
-                                        >
-                                            <option value="none">Choose department</option>
-                                            <option value="mech">Mech</option>
-                                            <option value="eee">EEE</option>
-                                            <option value="ece">ECE</option>
-                                            <option value="cse">CSE</option>
-                                            <option value="mecse">ME-CSE</option>
-                                            <option value="engdesign">Eng-Design</option>
-                                            <option value="mba">MBA</option>
-
-                                        </select>
-                                    </div>
-                                    <div className="mb-3">
-                                        <label htmlFor="validationTextarea ">Staff Details</label>
-                                        <textarea className="form-control is-invalid" id="validationTextarea" placeholder="Required  textarea"
-                                            value={this.state.staffDetails}
-                                            onChange={(e) => {
-                                                this.setState({ staffDetails: e.target.value })
-                                            }}
-                                            required></textarea>
-                                    </div>
-
-                                    <div className="custom-file">
-                                        <input type="file" className="custom-file-input" id="validatedCustomFile"
-                                            accept="image/*"
-                                            onChange={(e) => {
-                                                this.setState({
-                                                    staffFile: e.target.files[0],
-                                                    staffFileName: e.target.files[0].name
-                                                })
-                                            }}
-                                            required />
-                                        <label className="custom-file-label" htmlFor="validatedCustomFile">{this.state.staffFileName}</label>
-                                    </div>
-
-                                    <div className="mt-2 mb-3">
-                                        <button className="text-white btn btn-sm btn-danger" name="submit" onClick={(e) => {
-                                            e.preventDefault();
-                                            this.addNewStaff();
-                                        }}> Upload </button>
-                                    </div>
-
-                                </form>
-
-                            </div>
-                        </div>
-                        <div className="col-md-6">
-
-                            <div className="text-center text-danger">
-                                Existing Staffs
-                                <hr />
-                            </div>
-                            <div className="p-1 container">
-                                {this.state.existingStaffs.map((item, index) => {
-
-                                    return (
-                                        <div className="row" key={index}>
-                                            <div className="col-md-3">
-                                                <img src={`${baseUrl}/${item[4]}`} className="img-thumbnail" alt="" />
-                                            </div>
-                                            <div className="col-md-5 p-3">
-                                                Name:- {item[1]}
-                                                <hr />
-                                                Designation:- {item[2]}
-                                                <hr />
-                                                Department:- {item[3]}
-                                                <hr />
-                                                Description:- {item[5]}
-
-                                            </div>
-                                            <div className="col-3 text-center d-flex justify-content-center align-items-center">
-                                                <button
-                                                    value={item[0]}
-                                                    onClick={(e) => {
-                                                        this.removeStaff(e.target.value)
-                                                    }} className="btn btn-sm btn-danger text-white">delete</button>
-                                            </div>
-                                            <div className="col-12">
-                                                <hr />
-                                            </div>
-                                        </div>
-                                    );
-
-                                })}
-                            </div>
-
-                        </div>
                     </div>
                 </div>
+                <div className="row" style={{ maxWidth: "100vw" }} >
 
+                    <div className="col-md-6 " style={{ width: "100%" }}>
+
+                        <div className="text-center text-danger">
+                            Add new Staff
+                                <hr />
+                        </div>
+
+                        <div className="d-flex justify-content-center">
+                            <form className="was-validated" style={{ width: "350px" }}>
+                                <div className="mb-3">
+                                    <label htmlFor="validationTextarea ">Staff Name</label>
+                                    <input type="text" className="form-control is-invalid" id="validationTextarea" placeholder="Required  textarea"
+                                        value={this.state.staffName}
+                                        onChange={(e) => {
+                                            this.setState({ staffName: e.target.value })
+                                        }}
+                                        required></input>
+                                </div>
+                                <div className="mb-3">
+                                    <label htmlFor="validationTextarea ">Staff Designation</label>
+                                    <input type="text" className="form-control is-invalid" id="validationTextarea" placeholder="Required  textarea"
+                                        value={this.state.staffDesignation}
+                                        onChange={(e) => {
+                                            this.setState({ staffDesignation: e.target.value })
+                                        }}
+                                        required></input>
+                                </div>
+                                <div className="mb-3">
+                                    <label htmlFor="validationTextarea ">Staff Department</label>
+                                    <select name="" className="form-control is-invalid"
+                                        value={this.state.staffDepartment}
+                                        onChange={(e) => {
+                                            this.setState({ staffDepartment: e.target.value })
+                                        }}
+
+                                    >
+                                        <option value="none">Choose department</option>
+                                        <option value="mech">Mech</option>
+                                        <option value="eee">EEE</option>
+                                        <option value="ece">ECE</option>
+                                        <option value="cse">CSE</option>
+                                        <option value="mecse">ME-CSE</option>
+                                        <option value="engdesign">Eng-Design</option>
+                                        <option value="mba">MBA</option>
+
+                                    </select>
+                                </div>
+                                <div className="mb-3">
+                                    <label htmlFor="validationTextarea ">Staff Details</label>
+                                    <textarea className="form-control is-invalid" id="validationTextarea" placeholder="Required  textarea"
+                                        value={this.state.staffDetails}
+                                        onChange={(e) => {
+                                            this.setState({ staffDetails: e.target.value })
+                                        }}
+                                        required></textarea>
+                                </div>
+
+                                <div className="custom-file">
+                                    <input type="file" className="custom-file-input" id="validatedCustomFile"
+                                        accept="image/*"
+                                        onChange={(e) => {
+                                            this.setState({
+                                                staffFile: e.target.files[0],
+                                                staffFileName: e.target.files[0].name
+                                            })
+                                        }}
+                                        required />
+                                    <label className="custom-file-label" htmlFor="validatedCustomFile">{this.state.staffFileName}</label>
+                                </div>
+
+                                <div className="mt-2 mb-3">
+                                    <button className="text-white btn btn-sm btn-danger" name="submit" onClick={(e) => {
+                                        e.preventDefault();
+                                        this.addNewStaff();
+                                    }}> Upload </button>
+                                </div>
+
+                            </form>
+
+                        </div>
+                    </div>
+                    <div className="col-md-6">
+
+                        <div className="text-center text-danger">
+                            Existing Staffs
+                                <hr />
+                        </div>
+                        <div className="p-1 container">
+                            {this.state.existingStaffs.map((item, index) => {
+
+                                return (
+                                    <div className="row" key={index}>
+                                        <div className="col-md-3">
+                                            <img src={`${baseUrl}/${item[4]}`} className="img-thumbnail" alt="" />
+                                        </div>
+                                        <div className="col-md-5 p-3">
+                                            Name:- {item[1]}
+                                            <hr />
+                                            Designation:- {item[2]}
+                                            <hr />
+                                            Department:- {item[3]}
+                                            <hr />
+                                            Description:- {item[5]}
+
+                                        </div>
+                                        <div className="col-3 text-center d-flex justify-content-center align-items-center">
+                                            <button
+                                                value={item[0]}
+                                                onClick={(e) => {
+                                                    this.removeStaff(e.target.value)
+                                                }} className="btn btn-sm btn-danger text-white">delete</button>
+                                        </div>
+                                        <div className="col-12">
+                                            <hr />
+                                        </div>
+                                    </div>
+                                );
+
+                            })}
+                        </div>
+
+                    </div>
+                </div>
             </div>
+
         )
     }
 }

@@ -73,7 +73,7 @@ export default class Home extends Component {
                   <p className="card-text">
                     Mechanical engineering is one of the oldest and greatest courses of study in Engineering. The department of Mechanical Engineering in our Kurinji College of Engineering and Technology was estab....
                   </p>
-                  <Link to="/courses" type="button" className="btn  base-orange btn-md text-white">Read more</Link>
+                  <Link to="/mech" type="button" className="btn  base-orange btn-md text-white">Read more</Link>
 
                 </div>
 
@@ -94,7 +94,7 @@ export default class Home extends Component {
                   <p className="card-text">
                   To impart training with the best of teaching expertise supported by excellent laboratory infrastructure and exposure to recent trends in the industry, to ensure that the students are moul...
                   </p>
-                  <Link to="/courses" type="button" className="btn  base-orange btn-md text-white">Read more</Link>
+                  <Link to="/eee" type="button" className="btn  base-orange btn-md text-white">Read more</Link>
 
                 </div>
 
@@ -117,7 +117,7 @@ export default class Home extends Component {
                   To provide a quality education in the field of engineering, management, communication, information technology and other engineering fields.To set High standards of Compreh...
                   
                   </p>
-                  <Link to="/courses" type="button" className="btn  base-orange btn-md text-white">Read more</Link>
+                  <Link to="/ece" type="button" className="btn  base-orange btn-md text-white">Read more</Link>
 
                 </div>
 
@@ -138,7 +138,7 @@ export default class Home extends Component {
                   <p className="card-text">
                   To dedicate the work to advance and communicate the specific knowledge and understanding to the Medicore and Excellent students with a systematic scientific approach and coordi...
                   </p>
-                  <Link to="/courses" type="button" className="btn base-orange btn-md text-white">Read more</Link>
+                  <Link to="/cse" type="button" className="btn base-orange btn-md text-white">Read more</Link>
 
                 </div>
 
@@ -164,7 +164,7 @@ export default class Home extends Component {
                       <div>
                         <h3 className="card-title pt-2"><strong> M.E. CSE</strong></h3>
                         <p> To dedicate the work to advance and communicate the specific knowledge and understanding to the Medicore and Excellent students with a systematic scientific approach and coordication of acti...</p>
-                        <Link className="btn base-orange" to="/courses"><i className="fas fa-clone left"></i> Read more</Link>
+                        <Link className="btn base-orange" to="/mecse"><i className="fas fa-clone left"></i> Read more</Link>
                       </div>
                     </div>
                   </div>
@@ -178,7 +178,7 @@ export default class Home extends Component {
                         <p>
                         To dedicate the work to advance and communicate the specific knowledge and understanding to the Medicore and Excellent students with a systematic scientific approach and coordi...
                         </p>
-                        <Link className="btn base-orange" to="/courses"><i className="fas fa-clone left"></i> Read more</Link>
+                        <Link className="btn base-orange" to="/engdesign"><i className="fas fa-clone left"></i> Read more</Link>
                       </div>
                     </div>
                   </div>
@@ -191,7 +191,7 @@ export default class Home extends Component {
                         <p>
                         To impart training with the best of teaching expertise supported by excellent laboratory infrastructure and exposure to recent trends in the industry, to ensure that the students are moul...
                         </p>
-                        <Link className="btn base-orange" to="/courses"><i className="fas fa-clone left"></i>Read more</Link>
+                        <Link className="btn base-orange" to="/mba"><i className="fas fa-clone left"></i>Read more</Link>
                       </div>
                     </div>
                   </div>

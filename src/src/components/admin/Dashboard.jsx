@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react'
 import { Loader, Admin } from '../../components'
 import logo from '../../images/favicon.png'
-import {Staff, Eventimage, News} from '../admin'
+import { Staff, Eventimage, News } from '../admin'
 
 export default class Dashboard extends Component {
     constructor(props) {
@@ -10,7 +10,7 @@ export default class Dashboard extends Component {
             isLoading: true,
             isAuthenticated: false,
         }
-        this.logout = this.logout.bind(this); 
+        this.logout = this.logout.bind(this);
     }
 
 
@@ -55,10 +55,10 @@ export default class Dashboard extends Component {
 
                     <ul className="nav nav-tabs fixed-top nav-tabs-expanded nav-justified ul-scroll mt-5 pt-3" id="myTab" role="tablist">
                         <li className="nav-item">
-                            <a className="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Event Image</a>
+                            <a className="nav-link active" id="eventimage-tab" data-toggle="tab" href="#eventimage" role="tab" aria-controls="home" aria-selected="true">Event Image</a>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">News</a>
+                            <a className="nav-link" id="news-tab" data-toggle="tab" href="#news" role="tab" aria-controls="profile" aria-selected="false">News</a>
                         </li>
                         <li className="nav-item">
                             <a className="nav-link" id="staffs-tab" data-toggle="tab" href="#staffs" role="tab" aria-controls="contact" aria-selected="false">Staffs</a>
@@ -66,11 +66,16 @@ export default class Dashboard extends Component {
                     </ul>
 
                     <div className="tab-content mt-5 pt-2" id="myTabContent">
-                        <Eventimage />
-                        <News />
-                        <Staff />
+                        <div className="tab-pane fade show active" id="eventimage" role="tabpanel" aria-labelledby="eventimage-tab">
+                            <Eventimage />
+                        </div>
+                        <div className="tab-pane fade" id="news" role="tabpanel" aria-labelledby="news-tab">
+                            <News />
+                        </div>
+                        <div className="tab-pane fade" id="staffs" role="tabpanel" aria-labelledby="staffs-tab">
+                            <Staff />
+                        </div>
                     </div>
-
                 </Fragment>
         )
     }

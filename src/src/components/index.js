@@ -7,7 +7,6 @@ import constants from './constants';
 
 import Home from "./Home";
 import Contact from './Contact';
-import Courses from './Courses';
 import Infrastructure from "./Infrastructure";
 import Alumini from './Alumini';
 import RankHolders from './RankHolders';
@@ -17,13 +16,13 @@ import Principal from './Principal'
 import Chairman from './Chairman'
 
 // Departments
-import Mech from './Mech'
-import Eee from './Eee'
-import Ece from './Ece'
-import Cse from './Cse'
-import Mecse from './Mecse'
-import Engdesign from './Engdesign'
-import Mba from './Mba'
+import Mech from './departments/Mech'
+import Eee from './departments/Eee'
+import Ece from './departments/Ece'
+import Cse from './departments/Cse'
+import Mecse from './departments/Mecse'
+import Engdesign from './departments/Engdesign'
+import Mba from './departments/Mba'
 
 // Admin
 import Admin from "./admin/Admin";
@@ -40,7 +39,6 @@ export {
     Footer,
     FirstSection,
     Admin,
-    Courses,
     Infrastructure,
     Alumini,
     RankHolders,

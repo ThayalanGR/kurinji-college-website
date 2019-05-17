@@ -7,6 +7,10 @@
     width: 300px;
 }
 
+.orange-text {
+    color: #DA562D;
+}
+
 
 .side-nav-content {
     list-style: none;
@@ -32,5 +36,9 @@
     margin-top: -10px;
     padding: 50px;
     margin-right: 250px;    
-    height: 300vh;
+}
+
+.staff-image {
+    width: 150px;
+    height: 150px;
 }
