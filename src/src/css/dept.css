@@ -42,3 +42,47 @@
     width: 150px;
     height: 150px;
 }
+
+.dropdown-custom {
+    cursor: pointer;
+    display: none;
+}
+
+@media only screen and (max-width: 865px) {
+
+    .side-section {
+        display: absolute;
+        width: 100vw;
+        height: auto;
+        transition: 0.5s ease-out;
+    }
+    .main-section {
+        left: 0;
+        margin-top: 130px;
+        padding: 10px;
+        margin-right: 0px;  
+    }
+    .staff-image {
+        width: 100px;
+        height: 100px;
+    }
+    
+    .dropdown-custom {
+        display: block;
+    }
+
+    .side-nav-content {
+        display: none;
+        padding-right: 20px;
+    }
+
+    .side-nav-content li{
+        font-size: 18px;
+
+    }
+
+}
+
+.d-none-custom{
+    display: block !important;
+}

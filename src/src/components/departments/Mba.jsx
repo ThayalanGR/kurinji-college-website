@@ -13,10 +13,10 @@ export default class Mba extends Component {
     super(props);
     this.state = {
       tab: 'about',
+      showMenu: '',
       staffs: []
     }
   }
-
 
   fetchStaffs(dept) {
     axios.get(`${baseUrl}/api/staffhandler.php?department=${dept}`)
@@ -32,7 +32,6 @@ export default class Mba extends Component {
       })
 
   }
-
 
   FacultyDetails = () => {
     if (this.state.staffs.length === 0)
@@ -107,28 +106,29 @@ export default class Mba extends Component {
     )
   }
 
-
   Events() {
     return (
       <div>events</div>
     )
   }
+
   studentActivities() {
     return (
       <div>student activities</div>
     )
   }
+
   laboratories() {
     return (
       <div>laboratories</div>
     )
   }
+
   achivements() {
     return (
       <div>achivements</div>
     )
   }
-
 
   tabChange(tab) {
     switch (tab) {
@@ -153,16 +153,17 @@ export default class Mba extends Component {
     return (
       <div className="mtspace">
         <div className="side-section p-3">
-          <div className="side-header text-orange h2">
+          <div className="side-header text-orange h2-responsive">
             {deptName.toUpperCase()}
+            <i onClick={(e) => this.state.showMenu === '' ? this.setState({showMenu: 'd-none-custom'}): this.setState({showMenu: ''})}  className="fa fa-caret-down text-white float-right mr-4 dropdown-custom"></i>
           </div>
-          <ul className="side-nav-content text-white h5">
-            <li onClick={(e) => { this.setState({ tab: "about" }) }}>About</li>
-            <li onClick={(e) => { this.setState({ tab: "faculty" }) }}>Faculty Details</li>
-            <li onClick={(e) => { this.setState({ tab: "events" }) }}>Events</li>
-            <li onClick={(e) => { this.setState({ tab: "studentactivity" }) }}>Student Activities</li>
-            <li onClick={(e) => { this.setState({ tab: "laboratories" }) }}>Laboratories</li>
-            <li onClick={(e) => { this.setState({ tab: "achivements" }) }}>Achivements</li>
+          <ul className={`side-nav-content text-white ${this.state.showMenu}`}>
+            <li className="h5-responsive" onClick={(e) => { this.setState({ tab: "about" }) }}>About</li>
+            <li className="h5-responsive" onClick={(e) => { this.setState({ tab: "faculty" }) }}>Faculty Details</li>
+            <li className="h5-responsive" onClick={(e) => { this.setState({ tab: "events" }) }}>Events</li>
+            <li className="h5-responsive" onClick={(e) => { this.setState({ tab: "studentactivity" }) }}>Student Activities</li>
+            <li className="h5-responsive" onClick={(e) => { this.setState({ tab: "laboratories" }) }}>Laboratories</li>
+            <li className="h5-responsive" onClick={(e) => { this.setState({ tab: "achivements" }) }}>Achivements</li>
           </ul>
         </div>
         <div className="main-section">

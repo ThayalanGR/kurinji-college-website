@@ -281,7 +281,7 @@ export default class FirstSection extends Component {
               </div>
 
 
-              {/* <img className="header-image mt-1 img-fluid" src={kurinji} alt="" srcSet="" /> */}
+              {/* <img className="header-image mt-1 img-fluid" src={kurinji} alt=""  /> */}
             </div>
             <div className="col-md-6 d-flex flex-row justify-content-between headershow">
               <div className="d-flex justify-content-center align-items-center header-info " >
