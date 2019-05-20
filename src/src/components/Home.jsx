@@ -210,50 +210,50 @@ export default class Home extends Component {
               </div>
             </div>
 
-            <div className="row container-fluid  ml-5 pl-5">
-              <div className="col-md-3">
+            <div className="row container-fluid  ml-md-3 pl-md-3">
+              <div className="col-md-3 col-sm-12 d-flex justify-content-center">
                 <div className="view overlay zoom">
                   <img src={`${baseUrl}/api/uploads/companies/1.jpg`} className="img-fluid " alt="zoom" />
                   <div className="mask flex-center waves-effect waves-light">
                   </div>
                 </div>
               </div>
-              <div className="col-md-3">
+              <div className="col-md-3 d-flex justify-content-center">
                 <div className="view overlay zoom">
                   <img src={`${baseUrl}/api/uploads/companies/2.jpg`} className="img-fluid " alt="zoom" />
                   <div className="mask flex-center waves-effect waves-light">
                   </div>
                 </div>
               </div>
-              <div className="col-md-3">
+              <div className="col-md-3 d-flex justify-content-center">
                 <div className="view overlay zoom">
                   <img src={`${baseUrl}/api/uploads/companies/3.jpg`} className="img-fluid " alt="zoom" />
                   <div className="mask flex-center waves-effect waves-light">
                   </div>
                 </div>
               </div>
-              <div className="col-md-3">
+              <div className="col-md-3 d-flex justify-content-center">
                 <div className="view overlay zoom">
                   <img src={`${baseUrl}/api/uploads/companies/4.jpg`} className="img-fluid " alt="zoom" />
                   <div className="mask flex-center waves-effect waves-light">
                   </div>
                 </div>
               </div>
-              <div className="col-md-3">
+              <div className="col-md-3 d-flex justify-content-center">
                 <div className="view overlay zoom">
                   <img src={`${baseUrl}/api/uploads/companies/5.jpg`} className="img-fluid " alt="zoom" />
                   <div className="mask flex-center waves-effect waves-light">
                   </div>
                 </div>
               </div>
-              <div className="col-md-3">
+              <div className="col-md-3 d-flex justify-content-center">
                 <div className="view overlay zoom">
                   <img src={`${baseUrl}/api/uploads/companies/6.jpg`} className="img-fluid " alt="zoom" />
                   <div className="mask flex-center waves-effect waves-light">
                   </div>
                 </div>
               </div>
-              <div className="col-md-3">
+              <div className="col-md-3 d-flex justify-content-center">
                 <div className="view overlay zoom">
                   <img src={`${baseUrl}/api/uploads/companies/7.jpg`} className="img-fluid " alt="zoom" />
                   <div className="mask flex-center waves-effect waves-light">

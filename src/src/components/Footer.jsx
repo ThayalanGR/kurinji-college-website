@@ -13,29 +13,29 @@ export default function Footer() {
 
               <ul className="navbar-nav ml-auto d-flex justify-content-around align-items-center" style={{ width: "100%" }}>
                 <li className="nav-item ">
-                  <Link className="nav-link  text-light" to="/">Home
+                  <Link className="nav-link  text-light footer-quick-links" to="/">Home
                 </Link>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link  text-light" to="/historyofcollege">About Us</Link>
+                  <Link className="nav-link  text-light footer-quick-links" to="/historyofcollege">About Us</Link>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link  text-light" to="/courses">Courses</Link>
+                  <Link className="nav-link  text-light footer-quick-links" to="/courses">Courses</Link>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link  text-light" to="/infrastructure">Infrastructure</Link>
+                  <Link className="nav-link  text-light footer-quick-links" to="/infrastructure">Infrastructure</Link>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link  text-light" to="/placement">Placement Cell</Link>
+                  <Link className="nav-link  text-light footer-quick-links" to="/placement">Placement Cell</Link>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link  text-light" to="/rankholders">Rank Holders</Link>
+                  <Link className="nav-link  text-light footer-quick-links" to="/rankholders">Rank Holders</Link>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link  text-light" to="/alumini">Alumini</Link>
+                  <Link className="nav-link  text-light footer-quick-links" to="/alumini">Alumini</Link>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link  text-light" to="/contact">Contact Us</Link>
+                  <Link className="nav-link  text-light footer-quick-links" to="/contact">Contact Us</Link>
                 </li>
               </ul>
 
@@ -48,7 +48,7 @@ export default function Footer() {
               <div className="gmap_canvas">
                 <hr className="font-weight-bold text-white white" />
                 {/* eslint-disable-next-line */}
-                <iframe className="img-fluid mapshow" id="gmap_canvas" src="https://maps.google.com/maps?q=kurinji%20college%20of%20engineering%20and%20technology&t=&z=13&ie=UTF8&iwloc=&output=embed" frameBorder="0" scrolling="no" marginHeight="0" marginWidth="0">
+                <iframe className="mapshow" id="gmap_canvas" src="https://maps.google.com/maps?q=kurinji%20college%20of%20engineering%20and%20technology&t=&z=13&ie=UTF8&iwloc=&output=embed" frameBorder="0" scrolling="no" marginHeight="0" marginWidth="0">
                 </iframe>
               </div>
             </div>
