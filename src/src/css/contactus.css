@@ -1,0 +1,11 @@
+.box-img-contact-us{
+   box-sizing: border-box;
+   border-radius:5px;
+   max-width: 300vw;
+   max-height: 300vw;
+}
+
+.box-contact-us{
+ max-width: 300vw;
+ max-height: 300vw;
+}
