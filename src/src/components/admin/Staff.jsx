@@ -11,8 +11,6 @@ export default class Staff extends Component {
             staffName: '',
             staffDesignation: '',
             staffDetails: '',
-            staffFile: null,
-            staffFileName: 'choose an Image..',
             existingStaffs: [],
             staffDepartment: 'choose department'
         }
@@ -24,30 +22,40 @@ export default class Staff extends Component {
         this.fetchStaffs();
     }
 
-    fetchStaffs() {
-        axios
-            .get(`${baseUrl}/api/staffhandler.php`)
-            .then(data => {
-                this.setState({ existingStaffs: data.data })
-            })
-            .catch(err => console.log(err))
+    fetchStaffs(filterChoice) {
+        console.log(filterChoice)
+        if (!filterChoice) {
+            axios
+                .get(`${baseUrl}/api/staffhandler.php`)
+                .then(data => {
+                    this.setState({ existingStaffs: data.data })
+                })
+                .catch(err => console.log(err))
+        }
+        else {
+            axios
+                .get(`${baseUrl}/api/staffhandler.php?department=${filterChoice}`)
+                .then(data => {
+                    this.setState({ existingStaffs: data.data })
+                })
+                .catch(err => console.log(err))
+        }
     }
 
     addNewStaff() {
         var data = new FormData()
         data.append("method", "post")
-        data.append('file', this.state.staffFile)
         data.append('name', this.state.staffName)
         data.append('designation', this.state.staffDesignation)
+        data.append('priority', this.state.staffPriority)
         data.append('department', this.state.staffDepartment)
         data.append('about', this.state.staffDetails)
         this.setState({
             staffName: '',
-            staffFile: '',
             staffDesignation: '',
+            staffPriority: '',
             staffDepartment: 'none',
             staffDetails: '',
-            staffFileName: 'Choose an Image..'
         })
         var toastId = null;
         axios.request({
@@ -125,7 +133,12 @@ export default class Staff extends Component {
 
                         <div className="text-center text-danger">
                             Add new Staff
+                        </div>
+                        <div className="row mt-1 pt-1">
+                            <div className="col">
                                 <hr />
+
+                            </div>
                         </div>
 
                         <div className="d-flex justify-content-center">
@@ -169,6 +182,22 @@ export default class Staff extends Component {
                                     </select>
                                 </div>
                                 <div className="mb-3">
+                                    <label htmlFor="validationTextarea ">Priority</label>
+                                    <select name="" className="form-control is-invalid"
+                                        value={this.state.staffPriority}
+                                        onChange={(e) => {
+                                            this.setState({ staffPriority: e.target.value })
+                                        }}
+
+                                    >
+                                        <option value="none">Choose Priority</option>
+                                        <option value="0">HOD</option>
+                                        <option value="1">ASSOCIATE PROFESSOR</option>
+                                        <option value="2">ASSISTANT PROFESSOR</option>
+                                        <option value="3">OTHERS</option>
+                                    </select>
+                                </div>
+                                <div className="mb-3">
                                     <label htmlFor="validationTextarea ">Staff Details</label>
                                     <textarea className="form-control is-invalid" id="validationTextarea" placeholder="Required  textarea"
                                         value={this.state.staffDetails}
@@ -176,19 +205,6 @@ export default class Staff extends Component {
                                             this.setState({ staffDetails: e.target.value })
                                         }}
                                         required></textarea>
-                                </div>
-
-                                <div className="custom-file">
-                                    <input type="file" className="custom-file-input" id="validatedCustomFile"
-                                        accept="image/*"
-                                        onChange={(e) => {
-                                            this.setState({
-                                                staffFile: e.target.files[0],
-                                                staffFileName: e.target.files[0].name
-                                            })
-                                        }}
-                                        required />
-                                    <label className="custom-file-label" htmlFor="validatedCustomFile">{this.state.staffFileName}</label>
                                 </div>
 
                                 <div className="mt-2 mb-3">
@@ -204,24 +220,46 @@ export default class Staff extends Component {
                     </div>
                     <div className="col-md-6">
 
-                        <div className="text-center text-danger">
-                            Existing Staffs
+                        <div className="text-center d-flex justify-content-around">
+                            <div className="text-danger">Existing Staffs</div>
+                            <div>
+                                <select name="" className="form-control form-control-sm"
+                                    value={this.state.staffFilter}
+                                    onChange={(event) => {
+                                        // this.setState({ staffFilter: e.target.value })
+                                        this.fetchStaffs(event.target.value)
+                                    }}
+
+                                >
+                                    <option value="">All</option>
+                                    <option value="mech">Mech</option>
+                                    <option value="eee">EEE</option>
+                                    <option value="ece">ECE</option>
+                                    <option value="cse">CSE</option>
+                                    <option value="mecse">ME-CSE</option>
+                                    <option value="engdesign">Eng-Design</option>
+                                    <option value="mba">MBA</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div className="row">
+                            <div className="col">
                                 <hr />
+
+                            </div>
                         </div>
                         <div className="p-1 container">
                             {this.state.existingStaffs.map((item, index) => {
 
                                 return (
                                     <div className="row" key={index}>
-                                        <div className="col-md-3">
-                                            <img src={`${baseUrl}/${item[4]}`} className="img-thumbnail" alt="" />
-                                        </div>
-                                        <div className="col-md-5 p-3">
+
+                                        <div className="col-md-8 p-3">
                                             Name:- {item[1]}
                                             <hr />
                                             Designation:- {item[2]}
                                             <hr />
-                                            Department:- {item[3]}
+                                            Department:- {item[4]}
                                             <hr />
                                             Description:- {item[5]}
 

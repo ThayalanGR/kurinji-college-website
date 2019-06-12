@@ -100,12 +100,12 @@ export default class FirstSection extends Component {
             <span className="base-orange shadow-lg p-2 text-white rounded m-2">ME - CSE</span>
           </div>
           <div className="col text-center font-weight-bolder">
-            <span className="base-orange shadow-lg p-2 text-white rounded ">Eng - Design</span>
+            <span className="base-orange shadow-lg p-2 text-white rounded">MBA</span>
           </div>
         </div>
         <div className="row mt-3 pt-3 mb-3">
           <div className="col text-center font-weight-bolder">
-            <span className="base-orange shadow-lg p-2 text-white rounded m-2">MBA</span>
+            <span className="base-orange shadow-lg p-2 text-white rounded m-2">ME - Eng Design</span>
           </div>
         </div>
       </div>, {
@@ -183,12 +183,12 @@ export default class FirstSection extends Component {
             <span className="base-orange shadow-lg p-2 text-white rounded m-2">ME - CSE</span>
           </div>
           <div className="col text-center font-weight-bolder">
-            <span className="base-orange shadow-lg p-2 text-white rounded ">Eng - Design</span>
+            <span className="base-orange shadow-lg p-2 text-white rounded">MBA</span>
           </div>
         </div>
         <div className="row mt-3 pt-3 mb-3">
           <div className="col text-center font-weight-bolder">
-            <span className="base-orange shadow-lg p-2 text-white rounded m-2">MBA</span>
+            <span className="base-orange shadow-lg p-2 text-white rounded m-2">ME - Eng Design</span>
           </div>
         </div>
       </div>, {

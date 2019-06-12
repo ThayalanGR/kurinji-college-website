@@ -14,9 +14,13 @@ export default class Cse extends Component {
     this.state = {
       tab: 'about',
       showMenu: '',
-      staffs: []
+      hod: '',
+      staffs: [],
+      others: [],
     }
   }
+
+
 
 
   fetchStaffs(dept) {
@@ -24,8 +28,30 @@ export default class Cse extends Component {
       .then(response => {
 
         const data = response.data;
-        console.log(data);
-        this.setState({ staffs: data })
+        var hod = []
+        var associate = []
+        var assistant = []
+        var others = []
+        var temp = []
+        data.map((item, key) => {
+          if (Number(item[3]) === 0) {
+            hod.push(item)
+          }
+          else if (Number(item[3]) === 1) {
+            associate.push(item)
+          }
+          else if (Number(item[3]) === 2) {
+            assistant.push(item)
+          }
+          else {
+            others.push(item)
+          }
+          return true
+        })
+
+        temp = [...hod, ...associate, ...assistant, ...others]
+        this.setState({ staffs: temp })
+        console.log(temp);
       })
       .catch(err => {
         console.log(err);
@@ -47,13 +73,11 @@ export default class Cse extends Component {
           </div>
         </div>
         {this.state.staffs.map((item, key) => (
-          <div key={key}> 
+          <div key={key}>
             <div className="row mt-2 mb-4 pb-2">
-              <div className="col-4">
-                <img className="img-responsive img-rounded rounded-circle shadow-lg staff-image" src={`${baseUrl}${item[4]}`} alt=""  />
-              </div>
-              <div className="col text-left d-flex align-items-center">
-                <div className="staff-details">
+             <div>{key+1}.</div>
+              <div className="col text-left d-flex justify-content-center align-items-center">
+                <div className="staff-details text-center">
                   <div className=" h4-responsive  text-primary">{item[1]}</div>
                   <div className=" h7-responsive text-success">{item[2]}</div>
                   <div className="h8-responsive">{item[5]}</div>
@@ -65,14 +89,14 @@ export default class Cse extends Component {
                 <hr />
               </div>
             </div>
-        </div>
+          </div>
         ))}
 
       </div>
     )
   }
 
- About() {
+  About() {
     return (
       <div className="container-fluid">
         <div className="row">
@@ -84,33 +108,33 @@ export default class Cse extends Component {
 
         <div className="row">
           <div className="col">
-          <div className="h5-responsive text-success">
+            <div className="h5-responsive text-success">
               MISSION
            </div>
-           <hr/>
-           <div  className="text-left">
-           To dedicate the work to advance and communicate the specific knowledge and understanding to the Medicore and Excellent students with a systematic scientific approach and coordication of activities.
+            <hr />
+            <div className="text-left">
+              To dedicate the work to advance and communicate the specific knowledge and understanding to the Medicore and Excellent students with a systematic scientific approach and coordication of activities.
            </div>
-           <hr/>
-           <div className="h5-responsive text-success">
-             Vision
+            <hr />
+            <div className="h5-responsive text-success">
+              Vision
            </div>
-           <hr/>
-           <div className="text-left">
-             Training the Students to become well disciplined and knowledgeable in the field of Computer Science and Engineering.
+            <hr />
+            <div className="text-left">
+              Training the Students to become well disciplined and knowledgeable in the field of Computer Science and Engineering.
            </div>
-           <hr/>
-           <div className="h5-responsive text-success">
-             Quality Policy
+            <hr />
+            <div className="h5-responsive text-success">
+              Quality Policy
            </div>
-           <div className="text-left">
-             Department of Computer Science and Engineering strives to ensure quality education as a leader in the Computer Science and Engineering Education by continuously improving academic inputs and educational excellence.
+            <div className="text-left">
+              Department of Computer Science and Engineering strives to ensure quality education as a leader in the Computer Science and Engineering Education by continuously improving academic inputs and educational excellence.
            </div>
-           <hr/>
-           <div className="h5-responsive text-success">
-             Objectives
+            <hr />
+            <div className="h5-responsive text-success">
+              Objectives
            </div>
-           <div>
+            <div>
               <ul className="text-left text-responsive">
                 <li>To achive 90% result in the Anna University examinations by Motivating & Counselling the students.</li>
                 <li>To improve the students placement to 75%.</li>
@@ -121,7 +145,7 @@ export default class Cse extends Component {
                 <li>Conducting workshop to the students.</li>
                 <li>To improve the Research & Development activities.</li>
               </ul>
-           </div>
+            </div>
           </div>
         </div>
       </div>
@@ -134,7 +158,7 @@ export default class Cse extends Component {
       <div>events</div>
     )
   }
-  
+
   studentActivities() {
     return (
       <div>student activities</div>
@@ -178,7 +202,7 @@ export default class Cse extends Component {
         <div className="side-section p-3">
           <div className="side-header text-orange h2-responsive">
             {deptName.toUpperCase()}
-            <i onClick={(e) => this.state.showMenu === '' ? this.setState({showMenu: 'd-none-custom'}): this.setState({showMenu: ''})}  className="fa fa-caret-down text-white float-right mr-4 dropdown-custom"></i>
+            <i onClick={(e) => this.state.showMenu === '' ? this.setState({ showMenu: 'd-none-custom' }) : this.setState({ showMenu: '' })} className="fa fa-caret-down text-white float-right mr-4 dropdown-custom"></i>
           </div>
           <ul className={`side-nav-content text-white ${this.state.showMenu}`}>
             <li className="h5-responsive" onClick={(e) => { this.setState({ tab: "about" }) }}>About</li>
