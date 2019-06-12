@@ -3,7 +3,7 @@ import axios from 'axios';
 import { constants } from "../../components"
 
 const baseUrl = constants.baseUrl;
-const deptName = 'Engineering Design';
+const deptName = 'M.E. - Engineering Design';
 const department = 'engdesign';
 
 export default class Engdesign extends Component {
@@ -22,8 +22,30 @@ export default class Engdesign extends Component {
       .then(response => {
 
         const data = response.data;
-        console.log(data);
-        this.setState({ staffs: data })
+        var hod = []
+        var associate = []
+        var assistant = []
+        var others = []
+        var temp = []
+        data.map((item, key) => {
+          if (Number(item[3]) === 0) {
+            hod.push(item)
+          }
+          else if (Number(item[3]) === 1) {
+            associate.push(item)
+          }
+          else if (Number(item[3]) === 2) {
+            assistant.push(item)
+          }
+          else {
+            others.push(item)
+          }
+          return true
+        })
+
+        temp = [...hod, ...associate, ...assistant, ...others]
+        this.setState({ staffs: temp })
+        console.log(temp);
       })
       .catch(err => {
         console.log(err);
@@ -31,6 +53,7 @@ export default class Engdesign extends Component {
       })
 
   }
+
 
   FacultyDetails = () => {
     if (this.state.staffs.length === 0)
@@ -46,11 +69,9 @@ export default class Engdesign extends Component {
         {this.state.staffs.map((item, key) => (
           <div key={key}>
             <div className="row mt-2 mb-4 pb-2">
-              <div className="col-4">
-                <img className="img-responsive img-rounded rounded-circle shadow-lg staff-image" src={`${baseUrl}${item[4]}`} alt=""  />
-              </div>
-              <div className="col text-left d-flex align-items-center">
-                <div className="staff-details">
+              <div>{key+1}.</div>
+              <div className="col text-left d-flex justify-content-center align-items-center">
+                <div className="staff-details text-center">
                   <div className=" h4-responsive  text-primary">{item[1]}</div>
                   <div className=" h7-responsive text-success">{item[2]}</div>
                   <div className="h8-responsive">{item[5]}</div>

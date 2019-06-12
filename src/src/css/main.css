@@ -10,7 +10,6 @@ html {
     overflow-x: hidden;
 }
 
-
 body {
     margin: 0;
     padding: 0;
@@ -63,7 +62,7 @@ body {
 .bg-mask {
     top: -32%;
     position: absolute;
-    background: rgb(218, 86, 45);
+    background: rgb(255, 60, 0);
     /* background: url("../images/overlay1.png") fixed; */
     opacity: 0.80;
     min-width: 100vw;
@@ -115,7 +114,7 @@ body {
 }
 
 .base-orange {
-    background-color: rgb(218, 86, 45);
+    background-color: rgb(255, 60, 0);
 }
 
 .orange-text {

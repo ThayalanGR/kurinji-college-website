@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 10, 2019 at 08:20 AM
+-- Generation Time: Jun 12, 2019 at 09:11 AM
 -- Server version: 10.1.35-MariaDB
 -- PHP Version: 7.2.9
 
@@ -75,8 +75,8 @@ CREATE TABLE `tbl_staffs` (
   `sid` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
   `designation` varchar(255) NOT NULL,
+  `priority` int(11) NOT NULL,
   `department` varchar(255) NOT NULL,
-  `profileurl` varchar(255) NOT NULL,
   `about` longtext NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -84,15 +84,18 @@ CREATE TABLE `tbl_staffs` (
 -- Dumping data for table `tbl_staffs`
 --
 
-INSERT INTO `tbl_staffs` (`sid`, `name`, `designation`, `department`, `profileurl`, `about`) VALUES
-(4, 'Ambarish', 'Associate Professor', 'eee', '/api/uploads/staffs/gnanaraj.jpeg', 'Ambarish have pursued UG under Anna university'),
-(5, 'Thayalan', 'Associate professor', 'mech', '/api/uploads/staffs/thaya.jpg', 'Thayalan has completed Under graduate under Anna university'),
-(6, 'John David', 'Assistant professor', 'mech', '/api/uploads/staffs/swaminathan.jpg', 'he have completed pg under au'),
-(7, 'Ajithkumar', 'Assistant Professor', 'mecse', '/api/uploads/staffs/MA.jpg', 'Ajithkumar has completed UG under Bharathidhasan University'),
-(8, 'Vijay', 'Associate Professor', 'ece', '/api/uploads/staffs/gnanaraj.jpeg', 'Vijay have pursued UG under Anna university'),
-(9, 'Vinoth', '', 'cse', '/api/uploads/staffs/swaminathan.jpg', 'Vinoth have pursued UG under Anna university'),
-(10, 'Raja', 'Proffessor', 'mba', '/api/uploads/staffs/MA.jpg', 'Raja have pursued MBA under Anna university'),
-(11, 'Chandrasekar', 'Assistant Professor', 'engdesign', '/api/uploads/staffs/swaminathan.jpg', 'Chandrasekar have pursued PG under Anna university');
+INSERT INTO `tbl_staffs` (`sid`, `name`, `designation`, `priority`, `department`, `about`) VALUES
+(4, 'Ambarish', 'Associate Professor', 1, 'eee', 'Ambarish have pursued UG under Anna university'),
+(6, 'John David', 'Assistant professor', 2, 'mech', 'he have completed pg under au'),
+(7, 'Ajithkumar', 'Assistant Professor', 2, 'mecse', 'Ajithkumar has completed UG under Bharathidhasan University'),
+(8, 'Vijay', 'Associate Professor', 1, 'ece', 'Vijay have pursued UG under Anna university'),
+(9, 'Vinoth', 'Head of the Department', 0, 'eee', 'Vinoth have pursued UG under Anna university'),
+(10, 'Raja', 'Others', 3, 'mba', 'Raja have pursued MBA under Anna university'),
+(11, 'Chandrasekar', 'Assistant Professor', 2, 'engdesign', 'Chandrasekar have pursued PG under Anna university'),
+(12, 'Varun', 'Head of Department', 0, 'cse', 'Works in ITC Infotech'),
+(13, 'Lavanya', 'student', 3, 'cse', 'dklasndkas'),
+(14, 'Vijay', 'hod', 2, 'cse', 'skjnskA'),
+(15, 'Thayalan', 'Student', 1, 'cse', 'lksjakjdalk');
 
 --
 -- Indexes for dumped tables
@@ -136,7 +139,7 @@ ALTER TABLE `tbl_news`
 -- AUTO_INCREMENT for table `tbl_staffs`
 --
 ALTER TABLE `tbl_staffs`
-  MODIFY `sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

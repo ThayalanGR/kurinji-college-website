@@ -1,3 +1,3 @@
 export default {
-    baseUrl : "http://loclhost/kurinji"
+    baseUrl : "http://localhost/kurinji"
 }

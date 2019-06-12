@@ -9,18 +9,14 @@ require('./config/dbconfig.php');
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     if($_POST['method'] === 'post') {
-        $fileName = preg_replace("/[^a-zA-Z0-9.]/", "", $_FILES["file"]["name"]);
-        $fileTmpLoc = $_FILES["file"]["tmp_name"]; // File in the PHP tmp folder
-        $fileType = $_FILES["file"]["type"]; // The type of file it is
-        $fileSize = $_FILES["file"]["size"]; // File size in bytes
-        $fileErrorMsg = $_FILES["file"]["error"]; // 0 for false... and 1 for true
-        $name = $_POST["name"];
+                $name = $_POST["name"];
         $designation = $_POST["designation"];
+        $priority = $_POST["priority"];
         $department = $_POST["department"];
         $about = $_POST["about"];
     
-        if (move_uploaded_file($fileTmpLoc, "./uploads/staffs/$fileName")) {
-            $sql = "INSERT INTO `tbl_staffs` (`name`, `designation`, `department`, `profileurl`, `about`) VALUES ('".$name."','".$designation."','".$department."', '/api/uploads/staffs/".$fileName."', '".$about."')";
+        if ($name) {
+            $sql = "INSERT INTO `tbl_staffs` (`name`, `designation`, `priority`, `department`, `about`) VALUES ('".$name."','".$designation."', '".$priority."', '".$department."', '".$about."')";
             mysqli_query($DB, $sql);
             echo json_encode($fileName);
         } else {
