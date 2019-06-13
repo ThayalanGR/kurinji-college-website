@@ -1,3 +1,3 @@
 export default {
-    baseUrl : "http://localhost/kurinji"
+    baseUrl : "http://erp.epizy.com/"
 }

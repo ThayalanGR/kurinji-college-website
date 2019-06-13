@@ -12,19 +12,22 @@ export default class Staff extends Component {
             staffDesignation: '',
             staffDetails: '',
             existingStaffs: [],
-            staffDepartment: 'choose department'
+            staffDepartment: 'choose department',
+            filterChoice: 'all'
+           
         }
         this.addNewStaff = this.addNewStaff.bind(this);
         this.removeStaff = this.removeStaff.bind(this);
         this.fetchStaffs = this.fetchStaffs.bind(this);
     }
     componentWillMount() {
-        this.fetchStaffs();
+        this.fetchStaffs(this.state.filterChoice);
     }
 
     fetchStaffs(filterChoice) {
+        this.setState({ filterChoice: filterChoice })
         console.log(filterChoice)
-        if (!filterChoice) {
+        if (filterChoice === "all") {
             axios
                 .get(`${baseUrl}/api/staffhandler.php`)
                 .then(data => {
@@ -56,11 +59,13 @@ export default class Staff extends Component {
             staffPriority: '',
             staffDepartment: 'none',
             staffDetails: '',
+            filterChoice: this.state.staffDepartment,
+            priority: null
         })
         var toastId = null;
         axios.request({
             method: "post",
-            url: `${baseUrl}/api/staffhandler.php`,
+            url: `${baseUrl}/api/staffhandler.php?`,
             data: data,
             onUploadProgress: p => {
                 const progress = p.loaded / p.total;
@@ -76,7 +81,7 @@ export default class Staff extends Component {
                 }
             }
         }).then(data => {
-            this.fetchStaffs();
+            this.fetchStaffs(this.state.filterChoice);
             toast.done(toast.id)
             toast.dismiss(toastId);
         }).catch(err => console.log(err))
@@ -95,7 +100,7 @@ export default class Staff extends Component {
             data: data
         }).then(data => {
             if (data.data.response) {
-                this.fetchStaffs();
+                this.fetchStaffs(this.state.filterChoice);
                 toast.success("event deleted successfully!", {
                     position: "bottom-left"
                 })
@@ -113,6 +118,29 @@ export default class Staff extends Component {
                 })
             })
 
+    }
+    
+    updateStaff(id, value, index) {
+        console.log(id, value, index);
+        let tempArr = this.state.existingStaffs;
+        tempArr[index][3] = value;
+        this.setState({existingStaffs: tempArr})
+    }
+
+    updateStaffHandler(index){
+        const arr = this.state.existingStaffs;
+        const value = arr[index][3];
+        const id = this.state.existingStaffs[index][0]
+        if(value <= 0 || value === null ) {
+            // do nothing
+        } else {
+            axios
+            .get(`${baseUrl}/api/staffhandler.php?priority=${value}&staffId=${id}`)
+            .then(data => {
+                this.fetchStaffs(this.state.filterChoice)
+            })
+            .catch(err => console.log(err))
+        }
     }
 
 
@@ -163,14 +191,13 @@ export default class Staff extends Component {
                                 </div>
                                 <div className="mb-3">
                                     <label htmlFor="validationTextarea ">Staff Department</label>
-                                    <select name="" className="form-control is-invalid"
+                                    <select name="" className="form-control"
                                         value={this.state.staffDepartment}
                                         onChange={(e) => {
-                                            this.setState({ staffDepartment: e.target.value })
+                                            this.setState({ staffDepartment: e.target.value, })
                                         }}
 
                                     >
-                                        <option value="none">Choose department</option>
                                         <option value="mech">Mech</option>
                                         <option value="eee">EEE</option>
                                         <option value="ece">ECE</option>
@@ -182,20 +209,13 @@ export default class Staff extends Component {
                                     </select>
                                 </div>
                                 <div className="mb-3">
-                                    <label htmlFor="validationTextarea ">Priority</label>
-                                    <select name="" className="form-control is-invalid"
+                                    <label htmlFor="priority">Priority</label>
+                                    <input type="number" min='1' max='50' className="form-control is-invalid" id="priority" placeholder="choose priority between 1-50"
                                         value={this.state.staffPriority}
                                         onChange={(e) => {
                                             this.setState({ staffPriority: e.target.value })
                                         }}
-
-                                    >
-                                        <option value="none">Choose Priority</option>
-                                        <option value="0">HOD</option>
-                                        <option value="1">ASSOCIATE PROFESSOR</option>
-                                        <option value="2">ASSISTANT PROFESSOR</option>
-                                        <option value="3">OTHERS</option>
-                                    </select>
+                                        required></input>
                                 </div>
                                 <div className="mb-3">
                                     <label htmlFor="validationTextarea ">Staff Details</label>
@@ -221,17 +241,17 @@ export default class Staff extends Component {
                     <div className="col-md-6">
 
                         <div className="text-center d-flex justify-content-around">
+                            <div className="text-danger">S.No</div>
                             <div className="text-danger">Existing Staffs</div>
                             <div>
                                 <select name="" className="form-control form-control-sm"
-                                    value={this.state.staffFilter}
+                                    value={this.state.filterChoice}
                                     onChange={(event) => {
-                                        // this.setState({ staffFilter: e.target.value })
                                         this.fetchStaffs(event.target.value)
                                     }}
 
                                 >
-                                    <option value="">All</option>
+                                    <option value="all">All</option>
                                     <option value="mech">Mech</option>
                                     <option value="eee">EEE</option>
                                     <option value="ece">ECE</option>
@@ -250,11 +270,12 @@ export default class Staff extends Component {
                         </div>
                         <div className="p-1 container">
                             {this.state.existingStaffs.map((item, index) => {
-
                                 return (
                                     <div className="row" key={index}>
-
-                                        <div className="col-md-8 p-3">
+                                        <div className="col-md-3 d-flex justify-content-center">
+                                            {index+1}
+                                        </div>
+                                        <div className="col-md-6 p-3">
                                             Name:- {item[1]}
                                             <hr />
                                             Designation:- {item[2]}
@@ -262,7 +283,14 @@ export default class Staff extends Component {
                                             Department:- {item[4]}
                                             <hr />
                                             Description:- {item[5]}
-
+                                            <hr />
+                                            <div className="d-flex justify-content-between align-items-center">
+                                                <div className="">Priority:-</div>
+                                                <input className="form-control form-control-sm ml-3" type="number" 
+                                                onLoadedData={() => {console.log("loaded")}}
+                                                value={this.state.existingStaffs[index][3]} min='1' max='50' onChange={(e)=> this.updateStaff(item[0], e.target.value, index)} />
+                                                <button className="btn btn-sm btn-warning ml-3" onClick={e => {this.updateStaffHandler(index)}}>Update</button>
+                                            </div> 
                                         </div>
                                         <div className="col-3 text-center d-flex justify-content-center align-items-center">
                                             <button

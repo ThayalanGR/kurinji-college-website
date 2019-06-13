@@ -174,7 +174,7 @@ export default class Home extends Component {
                 <div className="card card-image" style={{ backgroundImage: `url(${baseUrl}/api/uploads/departments/design.jpg)` }}>
                     <div className="text-white text-center d-flex align-items-center rgba-black-strong py-5 px-4">
                       <div>
-                        <h3 className="card-title pt-2"><strong>Engineering Design</strong></h3>
+                        <h3 className="card-title pt-2"><strong> M.E. Engineering Design</strong></h3>
                         <p>
                         To dedicate the work to advance and communicate the specific knowledge and understanding to the Medicore and Excellent students with a systematic scientific approach and coordi...
                         </p>
