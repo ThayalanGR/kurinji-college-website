@@ -23,30 +23,7 @@ export default class Ece extends Component {
       .then(response => {
 
         const data = response.data;
-        var hod = []
-        var associate = []
-        var assistant = []
-        var others = []
-        var temp = []
-        data.map((item, key) => {
-          if (Number(item[3]) === 0) {
-            hod.push(item)
-          }
-          else if (Number(item[3]) === 1) {
-            associate.push(item)
-          }
-          else if (Number(item[3]) === 2) {
-            assistant.push(item)
-          }
-          else {
-            others.push(item)
-          }
-          return true
-        })
-
-        temp = [...hod, ...associate, ...assistant, ...others]
-        this.setState({ staffs: temp })
-        console.log(temp);
+        this.setState({ staffs: data })
       })
       .catch(err => {
         console.log(err);

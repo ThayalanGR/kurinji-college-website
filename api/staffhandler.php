@@ -40,13 +40,23 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     
     if(isset($_GET['department'])) {
         $dept = $_GET['department'];
-        $queryString = "SELECT * from tbl_staffs WHERE department = '".$dept."'";   
+        $queryString = "SELECT * from tbl_staffs WHERE department = '".$dept."' ORDER BY priority ASC";   
     
         $row = mysqli_query($DB, $queryString);
     
         echo json_encode(mysqli_fetch_all($row)); 
-    } else {
-        $queryString = "SELECT * from tbl_staffs";   
+    }
+    else if(isset($_GET['priority'])) {
+        $prior = $_GET['priority'];
+        $staffid = $_GET['staffId'];
+        $queryString = "UPDATE tbl_staffs SET priority = ".$prior." WHERE sid = ".$staffid;   
+        $row = mysqli_query($DB, $queryString);
+    
+        echo json_encode(Array("status" => true)); 
+
+    } 
+    else {
+        $queryString = "SELECT * from tbl_staffs ORDER BY priority ASC";   
     
         $row = mysqli_query($DB, $queryString);
     
