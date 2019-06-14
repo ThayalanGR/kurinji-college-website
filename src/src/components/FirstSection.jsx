@@ -250,7 +250,7 @@ export default class FirstSection extends Component {
             </div>
           </div>
 
-          <div className="alert text-danger  mb-0 background-transparent p-0 m-0" role="alert">
+          <div className="alert text-danger  mb-0 background-transparent p-0 m-0 w-100" role="alert">
 
             <div className="mask rgba-white-strong pattern-5">
               <p className="font-weight-bold animated flash infinite text-warning slower delay-3s mt-3 pt-3 pl-3 h5">

@@ -26,10 +26,7 @@ export default function Footer() {
                   <Link className="nav-link  text-light footer-quick-links" to="/infrastructure">Infrastructure</Link>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link  text-light footer-quick-links" to="/placement">Placement Cell</Link>
-                </li>
-                <li className="nav-item">
-                  <Link className="nav-link  text-light footer-quick-links" to="/rankholders">Rank Holders</Link>
+                  <Link className="nav-link  text-light footer-quick-links" to="/placement">Gallery</Link>
                 </li>
                 <li className="nav-item">
                   <Link className="nav-link  text-light footer-quick-links" to="/alumini">Alumini</Link>
