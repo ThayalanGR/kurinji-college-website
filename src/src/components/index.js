@@ -8,9 +8,8 @@ import constants from './constants';
 import Home from "./Home";
 import Contact from './Contact';
 import Infrastructure from "./Infrastructure";
-import Alumini from './Alumini';
-import RankHolders from './RankHolders';
-import Placement from './Placement';
+import Alumni from './Alumni';
+import Gallery from './Gallery';
 import Historyofcollege from './Historyofcollege'
 import Principal from './Principal'
 import Chairman from './Chairman'
@@ -40,9 +39,8 @@ export {
     FirstSection,
     Admin,
     Infrastructure,
-    Alumini,
-    RankHolders,
-    Placement,
+    Alumni,
+    Gallery,
     Login,
     Dashboard,
     constants,

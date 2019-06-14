@@ -51,13 +51,17 @@ export default class Navbar extends Component {
               <Link className="nav-link  text-light" to="/infrastructure">Infrastructure</Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link  text-light" to="/placement">Placement</Link>
+              <Link className="nav-link  text-light" to="/gallery">Gallery</Link>
             </li>
-            <li className="nav-item">
-              <Link className="nav-link  text-light" to="/rankholders">Rank Holders</Link>
-            </li>
-            <li className="nav-item">
-              <Link className="nav-link  text-light" to="/alumini">Alumini</Link>
+            <li className="nav-item dropdown">
+              <button className="nav-link dropdown-toggle bg-transparent text-light" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Alumni
+                </button>
+              <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <Link className="dropdown-item  text-dark" to="/alumni">Alumni Registration</Link>
+                <Link className="dropdown-item  text-dark" to="/alumni">Link-2</Link>
+                <Link className="dropdown-item  text-dark" to="/alumni">Link-3</Link>
+              </div>
             </li>
             <li className="nav-item">
               <Link className="nav-link  text-light" to="/contact">Contact Us</Link>

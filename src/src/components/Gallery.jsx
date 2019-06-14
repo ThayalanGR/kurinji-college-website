@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react'
 import {Loader, } from '../components' 
 
-export default class Placement extends Component {
+export default class Gallery extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -9,7 +9,6 @@ export default class Placement extends Component {
     }
   }
   componentDidMount() {
-
     setTimeout(() => {
       this.setState({ isLoading: false });
     }, 500)
@@ -24,7 +23,7 @@ export default class Placement extends Component {
       <div className="mtspace">
         
         
-        Placement
+        Gallery
         
         </div>
       </Fragment>
