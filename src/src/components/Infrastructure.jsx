@@ -1,19 +1,32 @@
 import React, { Component, Fragment } from "react";
 import { Loader } from "../components";
-// import ImageGallery from "react-image-gallery";
+import constants from "../components/constants";
+import axios from "axios";
 
+const baseUrl = constants.baseUrl;
 export default class Infrastructure extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      isLoading: true
+      isLoading: true,
+      infrastructureItems: []
     };
   }
 
   componentDidMount() {
+    this.fetchInfrastructure();
     setTimeout(() => {
       this.setState({ isLoading: false });
     }, 500);
+  }
+
+  fetchInfrastructure() {
+    axios
+      .get(`${baseUrl}/api/infrastructure.php`)
+      .then(data => {
+        this.setState({ infrastructureItems: data.data });
+      })
+      .catch(err => console.log(err));
   }
 
   render() {
@@ -22,25 +35,28 @@ export default class Infrastructure extends Component {
     ) : (
       <Fragment>
         <div className="mtspace container">
-          <div className="text-primary mt-4 pt-4 h4-responsive text-center">Infrastructure</div><hr/>
+          <div className="text-primary mt-4 pt-4 h4-responsive text-center">
+            Infrastructure
+          </div>
+          <hr />
           <div className="row">
-            <div class="col-md-6">
-              <div className="card mb-3">
-                <img
-                  class="card-img-top"
-                  src="https://www.techfunnel.com/wp-content/uploads/2018/01/HR-Tech-Conferences-and-Events-to-Follow-2018.jpg"
-                  alt="Card image cap"
-                />
-                <div class="card-body">
-                  <h5 class="card-title">Card Title</h5>
-                  <p class="card-text">
-                    This is a wider card with supporting text below as a natural
-                    lead-in to additional content. This content is a little bit
-                    longer.
-                  </p>
+            {this.state.infrastructureItems.map((item, key) => (
+              <div class="col-md-6" key={key}>
+                <div className="card mb-3">
+                  <img
+                    class="card-img-top"
+                    src={`${baseUrl}/${item[3]}`}
+                    alt="Card image cap"
+                  />
+                  <div class="card-body">
+                    <h5 class="card-title">{item[1]}</h5>
+                    <p class="card-text">
+                      {item[2]}
+                    </p>
+                  </div>
                 </div>
               </div>
-            </div>
+            ))}
           </div>
         </div>
       </Fragment>
