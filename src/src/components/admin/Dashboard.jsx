@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react'
 import { Loader, Admin } from '../../components'
 import logo from '../../images/favicon.png'
-import { Staff, Eventimage, News } from '../admin'
+import { Staff, Eventimage, News, Infrastructure } from '../admin'
 
 export default class Dashboard extends Component {
     constructor(props) {
@@ -63,6 +63,9 @@ export default class Dashboard extends Component {
                         <li className="nav-item">
                             <a className="nav-link" id="staffs-tab" data-toggle="tab" href="#staffs" role="tab" aria-controls="contact" aria-selected="false">Staffs</a>
                         </li>
+                        <li className="nav-item">
+                            <a className="nav-link" id="infrastructure-tab" data-toggle="tab" href="#infrastructure" role="tab" aria-controls="contact" aria-selected="false">Infrastructure</a>
+                        </li>
                     </ul>
 
                     <div className="tab-content mt-5 pt-2" id="myTabContent">
@@ -74,6 +77,9 @@ export default class Dashboard extends Component {
                         </div>
                         <div className="tab-pane fade" id="staffs" role="tabpanel" aria-labelledby="staffs-tab">
                             <Staff />
+                        </div>
+                        <div className="tab-pane fade" id="infrastructure" role="tabpanel" aria-labelledby="infrastructure-tab">
+                            <Infrastructure />
                         </div>
                     </div>
                 </Fragment>
