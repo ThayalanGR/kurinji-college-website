@@ -4,8 +4,11 @@
    max-width: 300vw;
    max-height: 300vw;
 }
-
 .box-contact-us{
  max-width: 300vw;
  max-height: 300vw;
+}
+
+.contactbox{
+    cursor: pointer;
 }
