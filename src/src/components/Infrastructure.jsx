@@ -55,16 +55,16 @@ export default class Infrastructure extends Component {
           <div className="row">
             <div className="col-md-6">
               {this.state.infrastructureItems1.map((item, key) => (
-                <div class="" key={key}>
+                <div className="" key={key}>
                   <div className="card mb-3">
                     <img
-                      class="card-img-top"
+                      className="card-img-top"
                       src={`${baseUrl}/${item[3]}`}
                       alt="Card cap"
                     />
-                    <div class="card-body">
-                      <h5 class="card-title">{item[1]}</h5>
-                      <p class="card-text">{item[2]}</p>
+                    <div className="card-body">
+                      <h5 className="card-title">{item[1]}</h5>
+                      <p className="card-text">{item[2]}</p>
                     </div>
                   </div>
                 </div>
@@ -72,16 +72,16 @@ export default class Infrastructure extends Component {
             </div>
             <div className="col-md-6">
               {this.state.infrastructureItems2.map((item, key) => (
-                <div class="" key={key}>
+                <div className="" key={key}>
                   <div className="card mb-3">
                     <img
-                      class="card-img-top"
+                      className="card-img-top"
                       src={`${baseUrl}/${item[3]}`}
                       alt="Card cap"
                     />
-                    <div class="card-body">
-                      <h5 class="card-title">{item[1]}</h5>
-                      <p class="card-text">{item[2]}</p>
+                    <div className="card-body">
+                      <h5 className="card-title">{item[1]}</h5>
+                      <p className="card-text">{item[2]}</p>
                     </div>
                   </div>
                 </div>

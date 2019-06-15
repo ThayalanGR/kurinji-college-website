@@ -18,7 +18,11 @@ export default class FirstSection extends Component {
         information: ''
       },
       news: [],
-      newsText: ''
+      newsText: '',
+      isCarouselInitiated: false,
+      isNewsInitiated: false,
+      carouselInterval: null,
+      isUnmounted: false
     }
     this.fetchEvents = this.fetchEvents.bind(this);
     this.initiateCarousel = this.initiateCarousel.bind(this);
@@ -27,10 +31,8 @@ export default class FirstSection extends Component {
   }
 
   componentWillMount() {
-
     this.fetchEvents();
     this.fetchNews();
-
   }
 
   fetchEvents() {
@@ -38,7 +40,10 @@ export default class FirstSection extends Component {
       .get(`${baseUrl}/api/homesectionone.php`)
       .then(data => {
         this.setState({ carouselDataStore: data.data })
-        this.initiateCarousel()
+        if (!this.state.isInitiated) {
+          this.initiateCarousel()
+          this.setState({ isCarouselInitiated: true })
+        }
 
       })
       .catch(err => console.log(err))
@@ -49,89 +54,88 @@ export default class FirstSection extends Component {
       .get(`${baseUrl}/api/homenews.php`)
       .then(data => {
         this.setState({ news: data.data })
-        this.initiateNews()
+        if (!this.state.isNewsInitiated) {
+          this.initiateNews()
+          this.setState({ isNewsInitiated: true })
+        }
       })
       .catch(err => console.log(err))
   }
 
+  toastHandler() {
+    toast.dismiss();
+    toast(<div className="container-fluid">
+      <div className="row">
+        <div className="col text-center font-weight-bold h5 mt-1">
+          courses offered
+                  <hr className="white text-white" />
+        </div>
+      </div>
+
+      <div className="row">
+        <div className="col text-center font-weight-bold h5">
+          UG - Courses
+                    <hr className="text-white white" />
+        </div>
+      </div>
+      <div className="row">
+        <div className="col text-center font-weight-bolder">
+          <span className="base-orange shadow-lg p-2 text-white rounded">MECH</span>
+        </div>
+        <div className="col text-center font-weight-bolder">
+          <span className="base-orange shadow-lg p-2 text-white rounded">EEE</span>
+        </div>
+      </div>
+      <div className="row mt-2 pt-4">
+        <div className="col text-center font-weight-bolder">
+          <span className="base-orange shadow-lg p-2 text-white rounded ">ECE</span>
+        </div>
+        <div className="col text-center font-weight-bolder">
+          <span className="base-orange shadow-lg p-2 text-white rounded ">CSE</span>
+        </div>
+        <div className="col text-center font-weight-bolder">
+          <span className="base-orange shadow-lg p-1 text-white rounded p-2">H &amp; S</span>
+        </div>
+      </div>
+
+      <div className="row mt-2 pt-3">
+        <div className="col text-center font-weight-bold h5">
+          PG - Courses
+                    <hr className="text-white white" />
+        </div>
+      </div>
+
+      <div className="row">
+        <div className="col text-center font-weight-bolder">
+          <span className="base-orange shadow-lg p-2 text-white rounded">ME - CSE</span>
+        </div>
+        <div className="col text-center font-weight-bolder">
+          <span className="base-orange shadow-lg p-2 text-white rounded">MBA</span>
+        </div>
+      </div>
+      <div className="row mt-3 pt-3 mb-3">
+        <div className="col text-center font-weight-bolder">
+          <span className="base-orange shadow-lg p-2 text-white rounded">ME - Eng Design</span>
+        </div>
+      </div>
+    </div>, {
+        position: "bottom-right",
+        className: "bg-danger text-white Toastify__toast1",
+        autoClose: false
+      });
+  }
+
   showNotification() {
-    if (window.pageYOffset === 0) {
-      toast.dismiss();
-      toast(<div className="container-fluid">
-        <div className="row">
-          <div className="col text-center font-weight-bold h5 mt-1">
-            courses offered
-                <hr className="white text-white" />
-          </div>
-        </div>
-
-        <div className="row">
-          <div className="col text-center font-weight-bold h5">
-            UG - Courses
-            <hr className="text-white white" />
-          </div>
-        </div>
-        <div className="row">
-          <div className="col text-center font-weight-bolder">
-            <span className="base-orange shadow-lg p-2 text-white rounded">MECH</span>
-          </div>
-          <div className="col text-center font-weight-bolder">
-            <span className="base-orange shadow-lg p-2 text-white rounded">EEE</span>
-          </div>
-        </div>
-        <div className="row mt-2 pt-4">
-          <div className="col text-center font-weight-bolder">
-            <span className="base-orange shadow-lg p-2 text-white rounded ">ECE</span>
-          </div>
-          <div className="col text-center font-weight-bolder">
-            <span className="base-orange shadow-lg p-2 text-white rounded ">CSE</span>
-          </div>
-          <div className="col text-center font-weight-bolder">
-            <span className="base-orange shadow-lg p-1 text-white rounded p-2">H &amp; S</span>
-          </div>
-        </div>
-
-        <div className="row mt-2 pt-3">
-          <div className="col text-center h5">
-            PG - Courses
-                  <hr className="text-white white" />
-          </div>
-        </div>
-
-        <div className="row">
-          <div className="col text-center font-weight-bolder">
-            <span className="base-orange shadow-lg p-2 text-white rounded">ME - CSE</span>
-          </div>
-          <div className="col text-center font-weight-bolder">
-            <span className="base-orange shadow-lg p-2 text-white rounded">MBA</span>
-          </div>
-        </div>
-        <div className="row mt-3 pt-3 mb-3">
-          <div className="col text-center font-weight-bolder">
-            <span className="base-orange shadow-lg p-2 text-white rounded">ME - Eng Design</span>
-          </div>
-        </div>
-      </div>, {
-          position: "bottom-right",
-          className: "bg-danger text-white Toastify__toast1",
-          autoClose: false
-        });
+    if (window.pageYOffset === 0 && this.state.isUnmounted === false) {
+      this.toastHandler()
     } else {
-
       toast.dismiss();
-
     }
   }
 
-  componentWillUnmount() {
-    toast.dismiss();
-  }
-
   componentDidMount() {
-    window.onscroll = function () {
-      this.showNotification();
-    }.bind(this)
 
+    window.addEventListener('scroll', this.showNotification, false);
 
     setTimeout(() => {
       if (this.state.carouselData.length === 0)
@@ -140,70 +144,7 @@ export default class FirstSection extends Component {
         this.fetchNews()
     }, 3000)
 
-
-    setTimeout(() => {
-      toast.dismiss();
-      toast(<div className="container-fluid">
-        <div className="row">
-          <div className="col text-center font-weight-bold h5 mt-1">
-            courses offered
-                  <hr className="white text-white" />
-          </div>
-        </div>
-
-        <div className="row">
-          <div className="col text-center font-weight-bold h5">
-            UG - Courses
-                    <hr className="text-white white" />
-          </div>
-        </div>
-        <div className="row">
-          <div className="col text-center font-weight-bolder">
-            <span className="base-orange shadow-lg p-2 text-white rounded">MECH</span>
-          </div>
-          <div className="col text-center font-weight-bolder">
-            <span className="base-orange shadow-lg p-2 text-white rounded">EEE</span>
-          </div>
-        </div>
-        <div className="row mt-2 pt-4">
-          <div className="col text-center font-weight-bolder">
-            <span className="base-orange shadow-lg p-2 text-white rounded ">ECE</span>
-          </div>
-          <div className="col text-center font-weight-bolder">
-            <span className="base-orange shadow-lg p-2 text-white rounded ">CSE</span>
-          </div>
-          <div className="col text-center font-weight-bolder">
-            <span className="base-orange shadow-lg p-1 text-white rounded p-2">H &amp; S</span>
-          </div>
-        </div>
-
-        <div className="row mt-2 pt-3">
-          <div className="col text-center font-weight-bold h5">
-            PG - Courses
-                    <hr className="text-white white" />
-          </div>
-        </div>
-
-        <div className="row">
-          <div className="col text-center font-weight-bolder">
-            <span className="base-orange shadow-lg p-2 text-white rounded">ME - CSE</span>
-          </div>
-          <div className="col text-center font-weight-bolder">
-            <span className="base-orange shadow-lg p-2 text-white rounded">MBA</span>
-          </div>
-        </div>
-        <div className="row mt-3 pt-3 mb-3">
-          <div className="col text-center font-weight-bolder">
-            <span className="base-orange shadow-lg p-2 text-white rounded">ME - Eng Design</span>
-          </div>
-        </div>
-      </div>, {
-          position: "bottom-right",
-          className: "bg-danger text-white Toastify__toast1",
-          autoClose: false
-        });
-    }, 3000)
-
+    this.showNotification()
   }
 
   initiateCarousel() {
@@ -214,7 +155,7 @@ export default class FirstSection extends Component {
         information: this.state.carouselDataStore[i][1]
       }
     })
-    setInterval(() => {
+    const carouselInterval = setInterval(() => {
       if (i < this.state.carouselDataStore.length - 1) {
         i++;
       } else {
@@ -227,6 +168,8 @@ export default class FirstSection extends Component {
         }
       })
     }, 5000)
+
+    this.setState({ carouselInterval })
   }
 
   initiateNews() {
@@ -239,6 +182,17 @@ export default class FirstSection extends Component {
       newsString += `|| ${item[1]} `;
     })
     this.setState({ newsText: newsString })
+  }
+
+  componentWillUnmount() {
+    toast.dismiss();
+    if (this.state.carouselInterval !== null) {
+      clearInterval(this.state.carouselInterval);
+    }
+
+    window.removeEventListener('scroll', this.showNotification, false);
+
+    this.setState({ isUnmounted: true });
   }
 
   render() {
@@ -285,9 +239,6 @@ export default class FirstSection extends Component {
                   </h4>
                 </div>
               </div>
-
-
-              {/* <img className="header-image mt-1 img-fluid" src={kurinji} alt=""  /> */}
             </div>
             <div className="col-md-6 d-flex flex-row justify-content-between headershow">
               <div className="d-flex justify-content-center align-items-center header-info " >
