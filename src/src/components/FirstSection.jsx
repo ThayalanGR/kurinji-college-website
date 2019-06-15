@@ -68,28 +68,31 @@ export default class FirstSection extends Component {
         <div className="row">
           <div className="col text-center font-weight-bold h5">
             UG - Courses
-                  <hr className="text-white white" />
+            <hr className="text-white white" />
           </div>
         </div>
         <div className="row">
           <div className="col text-center font-weight-bolder">
-            <span className="base-orange shadow-lg p-2 text-white rounded m-2">MECH</span>
+            <span className="base-orange shadow-lg p-2 text-white rounded">MECH</span>
           </div>
           <div className="col text-center font-weight-bolder">
-            <span className="base-orange shadow-lg p-2 text-white rounded m-2">EEE</span>
+            <span className="base-orange shadow-lg p-2 text-white rounded">EEE</span>
           </div>
         </div>
         <div className="row mt-2 pt-4">
           <div className="col text-center font-weight-bolder">
-            <span className="base-orange shadow-lg p-2 text-white rounded m-2">ECE</span>
+            <span className="base-orange shadow-lg p-2 text-white rounded ">ECE</span>
           </div>
           <div className="col text-center font-weight-bolder">
-            <span className="base-orange shadow-lg p-2 text-white rounded m-2">CSE</span>
+            <span className="base-orange shadow-lg p-2 text-white rounded ">CSE</span>
+          </div>
+          <div className="col text-center font-weight-bolder">
+            <span className="base-orange shadow-lg p-1 text-white rounded p-2">H &amp; S</span>
           </div>
         </div>
 
         <div className="row mt-2 pt-3">
-          <div className="col text-center font-weight-bold h5">
+          <div className="col text-center h5">
             PG - Courses
                   <hr className="text-white white" />
           </div>
@@ -97,7 +100,7 @@ export default class FirstSection extends Component {
 
         <div className="row">
           <div className="col text-center font-weight-bolder">
-            <span className="base-orange shadow-lg p-2 text-white rounded m-2">ME - CSE</span>
+            <span className="base-orange shadow-lg p-2 text-white rounded">ME - CSE</span>
           </div>
           <div className="col text-center font-weight-bolder">
             <span className="base-orange shadow-lg p-2 text-white rounded">MBA</span>
@@ -105,7 +108,7 @@ export default class FirstSection extends Component {
         </div>
         <div className="row mt-3 pt-3 mb-3">
           <div className="col text-center font-weight-bolder">
-            <span className="base-orange shadow-lg p-2 text-white rounded m-2">ME - Eng Design</span>
+            <span className="base-orange shadow-lg p-2 text-white rounded">ME - Eng Design</span>
           </div>
         </div>
       </div>, {
@@ -156,18 +159,21 @@ export default class FirstSection extends Component {
         </div>
         <div className="row">
           <div className="col text-center font-weight-bolder">
-            <span className="base-orange shadow-lg p-2 text-white rounded m-2">MECH</span>
+            <span className="base-orange shadow-lg p-2 text-white rounded">MECH</span>
           </div>
           <div className="col text-center font-weight-bolder">
-            <span className="base-orange shadow-lg p-2 text-white rounded m-2">EEE</span>
+            <span className="base-orange shadow-lg p-2 text-white rounded">EEE</span>
           </div>
         </div>
         <div className="row mt-2 pt-4">
           <div className="col text-center font-weight-bolder">
-            <span className="base-orange shadow-lg p-2 text-white rounded m-2">ECE</span>
+            <span className="base-orange shadow-lg p-2 text-white rounded ">ECE</span>
           </div>
           <div className="col text-center font-weight-bolder">
-            <span className="base-orange shadow-lg p-2 text-white rounded m-2">CSE</span>
+            <span className="base-orange shadow-lg p-2 text-white rounded ">CSE</span>
+          </div>
+          <div className="col text-center font-weight-bolder">
+            <span className="base-orange shadow-lg p-1 text-white rounded p-2">H &amp; S</span>
           </div>
         </div>
 
@@ -180,7 +186,7 @@ export default class FirstSection extends Component {
 
         <div className="row">
           <div className="col text-center font-weight-bolder">
-            <span className="base-orange shadow-lg p-2 text-white rounded m-2">ME - CSE</span>
+            <span className="base-orange shadow-lg p-2 text-white rounded">ME - CSE</span>
           </div>
           <div className="col text-center font-weight-bolder">
             <span className="base-orange shadow-lg p-2 text-white rounded">MBA</span>
@@ -188,7 +194,7 @@ export default class FirstSection extends Component {
         </div>
         <div className="row mt-3 pt-3 mb-3">
           <div className="col text-center font-weight-bolder">
-            <span className="base-orange shadow-lg p-2 text-white rounded m-2">ME - Eng Design</span>
+            <span className="base-orange shadow-lg p-2 text-white rounded">ME - Eng Design</span>
           </div>
         </div>
       </div>, {

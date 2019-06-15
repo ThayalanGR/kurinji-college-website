@@ -46,7 +46,7 @@ export default class Infrastructure extends Component {
                   <img
                     class="card-img-top"
                     src={`${baseUrl}/${item[3]}`}
-                    alt="Card image cap"
+                    alt=""
                   />
                   <div class="card-body">
                     <h5 class="card-title">{item[1]}</h5>

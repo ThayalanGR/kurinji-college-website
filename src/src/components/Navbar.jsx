@@ -40,6 +40,7 @@ export default class Navbar extends Component {
                 <Link className="dropdown-item  text-dark" to="/eee">EEE</Link>
                 <Link className="dropdown-item  text-dark" to="/ece">ECE</Link>
                 <Link className="dropdown-item  text-dark" to="/cse">CSE</Link>
+                <Link className="dropdown-item  text-dark" to="/hands">H &amp; S</Link>
                 <Link className="dropdown-item  text-dark" to="/mecse">M.E. - CSE</Link>
                 <Link className="dropdown-item  text-dark" to="/engdesign">M.E. - ENG DESIGN</Link>
                 <Link className="dropdown-item  text-dark" to="/mba">MBA</Link>

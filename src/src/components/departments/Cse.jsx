@@ -177,7 +177,7 @@ export default class Cse extends Component {
     return (
       <div className="mtspace">
         <div className="side-section p-3">
-          <div className="side-header text-orange h2-responsive">
+          <div className="side-header text-orange h2-responsive text-center">
             {deptName.toUpperCase()}
             <i onClick={(e) => this.state.showMenu === '' ? this.setState({ showMenu: 'd-none-custom' }) : this.setState({ showMenu: '' })} className="fa fa-caret-down text-white float-right mr-4 dropdown-custom"></i>
           </div>
