@@ -9,7 +9,8 @@ export default class Infrastructure extends Component {
     super(props);
     this.state = {
       isLoading: true,
-      infrastructureItems: []
+      infrastructureItems1: [],
+      infrastructureItems2: []
     };
   }
 
@@ -24,7 +25,19 @@ export default class Infrastructure extends Component {
     axios
       .get(`${baseUrl}/api/infrastructure.php`)
       .then(data => {
-        this.setState({ infrastructureItems: data.data });
+        console.log();
+        let arr1 = [],
+          arr2 = [];
+        data.data.map((item, index) => {
+          if (index % 2 === 0) {
+            arr1.push(item);
+          } else {
+            arr2.push(item);
+          }
+          this.setState({ infrastructureItems1: arr1 });
+          this.setState({ infrastructureItems2: arr2 });
+          return true;
+        });
       })
       .catch(err => console.log(err));
   }
@@ -40,25 +53,43 @@ export default class Infrastructure extends Component {
           </div>
           <hr />
           <div className="row">
-            {this.state.infrastructureItems.map((item, key) => (
-              <div class="col-md-6" key={key}>
-                <div className="card mb-3">
-                  <img
-                    class="card-img-top"
-                    src={`${baseUrl}/${item[3]}`}
-                    alt=""
-                  />
-                  <div class="card-body">
-                    <h5 class="card-title">{item[1]}</h5>
-                    <p class="card-text">
-                      {item[2]}
-                    </p>
+            <div className="col-md-6">
+              {this.state.infrastructureItems1.map((item, key) => (
+                <div class="" key={key}>
+                  <div className="card mb-3">
+                    <img
+                      class="card-img-top"
+                      src={`${baseUrl}/${item[3]}`}
+                      alt="Card cap"
+                    />
+                    <div class="card-body">
+                      <h5 class="card-title">{item[1]}</h5>
+                      <p class="card-text">{item[2]}</p>
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
+            <div className="col-md-6">
+              {this.state.infrastructureItems2.map((item, key) => (
+                <div class="" key={key}>
+                  <div className="card mb-3">
+                    <img
+                      class="card-img-top"
+                      src={`${baseUrl}/${item[3]}`}
+                      alt="Card cap"
+                    />
+                    <div class="card-body">
+                      <h5 class="card-title">{item[1]}</h5>
+                      <p class="card-text">{item[2]}</p>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
+        {/* </div> */}
       </Fragment>
     );
   }
