@@ -22,6 +22,7 @@ import Cse from './departments/Cse'
 import Mecse from './departments/Mecse'
 import Engdesign from './departments/Engdesign'
 import Mba from './departments/Mba'
+import Hands from './departments/Hands'
 
 // Admin
 import Admin from "./admin/Admin";
@@ -53,6 +54,7 @@ export {
     Cse,
     Mecse,
     Engdesign,
-    Mba
+    Mba,
+    Hands
     
 }

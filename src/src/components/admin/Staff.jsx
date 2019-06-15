@@ -212,6 +212,7 @@ export default class Staff extends Component {
                     <option value="eee">EEE</option>
                     <option value="ece">ECE</option>
                     <option value="cse">CSE</option>
+                    <option value="hands">H &amp; S</option>
                     <option value="mecse">ME-CSE</option>
                     <option value="engdesign">Eng-Design</option>
                     <option value="mba">MBA</option>
@@ -282,6 +283,7 @@ export default class Staff extends Component {
                   <option value="eee">EEE</option>
                   <option value="ece">ECE</option>
                   <option value="cse">CSE</option>
+                  <option value="hands">H &amp; S</option>
                   <option value="mecse">ME-CSE</option>
                   <option value="engdesign">Eng-Design</option>
                   <option value="mba">MBA</option>

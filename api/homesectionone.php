@@ -15,6 +15,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $fileSize = $_FILES["file"]["size"]; // File size in bytes
         $fileErrorMsg = $_FILES["file"]["error"]; // 0 for false... and 1 for true
         $caption = $_POST["caption"];
+
+        if (!is_dir("./uploads/homesectionone")) {
+            mkdir("./uploads/homesectionone");
+        }
     
         if (move_uploaded_file($fileTmpLoc, "./uploads/homesectionone/$fileName")) {
             $sql = "INSERT INTO `tbl_event` (`caption`, `filepath`) VALUES ('".$caption."', '/api/uploads/homesectionone/".$fileName."')";
