@@ -1,0 +1,47 @@
+.gallery-container {
+    position: relative;
+    margin-top: 80px;
+    box-sizing: border-box;
+
+}
+
+.gallery-image-thumbnail {
+    width: 220px;
+    height: 160px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.gallery-preview-container-image {
+    width: 98%;
+    border-radius: 5px;
+}
+
+.Toastify__toast-custom {
+    background: white;
+    border-radius: 5px;
+    box-sizing: border-box;
+    width: 80vw;
+    height: 90vh;
+    max-height: 100vh !important;
+    left: 100px !important;
+    top: 45px !important;
+    padding: 15px 10px 20px 20px;
+    margin: 0px;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.Toastify__toast-custom>.Toastify__close-button {
+    color: #FF3C00 !important;
+    opacity: 1;
+    font-size: 20px;
+}
+
+.Toastify__toast-custom>.Toastify__close-button:hover {
+    opacity: 0.8;
+
+}
