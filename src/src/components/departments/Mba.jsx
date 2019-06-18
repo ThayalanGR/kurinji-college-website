@@ -162,7 +162,7 @@ export default class Mba extends Component {
             <li className="h5-responsive" onClick={(e) => { this.setState({ tab: "events" }) }}>Events</li>
             <li className="h5-responsive" onClick={(e) => { this.setState({ tab: "studentactivity" }) }}>Student Activities</li>
             <li className="h5-responsive" onClick={(e) => { this.setState({ tab: "laboratories" }) }}>Laboratories</li>
-            <li className="h5-responsive" onClick={(e) => { this.setState({ tab: "achivements" }) }}>Achivements</li>
+            <li className="h5-responsive" onClick={(e) => { this.setState({ tab: "achivements" }) }}>Achievements </li>
           </ul>
         </div>
         <div className="main-section">
