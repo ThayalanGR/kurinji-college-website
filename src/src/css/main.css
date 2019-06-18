@@ -264,3 +264,7 @@ body {
 .footer-quick-links {
     font-size: 20px;
 }
+
+.dept-image {
+    max-height: 300px;
+}

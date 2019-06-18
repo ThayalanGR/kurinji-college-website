@@ -1,53 +1,93 @@
-import React, { Component } from 'react'
-import axios from 'axios';
-import { constants } from "../../components"
+import React, { Component, Fragment } from "react";
+import axios from "axios";
+import { constants } from "../../components";
 
 const baseUrl = constants.baseUrl;
-const deptName = 'M.E. - Engineering Design';
-const department = 'engdesign';
+const deptName = "M.E. - Engineering Design";
+const department = "engdesign";
 
 export default class Engdesign extends Component {
-
   constructor(props) {
     super(props);
     this.state = {
-      tab: 'about',
-      showMenu: '',
+      tab: "about",
+      showMenu: "",
       staffs: []
-    }
+    };
+  }
+
+  componentDidMount() {
+    this.fetchStaffs(department);
+    this.fetchEvents(department);
+    this.fetchStuAct(department);
+    this.fetchLab(department);
   }
 
   fetchStaffs(dept) {
-    axios.get(`${baseUrl}/api/staffhandler.php?department=${dept}`)
+    axios
+      .get(`${baseUrl}/api/staffhandler.php?department=${dept}`)
       .then(response => {
-
         const data = response.data;
-        this.setState({ staffs: data })
+        this.setState({ staffs: data });
         console.log(data);
       })
       .catch(err => {
         console.log(err);
-
-      })
-
+      });
   }
 
+  fetchEvents(dept) {
+    axios
+      .get(`${baseUrl}/api/deptevent.php?department=${dept}`)
+      .then(response => {
+        const data = response.data;
+        console.log(data);
+        this.setState({ deptevent: data });
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  }
+
+  fetchStuAct(dept) {
+    axios
+      .get(`${baseUrl}/api/deptstuact.php?department=${dept}`)
+      .then(response => {
+        const data = response.data;
+        this.setState({ deptstuact: data });
+        console.log(data);
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  }
+
+  fetchLab(dept) {
+    axios
+      .get(`${baseUrl}/api/deptlab.php?department=${dept}`)
+      .then(response => {
+        const data = response.data;
+        this.setState({ deptlab: data });
+        console.log(data);
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  }
 
   FacultyDetails = () => {
-    if (this.state.staffs.length === 0)
-      this.fetchStaffs(department);
     return (
       <div className="container-fluid">
         <div className="row">
           <div className="col text-center orange-text h3">
             Faculty Details
-          <hr />
+            <hr />
           </div>
         </div>
         {this.state.staffs.map((item, key) => (
           <div key={key}>
             <div className="row mt-2 mb-4 pb-2">
-              <div>{key+1}.</div>
+              <div>{key + 1}.</div>
               <div className="col text-left d-flex justify-content-center align-items-center">
                 <div className="staff-details text-center">
                   <div className=" h4-responsive  text-primary">{item[1]}</div>
@@ -63,10 +103,9 @@ export default class Engdesign extends Component {
             </div>
           </div>
         ))}
-
       </div>
-    )
-  }
+    );
+  };
 
   About() {
     return (
@@ -80,39 +119,45 @@ export default class Engdesign extends Component {
 
         <div className="row">
           <div className="col">
-            <div className="h5-responsive text-success">
-              MISSION
-           </div>
+            <div className="h5-responsive text-success">MISSION</div>
             <hr />
             <div className="text-left">
-              To dedicate the work to advance and communicate the specific knowledge and understanding to the Medicore and Excellent students with a systematic scientific approach and coordication of activities.
-           </div>
+              To dedicate the work to advance and communicate the specific
+              knowledge and understanding to the Medicore and Excellent students
+              with a systematic scientific approach and coordication of
+              activities.
+            </div>
             <hr />
-            <div className="h5-responsive text-success">
-              Vision
-           </div>
+            <div className="h5-responsive text-success">Vision</div>
             <hr />
             <div className="text-left">
-              Training the Students to become well disciplined and knowledgeable in the field of Engineering Design.
-           </div>
+              Training the Students to become well disciplined and knowledgeable
+              in the field of Engineering Design.
+            </div>
             <hr />
-            <div className="h5-responsive text-success">
-              Quality Policy
-           </div>
+            <div className="h5-responsive text-success">Quality Policy</div>
             <div className="text-left">
-              Department of Engineering Design strives to ensure quality education as a leader in the Engineering Design Education by continuously improving academic inputs and educational excellence.
-           </div>
+              Department of Engineering Design strives to ensure quality
+              education as a leader in the Engineering Design Education by
+              continuously improving academic inputs and educational excellence.
+            </div>
             <hr />
-            <div className="h5-responsive text-success">
-              Objectives
-           </div>
+            <div className="h5-responsive text-success">Objectives</div>
             <div>
               <ul className="text-left text-responsive">
-                <li>To achive 90% result in the Anna University examinations by Motivating & Counselling the students.</li>
+                <li>
+                  To achive 90% result in the Anna University examinations by
+                  Motivating & Counselling the students.
+                </li>
                 <li>To improve the students placement to 75%.</li>
                 <li>Conducting one Symposium per year.</li>
-                <li>Making 50% of the students to present papers in symposiums.</li>
-                <li>Making the students to publish articles in the department new bulletin</li>
+                <li>
+                  Making 50% of the students to present papers in symposiums.
+                </li>
+                <li>
+                  Making the students to publish articles in the department new
+                  bulletin
+                </li>
                 <li>Conducting guest lectures.</li>
                 <li>Conducting workshop to the students.</li>
                 <li>To improve the Research & Development activities.</li>
@@ -121,47 +166,175 @@ export default class Engdesign extends Component {
           </div>
         </div>
       </div>
-    )
+    );
   }
 
   Events() {
     return (
-      <div>events</div>
-    )
+      <div className="container-fluid">
+        <div className="row">
+          <div className="col text-center font-weight-bold text-primary h3-responsive">
+            Events
+            <hr />
+          </div>
+        </div>
+        {this.state.deptevent.map((item, key) => (
+          <Fragment key={key}>
+            <div className="row d-flex align-items-center">
+              {item[3] !== "null" && (
+                <div className="col-md-6 col-sm-12 text-center">
+                  <img
+                    className="img img-responsive dept-image shadow rounded"
+                    src={`${constants.baseUrl}${item[3]}`}
+                    alt=""
+                  />
+                </div>
+              )}
+              {item[3] === "null" && (
+                <div className="offset-md-1 offset-sm-0" />
+              )}
+              <div className="col-md-6 col-sm-12 mt-4">
+                <div className="text-danger font-weight-bold h5-responsive">
+                  {item[1]}
+                </div>
+                <div className="text-dark font-weight-normal h6-responsive">
+                  {item[2]}
+                </div>
+                <div
+                  className="text-dark font-weight-normal"
+                  style={{ fontSize: "12px" }}
+                >
+                  Posted At :- {new Date(item[4]).toDateString()}
+                </div>
+              </div>
+            </div>
+            <div className="row mt-3 mb-3">
+              <div className="col">
+                <hr />
+              </div>
+            </div>
+          </Fragment>
+        ))}
+      </div>
+    );
   }
-
   studentActivities() {
     return (
-      <div>student activities</div>
-    )
+      <div className="container-fluid">
+        <div className="row">
+          <div className="col text-center font-weight-bold text-primary h3-responsive">
+            Student Activities
+            <hr />
+          </div>
+        </div>
+        {this.state.deptstuact.map((item, key) => (
+          <Fragment key={key}>
+            <div className="row d-flex align-items-center">
+              {item[3] !== "null" && (
+                <div className="col-md-6 col-sm-12 text-center">
+                  <img
+                    className="img img-responsive dept-image shadow rounded"
+                    src={`${constants.baseUrl}${item[3]}`}
+                    alt=""
+                  />
+                </div>
+              )}
+              {item[3] === "null" && (
+                <div className="offset-md-1 offset-sm-0" />
+              )}
+              <div className="col-md-6 col-sm-12 mt-4">
+                <div className="text-danger font-weight-bold h5-responsive">
+                  {item[1]}
+                </div>
+                <div className="text-dark font-weight-normal h6-responsive">
+                  {item[2]}
+                </div>
+                <div
+                  className="text-dark font-weight-normal"
+                  style={{ fontSize: "12px" }}
+                >
+                  Posted At :- {new Date(item[4]).toDateString()}
+                </div>
+              </div>
+            </div>
+            <div className="row mt-3 mb-3">
+              <div className="col">
+                <hr />
+              </div>
+            </div>
+          </Fragment>
+        ))}
+      </div>
+    );
   }
-
   laboratories() {
     return (
-      <div>laboratories</div>
-    )
+      <div className="container-fluid">
+        <div className="row">
+          <div className="col text-center font-weight-bold text-primary h3-responsive">
+            Laboratories
+            <hr />
+          </div>
+        </div>
+        {this.state.deptlab.map((item, key) => (
+          <Fragment key={key}>
+            <div className="row d-flex align-items-center">
+              {item[3] !== "null" && (
+                <div className="col-md-6 col-sm-12 text-center">
+                  <img
+                    className="img img-responsive dept-image shadow rounded"
+                    src={`${constants.baseUrl}${item[3]}`}
+                    alt=""
+                  />
+                </div>
+              )}
+              {item[3] === "null" && (
+                <div className="offset-md-1 offset-sm-0" />
+              )}
+              <div className="col-md-6 col-sm-12 mt-4">
+                <div className="text-danger font-weight-bold h5-responsive">
+                  {item[1]}
+                </div>
+                <div className="text-dark font-weight-normal h6-responsive">
+                  {item[2]}
+                </div>
+                <div
+                  className="text-dark font-weight-normal"
+                  style={{ fontSize: "12px" }}
+                >
+                  Posted At :- {new Date(item[4]).toDateString()}
+                </div>
+              </div>
+            </div>
+            <div className="row mt-3 mb-3">
+              <div className="col">
+                <hr />
+              </div>
+            </div>
+          </Fragment>
+        ))}
+      </div>
+    );
   }
 
-  achivements() {
-    return (
-      <div>achivements</div>
-    )
-  }
+  // achivements() {
+  //   return <div>achivements</div>;
+  // }
 
   tabChange(tab) {
     switch (tab) {
-      case 'about':
+      case "about":
         return this.About();
-      case 'faculty':
+      case "faculty":
         return this.FacultyDetails();
-      case 'events':
+      case "events":
         return this.Events();
-      case 'studentactivity':
+      case "studentactivity":
         return this.studentActivities();
-      case 'laboratories':
+      case "laboratories":
         return this.laboratories();
-      case 'achivements':
-        return this.achivements();
+      // case "achivements":
+      //   return this.achivements();
       default:
         return <div>null</div>;
     }
@@ -173,23 +346,70 @@ export default class Engdesign extends Component {
         <div className="side-section p-3">
           <div className="side-header text-orange h2-responsive text-center">
             {deptName.toUpperCase()}
-            <i onClick={(e) => this.state.showMenu === '' ? this.setState({showMenu: 'd-none-custom'}): this.setState({showMenu: ''})}  className="fa fa-caret-down text-white float-right mr-4 dropdown-custom"></i>
+            <i
+              onClick={e =>
+                this.state.showMenu === ""
+                  ? this.setState({ showMenu: "d-none-custom" })
+                  : this.setState({ showMenu: "" })
+              }
+              className="fa fa-caret-down text-white float-right mr-4 dropdown-custom"
+            />
           </div>
           <ul className={`side-nav-content text-white ${this.state.showMenu}`}>
-            <li className="h5-responsive" onClick={(e) => { this.setState({ tab: "about" }) }}>About</li>
-            <li className="h5-responsive" onClick={(e) => { this.setState({ tab: "faculty" }) }}>Faculty Details</li>
-            <li className="h5-responsive" onClick={(e) => { this.setState({ tab: "events" }) }}>Events</li>
-            <li className="h5-responsive" onClick={(e) => { this.setState({ tab: "studentactivity" }) }}>Student Activities</li>
-            <li className="h5-responsive" onClick={(e) => { this.setState({ tab: "laboratories" }) }}>Laboratories</li>
-            <li className="h5-responsive" onClick={(e) => { this.setState({ tab: "achivements" }) }}>Achievements </li>
+            <li
+              className="h5-responsive"
+              onClick={e => {
+                this.setState({ tab: "about" });
+              }}
+            >
+              About
+            </li>
+            <li
+              className="h5-responsive"
+              onClick={e => {
+                this.setState({ tab: "faculty" });
+              }}
+            >
+              Faculty Details
+            </li>
+            <li
+              className="h5-responsive"
+              onClick={e => {
+                this.setState({ tab: "events" });
+              }}
+            >
+              Events
+            </li>
+            <li
+              className="h5-responsive"
+              onClick={e => {
+                this.setState({ tab: "studentactivity" });
+              }}
+            >
+              Student Activities
+            </li>
+            <li
+              className="h5-responsive"
+              onClick={e => {
+                this.setState({ tab: "laboratories" });
+              }}
+            >
+              Laboratories
+            </li>
+            {/* <li
+              className="h5-responsive"
+              onClick={e => {
+                this.setState({ tab: "achivements" });
+              }}
+            >
+              Achievements{" "}
+            </li> */}
           </ul>
         </div>
         <div className="main-section">
-          {this.state.tab ? this.tabChange(this.state.tab) : ''}
+          {this.state.tab ? this.tabChange(this.state.tab) : ""}
         </div>
       </div>
-    )
+    );
   }
 }
-
-

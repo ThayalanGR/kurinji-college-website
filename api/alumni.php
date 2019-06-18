@@ -15,15 +15,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $address = $_POST["address"];
         $mobile = $_POST["mobile"];
         $email = $_POST["email"];
-        $employementDetails = $_POST["employementDetails"];
-
-        if ($name) {
-            $sql = "INSERT INTO `tbl_alumni` ( `name`, `batch`, `department`, `address`, `mobile`, `email`, `employment_details`) VALUES ('" . $name . "','" . $batch . "','" . $department . "','" . $address . "','" . $mobile . "','" . $email . "', '" . $employementDetails . "',)";
-            mysqli_query($DB, $sql);
-            echo json_encode($fileName);
-        } else {
-            echo "move_uploaded_file function failed";
-        }
+        $employementDetails = $_POST["employment"];
+        $sql = "INSERT INTO `tbl_alumni` ( `name`, `batch`, `department`, `address`, `mobile`, `email`, `employment_details`) VALUES ('" . $name . "','" . $batch . "','" . $department . "','" . $address . "','" . $mobile . "','" . $email . "', '" . $employementDetails . "')";
+        mysqli_query($DB, $sql);
+        echo json_encode($sql);
     } else if ($_POST['method'] === 'delete') {
         $id = $_POST['id'];
         $query = "DELETE FROM tbl_alumni WHERE id=" . $id;
@@ -34,6 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             echo json_encode(array("response" => false));
         }
     }
+
 }
 
 if ($_SERVER['REQUEST_METHOD'] == 'GET') {

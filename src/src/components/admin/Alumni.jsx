@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { constants } from "../index";
+import XLSX from "xlsx";
+import { saveAs } from "file-saver";
 
 export default class Alumni extends Component {
   constructor(props) {
@@ -12,6 +14,26 @@ export default class Alumni extends Component {
 
   componentDidMount() {
     this.fetchAlumniRegistrationDetails();
+  }
+
+  generateExcel() {
+    var wb = XLSX.utils.table_to_book(document.getElementById("table"), {
+      sheet: "AlumniRegistrationDetails"
+    });
+    var wbout = XLSX.write(wb, {
+      bookType: "xlsx",
+      bookSST: true,
+      type: "binary"
+    });
+
+    var buf = new ArrayBuffer(wbout.length);
+    var view = new Uint8Array(buf);
+    for (var i = 0; i < wbout.length; i++) view[i] = wbout.charCodeAt(i) & 0xff;
+
+    saveAs(
+      new Blob([buf], { type: "application/octet-stream" }),
+      "AlumniRegistrationDetails.xlsx"
+    );
   }
 
   fetchAlumniRegistrationDetails() {
@@ -32,7 +54,12 @@ export default class Alumni extends Component {
               Alumni Registration Details
             </div>
             <div>
-              <button className="btn btn-sm btn-danger text-white">
+              <button
+                onClick={() => {
+                  this.generateExcel();
+                }}
+                className="btn btn-sm btn-danger text-white"
+              >
                 Generate Excel
               </button>
             </div>
@@ -41,7 +68,7 @@ export default class Alumni extends Component {
         <hr />
         <div className="row">
           <div className="col">
-            <table className="table table-hover text-center">
+            <table className="table table-hover text-center" id="table">
               <thead className=" text-danger">
                 <tr>
                   <th scope="col">S.no</th>
