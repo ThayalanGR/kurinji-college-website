@@ -173,7 +173,7 @@ export default class Disclosure extends Component {
                         target="_blank"
                         rel="noopener noreferrer"
                       >
-                        <i class="far fa-file-pdf fa-5x text-danger" />
+                        <i className="far fa-file-pdf fa-5x text-danger" />
                       </a>
                     </div>
                     <div className="col-md-4">
