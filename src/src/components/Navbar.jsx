@@ -41,7 +41,7 @@ export default class Navbar extends Component {
           >
             <li className="nav-item ">
               <Link className="nav-link  text-light" to="/">
-                <i class="fas fa-home"></i> Home
+                <i className="fas fa-home"></i> Home
               </Link>
             </li>
             <li className="nav-item dropdown">
@@ -52,7 +52,7 @@ export default class Navbar extends Component {
                 aria-haspopup="true"
                 aria-expanded="false"
               >
-                <i class="far fa-address-card"></i> About Us
+                <i className="far fa-address-card"></i> About Us
               </button>
               <div
                 className="dropdown-menu"
@@ -89,7 +89,7 @@ export default class Navbar extends Component {
                 aria-haspopup="true"
                 aria-expanded="false"
               >
-                <i class="far fa-building"></i> Departments
+                <i className="far fa-building"></i> Departments
               </button>
               <div
                 className="dropdown-menu"
@@ -125,27 +125,27 @@ export default class Navbar extends Component {
             {/* departments end */}
             <li className="nav-item">
               <Link className="nav-link  text-light" to="/infrastructure">
-                <i class="fas fa-university"></i> Infrastructure
+                <i className="fas fa-university"></i> Infrastructure
               </Link>
             </li>
             <li className="nav-item">
               <Link className="nav-link  text-light" to="/gallery">
-                <i class="far fa-image"></i> Gallery
+                <i className="far fa-image"></i> Gallery
               </Link>
             </li>
             <li className="nav-item">
               <Link className="nav-link text-light" to="/alumni">
-                <i class="fas fa-user-graduate"></i> Alumni
+                <i className="fas fa-user-graduate"></i> Alumni
               </Link>
             </li>
             <li className="nav-item">
               <Link className="nav-link  text-light" to="/contact">
-                <i class="far fa-address-book"></i> Contact Us
+                <i className="far fa-address-book"></i> Contact Us
               </Link>
             </li>
             <li className="nav-item">
               <Link className="nav-link  text-light" title="Students Corner" to="/student">
-                <i class="fas fa-users"></i> Students Corner
+                <i className="fas fa-users"></i> Students Corner
               </Link>
             </li>
           </ul>

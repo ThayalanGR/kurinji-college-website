@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import { toast } from 'react-toastify';
 import constants from "../components/constants"
 import kurinji from "../images/favicon.png"
@@ -18,7 +18,7 @@ export default class FirstSection extends Component {
         information: ''
       },
       news: [],
-      newsText: '',
+      newsText: <div>test text</div>,
       isCarouselInitiated: false,
       isNewsInitiated: false,
       carouselInterval: null,
@@ -144,7 +144,7 @@ export default class FirstSection extends Component {
         this.fetchNews()
     }, 3000)
 
-    this.showNotification()
+    this.showNotification();
   }
 
   initiateCarousel() {
@@ -173,15 +173,15 @@ export default class FirstSection extends Component {
   }
 
   initiateNews() {
-    let newsString = '';
-    // eslint-disable-next-line
-    this.state.news.map((item, i) => {
-      if (i === 0) {
-        newsString += `${item[1]} `;
-      }
-      newsString += `|| ${item[1]} `;
-    })
-    this.setState({ newsText: newsString })
+    let newsString = <div className="d-flex">
+      {this.state.news.map((item, key) => (
+        <div key={key} className="d-flex flex-column pr-4 mr-4" style={{ borderRight: `${key !== this.state.news.length - 1 ? "2px solid #FCBA35" : ''}` }}>
+          <div style={{ fontSize: "18px" }} className="text-white font-weight-bold ">{item[1]}</div>
+          <div style={{ fontSize: "15px" }} className="text-white font-weight-normal text-warning">Posted on:- <span className=" ml-1 text-light f">{new Date(item[2]).toDateString()}</span></div>
+        </div>
+      ))}
+    </div>;
+    this.setState({ newsText: <Fragment>{newsString}</Fragment> })
   }
 
   componentWillUnmount() {
@@ -201,7 +201,7 @@ export default class FirstSection extends Component {
         <div className="col d-flex justify-content-between flex-column align-items-center p-0"
           style={{ marginTop: "30vh" }}>
           <div className="align-self-start">
-            <div className="mask pattern-3 rounded">
+            <div className="mask pattern-5 rounded">
               <div className="text-white alert" style={{ fontSize: "20px" }}>
                 <div className="text-center animated shake">
                   {this.state.carouselData.information}
@@ -210,17 +210,19 @@ export default class FirstSection extends Component {
             </div>
           </div>
 
-          <div className="alert text-danger  mb-0 background-transparent p-0 m-0 w-100" role="alert">
+          <div className="text-danger w-100" >
 
-            <div className="mask rgba-white-strong pattern-5">
-              <p className="font-weight-bold animated flash infinite text-warning slower delay-3s mt-3 pt-3 pl-3 h5">
-                <i className="fas fa-star mr-2 animated heartBeat infinite"></i>
-                Latest News
-                 </p>
+            <div className="pattern-5" style={{ height: "70px", position: "relative" }}>
+              <div style={{ position: "absolute", height: "70px", zIndex: 100000 }} className="bg-dark d-flex justify-content-center align-items-center p-2 pl-3 pr-4">
+                <span className="font-weight-bold animated flash text-warning  infinite slower delay-3s h6-responsive">
+                  <i className="fas fa-star mr-2 animated heartBeat infinite"></i>
+                  Latest News
+                  </span>
+              </div>
               {/* eslint-disable-next-line  */}
-              <marquee><p className="text-white" style={{ fontSize: "15pt" }}>
+              <marquee className="mt-3">
                 {this.state.newsText}
-              </p></marquee>
+              </marquee>
             </div>
 
           </div>

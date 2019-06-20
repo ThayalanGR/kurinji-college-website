@@ -210,7 +210,7 @@ export default class Dashboard extends Component {
                   aria-controls="contact"
                   aria-selected="false"
                 >
-                  DeptStuAct
+                  DeptStuAch
             </a>
               </li>
               <li className="nav-item">

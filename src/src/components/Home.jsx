@@ -30,10 +30,11 @@ export default class Home extends Component {
     axios
     .get(`${constants.baseUrl}/api/disclosure.php`)
     .then(data => {
-      this.setState({
-        disclosure: data.data[0][1],
-        disclosureTitle: data.data[0][2]
-      });
+      if(data.data.length > 0)
+        this.setState({
+          disclosure: data.data[0][1],
+          disclosureTitle: data.data[0][2]
+        });
     })
     .catch(err => console.error(err));
   }
