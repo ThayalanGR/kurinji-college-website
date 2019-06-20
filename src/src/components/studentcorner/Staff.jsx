@@ -6,7 +6,7 @@ export default class Staff extends Component {
         return (
             <Fragment>
                 <nav className="navbar navbar-expand-lg shadow-sm student-corner-header">
-                    <Link className="navbar-brand text-white ml-2" to="/home" >  <i class="fas fa-users"></i>  Students Corner</Link>
+                    <Link className="navbar-brand text-white ml-2" to="/home" >  <i className="fas fa-users"></i>  Students Corner</Link>
                     <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
                         <i className="fas fa-bars"></i>
                     </button>
