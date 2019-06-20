@@ -213,7 +213,7 @@ export default class FirstSection extends Component {
           <div className="text-danger w-100" >
 
             <div className="pattern-5" style={{ height: "70px", position: "relative" }}>
-              <div style={{ position: "absolute", height: "70px", zIndex: 100000 }} className="bg-dark d-flex justify-content-center align-items-center p-2 pl-3 pr-4">
+              <div style={{ position: "absolute", height: "70px", zIndex: 1070 }} className="bg-dark d-flex justify-content-center align-items-center p-2 pl-3 pr-4">
                 <span className="font-weight-bold animated flash text-warning  infinite slower delay-3s h6-responsive">
                   <i className="fas fa-star mr-2 animated heartBeat infinite"></i>
                   Latest News
