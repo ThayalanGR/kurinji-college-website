@@ -4,19 +4,19 @@ import Eventimage from "./Eventimage";
 import Infrastructure from "./Infrastructure";
 import Gallery from "./Gallery";
 import Disclosure from "./Disclosure";
-import Deptstuact from "./Deptstuact";
+import Deptstuach from "./Deptstuach";
 import Deptevent from "./Deptevent";
 import Deptlab from "./Deptlab";
 import Alumni from './Alumni';
 export {
-  
+
   Staff,
   News,
   Eventimage,
   Infrastructure,
   Gallery,
   Disclosure,
-  Deptstuact,
+  Deptstuach,
   Deptevent,
   Deptlab,
   Alumni

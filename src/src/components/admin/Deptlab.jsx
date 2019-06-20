@@ -11,7 +11,7 @@ export default class Deptlab extends Component {
       eventTitle: "",
       eventBody: "",
       eventFile: null,
-      eventFileName: "choose an Event Image",
+      eventFileName: "choose a Laboratory Image",
       existingEvents: [],
       eventDepartment: "",
       filterChoice: "all",
@@ -66,7 +66,7 @@ export default class Deptlab extends Component {
         eventDepartment: "",
         hasImage: false,
         eventFile: null,
-        eventFileName: "choose an Event Image",
+        eventFileName: "choose a Laboratory Image",
         filterChoice: this.state.eventDepartment
       });
       // post request
@@ -216,7 +216,7 @@ export default class Deptlab extends Component {
                   />
                 </div>
                 <div className={`mb-3 ${this.state.hasImage ? "" : "d-none"}`}>
-                  <label htmlFor="validatedCustomFile">Event Image</label>
+                  <label htmlFor="validatedCustomFile">Laboratory Image</label>
                   <div className="custom-file">
                     <input
                       type="file"

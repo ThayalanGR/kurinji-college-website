@@ -1,44 +1,25 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import axios from "axios";
-import constants from "./constants";
 
 export default class Navbar extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      disclosure: "",
-      disclosureTitle: ""
-    };
-  }
 
-  componentDidMount() {
-    axios
-      .get(`${constants.baseUrl}/api/disclosure.php`)
-      .then(data => {
-        this.setState({
-          disclosure: data.data[0][1],
-          disclosureTitle: data.data[0][2]
-        });
-      })
-      .catch(err => console.error(err));
-  }
   render() {
     return (
       <nav className="mb-1 navbar navbar-expand-lg navbar-dark nav-size base-orange lighten-1 fixed-top ">
         <Link
-          className="navbar-brand text-light animated pulse infinite slow"
+          className="navbar-brand text-light animated pulse infinite slow d-flex justify-content-center align-items-center"
           to="/"
         >
           {" "}
           <img
             src="./favicon.png"
-            className="rounded-circle z-depth-0 mt-0 mr-0 shadow-lg "
+            className="rounded-circle shadow-lg mr-2 "
             alt=""
             height="50"
           />
-          <span className="base-text h4"> Counselling code : </span>
-          <span className="font-weight-bold base-text h4"> 3809 </span>
+          <div className="base-text h4-responsive"> Counselling code  </div>
+          <div className="ml-1 mr-1 text-primary"> : </div>
+          <div className="font-weight-bold base-text ml-1 h3-responsive"> 3809 </div>
         </Link>
         <button
           className="navbar-toggler"
@@ -61,7 +42,7 @@ export default class Navbar extends Component {
           >
             <li className="nav-item ">
               <Link className="nav-link  text-light" to="/">
-                Home
+                <i class="fas fa-home"></i> Home
               </Link>
             </li>
             <li className="nav-item dropdown">
@@ -72,7 +53,7 @@ export default class Navbar extends Component {
                 aria-haspopup="true"
                 aria-expanded="false"
               >
-                About Us
+                <i class="far fa-address-card"></i> About Us
               </button>
               <div
                 className="dropdown-menu"
@@ -109,7 +90,7 @@ export default class Navbar extends Component {
                 aria-haspopup="true"
                 aria-expanded="false"
               >
-                Departments
+                <i class="far fa-building"></i> Departments
               </button>
               <div
                 className="dropdown-menu"
@@ -145,34 +126,28 @@ export default class Navbar extends Component {
             {/* departments end */}
             <li className="nav-item">
               <Link className="nav-link  text-light" to="/infrastructure">
-                Infrastructure
+                <i class="fas fa-university"></i> Infrastructure
               </Link>
             </li>
             <li className="nav-item">
               <Link className="nav-link  text-light" to="/gallery">
-                Gallery
+                <i class="far fa-image"></i> Gallery
               </Link>
             </li>
             <li className="nav-item">
               <Link className="nav-link text-light" to="/alumni">
-                Alumni
+                <i class="fas fa-user-graduate"></i> Alumni
               </Link>
             </li>
             <li className="nav-item">
               <Link className="nav-link  text-light" to="/contact">
-                Contact Us
+                <i class="far fa-address-book"></i> Contact Us
               </Link>
             </li>
             <li className="nav-item">
-              <a
-                className="nav-link  text-light"
-                href={`${constants.baseUrl}${this.state.disclosure}`}
-                rel="noopener noreferrer"
-                target="_blank"
-                title={this.state.disclosureTitle}
-              >
-                Mandatory-Disclosure
-              </a>
+              <Link className="nav-link  text-light" title="Students Corner" to="/student/login">
+                <i class="fas fa-users"></i> Students Corner
+              </Link>
             </li>
           </ul>
         </div>

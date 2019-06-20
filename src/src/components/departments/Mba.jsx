@@ -197,7 +197,7 @@ export default class Mba extends Component {
       <div className="container-fluid">
         <div className="row">
           <div className="col text-center font-weight-bold text-primary h3-responsive">
-            Student Activities
+            Student Achievements
             <hr />
           </div>
         </div>
@@ -359,7 +359,7 @@ export default class Mba extends Component {
                 this.setState({ tab: "studentactivity" });
               }}
             >
-              Student Activities
+              Student Achievements
             </li>
             <li
               className="h5-responsive"

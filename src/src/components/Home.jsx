@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 
 
 import { Loader, Footer, FirstSection, constants } from '../components';
+import axios from 'axios';
 
 const baseUrl = constants.baseUrl;;
 
@@ -13,16 +14,28 @@ export default class Home extends Component {
   constructor(props) {
     super(props)
     this.state = {
+      disclosure: "",
+      disclosureTitle: "",
       isLoading: true
-    }
+    };
   }
 
   componentDidMount() {
 
-    setTimeout(() => {
       this.setState({ isLoading: false });
-    }, 500)
+      this.fetchDisclosureLink();
+  }
 
+  fetchDisclosureLink() {
+    axios
+    .get(`${constants.baseUrl}/api/disclosure.php`)
+    .then(data => {
+      this.setState({
+        disclosure: data.data[0][1],
+        disclosureTitle: data.data[0][2]
+      });
+    })
+    .catch(err => console.error(err));
   }
 
 
@@ -260,10 +273,23 @@ export default class Home extends Component {
                   </div>
                 </div>
               </div>
-              <div className="col-12 mb-5">
+              <div className="col-12">
                 <hr className="font-weight-bold text-danger" />
               </div>
 
+            </div>
+            <div className="row">
+              <div className="col text-center p-3">
+              <a
+                className="h4-responsive btn btn-outline-danger"
+                href={`${constants.baseUrl}${this.state.disclosure}`}
+                rel="noopener noreferrer"
+                target="_blank"
+                title={this.state.disclosureTitle}
+              >
+                Mandatory-Disclosure
+              </a>
+              </div>
             </div>
 
             <Footer />

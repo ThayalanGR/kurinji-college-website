@@ -169,7 +169,7 @@ body {
 .base-text {
     color: #1F2073;
     font-weight: bolder;
-    font-size: 28px;
+    font-size: 26px;
     -webkit-text-stroke: 0.3px white;
 }
 
@@ -194,16 +194,8 @@ body {
 
 
 /* map styling */
-/* .mapouter {
-    position: relative;
-    text-align: right;
-    height: 500px;
-    width: 600px;
-} */
 
 .gmap_canvas {
-    /* overflow: hidden; */
-    /* background: none !important; */
     height: 500px;
     width: 100%;
 }

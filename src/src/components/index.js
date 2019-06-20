@@ -29,6 +29,14 @@ import Admin from "./admin/Admin";
 import Login from "./admin/Login";
 import Dashboard from "./admin/Dashboard";
 
+// student corner
+import StudentLogin from "./studentcorner/StudentLogin";
+import StudentRegister from './studentcorner/StudentRegister';
+import Student from "./studentcorner/Student";
+import StaffLogin from "./studentcorner/StaffLogin";
+import StaffRegister from './studentcorner/StaffRegister';
+import Staff from "./studentcorner/Staff";
+
 
 
 export {
@@ -55,6 +63,12 @@ export {
     Mecse,
     Engdesign,
     Mba,
-    Hands
-    
+    Hands,
+    StudentLogin,
+    StudentRegister,
+    Student,
+    StaffLogin,
+    StaffRegister,
+    Staff,
+
 }

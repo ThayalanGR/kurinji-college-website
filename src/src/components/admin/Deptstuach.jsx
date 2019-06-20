@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
-import { constants } from "../../components";
+import { constants } from "..";
 const baseUrl = constants.baseUrl;
 
 export default class Deptstuact extends Component {
@@ -136,7 +136,7 @@ export default class Deptstuact extends Component {
       <div className="container-fluid p-2">
         <div className="row mtspace ">
           <div className="col text-center text-danger h5">
-            Department Wise Student Activities Upload Section
+            Department Wise Student Achievements Upload Section
             <hr />
           </div>
         </div>

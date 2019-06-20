@@ -20,16 +20,22 @@ export default function Footer() {
                   <Link className="nav-link  text-light footer-quick-links" to="/historyofcollege">About Us</Link>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link  text-light footer-quick-links" to="/courses">Courses</Link>
+                  <Link className="nav-link  text-light footer-quick-links" to="/chairmanmessage">Chairman'S Message</Link>
+                </li>
+                <li className="nav-item">
+                  <Link className="nav-link  text-light footer-quick-links" to="/principalmessage">Principal'S Message</Link>
+                </li>
+                <li className="nav-item">
+                  <Link className="nav-link  text-light footer-quick-links" to="/mech">Courses</Link>
                 </li>
                 <li className="nav-item">
                   <Link className="nav-link  text-light footer-quick-links" to="/infrastructure">Infrastructure</Link>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link  text-light footer-quick-links" to="/placement">Gallery</Link>
+                  <Link className="nav-link  text-light footer-quick-links" to="/gallery">Gallery</Link>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link  text-light footer-quick-links" to="/alumini">Alumini</Link>
+                  <Link className="nav-link  text-light footer-quick-links" to="/alumni">Alumini</Link>
                 </li>
                 <li className="nav-item">
                   <Link className="nav-link  text-light footer-quick-links" to="/contact">Contact Us</Link>

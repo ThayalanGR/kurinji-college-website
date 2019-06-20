@@ -9,7 +9,7 @@ export default class Disclosure extends Component {
     super(props);
     this.state = {
       disclosureFile: null,
-      disclosureFileName: "choose an Image..",
+      disclosureFileName: "choose a pdf..",
       existingDisclosure: []
     };
     this.addNewDisclosureFile = this.addNewDisclosureFile.bind(this);
