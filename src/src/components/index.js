@@ -32,6 +32,7 @@ import Dashboard from "./admin/Dashboard";
 // student corner
 import Student from "./studentcorner/Student";
 import Staff from "./studentcorner/Staff";
+import Forgotpassword from './studentcorner/Forgotpassword';
 
 
 
@@ -62,4 +63,5 @@ export {
     Hands,
     Student,
     Staff,
+    Forgotpassword
 }

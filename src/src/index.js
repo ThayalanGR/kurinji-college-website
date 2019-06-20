@@ -2,7 +2,7 @@ import React, { Fragment } from 'react';
 
 import ReactDOM from 'react-dom';
 
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 import { toast } from 'react-toastify';
 
 
@@ -12,7 +12,7 @@ import "react-image-gallery/styles/css/image-gallery.css";
 import "./css/dept.css";
 
 
-import { Home, Contact, Admin, Infrastructure, Gallery, Alumni, Navbar, Historyofcollege, Principal, Chairman, Mech, Eee, Ece, Cse, Mecse, Engdesign, Mba, Hands, Student, Staff } from './components';
+import { Home, Contact, Admin, Infrastructure, Gallery, Alumni, Navbar, Historyofcollege, Principal, Chairman, Mech, Eee, Ece, Cse, Mecse, Engdesign, Mba, Hands, Student, Staff, Forgotpassword } from './components';
 
 
 toast.configure();
@@ -42,6 +42,9 @@ ReactDOM.render(
                 <Route exact path="/admin" component={Admin} />
                 <Route exact path="/student" component={Student} />
                 <Route exact path="/staff" component={Staff} />
+                <Route exact path="/forgotpasswordhandler/:id/:hash" component={Forgotpassword} />
+                {/* <Route path='/404' component={My404Component} /> */}
+                <Redirect from='*' to='/' />
             </Switch>
         </Fragment>
     </BrowserRouter>, document.getElementById('root'));

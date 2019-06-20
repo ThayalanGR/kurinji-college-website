@@ -54,8 +54,6 @@ export default class FirstSection extends Component {
       .get(`${baseUrl}/api/homenews.php`)
       .then(data => {
         this.setState({ news: data.data })
-        console.log(data.data);
-
         if (!this.state.isNewsInitiated) {
           this.initiateNews()
           this.setState({ isNewsInitiated: true })
@@ -146,7 +144,7 @@ export default class FirstSection extends Component {
         this.fetchNews()
     }, 3000)
 
-    this.showNotification()
+    this.showNotification();
   }
 
   initiateCarousel() {
@@ -177,7 +175,7 @@ export default class FirstSection extends Component {
   initiateNews() {
     let newsString = <div className="d-flex">
       {this.state.news.map((item, key) => (
-        <div className="d-flex flex-column pr-4 mr-4" style={{ borderRight: `${key !== this.state.news.length - 1 ? "2px solid #FCBA35" : ''}` }}>
+        <div key={key} className="d-flex flex-column pr-4 mr-4" style={{ borderRight: `${key !== this.state.news.length - 1 ? "2px solid #FCBA35" : ''}` }}>
           <div style={{ fontSize: "18px" }} className="text-white font-weight-bold ">{item[1]}</div>
           <div style={{ fontSize: "15px" }} className="text-white font-weight-normal text-warning">Posted on:- <span className=" ml-1 text-light f">{new Date(item[2]).toDateString()}</span></div>
         </div>
