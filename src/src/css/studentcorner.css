@@ -1,0 +1,18 @@
+.student-corner-container{
+    background: white;
+    margin-top: 120px;
+    padding: 10px;
+
+}
+
+.student-corner-header {
+    width: 100vw;
+    height: auto;
+    background: #FF3C00;
+    min-height: 60px;
+    color: white;
+    position: fixed;
+    top: 60px;
+    padding: 0px 30px 0px 10px ;
+    
+}

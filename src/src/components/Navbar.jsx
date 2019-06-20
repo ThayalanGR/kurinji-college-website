@@ -10,10 +10,9 @@ export default class Navbar extends Component {
           className="navbar-brand text-light animated pulse infinite slow d-flex justify-content-center align-items-center"
           to="/"
         >
-          {" "}
           <img
             src="./favicon.png"
-            className="rounded-circle shadow-lg mr-2 "
+            className="rounded-circle bg-transparent mr-2 "
             alt=""
             height="50"
           />
@@ -145,7 +144,7 @@ export default class Navbar extends Component {
               </Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link  text-light" title="Students Corner" to="/student/login">
+              <Link className="nav-link  text-light" title="Students Corner" to="/student">
                 <i class="fas fa-users"></i> Students Corner
               </Link>
             </li>

@@ -12,7 +12,7 @@ import "react-image-gallery/styles/css/image-gallery.css";
 import "./css/dept.css";
 
 
-import { Home, Contact, Admin, Infrastructure, Gallery, Alumni, Navbar, Historyofcollege, Principal, Chairman, Mech, Eee, Ece, Cse, Mecse, Engdesign, Mba, Hands, StudentLogin, StudentRegister, Student, StaffLogin, Staff } from './components';
+import { Home, Contact, Admin, Infrastructure, Gallery, Alumni, Navbar, Historyofcollege, Principal, Chairman, Mech, Eee, Ece, Cse, Mecse, Engdesign, Mba, Hands, Student, Staff } from './components';
 
 
 toast.configure();
@@ -40,10 +40,7 @@ ReactDOM.render(
                 <Route exact path="/principalmessage" component={Principal} />
                 <Route exact path="/chairmanmessage" component={Chairman} />
                 <Route exact path="/admin" component={Admin} />
-                <Route exact path="/student/login" component={StudentLogin} />
-                <Route exact path="/student/register" component={StudentRegister} />
                 <Route exact path="/student" component={Student} />
-                <Route exact path="/staff/login" component={StaffLogin} />
                 <Route exact path="/staff" component={Staff} />
             </Switch>
         </Fragment>
