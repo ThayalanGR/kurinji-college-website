@@ -6,15 +6,20 @@ export default class Staff extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      staffRegisterDetails: [],
       staffName: "",
       staffId: "",
       department: "",
       passwordOne: "",
       passwordTwo: "",
       mailId: "",
-      mobileNumber: ""
+      mobileNumber: "",
+      staffLoginDetails: [],
+      staffLoginId: "",
+      staffLoginPassword: ""
     };
     this.validatingStaffDatails = this.validatingStaffDatails.bind(this);
+    this.validatingStaffLoginDatails = this.validatingStaffLoginDatails.bind(this);
   }
 
   // Validating and Adding the Registration_Form_Data
@@ -35,14 +40,13 @@ export default class Staff extends Component {
         autoClose: 3000,
         hideProgressBar: false
       });
-    } 
-    else if(this.state.staffId === ""){
+    } else if (this.state.staffId === "") {
       toast.error('Fill the "staffId" field', {
         position: "bottom-right",
         autoClose: 3000,
         hideProgressBar: false
       });
-    }else if (this.state.staffId.substring(0, 3) !== "811") {
+    } else if (this.state.staffId.substring(0, 3) !== "811") {
       toast.error("Id starts with '811' ", {
         position: "bottom-right",
         autoClose: 3000,
@@ -60,8 +64,7 @@ export default class Staff extends Component {
         autoClose: 3000,
         hideProgressBar: false
       });
-    } 
-    else if (this.state.department === "") {
+    } else if (this.state.department === "") {
       toast.error('Choose the "Depertment" ', {
         position: "bottom-right",
         autoClose: 3000,
@@ -73,7 +76,7 @@ export default class Staff extends Component {
         autoClose: 3000,
         hideProgressBar: false
       });
-    }else if (this.state.passwordTwo === "") {
+    } else if (this.state.passwordTwo === "") {
       toast.error('Fill the "Re-enter Password" field ', {
         position: "bottom-right",
         autoClose: 3000,
@@ -91,54 +94,195 @@ export default class Staff extends Component {
         autoClose: 3000,
         hideProgressBar: false
       });
+    }else if (this.state.mobileNumber === "") {
+      toast.error("Enter Your Mobile Number", {
+        position: "bottom-right",
+        autoClose: 3000,
+        hideProgressBar: false
+      });
     } else if (this.state.mobileNumber.length !== 10) {
       toast.error("Mobile Number length should be 10", {
         position: "bottom-right",
         autoClose: 3000,
         hideProgressBar: false
       });
+    } else {
+      const name = this.state.staffName;
+      const sid = this.state.staffId;
+      const dept = this.state.department;
+      const password = this.state.passwordOne;
+      const email = this.state.mailId;
+      const mobile = this.state.mobileNumber;
+      this.setState({
+        staffId: "",
+        staffName: "",
+        department: "",
+        passwordOne: "",
+        passwordTwo: "",
+        mailId: "",
+        mobileNumber: ""
+      });
+      const temp = this.state.staffRegisterDetails;
+      temp.push({
+        staffId: sid,
+        staffName: name,
+        department: dept,
+        passwordOne: password,
+        mailId: email,
+        mobileNumber: mobile
+      });
+      this.setState({ staffRegisterDetails: temp });
+      console.log("Staff's Registration Details", this.state.staffRegisterDetails);
+      
+    }
+  }
+
+  validatingStaffLoginDatails() {
+    if (
+      this.state.staffLoginId === "" &&
+      this.state.staffLoginPassword === ""
+    ) {
+      toast.error("Fill all the Fields ", {
+        position: "bottom-right",
+        autoClose: 3000,
+        hideProgressBar: false
+      });
+    } else if (this.state.staffLoginId === "") {
+      toast.error("Enter Staff Id ", {
+        position: "bottom-right",
+        autoClose: 3000,
+        hideProgressBar: false
+      });
+    } else if (this.state.staffLoginPassword === "") {
+      toast.error("Enter Password ", {
+        position: "bottom-right",
+        autoClose: 3000,
+        hideProgressBar: false
+      });
+    }else{
+      const loginId = this.state.staffLoginId;
+      const loginPassword = this.state.staffLoginPassword;
+      const tempArr = this.state.staffLoginDetails;
+      tempArr.push({ staffLoginId: loginId, staffLoginPassword: loginPassword});
+      this.setState({ staffLoginDetails: tempArr });
+      console.log("Staff's Current Login Details", this.state.staffLoginDetails)
     }
   }
 
   getStaffLoginBody() {
     return (
-      <form className="container" style={{ width: "450px" }}>
+      <form
+        className="container shadow  p-4 mt-5"
+        style={{ width: "450px" }}
+      >
         <p
-          className="h3-responsive mb-4 mt-5 text-center"
+          className="h4-responsive mb-4 mt-2 text-center"
           style={{ color: "#FF3547" }}
         >
-          Students Corner - Staff Registration
+          Students Corner - Staff Login
         </p>
         <div>
-          {/* <span className="text-danger font-small">length should be ' 7 ' and it should starts with ' 811 ' *</span> */}
+          <p className="h6-responsive text-danger mb-1 mt-4">Staff Id</p>
           <input
             type="number"
             className="form-control mb-4"
             placeholder="Staff Id"
             id="staffid"
-            pattern="^[811]\d{4}$]"
+            onChange={e => {
+              this.setState({ staffLoginId: e.target.value });
+            }}
+          />
+        </div>
+        <div>
+          <p className="h6-responsive text-danger mb-1">Password</p>
+          <input
+            type="password"
+            id="pass"
+            className="form-control mb-4"
+            placeholder="Password"
+            required
+            onChange={e => {
+              this.setState({ staffLoginPassword: e.target.value });
+            }}
+          />
+        </div>
+        <div className="row mb-4">
+          <p className="col text-left text-danger">
+            <a href="">Forgot password?</a>
+          </p>
+          <p className="col text-right text-danger">
+            {" "}
+            Not a member?&nbsp;&nbsp;
+            <a href="#">Register</a>
+          </p>
+          {/* <p>
+            
+          </p> */}
+        </div>
+        <div className="text-center">
+          <button
+            className="btn btn-sm btn-danger"
+            onClick={e => {
+              e.preventDefault();
+              this.validatingStaffLoginDatails();
+            }}
+          >
+            Login
+          </button>
+          <div>
+            <p className="text-center" />
+          </div>
+        </div>
+      </form>
+    );
+  }
+
+  getStaffRegisterBody() {
+    return (
+      <form
+        className="container shadow  p-4 mt-5"
+        style={{ width: "450px" }}
+      >
+        <p
+          className="h4-responsive mb-4 mt-2 text-center"
+          style={{ color: "#FF3547" }}
+        >
+          Students Corner - Staff Registration
+        </p>
+        <div>
+          <p className="h6-responsive text-danger mb-1 mt-4">Staff Id</p>
+          <input
+            type="number"
+            className="form-control mb-4"
+            placeholder="Staff Id"
+            id="staffid"
+            value={this.state.staffId}
             onChange={e => {
               this.setState({ staffId: e.target.value });
             }}
           />
         </div>
         <div>
+          <p className="h6-responsive text-danger mb-1 mt-4">Name</p>
           <input
             type="text"
             id="staffName"
             className="form-control mb-4"
             placeholder="Name"
             required
+            value={this.state.staffName}
             onChange={e => {
               this.setState({ staffName: e.target.value });
             }}
           />
         </div>
         <div>
+          <p className="h6-responsive text-danger mb-1 mt-4">Department</p>
           <select
             name="department"
             class="form-control mb-4"
             required
+            value={this.state.department}
             onChange={e => {
               this.setState({ department: e.target.value });
             }}
@@ -155,49 +299,58 @@ export default class Staff extends Component {
           </select>
         </div>
         <div>
+          <p className="h6-responsive text-danger mb-1 mt-4">Password</p>
           <input
             type="password"
             id="pass"
             className="form-control mb-4"
             placeholder="Password"
             required
+            value={this.state.passwordOne}
             onChange={e => {
               this.setState({ passwordOne: e.target.value });
             }}
           />
         </div>
         <div>
+          <p className="h6-responsive text-danger mb-1 mt-4">
+            Re-Enter Password
+          </p>
           <input
             type="password"
             id="repass"
             className="form-control mb-4"
             placeholder="Re-enter Password"
             required
+            value={this.state.passwordTwo}
             onChange={e => {
               this.setState({ passwordTwo: e.target.value });
             }}
           />
         </div>
         <div>
+          <p className="h6-responsive text-danger mb-1 mt-4">Email</p>
           <input
             type="email"
             id="mailid"
             className="form-control mb-4"
             placeholder="E-mail"
             required
+            value={this.state.mailId}
             onChange={e => {
               this.setState({ mailId: e.target.value });
             }}
           />
         </div>
         <div>
+          <p className="h6-responsive text-danger mb-1 mt-4">Mobile Number</p>
           <input
             type="number"
             id="mobile"
             className="form-control mb-4"
             placeholder="Mobile Number"
-            pattern="[^[789]\d{9}$]"
             required
+            value={this.state.mobileNumber}
             onChange={e => {
               this.setState({ mobileNumber: e.target.value });
             }}
@@ -211,7 +364,7 @@ export default class Staff extends Component {
               this.validatingStaffDatails();
             }}
           >
-            Submit
+            Sign Up
           </button>
         </div>
       </form>
@@ -261,7 +414,8 @@ export default class Staff extends Component {
           </div>
         </nav>
         <div className="student-corner-container">
-          {this.getStaffLoginBody()}
+          {this.getStaffRegisterBody()}
+          {/* {this.getStaffLoginBody()} */}
         </div>
       </Fragment>
     );
