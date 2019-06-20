@@ -5,65 +5,60 @@ header("Access-Control-Allow-Headers: *");
 header("Content-Type: application/json; charset=UTF-8");
 require('./config/dbconfig.php');
 
-
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-
-    if($_POST['method'] === 'post') {
-                $name = $_POST["name"];
-        $designation = $_POST["designation"];
-        $priority = $_POST["priority"];
+    if ($_POST['method'] === 'register') {
+        $staffid = $_POST["staffid"];
+        $staffname = $_POST["staffname"];
+        $email = $_POST["email"];
+        $password = md5($_POST["password"]);
+        $forgotpassword = md5(uniqid(rand()));
+        $mobile = $_POST["mobile"];
         $department = $_POST["department"];
-        $about = $_POST["about"];
     
-        if ($name) {
-            $sql = "INSERT INTO `tbl_staffs` (`name`, `designation`, `priority`, `department`, `about`) VALUES ('".$name."','".$designation."', '".$priority."', '".$department."', '".$about."')";
-            mysqli_query($DB, $sql);
-            echo json_encode($fileName);
+        $subQuery = "SELECT * from `tbl_stucorstaffs` WHERE staffid=".$staffid;
+        $isExist = mysqli_query($DB, $subQuery);
+        if (mysqli_num_rows($isExist) === 0) {
+            $sql = "INSERT INTO `tbl_stucorstaffs` (`staffid`, `staffname`, `email`, `password`, `forgotpassword`, `mobile`, `department`) VALUES (".$staffid.",'".$staffname."', '".$email."', '".$password."', '".$forgotpassword."', ".$mobile.", '".$department."')";
+            $result = mysqli_query($DB, $sql);
+            if ($result) {
+                echo json_encode(array("status" => true));
+            } else {
+                echo json_encode(array("status" => false));
+            }
         } else {
-            echo "move_uploaded_file function failed";
+            echo json_encode(array("status" => false, "message" => "account already exit! try resetting your password"));
         }
-
-    } else if($_POST['method'] === 'delete') {
-        $id = $_POST['id'];
-        $query = "DELETE FROM tbl_staffs WHERE sid=".$id;
-    
-        if(mysqli_query($DB, $query)) {
-            echo json_encode(array("response"=> true));
+    } elseif ($_POST['method'] === 'login') {
+        $staffid = $_POST['staffid'];
+        $password = md5($_POST['password']);
+        $query = "SELECT `id`, `staffName`, `department`,`active` FROM tbl_stucorstaffs WHERE staffid=".$staffid." AND password='".$password."'";
+        $row = mysqli_query($DB, $query);
+        if (mysqli_num_rows($row) > 0) {
+            $staffDetails = mysqli_fetch_array($row);
+            if ($staffDetails['active'] === "1") {
+                echo json_encode(array("status"=> true, "staffDetails" => $staffDetails));
+            } else {
+                echo json_encode(array("status"=> false, "message" => "your account is locked , contact administrator!"));
+            }
         } else {
-            echo json_encode(array("response"=> false));
+            echo json_encode(array("status"=> false, "message" => "username or password is wrong!"));
         }
-    
     }
 }
 
 if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-    
-    if(isset($_GET['department'])) {
+    if (isset($_GET['department'])) {
         $dept = $_GET['department'];
-        $queryString = "SELECT * from tbl_staffs WHERE department = '".$dept."' ORDER BY priority ASC";   
+        $queryString = "SELECT * from tbl_stucorstaffs WHERE department = '".$dept."'";
     
         $row = mysqli_query($DB, $queryString);
     
-        echo json_encode(mysqli_fetch_all($row)); 
+        echo json_encode(mysqli_fetch_all($row));
+    } else {
+        $queryString = "SELECT * from tbl_stucorstaffs";
+    
+        $row = mysqli_query($DB, $queryString);
+    
+        echo json_encode(mysqli_fetch_all($row));
     }
-    else if(isset($_GET['priority'])) {
-        $prior = $_GET['priority'];
-        $staffid = $_GET['staffId'];
-        $queryString = "UPDATE tbl_staffs SET priority = ".$prior." WHERE sid = ".$staffid;   
-        $row = mysqli_query($DB, $queryString);
-    
-        echo json_encode(Array("status" => true)); 
-
-    } 
-    else {
-        $queryString = "SELECT * from tbl_staffs ORDER BY priority ASC";   
-    
-        $row = mysqli_query($DB, $queryString);
-    
-        echo json_encode(mysqli_fetch_all($row)); 
-        
-    }
-
 }
-
-
