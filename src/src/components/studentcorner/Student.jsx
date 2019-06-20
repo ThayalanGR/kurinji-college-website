@@ -4,81 +4,86 @@ import "../../css/studentcorner.css";
 import { toast } from "react-toastify";
 
 export default class Student extends Component {
-<<<<<<< HEAD
   constructor(props) {
     super(props);
     this.state = {
+      studentLogin:{
+        studentLoginId: "",
+        studentLoginPassword: ""
+      },
+      studentRegister:{
+        studentName: "",
+        studentId: "",
+        department: "",
+        passwordOne: "",
+        passwordTwo: "",
+        mailId: "",
+        mobileNumber: ""
+      },
       studentRegisterDetails: [],
-      studentName: "",
-      studentId: "",
-      department: "",
-      passwordOne: "",
-      passwordTwo: "",
-      mailId: "",
-      mobileNumber: "",
       studentLoginDetails: [],
-      studentLoginId: "",
-      studentLoginPassword: ""
     };
     this.validatingStudentDatails = this.validatingStudentDatails.bind(this);
-    this.validatingStudentLoginDatails = this.validatingStudentLoginDatails.bind(this);
+    this.validatingStudentLoginDatails = this.validatingStudentLoginDatails.bind(
+      this
+    );
   }
 
   // Validating and Adding the Registration_Form_Data
   validatingStudentDatails() {
-    let pass1 = this.state.passwordOne;
-    let pass2 = this.state.passwordTwo;
+    let pass1 = this.state.studentRegister.passwordOne;
+    let pass2 = this.state.studentRegister.passwordTwo;
     if (
-      this.state.studentId === "" &&
-      this.state.studentName === "" &&
-      this.state.department === "" &&
-      this.state.passwordOne === "" &&
-      this.state.passwordTwo === "" &&
-      this.state.mailId === "" &&
-      this.state.mobileNumber === ""
+      this.state.studentRegister.studentId === "" &&
+      this.state.studentRegister.studentName === "" &&
+      this.state.studentRegister.department === "" &&
+      this.state.studentRegister.passwordOne === "" &&
+      this.state.studentRegister.passwordTwo === "" &&
+      this.state.studentRegister.mailId === "" &&
+      this.state.studentRegister.mobileNumber === ""
     ) {
       toast.error("Fill all the Fields ", {
         position: "bottom-right",
         autoClose: 3000,
         hideProgressBar: false
       });
-    } else if (this.state.studentId === "") {
+    } else if (this.state.studentRegister.studentId === "") {
       toast.error('Fill the "studentId" field', {
         position: "bottom-right",
         autoClose: 3000,
         hideProgressBar: false
       });
-    } else if (this.state.studentId.substring(0, 3) !== "217") {
+    } else if (this.state.studentRegister.studentId.substring(0, 3) !== "217") {
       toast.error("Id starts with '217' ", {
         position: "bottom-right",
         autoClose: 3000,
         hideProgressBar: false
       });
-    } else if (this.state.studentId.length !== 6) {
+    } else if (this.state.studentRegister.studentId.length !== 6) {
       toast.error("Id length should be 6", {
         position: "bottom-right",
         autoClose: 3000,
         hideProgressBar: false
       });
-    } else if (this.state.studentName === "") {
+    } else if (this.state.studentRegister.studentName === "") {
       toast.error('Fill the "Name" field', {
         position: "bottom-right",
         autoClose: 3000,
         hideProgressBar: false
       });
-    } else if (this.state.department === "") {
+    } else if (this.state.studentRegister.department === "") {
       toast.error('Choose the "Depertment" ', {
         position: "bottom-right",
         autoClose: 3000,
         hideProgressBar: false
       });
-    } else if (this.state.passwordOne === "") {
+    } else if (this.state.studentRegister.passwordOne === "") {
       toast.error('Fill the "Password" field ', {
         position: "bottom-right",
         autoClose: 3000,
         hideProgressBar: false
       });
-    } else if (this.state.passwordTwo === "") {
+    } else if (this.state.studentRegister.passwordTwo === "") {
       toast.error('Fill the "Re-enter Password" field ', {
         position: "bottom-right",
         autoClose: 3000,
@@ -90,31 +95,31 @@ export default class Student extends Component {
         autoClose: 3000,
         hideProgressBar: false
       });
-    } else if (this.state.mailId === "") {
+    } else if (this.state.studentRegister.mailId === "") {
       toast.error("Enter Your Email Address", {
         position: "bottom-right",
         autoClose: 3000,
         hideProgressBar: false
       });
-    } else if (this.state.mobileNumber === "") {
-        toast.error("Enter Your Mobile Number", {
-          position: "bottom-right",
-          autoClose: 3000,
-          hideProgressBar: false
-        });
-      } else if (this.state.mobileNumber.length !== 10) {
+    } else if (this.state.studentRegister.mobileNumber === "") {
+      toast.error("Enter Your Mobile Number", {
+        position: "bottom-right",
+        autoClose: 3000,
+        hideProgressBar: false
+      });
+    } else if (this.state.studentRegister.mobileNumber.length !== 10) {
       toast.error("Mobile Number length should be 10", {
         position: "bottom-right",
         autoClose: 3000,
         hideProgressBar: false
       });
     } else {
-      const name = this.state.studentName;
-      const sid = this.state.studentId;
-      const dept = this.state.department;
-      const password = this.state.passwordOne;
-      const email = this.state.mailId;
-      const mobile = this.state.mobileNumber;
+      const name = this.state.studentRegister.studentName;
+      const sid = this.state.studentRegister.studentId;
+      const dept = this.state.studentRegister.department;
+      const password = this.state.studentRegister.passwordOne;
+      const email = this.state.studentRegister.mailId;
+      const mobile = this.state.studentRegister.mobileNumber;
       this.setState({
         studentId: "",
         studentName: "",
@@ -134,36 +139,38 @@ export default class Student extends Component {
         mobileNumber: mobile
       });
       this.setState({ studentRegisterDetails: temp });
-      console.log("current Registration Detail", this.state.studentRegisterDetails);
-      
+      console.log(
+        "current Registration Detail",
+        this.state.studentRegisterDetails
+      );
     }
   }
 
   validatingStudentLoginDatails() {
     if (
-      this.state.studentLoginId === "" &&
-      this.state.studentLoginPassword === ""
+      this.state.studentLogin.studentLoginId === "" &&
+      this.state.studentLogin.studentLoginPassword === ""
     ) {
       toast.error("Fill all the Fields ", {
         position: "bottom-right",
         autoClose: 3000,
         hideProgressBar: false
       });
-    } else if (this.state.studentLoginId === "") {
+    } else if (this.state.studentLogin.studentLoginId === "") {
       toast.error("Enter Student Id ", {
         position: "bottom-right",
         autoClose: 3000,
         hideProgressBar: false
       });
-    } else if (this.state.studentLoginPassword === "") {
+    } else if (this.state.studentLogin.studentLoginPassword === "") {
       toast.error("Enter Password ", {
         position: "bottom-right",
         autoClose: 3000,
         hideProgressBar: false
       });
     } else {
-      const loginId = this.state.studentLoginId;
-      const loginPassword = this.state.studentLoginPassword;
+      const loginId = this.state.studentLogin.studentLoginId;
+      const loginPassword = this.state.studentLogin.studentLoginPassword;
       const tempArr = this.state.studentLoginDetails;
       tempArr.push({
         studentLoginId: loginId,
@@ -171,48 +178,12 @@ export default class Student extends Component {
       });
       this.setState({ studentLoginDetails: tempArr });
       console.log("current Login Detail", this.state.studentLoginDetails);
-      
-=======
-    render() {
-        return (
-            <Fragment>
-                <nav className="navbar navbar-expand-lg shadow-sm student-corner-header">
-                    <Link className="navbar-brand text-white ml-2" to="/home" >  <i className="fas fa-users"></i>  Students Corner</Link>
-                    <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-                        <i className="fas fa-bars"></i>
-                    </button>
-                    <div className="collapse navbar-collapse" id="navbarText">
-                        <ul className="navbar-nav mr-auto">
-                            <li className="nav-item active">
-                                <Link className="nav-link" to="/">Home <span className="sr-only">(current)</span></Link>
-                            </li>
-                            <li className="nav-item">
-                                <Link className="nav-link" to="/">Features</Link>
-                            </li>
-                            <li className="nav-item">
-                                <Link className="nav-link" to="/">Pricing</Link>
-                            </li>
-                        </ul>
-                        <span className="navbar-text">
-                            Navbar text with an inline element
-                         </span>
-                    </div>
-                </nav>
-                <div className="student-corner-container">
-                    content goes here
-                </div>
-            </Fragment>
-        )
->>>>>>> 3d924ab867e05457749dc6949ae8e7152f38999a
     }
   }
 
   getStudentRegisterBody() {
     return (
-      <form
-        className="container shadow p-4 mt-5"
-        style={{ width: "450px" }}
-      >
+      <form className="container shadow p-4 mt-5" style={{ width: "450px" }}>
         <p
           className="h4-responsive mb-4 mt-2 text-center"
           style={{ color: "#FF3547" }}
@@ -226,7 +197,7 @@ export default class Student extends Component {
             className="form-control mb-4"
             placeholder="Student Id"
             id="studentid"
-            value={this.state.studentId}
+            value={this.state.studentRegister.studentId}
             onChange={e => {
               this.setState({ studentId: e.target.value });
             }}
@@ -240,7 +211,7 @@ export default class Student extends Component {
             className="form-control mb-4"
             placeholder="Name"
             required
-            value={this.state.studentName}
+            value={this.state.studentRegister.studentName}
             onChange={e => {
               this.setState({ studentName: e.target.value });
             }}
@@ -250,9 +221,9 @@ export default class Student extends Component {
           <p className="h6-responsive text-danger mb-1 mt-4">Department</p>
           <select
             name="department"
-            class="form-control mb-4"
+            className="form-control mb-4"
             required
-            value={this.state.department}
+            value={this.state.studentRegister.department}
             onChange={e => {
               this.setState({ department: e.target.value });
             }}
@@ -276,7 +247,7 @@ export default class Student extends Component {
             className="form-control mb-4"
             placeholder="Password"
             required
-            value={this.state.passwordOne}
+            value={this.state.studentRegister.passwordOne}
             onChange={e => {
               this.setState({ passwordOne: e.target.value });
             }}
@@ -292,7 +263,7 @@ export default class Student extends Component {
             className="form-control mb-4"
             placeholder="Re-enter Password"
             required
-            value={this.state.passwordTwo}
+            value={this.state.studentRegister.passwordTwo}
             onChange={e => {
               this.setState({ passwordTwo: e.target.value });
             }}
@@ -306,7 +277,7 @@ export default class Student extends Component {
             className="form-control mb-4"
             placeholder="E-mail"
             required
-            value={this.state.mailId}
+            value={this.state.studentRegister.mailId}
             onChange={e => {
               this.setState({ mailId: e.target.value });
             }}
@@ -320,7 +291,7 @@ export default class Student extends Component {
             className="form-control mb-4"
             placeholder="Mobile Number"
             required
-            value={this.state.mobileNumber}
+            value={this.state.studentRegister.mobileNumber}
             onChange={e => {
               this.setState({ mobileNumber: e.target.value });
             }}
@@ -377,16 +348,13 @@ export default class Student extends Component {
         </div>
         <div className="row mb-4">
           <p className="col text-left text-danger">
-            <a href="">Forgot password?</a>
+            <button onClick={e => {} } className="btn btn-link">Forgot password?</button>
           </p>
           <p className="col text-right text-danger">
             {" "}
             Not a member?&nbsp;&nbsp;
-            <a href="#">Register</a>
+            <button onClick={e => {} } className="btn btn-link">Register</button>
           </p>
-          {/* <p>
-              
-            </p> */}
         </div>
         <div className="text-center">
           <button
@@ -411,7 +379,7 @@ export default class Student extends Component {
         <nav className="navbar navbar-expand-lg shadow-sm student-corner-header">
           <Link className="navbar-brand text-white ml-2" to="/home">
             {" "}
-            <i class="fas fa-users" /> Students Corner
+            <i className="fas fa-users" /> Students Corner
           </Link>
           <button
             className="navbar-toggler"
@@ -448,8 +416,8 @@ export default class Student extends Component {
           </div>
         </nav>
         <div className="student-corner-container">
-          {this.getStudentRegisterBody()}
-          {/* {this.getStudentLoginBody()} */}
+          {/* {this.getStudentRegisterBody()} */}
+          {this.getStudentLoginBody()}
         </div>
       </Fragment>
     );
