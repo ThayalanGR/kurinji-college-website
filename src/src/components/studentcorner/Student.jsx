@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from "react";
-import { Link, withRouter } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 import "../../css/studentcorner.css";
 import { toast } from "react-toastify";
 import axios from "axios";
@@ -29,7 +29,8 @@ class Student extends Component {
       memory: "login",
       studentName: '',
       studentDepartment: '',
-      studentId: ''
+      studentId: '',
+      dashboardView: "upload"
     };
     this.validatingStudentRegistrationDetails = this.validatingStudentRegistrationDetails.bind(this);
     this.validatingStudentLoginDatails = this.validatingStudentLoginDatails.bind(this);
@@ -503,15 +504,6 @@ class Student extends Component {
     );
   }
 
-  getStudentDashboardBody() {
-    return (
-      <div>
-        dashboard
-      </div>
-    )
-  }
-
-
   getForgotPasswordBody() {
     return <form className="container shadow p-4 mt-5" style={{ width: "450px" }}
       onSubmit={e => {
@@ -582,13 +574,30 @@ class Student extends Component {
 
   }
 
+  getDashboardUploadBody() {
+    return <div>upload</div>
+  }
+
+  getDashboardDownloadBody() {
+    return <div>download</div>
+  }
+
+  getStudentDashboardBody() {
+    return (
+      <div>
+        {this.state.dashboardView === "upload" && this.getDashboardUploadBody()}
+        {this.state.dashboardView === "download" && this.getDashboardDownloadBody()}
+      </div>
+    )
+  }
+
   render() {
     return (
       <Fragment>
         <nav className="navbar navbar-expand-lg shadow-sm student-corner-header">
-          <Link className="navbar-brand text-white ml-2" to="/home">
+          <div className="navbar-brand text-white ml-2">
             <i className="fas fa-users" /> Students Corner
-          </Link>
+          </div>
           <button
             className="navbar-toggler"
             type="button"
@@ -602,27 +611,30 @@ class Student extends Component {
           </button>
           <div className="collapse navbar-collapse" id="navbarText">
             <ul className="navbar-nav mr-auto">
-              <li className="nav-item active">
-                <Link className="nav-link" to="/">
-                  Home <span className="sr-only">(current)</span>
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link className="nav-link" to="/">
-                  Features
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link className="nav-link" to="/">
-                  Pricing
-                </Link>
-              </li>
+              {this.state.isAuthenticated && <Fragment>
+                <li className="nav-item active">
+                  <button onClick={() => this.setState({ dashboardView: "upload" })} className="nav-link btn btn-sm bg-transparent text-white">
+                    <span className="h6-responsive">Upload</span>
+                  </button>
+                </li>
+                <li className="nav-item">
+                  <button onClick={() => this.setState({ dashboardView: "download" })} className="nav-link btn btn-sm bg-transparent text-white">
+                    <span className="h6-responsive">Download</span>
+                  </button>
+                </li>
+              </Fragment>
+              }
             </ul>
             <span className="navbar-text">
               {!this.state.isAuthenticated ? <Fragment>
+
                 {!(this.state.swapLoginRegister === "register") && <button onClick={async () => { await this.setState({ swapLoginRegister: "register" }); this.swapHandler(); }} className="btn btn-sm btn-outline-light rounded text-white">Register</button>}
                 {!(this.state.swapLoginRegister === "login") && <button onClick={async () => { await this.setState({ swapLoginRegister: "login" }); this.swapHandler(); }} className="btn btn-sm btn-outline-light rounded text-white">Login</button>}
-              </Fragment> : <button onClick={() => { this.logOutHandler(); }} className="btn btn-sm btn-outline-light rounded text-white">Logout</button>}
+              </Fragment> : <Fragment>
+                  <span className="text-white mr-3 pt-3">Hello {this.state.studentName} !</span>
+                  <button onClick={() => { this.logOutHandler(); }} className="btn btn-sm btn-outline-light rounded text-white">Logout</button>
+                </Fragment>
+              }
             </span>
           </div>
         </nav>
