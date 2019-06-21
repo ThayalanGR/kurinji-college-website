@@ -40,20 +40,60 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         } else {
             echo json_encode(array("status"=> false, "message" => "something went wrong! try again later!"));
         }
+    } elseif ($_POST['method'] === 'filter') {
+        $sql="";
+        if ($_POST['filtertype'] === '1') {
+            // fetch all files (all dept, all staff, all semester)
+            $sql = "SELECT * FROM `tbl_stucorfiles`";
+        } elseif ($_POST['filtertype'] === '2') {
+            // (one dept, all staff, all semester)
+            $department = $_POST['department'];
+            $sql = "SELECT * FROM `tbl_stucorfiles` WHERE department='".$department."'";
+        } elseif ($_POST['filtertype'] === '3') {
+            // (all dept, one staff, all semester)
+            $staffid = $_POST['staffid'];
+            $sql = "SELECT * FROM `tbl_stucorfiles` WHERE staffid='".$staffid."'";
+        } elseif ($_POST['filtertype'] === '4') {
+            // (all dept, all staff, one semester)
+            $semester = $_POST['semester'];
+            $sql = "SELECT * FROM `tbl_stucorfiles` WHERE semester='".$semester."'";
+        } elseif ($_POST['filtertype'] === '5') {
+            // (one dept, one staff, all semester)
+            $department = $_POST['department'];
+            $staffid = $_POST['staffid'];
+            $sql = "SELECT * FROM `tbl_stucorfiles` WHERE department='".$department."' AND staffid='".$staffid."'";
+        } elseif ($_POST['filtertype'] === '6') {
+            // (one dept, all staff, one semester)
+            $department = $_POST['department'];
+            $semester = $_POST['semester'];
+            $sql = "SELECT * FROM `tbl_stucorfiles` WHERE department='".$department."' AND semester='".$semester."'";
+        } elseif ($_POST['filtertype'] === '7') {
+            // (all dept, one staff, one semester)
+            $staffid = $_POST['staffid'];
+            $semester = $_POST['semester'];
+            $sql = "SELECT * FROM `tbl_stucorfiles` WHERE staffid='".$staffid."' AND semester='".$semester."'";
+        } elseif ($_POST['filtertype'] === '8') {
+            // (all dept, one staff, one semester)
+            $staffid = $_POST['staffid'];
+            $semester = $_POST['semester'];
+            $sql = "SELECT * FROM `tbl_stucorfiles` WHERE staffid='".$staffid."' AND semester='".$semester."'";
+        } elseif ($_POST['filtertype'] === '9') {
+            // (one dept, one staff, one semester)
+            $department = $_POST['department'];
+            $staffid = $_POST['staffid'];
+            $semester = $_POST['semester'];
+            $sql = "SELECT * FROM `tbl_stucorfiles` WHERE department='".$department."' AND staffid='".$staffid."' AND semester='".$semester."'";
+        } elseif ($_POST['filtertype'] === '10') {
+            // (one dept, one staff, one semester)
+            $tag = $_POST['tag'];
+            $sql = "SELECT * FROM `tbl_stucorfiles` WHERE tag='".$tag."'";
+        }
+        $row = mysqli_query($DB, $sql);
+        if (mysqli_num_rows($row)) {
+            $result = mysqli_fetch_all($row);
+            echo json_encode(array("status" => true, "data" => $result));
+        } else {
+            echo json_encode(array("status" => false, "message" => "No Data found!"));
+        }
     }
-}
-
-
-// get all files
-// get files based on department
-// get files based on staffid
-// get files based on tagname
-// get files based on semester
-
-if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-    $queryString = "select * from tbl_stucorfiles order by id desc";
-
-    $row = mysqli_query($DB, $queryString);
-
-    echo json_encode(mysqli_fetch_all($row));
 }
