@@ -1,30 +1,33 @@
 import React, { Component, Fragment } from "react";
 import { toast } from "react-toastify";
+import { constants } from "../../components";
 import { Link } from "react-router-dom";
 
 export default class Staff extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      staffLogin:{
+      staffLogin: {
         staffLoginId: "",
         staffLoginPassword: ""
       },
-      staffRegister:{
+      staffRegister: {
         staffName: "",
         staffId: "",
         department: "",
         passwordOne: "",
         passwordTwo: "",
         mailId: "",
-        mobileNumber: "",
+        mobileNumber: ""
       },
+      staffsFilesUpload: {},
       staffRegisterDetails: [],
-      staffLoginDetails: [],
-      
+      staffLoginDetails: []
     };
     this.validatingStaffDatails = this.validatingStaffDatails.bind(this);
-    this.validatingStaffLoginDatails = this.validatingStaffLoginDatails.bind(this);
+    this.validatingStaffLoginDatails = this.validatingStaffLoginDatails.bind(
+      this
+    );
   }
 
   // Validating and Adding the Registration_Form_Data
@@ -99,7 +102,7 @@ export default class Staff extends Component {
         autoClose: 3000,
         hideProgressBar: false
       });
-    }else if (this.state.staffRegister.mobileNumber === "") {
+    } else if (this.state.staffRegister.mobileNumber === "") {
       toast.error("Enter Your Mobile Number", {
         position: "bottom-right",
         autoClose: 3000,
@@ -137,8 +140,10 @@ export default class Staff extends Component {
         mobileNumber: mobile
       });
       this.setState({ staffRegisterDetails: temp });
-      console.log("Staff's Registration Details", this.state.staffRegisterDetails);
-      
+      console.log(
+        "Staff's Registration Details",
+        this.state.staffRegisterDetails
+      );
     }
   }
 
@@ -164,87 +169,25 @@ export default class Staff extends Component {
         autoClose: 3000,
         hideProgressBar: false
       });
-    }else{
+    } else {
       const loginId = this.state.staffLogin.staffLoginId;
       const loginPassword = this.state.staffLogin.staffLoginPassword;
       const tempArr = this.state.staffLogin.staffLoginDetails;
-      tempArr.push({ staffLoginId: loginId, staffLoginPassword: loginPassword});
+      tempArr.push({
+        staffLoginId: loginId,
+        staffLoginPassword: loginPassword
+      });
       this.setState({ staffLoginDetails: tempArr });
-      console.log("Staff's Current Login Details", this.state.staffLoginDetails)
+      console.log(
+        "Staff's Current Login Details",
+        this.state.staffLoginDetails
+      );
     }
-  }
-
-  getStaffLoginBody() {
-    return (
-      <form
-        className="container shadow  p-4 mt-5"
-        style={{ width: "450px" }}
-      >
-        <p
-          className="h4-responsive mb-4 mt-2 text-center"
-          style={{ color: "#FF3547" }}
-        >
-          Students Corner - Staff Login
-        </p>
-        <div>
-          <p className="h6-responsive text-danger mb-1 mt-4">Staff Id</p>
-          <input
-            type="number"
-            className="form-control mb-4"
-            placeholder="Staff Id"
-            id="staffid"
-            onChange={e => {
-              this.setState({ staffLoginId: e.target.value });
-            }}
-          />
-        </div>
-        <div>
-          <p className="h6-responsive text-danger mb-1">Password</p>
-          <input
-            type="password"
-            id="pass"
-            className="form-control mb-4"
-            placeholder="Password"
-            required
-            onChange={e => {
-              this.setState({ staffLoginPassword: e.target.value });
-            }}
-          />
-        </div>
-        <div className="row mb-4">
-          <p className="col text-left text-danger">
-            <button onClick={e => {} } className="btn btn-link">Forgot password?</button>
-          </p>
-          <p className="col text-right text-danger">
-            {" "}
-            Not a member?&nbsp;&nbsp;
-            <button onClick={e => {} } className="btn btn-link">Register</button>
-          </p>
-        </div>
-        <div className="text-center">
-          <button
-            className="btn btn-sm btn-danger"
-            onClick={e => {
-              e.preventDefault();
-              this.validatingStaffLoginDatails();
-            }}
-          >
-            Login
-          </button>
-          <div>
-            <p className="text-center" />
-          </div>
-        </div>
-      </form>
-    );
   }
 
   getStaffRegisterBody() {
     return (
-      <form
-        className="container shadow  p-4 mt-5"
-        style={{ width: "450px" }}
-      >
+      <form className="container shadow  p-4 mt-5" style={{ width: "450px" }}>
         <p
           className="h4-responsive mb-4 mt-2 text-center"
           style={{ color: "#FF3547" }}
@@ -260,7 +203,9 @@ export default class Staff extends Component {
             id="staffid"
             value={this.state.staffRegister.staffId}
             onChange={e => {
-              this.setState({ staffId: e.target.value });
+              let temp = this.state.staffRegister;
+              temp.staffId = e.target.value;
+              this.setState({ staffId: temp });
             }}
           />
         </div>
@@ -274,7 +219,9 @@ export default class Staff extends Component {
             required
             value={this.state.staffRegister.staffName}
             onChange={e => {
-              this.setState({ staffName: e.target.value });
+              let temp = this.state.staffRegister;
+              temp.staffName = e.target.value;
+              this.setState({ staffName: temp });
             }}
           />
         </div>
@@ -286,7 +233,9 @@ export default class Staff extends Component {
             required
             value={this.state.staffRegister.department}
             onChange={e => {
-              this.setState({ department: e.target.value });
+              let temp = this.state.staffRegister;
+              temp.department = e.target.value;
+              this.setState({ department: temp });
             }}
           >
             <option value="">Choose Department</option>
@@ -310,7 +259,9 @@ export default class Staff extends Component {
             required
             value={this.state.staffRegister.passwordOne}
             onChange={e => {
-              this.setState({ passwordOne: e.target.value });
+              let temp = this.state.staffRegister;
+              temp.passwordOne = e.target.value;
+              this.setState({ passwordOne: temp });
             }}
           />
         </div>
@@ -326,7 +277,9 @@ export default class Staff extends Component {
             required
             value={this.state.staffRegister.passwordTwo}
             onChange={e => {
-              this.setState({ passwordTwo: e.target.value });
+              let temp = this.state.staffRegister;
+              temp.passwordTwo = e.target.value;
+              this.setState({ passwordTwo: temp });
             }}
           />
         </div>
@@ -340,7 +293,9 @@ export default class Staff extends Component {
             required
             value={this.state.staffRegister.mailId}
             onChange={e => {
-              this.setState({ mailId: e.target.value });
+              let temp = this.state.staffRegister;
+              temp.mailId = e.target.value;
+              this.setState({ mailId: temp });
             }}
           />
         </div>
@@ -354,7 +309,9 @@ export default class Staff extends Component {
             required
             value={this.state.staffRegister.mobileNumber}
             onChange={e => {
-              this.setState({ mobileNumber: e.target.value });
+              let temp = this.state.staffRegister;
+              temp.mobileNumber = e.target.value;
+              this.setState({ mobileNumber: temp });
             }}
           />
         </div>
@@ -370,6 +327,220 @@ export default class Staff extends Component {
           </button>
         </div>
       </form>
+    );
+  }
+
+  getStaffLoginBody() {
+    return (
+      <form className="container shadow p-4 mt-5" style={{ width: "450px" }}>
+        <div className="row">
+          <div
+            className="col h4-responsive mb-4 mt-2 text-center"
+            style={{ color: "#FF3547" }}
+          >
+            Students Corner - Staff Login
+          </div>
+        </div>
+        <div className="row">
+          <div className="col">
+            <p className="h6-responsive text-danger mb-1 mt-4">Staff Id</p>
+            <input
+              type="number"
+              className="form-control mb-4"
+              placeholder="Staff Id"
+              id="stafftid"
+              onChange={e => {
+                this.setState({ staffLoginId: e.target.value });
+              }}
+            />
+          </div>
+        </div>
+        <div className="row">
+          <div className="col">
+            <p className="h6-responsive text-danger mb-1">Password</p>
+            <input
+              type="password"
+              className="form-control mb-4"
+              placeholder="Password"
+              id="pass"
+              required
+              onChange={e => {
+                this.setState({ staffLoginPassword: e.target.value });
+              }}
+            />
+          </div>
+        </div>
+        <div className="row mb-4">
+          <div className="col text-left text-danger">
+            <button onClick={e => {}} className="bg-transparent text-primary">
+              Forgot password?
+            </button>
+          </div>
+          <div className="col text-right text-danger">
+            <span>Not a member?</span>
+            <button
+              onClick={e => {}}
+              className="bg-transparent text-primary ml-2"
+            >
+              {" "}
+              Register
+            </button>
+          </div>
+        </div>
+        <div className="row">
+          <div className="col text-center">
+            <button
+              className="btn btn-sm btn-danger"
+              onClick={e => {
+                e.preventDefault();
+                this.validatingStaffLoginDatails();
+              }}
+            >
+              Login
+            </button>
+          </div>
+        </div>
+      </form>
+    );
+  }
+
+  getStaffsFilesUploadBody() {
+    return (
+      <div className="container-fluid p-2">
+        <div className="row">
+          <div className="col text-center text-danger h5">
+            Upload Files
+            <hr />
+          </div>
+        </div>
+        <div className="row" style={{ maxWidth: "100vw" }}>
+          <div className="col-md-6 " style={{ width: "100%" }}>
+            <div className="text-center text-danger">
+              Upload new Files
+              <hr />
+            </div>
+
+            <div className="d-flex justify-content-center">
+              <form className="was-validated" style={{ width: "350px" }}>
+                <label htmlFor="validatedCustomFile">Department</label>
+                <div className="form-control">
+                  <select
+                    className="form-control"
+                    id="validatedCustomFile"
+                    accept="application/pdf/ppt/image/word"
+                    onChange={e => {
+                      this.setState({
+                        uploadFile: e.target.files[0],
+                        uploadFileName: e.target.files[0].name
+                      });
+                    }}
+                    required
+                  >
+                    <option value="">Choose Department</option>
+                    <option value="mech">Mech</option>
+                    <option value="eee">EEE</option>
+                    <option value="ece">ECE</option>
+                    <option value="cse">CSE</option>
+                    <option value="hands">H &amp; S</option>
+                    <option value="mecse">ME-CSE</option>
+                    <option value="engdesign">Eng-Design</option>
+                    <option value="mba">MBA</option>
+                  </select>
+                  <label
+                    className="custom-file-label"
+                    htmlFor="validatedCustomFile"
+                  >
+                    {this.state.uploadFileName}
+                  </label>
+                </div>
+                <label className="mt-3" htmlFor="validatedCustomFile">Upload File</label>
+                <div className="custom-file">
+                  <input
+                    type="file"
+                    className="custom-file-input form-control"
+                    id="validatedCustomFile"
+                    accept="application/pdf"
+                    onChange={e => {
+                      this.setState({
+                        uploadFile: e.target.files[0],
+                        uploadFileName: e.target.files[0].name
+                      });
+                    }}
+                    required
+                  />
+                  <label
+                    className="custom-file-label"
+                    htmlFor="validatedCustomFile"
+                  >
+                    {this.state.uploadFileName}
+                  </label>
+                  <div className="invalid-feedback">
+                    Please choose the file <br />
+                  </div>
+                </div>
+
+                <div className="mt-2 mb-3">
+                  <button
+                    className="text-white btn btn-sm btn-danger"
+                    name="submit"
+                    onClick={e => {
+                      e.preventDefault();
+                      this.addNewUploadFile(e);
+                    }}
+                  >
+                    Upload
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+          <div className="col-md-6">
+            <div className="text-center text-danger">
+              Existing Uploaded Files
+              <hr />
+            </div>
+
+            {/*<div className="p-1 container">
+              {this.state.staffsFilesUpload.map((item, index) => {
+                return (
+                  <div className="row" key={index}>
+                    <div className="col-md-4 text-center d-flex justify-content-center align-items-center">
+                      <a
+                        href={`${constants.baseUrl}${item[1]}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <i className="far fa-file-pdf fa-5x text-danger" />
+                      </a>
+                    </div>
+                    <div className="col-md-4">
+                      File Name : {item[2]}
+                      <br />
+                      <hr />
+                      <br />
+                      uploaded At: {item[3]}
+                    </div>
+                    <div className="col-3 text-center d-flex justify-content-center align-items-center">
+                      <button
+                        value={item[0]}
+                        onClick={e => {
+                          this.removeUploadedFile(e.target.value);
+                        }}
+                        className="btn btn-sm btn-danger text-white"
+                      >
+                        delete
+                      </button>
+                    </div>
+                    <div className="col-12">
+                      <hr />
+                    </div>
+                  </div>
+                );
+              })}
+            </div>*/}
+          </div>
+        </div>
+      </div>
     );
   }
 
@@ -417,7 +588,8 @@ export default class Staff extends Component {
         </nav>
         <div className="student-corner-container">
           {/* {this.getStaffRegisterBody()} */}
-          {this.getStaffLoginBody()}
+          {/* {this.getStaffLoginBody()} */}
+          {this.getStaffsFilesUploadBody()}
         </div>
       </Fragment>
     );
