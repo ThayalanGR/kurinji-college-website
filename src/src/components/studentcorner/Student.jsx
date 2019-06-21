@@ -192,13 +192,13 @@ class Student extends Component {
         hideProgressBar: false
       });
     } else if (this.state.studentRegister.studentId.substring(0, 3) !== "217") {
-      toast.error("Id starts with '217' ", {
+      toast.error("Invalid Student Id ", {
         position: "bottom-right",
         autoClose: 3000,
         hideProgressBar: false
       });
     } else if (this.state.studentRegister.studentId.length !== 6) {
-      toast.error("Id length should be 6", {
+      toast.error("Invalid Student Id", {
         position: "bottom-right",
         autoClose: 3000,
         hideProgressBar: false
