@@ -6,25 +6,26 @@ export default class Staff extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      staffLogin:{
+      staffLogin: {
         staffLoginId: "",
         staffLoginPassword: ""
       },
-      staffRegister:{
+      staffRegister: {
         staffName: "",
         staffId: "",
         department: "",
         passwordOne: "",
         passwordTwo: "",
         mailId: "",
-        mobileNumber: "",
+        mobileNumber: ""
       },
       staffRegisterDetails: [],
-      staffLoginDetails: [],
-      
+      staffLoginDetails: []
     };
     this.validatingStaffDatails = this.validatingStaffDatails.bind(this);
-    this.validatingStaffLoginDatails = this.validatingStaffLoginDatails.bind(this);
+    this.validatingStaffLoginDatails = this.validatingStaffLoginDatails.bind(
+      this
+    );
   }
 
   // Validating and Adding the Registration_Form_Data
@@ -99,7 +100,7 @@ export default class Staff extends Component {
         autoClose: 3000,
         hideProgressBar: false
       });
-    }else if (this.state.staffRegister.mobileNumber === "") {
+    } else if (this.state.staffRegister.mobileNumber === "") {
       toast.error("Enter Your Mobile Number", {
         position: "bottom-right",
         autoClose: 3000,
@@ -137,8 +138,10 @@ export default class Staff extends Component {
         mobileNumber: mobile
       });
       this.setState({ staffRegisterDetails: temp });
-      console.log("Staff's Registration Details", this.state.staffRegisterDetails);
-      
+      console.log(
+        "Staff's Registration Details",
+        this.state.staffRegisterDetails
+      );
     }
   }
 
@@ -164,87 +167,25 @@ export default class Staff extends Component {
         autoClose: 3000,
         hideProgressBar: false
       });
-    }else{
+    } else {
       const loginId = this.state.staffLogin.staffLoginId;
       const loginPassword = this.state.staffLogin.staffLoginPassword;
       const tempArr = this.state.staffLogin.staffLoginDetails;
-      tempArr.push({ staffLoginId: loginId, staffLoginPassword: loginPassword});
+      tempArr.push({
+        staffLoginId: loginId,
+        staffLoginPassword: loginPassword
+      });
       this.setState({ staffLoginDetails: tempArr });
-      console.log("Staff's Current Login Details", this.state.staffLoginDetails)
+      console.log(
+        "Staff's Current Login Details",
+        this.state.staffLoginDetails
+      );
     }
-  }
-
-  getStaffLoginBody() {
-    return (
-      <form
-        className="container shadow  p-4 mt-5"
-        style={{ width: "450px" }}
-      >
-        <p
-          className="h4-responsive mb-4 mt-2 text-center"
-          style={{ color: "#FF3547" }}
-        >
-          Students Corner - Staff Login
-        </p>
-        <div>
-          <p className="h6-responsive text-danger mb-1 mt-4">Staff Id</p>
-          <input
-            type="number"
-            className="form-control mb-4"
-            placeholder="Staff Id"
-            id="staffid"
-            onChange={e => {
-              this.setState({ staffLoginId: e.target.value });
-            }}
-          />
-        </div>
-        <div>
-          <p className="h6-responsive text-danger mb-1">Password</p>
-          <input
-            type="password"
-            id="pass"
-            className="form-control mb-4"
-            placeholder="Password"
-            required
-            onChange={e => {
-              this.setState({ staffLoginPassword: e.target.value });
-            }}
-          />
-        </div>
-        <div className="row mb-4">
-          <p className="col text-left text-danger">
-            <button onClick={e => {} } className="btn btn-link">Forgot password?</button>
-          </p>
-          <p className="col text-right text-danger">
-            {" "}
-            Not a member?&nbsp;&nbsp;
-            <button onClick={e => {} } className="btn btn-link">Register</button>
-          </p>
-        </div>
-        <div className="text-center">
-          <button
-            className="btn btn-sm btn-danger"
-            onClick={e => {
-              e.preventDefault();
-              this.validatingStaffLoginDatails();
-            }}
-          >
-            Login
-          </button>
-          <div>
-            <p className="text-center" />
-          </div>
-        </div>
-      </form>
-    );
   }
 
   getStaffRegisterBody() {
     return (
-      <form
-        className="container shadow  p-4 mt-5"
-        style={{ width: "450px" }}
-      >
+      <form className="container shadow  p-4 mt-5" style={{ width: "450px" }}>
         <p
           className="h4-responsive mb-4 mt-2 text-center"
           style={{ color: "#FF3547" }}
@@ -260,7 +201,9 @@ export default class Staff extends Component {
             id="staffid"
             value={this.state.staffRegister.staffId}
             onChange={e => {
-              this.setState({ staffId: e.target.value });
+              let temp = this.state.staffRegister;
+              temp.staffId = e.target.value;
+              this.setState({ staffId: temp });
             }}
           />
         </div>
@@ -274,7 +217,9 @@ export default class Staff extends Component {
             required
             value={this.state.staffRegister.staffName}
             onChange={e => {
-              this.setState({ staffName: e.target.value });
+              let temp = this.state.staffRegister;
+              temp.staffName = e.target.value;
+              this.setState({ staffName: temp });
             }}
           />
         </div>
@@ -286,7 +231,9 @@ export default class Staff extends Component {
             required
             value={this.state.staffRegister.department}
             onChange={e => {
-              this.setState({ department: e.target.value });
+              let temp = this.state.staffRegister;
+              temp.department = e.target.value;
+              this.setState({ department: temp });
             }}
           >
             <option value="">Choose Department</option>
@@ -310,7 +257,9 @@ export default class Staff extends Component {
             required
             value={this.state.staffRegister.passwordOne}
             onChange={e => {
-              this.setState({ passwordOne: e.target.value });
+              let temp = this.state.staffRegister;
+              temp.passwordOne = e.target.value;
+              this.setState({ passwordOne: temp });
             }}
           />
         </div>
@@ -326,7 +275,9 @@ export default class Staff extends Component {
             required
             value={this.state.staffRegister.passwordTwo}
             onChange={e => {
-              this.setState({ passwordTwo: e.target.value });
+              let temp = this.state.staffRegister;
+              temp.passwordTwo = e.target.value;
+              this.setState({ passwordTwo: temp });
             }}
           />
         </div>
@@ -340,7 +291,9 @@ export default class Staff extends Component {
             required
             value={this.state.staffRegister.mailId}
             onChange={e => {
-              this.setState({ mailId: e.target.value });
+              let temp = this.state.staffRegister;
+              temp.mailId = e.target.value;
+              this.setState({ mailId: temp });
             }}
           />
         </div>
@@ -354,7 +307,9 @@ export default class Staff extends Component {
             required
             value={this.state.staffRegister.mobileNumber}
             onChange={e => {
-              this.setState({ mobileNumber: e.target.value });
+              let temp = this.state.staffRegister;
+              temp.mobileNumber = e.target.value;
+              this.setState({ mobileNumber: temp });
             }}
           />
         </div>
@@ -368,6 +323,80 @@ export default class Staff extends Component {
           >
             Sign Up
           </button>
+        </div>
+      </form>
+    );
+  }
+
+  getStaffLoginBody() {
+    return (
+      <form className="container shadow p-4 mt-5" style={{ width: "450px" }}>
+        <div className="row">
+          <div
+            className="col h4-responsive mb-4 mt-2 text-center"
+            style={{ color: "#FF3547" }}
+          >
+            Students Corner - Staff Login
+          </div>
+        </div>
+        <div className="row">
+          <div className="col">
+            <p className="h6-responsive text-danger mb-1 mt-4">Staff Id</p>
+            <input
+              type="number"
+              className="form-control mb-4"
+              placeholder="Staff Id"
+              id="stafftid"
+              onChange={e => {
+                this.setState({ staffLoginId: e.target.value });
+              }}
+            />
+          </div>
+        </div>
+        <div className="row">
+          <div className="col">
+            <p className="h6-responsive text-danger mb-1">Password</p>
+            <input
+              type="password"
+              className="form-control mb-4"
+              placeholder="Password"
+              id="pass"
+              required
+              onChange={e => {
+                this.setState({ staffLoginPassword: e.target.value });
+              }}
+            />
+          </div>
+        </div>
+        <div className="row mb-4">
+          <div className="col text-left text-danger">
+            <button onClick={e => {}} className="bg-transparent text-primary">
+              Forgot password?
+            </button>
+          </div>
+          <div className="col text-right text-danger">
+            <span>Not a member?</span>
+            <button
+              onClick={e => {}}
+              className="bg-transparent text-primary ml-2"
+            >
+              {" "}
+              Register
+            </button>
+          </div>
+        </div>
+        <div className="row">
+          <div className="col text-center">
+            <button
+              className="btn btn-sm btn-danger"
+              onClick={e => {
+                e.preventDefault();
+                this.validatingStaffLoginDatails();
+              }}
+            >
+              Login
+            </button>
+          </div>
         </div>
       </form>
     );
@@ -416,8 +445,8 @@ export default class Staff extends Component {
           </div>
         </nav>
         <div className="student-corner-container">
-          {/* {this.getStaffRegisterBody()} */}
-          {this.getStaffLoginBody()}
+          {this.getStaffRegisterBody()}
+          {/* {this.getStaffLoginBody()} */}
         </div>
       </Fragment>
     );

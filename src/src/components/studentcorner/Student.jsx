@@ -21,7 +21,7 @@ export default class Student extends Component {
         mobileNumber: ""
       },
       studentRegisterDetails: [],
-      studentLoginDetails: [],
+      studentLoginDetails: []
     };
     this.validatingStudentDatails = this.validatingStudentDatails.bind(this);
     this.validatingStudentLoginDatails = this.validatingStudentLoginDatails.bind(
@@ -183,7 +183,10 @@ export default class Student extends Component {
 
   getStudentRegisterBody() {
     return (
-      <form className="container shadow p-4 mt-4 mb-4" style={{ width: "450px" }}>
+      <form
+        className="container shadow p-4 mt-4 mb-4"
+        style={{ width: "450px" }}
+      >
         <p
           className="h4-responsive mb-4 mt-2 text-center"
           style={{ color: "#FF3547" }}
@@ -199,7 +202,9 @@ export default class Student extends Component {
             id="studentid"
             value={this.state.studentRegister.studentId}
             onChange={e => {
-              this.setState({ studentId: e.target.value });
+              let temp = this.state.studentRegister;
+              temp.studentId = e.target.value;
+              this.setState({ studentId : temp });
             }}
           />
         </div>
@@ -213,7 +218,9 @@ export default class Student extends Component {
             required
             value={this.state.studentRegister.studentName}
             onChange={e => {
-              this.setState({ studentName: e.target.value });
+              let temp = this.state.studentRegister;
+              temp.studentName = e.target.value;
+              this.setState({ studentName: temp });
             }}
           />
         </div>
@@ -225,7 +232,9 @@ export default class Student extends Component {
             required
             value={this.state.studentRegister.department}
             onChange={e => {
-              this.setState({ department: e.target.value });
+              let temp = this.state.studentRegister;
+              temp.department = e.target.value;
+              this.setState({ department: temp });
             }}
           >
             <option value="">Choose Department</option>
@@ -249,7 +258,9 @@ export default class Student extends Component {
             required
             value={this.state.studentRegister.passwordOne}
             onChange={e => {
-              this.setState({ passwordOne: e.target.value });
+              let temp = this.state.studentRegister;
+              temp.passwordOne = e.target.value;
+              this.setState({ passwordOne: temp });
             }}
           />
         </div>
@@ -265,7 +276,9 @@ export default class Student extends Component {
             required
             value={this.state.studentRegister.passwordTwo}
             onChange={e => {
-              this.setState({ passwordTwo: e.target.value });
+              let temp = this.state.studentRegister;
+              temp.passwordTwo = e.target.value;
+              this.setState({ passwordTwo: temp });
             }}
           />
         </div>
@@ -279,7 +292,9 @@ export default class Student extends Component {
             required
             value={this.state.studentRegister.mailId}
             onChange={e => {
-              this.setState({ mailId: e.target.value });
+              let temp = this.state.studentRegister;
+              temp.mailId = e.target.value;
+              this.setState({ mailId: temp });
             }}
           />
         </div>
@@ -293,7 +308,9 @@ export default class Student extends Component {
             required
             value={this.state.studentRegister.mobileNumber}
             onChange={e => {
-              this.setState({ mobileNumber: e.target.value });
+              let temp = this.state.studentRegister;
+              temp.mobileNumber = e.target.value;
+              this.setState({ mobileNumber: temp });
             }}
           />
         </div>
@@ -321,7 +338,7 @@ export default class Student extends Component {
             style={{ color: "#FF3547" }}
           >
             Students Corner - Student Login
-        </div>
+          </div>
         </div>
         <div className="row">
           <div className="col">
@@ -332,7 +349,9 @@ export default class Student extends Component {
               placeholder="Student Id"
               id="studentid"
               onChange={e => {
-                this.setState({ studentLoginId: e.target.value });
+                let temp = this.state.studentLogin;
+                temp.studentLoginId = e.target.value;
+                this.setState({ studentLogin: temp });
               }}
             />
           </div>
@@ -354,11 +373,19 @@ export default class Student extends Component {
         </div>
         <div className="row mb-4">
           <div className="col text-left text-danger">
-            <button onClick={e => { }} className="bg-transparent text-primary">Forgot password?</button>
+            <button onClick={e => {}} className="bg-transparent text-primary">
+              Forgot password?
+            </button>
           </div>
           <div className="col text-right text-danger">
             <span>Not a member?</span>
-            <button onClick={e => { }} className="bg-transparent text-primary ml-2"> Register</button>
+            <button
+              onClick={e => {}}
+              className="bg-transparent text-primary ml-2"
+            >
+              {" "}
+              Register
+            </button>
           </div>
         </div>
         <div className="row">
@@ -371,7 +398,7 @@ export default class Student extends Component {
               }}
             >
               Login
-          </button>
+            </button>
           </div>
         </div>
       </form>
