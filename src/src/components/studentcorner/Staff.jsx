@@ -6,11 +6,11 @@ export default class Staff extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      login:{
+      staffLogin:{
         staffLoginId: "",
         staffLoginPassword: ""
       },
-      register:{
+      staffRegister:{
         staffName: "",
         staffId: "",
         department: "",
@@ -29,59 +29,59 @@ export default class Staff extends Component {
 
   // Validating and Adding the Registration_Form_Data
   validatingStaffDatails() {
-    let pass1 = this.state.register.passwordOne;
-    let pass2 = this.state.register.passwordTwo;
+    let pass1 = this.state.staffRegister.passwordOne;
+    let pass2 = this.state.staffRegister.passwordTwo;
     if (
-      this.state.register.staffId === "" &&
-      this.state.register.staffName === "" &&
-      this.state.register.department === "" &&
-      this.state.register.passwordOne === "" &&
-      this.state.register.passwordTwo === "" &&
-      this.state.register.mailId === "" &&
-      this.state.register.mobileNumber === ""
+      this.state.staffRegister.staffId === "" &&
+      this.state.staffRegister.staffName === "" &&
+      this.state.staffRegister.department === "" &&
+      this.state.staffRegister.passwordOne === "" &&
+      this.state.staffRegister.passwordTwo === "" &&
+      this.state.staffRegister.mailId === "" &&
+      this.state.staffRegister.mobileNumber === ""
     ) {
       toast.error("Fill all the Fields ", {
         position: "bottom-right",
         autoClose: 3000,
         hideProgressBar: false
       });
-    } else if (this.state.register.staffId === "") {
+    } else if (this.state.staffRegister.staffId === "") {
       toast.error('Fill the "staffId" field', {
         position: "bottom-right",
         autoClose: 3000,
         hideProgressBar: false
       });
-    } else if (this.state.register.staffId.substring(0, 3) !== "811") {
+    } else if (this.state.staffRegister.staffId.substring(0, 3) !== "811") {
       toast.error("Id starts with '811' ", {
         position: "bottom-right",
         autoClose: 3000,
         hideProgressBar: false
       });
-    } else if (this.state.register.staffId.length !== 7) {
+    } else if (this.state.staffRegister.staffId.length !== 7) {
       toast.error("Id length should be 7", {
         position: "bottom-right",
         autoClose: 3000,
         hideProgressBar: false
       });
-    } else if (this.state.register.staffName === "") {
+    } else if (this.state.staffRegister.staffName === "") {
       toast.error('Fill the "Name" field', {
         position: "bottom-right",
         autoClose: 3000,
         hideProgressBar: false
       });
-    } else if (this.state.register.department === "") {
+    } else if (this.state.staffRegister.department === "") {
       toast.error('Choose the "Depertment" ', {
         position: "bottom-right",
         autoClose: 3000,
         hideProgressBar: false
       });
-    } else if (this.state.register.passwordOne === "") {
+    } else if (this.state.staffRegister.passwordOne === "") {
       toast.error('Fill the "Password" field ', {
         position: "bottom-right",
         autoClose: 3000,
         hideProgressBar: false
       });
-    } else if (this.state.register.passwordTwo === "") {
+    } else if (this.state.staffRegister.passwordTwo === "") {
       toast.error('Fill the "Re-enter Password" field ', {
         position: "bottom-right",
         autoClose: 3000,
@@ -93,31 +93,31 @@ export default class Staff extends Component {
         autoClose: 3000,
         hideProgressBar: false
       });
-    } else if (this.state.register.mailId === "") {
+    } else if (this.state.staffRegister.mailId === "") {
       toast.error("Enter Your Email Address", {
         position: "bottom-right",
         autoClose: 3000,
         hideProgressBar: false
       });
-    }else if (this.state.register.mobileNumber === "") {
+    }else if (this.state.staffRegister.mobileNumber === "") {
       toast.error("Enter Your Mobile Number", {
         position: "bottom-right",
         autoClose: 3000,
         hideProgressBar: false
       });
-    } else if (this.state.register.mobileNumber.length !== 10) {
+    } else if (this.state.staffRegister.mobileNumber.length !== 10) {
       toast.error("Mobile Number length should be 10", {
         position: "bottom-right",
         autoClose: 3000,
         hideProgressBar: false
       });
     } else {
-      const name = this.state.register.staffName;
-      const sid = this.state.register.staffId;
-      const dept = this.state.register.department;
-      const password = this.state.register.passwordOne;
-      const email = this.state.register.mailId;
-      const mobile = this.state.register.mobileNumber;
+      const name = this.state.staffRegister.staffName;
+      const sid = this.state.staffRegister.staffId;
+      const dept = this.state.staffRegister.department;
+      const password = this.state.staffRegister.passwordOne;
+      const email = this.state.staffRegister.mailId;
+      const mobile = this.state.staffRegister.mobileNumber;
       this.setState({
         staffId: "",
         staffName: "",
@@ -144,30 +144,30 @@ export default class Staff extends Component {
 
   validatingStaffLoginDatails() {
     if (
-      this.state.login.staffLoginId === "" &&
-      this.state.login.staffLoginPassword === ""
+      this.state.staffLogin.staffLoginId === "" &&
+      this.state.staffLogin.staffLoginPassword === ""
     ) {
       toast.error("Fill all the Fields ", {
         position: "bottom-right",
         autoClose: 3000,
         hideProgressBar: false
       });
-    } else if (this.state.login.staffLoginId === "") {
+    } else if (this.state.staffLogin.staffLoginId === "") {
       toast.error("Enter Staff Id ", {
         position: "bottom-right",
         autoClose: 3000,
         hideProgressBar: false
       });
-    } else if (this.state.login.staffLoginPassword === "") {
+    } else if (this.state.staffLogin.staffLoginPassword === "") {
       toast.error("Enter Password ", {
         position: "bottom-right",
         autoClose: 3000,
         hideProgressBar: false
       });
     }else{
-      const loginId = this.state.login.staffLoginId;
-      const loginPassword = this.state.login.staffLoginPassword;
-      const tempArr = this.state.login.staffLoginDetails;
+      const loginId = this.state.staffLogin.staffLoginId;
+      const loginPassword = this.state.staffLogin.staffLoginPassword;
+      const tempArr = this.state.staffLogin.staffLoginDetails;
       tempArr.push({ staffLoginId: loginId, staffLoginPassword: loginPassword});
       this.setState({ staffLoginDetails: tempArr });
       console.log("Staff's Current Login Details", this.state.staffLoginDetails)
@@ -258,7 +258,7 @@ export default class Staff extends Component {
             className="form-control mb-4"
             placeholder="Staff Id"
             id="staffid"
-            value={this.state.register.staffId}
+            value={this.state.staffRegister.staffId}
             onChange={e => {
               this.setState({ staffId: e.target.value });
             }}
@@ -272,7 +272,7 @@ export default class Staff extends Component {
             className="form-control mb-4"
             placeholder="Name"
             required
-            value={this.state.register.staffName}
+            value={this.state.staffRegister.staffName}
             onChange={e => {
               this.setState({ staffName: e.target.value });
             }}
@@ -284,7 +284,7 @@ export default class Staff extends Component {
             name="department"
             class="form-control mb-4"
             required
-            value={this.state.register.department}
+            value={this.state.staffRegister.department}
             onChange={e => {
               this.setState({ department: e.target.value });
             }}
@@ -308,7 +308,7 @@ export default class Staff extends Component {
             className="form-control mb-4"
             placeholder="Password"
             required
-            value={this.state.register.passwordOne}
+            value={this.state.staffRegister.passwordOne}
             onChange={e => {
               this.setState({ passwordOne: e.target.value });
             }}
@@ -324,7 +324,7 @@ export default class Staff extends Component {
             className="form-control mb-4"
             placeholder="Re-enter Password"
             required
-            value={this.state.register.passwordTwo}
+            value={this.state.staffRegister.passwordTwo}
             onChange={e => {
               this.setState({ passwordTwo: e.target.value });
             }}
@@ -338,7 +338,7 @@ export default class Staff extends Component {
             className="form-control mb-4"
             placeholder="E-mail"
             required
-            value={this.state.register.mailId}
+            value={this.state.staffRegister.mailId}
             onChange={e => {
               this.setState({ mailId: e.target.value });
             }}
@@ -352,7 +352,7 @@ export default class Staff extends Component {
             className="form-control mb-4"
             placeholder="Mobile Number"
             required
-            value={this.state.register.mobileNumber}
+            value={this.state.staffRegister.mobileNumber}
             onChange={e => {
               this.setState({ mobileNumber: e.target.value });
             }}

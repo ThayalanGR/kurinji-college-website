@@ -7,11 +7,11 @@ export default class Student extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      studentLogin:{
+      studentLogin: {
         studentLoginId: "",
         studentLoginPassword: ""
       },
-      studentRegister:{
+      studentRegister: {
         studentName: "",
         studentId: "",
         department: "",
@@ -183,7 +183,7 @@ export default class Student extends Component {
 
   getStudentRegisterBody() {
     return (
-      <form className="container shadow p-4 mt-5" style={{ width: "450px" }}>
+      <form className="container shadow p-4 mt-4 mb-4" style={{ width: "450px" }}>
         <p
           className="h4-responsive mb-4 mt-2 text-center"
           style={{ color: "#FF3547" }}
@@ -315,59 +315,63 @@ export default class Student extends Component {
   getStudentLoginBody() {
     return (
       <form className="container shadow p-4 mt-5" style={{ width: "450px" }}>
-        <p
-          className="h4-responsive mb-4 mt-2 text-center"
-          style={{ color: "#FF3547" }}
-        >
-          Students Corner - Student Login
-        </p>
-        <div>
-          <p className="h6-responsive text-danger mb-1 mt-4">Student Id</p>
-          <input
-            type="number"
-            className="form-control mb-4"
-            placeholder="Student Id"
-            id="studentid"
-            onChange={e => {
-              this.setState({ studentLoginId: e.target.value });
-            }}
-          />
+        <div className="row">
+          <div
+            className="col h4-responsive mb-4 mt-2 text-center"
+            style={{ color: "#FF3547" }}
+          >
+            Students Corner - Student Login
         </div>
-        <div>
-          <p className="h6-responsive text-danger mb-1">Password</p>
-          <input
-            type="password"
-            className="form-control mb-4"
-            placeholder="Password"
-            id="pass"
-            required
-            onChange={e => {
-              this.setState({ studentLoginPassword: e.target.value });
-            }}
-          />
+        </div>
+        <div className="row">
+          <div className="col">
+            <p className="h6-responsive text-danger mb-1 mt-4">Student Id</p>
+            <input
+              type="number"
+              className="form-control mb-4"
+              placeholder="Student Id"
+              id="studentid"
+              onChange={e => {
+                this.setState({ studentLoginId: e.target.value });
+              }}
+            />
+          </div>
+        </div>
+        <div className="row">
+          <div className="col">
+            <p className="h6-responsive text-danger mb-1">Password</p>
+            <input
+              type="password"
+              className="form-control mb-4"
+              placeholder="Password"
+              id="pass"
+              required
+              onChange={e => {
+                this.setState({ studentLoginPassword: e.target.value });
+              }}
+            />
+          </div>
         </div>
         <div className="row mb-4">
-          <p className="col text-left text-danger">
-            <button onClick={e => {} } className="btn btn-link">Forgot password?</button>
-          </p>
-          <p className="col text-right text-danger">
-            {" "}
-            Not a member?&nbsp;&nbsp;
-            <button onClick={e => {} } className="btn btn-link">Register</button>
-          </p>
+          <div className="col text-left text-danger">
+            <button onClick={e => { }} className="bg-transparent text-primary">Forgot password?</button>
+          </div>
+          <div className="col text-right text-danger">
+            <span>Not a member?</span>
+            <button onClick={e => { }} className="bg-transparent text-primary ml-2"> Register</button>
+          </div>
         </div>
-        <div className="text-center">
-          <button
-            className="btn btn-sm btn-danger"
-            onClick={e => {
-              e.preventDefault();
-              this.validatingStudentLoginDatails();
-            }}
-          >
-            Login
+        <div className="row">
+          <div className="col text-center">
+            <button
+              className="btn btn-sm btn-danger"
+              onClick={e => {
+                e.preventDefault();
+                this.validatingStudentLoginDatails();
+              }}
+            >
+              Login
           </button>
-          <div>
-            <p className="text-center" />
           </div>
         </div>
       </form>
@@ -416,8 +420,8 @@ export default class Student extends Component {
           </div>
         </nav>
         <div className="student-corner-container">
-          {/* {this.getStudentRegisterBody()} */}
-          {this.getStudentLoginBody()}
+          {this.getStudentRegisterBody()}
+          {/* {this.getStudentLoginBody()} */}
         </div>
       </Fragment>
     );
