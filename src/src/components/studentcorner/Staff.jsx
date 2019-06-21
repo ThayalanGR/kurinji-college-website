@@ -4,8 +4,8 @@ import "../../css/studentcorner.css";
 import { toast } from "react-toastify";
 import axios from "axios";
 import constants from "../constants";
+import UploadHandler from "./UploadHandler";
 import DownloadHandler from "./DownloadHandler";
-
 
 class Staff extends Component {
   constructor(props) {
@@ -24,23 +24,32 @@ class Staff extends Component {
         mailId: "",
         mobileNumber: ""
       },
-      forgotPasswordStaffId: '',
+      forgotPasswordStaffId: "",
       isAuthenticated: false,
       swapLoginRegister: "login",
       memory: "login",
-      staffName: '',
-      staffDepartment: '',
-      staffId: '',
+      staffName: "",
+      staffDepartment: "",
+      staffId: "",
       dashboardView: "upload"
     };
-    this.validatingStaffRegistrationDetails = this.validatingStaffRegistrationDetails.bind(this);
-    this.validatingStaffLoginDatails = this.validatingStaffLoginDatails.bind(this);
+    this.validatingStaffRegistrationDetails = this.validatingStaffRegistrationDetails.bind(
+      this
+    );
+    this.validatingStaffLoginDatails = this.validatingStaffLoginDatails.bind(
+      this
+    );
   }
 
   async componentWillMount() {
     if (await localStorage.getItem("staffId")) {
-      await this.setState({ memory: "dashboard", isAuthenticated: true, staffId: await localStorage.getItem("staffId"), staffName: await localStorage.getItem("staffName"), staffDepartment: await localStorage.getItem("staffDepartment") })
-
+      await this.setState({
+        memory: "dashboard",
+        isAuthenticated: true,
+        staffId: await localStorage.getItem("staffId"),
+        staffName: await localStorage.getItem("staffName"),
+        staffDepartment: await localStorage.getItem("staffDepartment")
+      });
     }
   }
 
@@ -70,11 +79,14 @@ class Staff extends Component {
             passwordTwo: "",
             mailId: "",
             mobileNumber: ""
-          }
+          };
           this.setState({ staffRegister: temp, memory: "login" });
-          toast.success("Registration Success ! use your staff id and password to login", {
-            position: "bottom-right"
-          })
+          toast.success(
+            "Registration Success ! use your staff id and password to login",
+            {
+              position: "bottom-right"
+            }
+          );
         } else {
           toast.error(data.data.message, {
             position: "bottom-right"
@@ -85,7 +97,7 @@ class Staff extends Component {
         toast.error("something went wrong! try again later!", {
           position: "bottom-right"
         });
-        console.error(err)
+        console.error(err);
       });
   }
 
@@ -106,19 +118,22 @@ class Staff extends Component {
           let temp = {
             staffLoginId: "",
             staffLoginPassword: ""
-          }
-          const {
-            staffid,
-            staffname,
-            department
-          } = data.data.staffDetails;
+          };
+          const { staffid, staffname, department } = data.data.staffDetails;
           localStorage.setItem("staffId", staffid);
           localStorage.setItem("staffName", staffname);
           localStorage.setItem("staffDepartment", department);
-          this.setState({ staffLogin: temp, memory: "dashboard", isAuthenticated: true, staffId: staffid, staffName: staffname, staffDepartment: department });
+          this.setState({
+            staffLogin: temp,
+            memory: "dashboard",
+            isAuthenticated: true,
+            staffId: staffid,
+            staffName: staffname,
+            staffDepartment: department
+          });
           toast.success("login Success!", {
             position: "bottom-right"
-          })
+          });
         } else {
           toast.error(String(data.data.message), {
             position: "bottom-right"
@@ -129,9 +144,8 @@ class Staff extends Component {
         toast.error("something went wrong! try again later!", {
           position: "bottom-right"
         });
-        console.error(err)
+        console.error(err);
       });
-
   }
 
   forgotPasswordHandler() {
@@ -148,25 +162,36 @@ class Staff extends Component {
       })
       .then(data => {
         if (data.data.status) {
-          this.setState({ forgotPasswordStaffId: '', memory: "login", swapLoginRegister: "login", isAuthenticated: false });
-          toast.success("password resetting email has been sent to your email account, check your email to change the password", {
-            position: "bottom-right"
-          })
+          this.setState({
+            forgotPasswordStaffId: "",
+            memory: "login",
+            swapLoginRegister: "login",
+            isAuthenticated: false
+          });
+          toast.success(
+            "password resetting email has been sent to your email account, check your email to change the password",
+            {
+              position: "bottom-right"
+            }
+          );
         } else {
           toast.error(data.data.message, {
             position: "bottom-right"
           });
-          const temp = document.getElementById("forgotSubmitButton"); temp.classList.remove("disabled"); temp.innerHTML = "Submit";
+          const temp = document.getElementById("forgotSubmitButton");
+          temp.classList.remove("disabled");
+          temp.innerHTML = "Submit";
         }
       })
       .catch(err => {
         toast.error("something went wrong! try again later!", {
           position: "bottom-right"
         });
-        const temp = document.getElementById("forgotSubmitButton"); temp.classList.remove("disabled"); temp.innerHTML = "Submit";
-        console.error(err)
+        const temp = document.getElementById("forgotSubmitButton");
+        temp.classList.remove("disabled");
+        temp.innerHTML = "Submit";
+        console.error(err);
       });
-
   }
 
   validatingStaffRegistrationDetails() {
@@ -289,7 +314,10 @@ class Staff extends Component {
       <form
         className="container shadow p-4 mt-4 mb-4"
         style={{ width: "450px" }}
-        onSubmit={(e) => { e.preventDefault(); this.validatingStaffRegistrationDetails() }}
+        onSubmit={e => {
+          e.preventDefault();
+          this.validatingStaffRegistrationDetails();
+        }}
       >
         <p
           className="h4-responsive mb-4 mt-2 text-center"
@@ -419,10 +447,7 @@ class Staff extends Component {
           />
         </div>
         <div className="text-center">
-          <button
-            type="submit"
-            className="btn btn-sm btn-danger"
-          >
+          <button type="submit" className="btn btn-sm btn-danger">
             Sign Up
           </button>
         </div>
@@ -432,7 +457,9 @@ class Staff extends Component {
 
   getStaffLoginBody() {
     return (
-      <form className="container shadow p-4 mt-5" style={{ width: "450px" }}
+      <form
+        className="container shadow p-4 mt-5"
+        style={{ width: "450px" }}
         onSubmit={e => {
           e.preventDefault();
           this.validatingStaffLoginDatails();
@@ -483,70 +510,96 @@ class Staff extends Component {
         </div>
         <div className="row mb-4">
           <div className="col text-left text-danger">
-            <button type="button" onClick={async () => await this.setState({ swapLoginRegister: '', memory: "forgot" })} className="bg-transparent text-primary">Forgot password?</button>
+            <button
+              type="button"
+              onClick={async () =>
+                await this.setState({ swapLoginRegister: "", memory: "forgot" })
+              }
+              className="bg-transparent text-primary"
+            >
+              Forgot password?
+            </button>
           </div>
           <div className="col text-right text-danger">
             <span>Not a member?</span>
-            <button type="button" onClick={async () => { await this.setState({ swapLoginRegister: "register" }); this.swapHandler(); }} className="bg-transparent text-primary ml-2"> Register</button>
+            <button
+              type="button"
+              onClick={async () => {
+                await this.setState({ swapLoginRegister: "register" });
+                this.swapHandler();
+              }}
+              className="bg-transparent text-primary ml-2"
+            >
+              {" "}
+              Register
+            </button>
+          </div>
+        </div>
+        <div className="row">
+          <div className="col text-center">
+            <button type="submit" className="btn btn-sm btn-danger">
+              Login
+            </button>
+          </div>
+        </div>
+      </form>
+    );
+  }
+
+  getForgotPasswordBody() {
+    return (
+      <form
+        className="container shadow p-4 mt-5"
+        style={{ width: "450px" }}
+        onSubmit={e => {
+          e.preventDefault();
+          this.forgotPasswordHandler();
+        }}
+      >
+        <div className="row">
+          <div
+            className="col h4-responsive mb-4 mt-2 text-center"
+            style={{ color: "#FF3547" }}
+          >
+            Students Corner - Forgot Password Helper
+          </div>
+        </div>
+        <div className="row">
+          <div className="col">
+            <p className="h6-responsive text-danger mb-1 mt-4">
+              Enter your Staff Id
+            </p>
+            <input
+              type="number"
+              className="form-control mb-4"
+              placeholder="Staff Id"
+              id="staffid"
+              value={this.state.forgotPasswordStaffId}
+              onChange={e => {
+                this.setState({ forgotPasswordStaffId: e.target.value });
+              }}
+              required
+            />
           </div>
         </div>
         <div className="row">
           <div className="col text-center">
             <button
-              type="submit"
               className="btn btn-sm btn-danger"
+              type="submit"
+              id="forgotSubmitButton"
+              onClick={e => {
+                const temp = document.getElementById("forgotSubmitButton");
+                temp.classList.add("disabled");
+                temp.innerHTML = "please wait requesting!";
+              }}
             >
-              Login
+              Submit
             </button>
           </div>
         </div>
-      </form >
+      </form>
     );
-  }
-
-  getForgotPasswordBody() {
-    return <form className="container shadow p-4 mt-5" style={{ width: "450px" }}
-      onSubmit={e => {
-        e.preventDefault();
-        this.forgotPasswordHandler();
-      }}>
-      <div className="row">
-        <div
-          className="col h4-responsive mb-4 mt-2 text-center"
-          style={{ color: "#FF3547" }}
-        >
-          Students Corner - Forgot Password Helper
-      </div>
-      </div>
-      <div className="row">
-        <div className="col">
-          <p className="h6-responsive text-danger mb-1 mt-4">Enter your Staff Id</p>
-          <input
-            type="number"
-            className="form-control mb-4"
-            placeholder="Staff Id"
-            id="staffid"
-            value={this.state.forgotPasswordStaffId}
-            onChange={e => {
-              this.setState({ forgotPasswordStaffId: e.target.value });
-            }}
-            required
-          />
-        </div>
-      </div>
-      <div className="row">
-        <div className="col text-center">
-          <button
-            className="btn btn-sm btn-danger"
-            type="submit"
-            id="forgotSubmitButton"
-            onClick={(e) => { const temp = document.getElementById("forgotSubmitButton"); temp.classList.add("disabled"); temp.innerHTML = "please wait requesting!"; }}
-          >
-            Submit
-        </button>
-        </div>
-      </div>
-    </form >
   }
 
   swapHandler() {
@@ -555,7 +608,7 @@ class Staff extends Component {
 
   logOutHandler() {
     localStorage.clear();
-    this.setState({ memory: "login", isAuthenticated: false })
+    this.setState({ memory: "login", isAuthenticated: false });
   }
 
   mainBodyRenderer() {
@@ -571,25 +624,21 @@ class Staff extends Component {
       default:
         break;
     }
-
-  }
-
-  getDashboardUploadBody() {
-    return <div>upload</div>
   }
 
   getStaffDashboardBody() {
     return (
       <div>
-        {this.state.dashboardView === "upload" && this.getDashboardUploadBody()}
-        {this.state.dashboardView === "download" &&
+        {this.state.dashboardView === "upload" && <UploadHandler />}
+        {this.state.dashboardView === "download" && (
           <DownloadHandler
             staffId={this.state.staffId}
             staffName={this.state.staffName}
             staffDepartment={this.state.staffDepartment}
-          />}
+          />
+        )}
       </div>
-    )
+    );
   }
 
   render() {
@@ -612,30 +661,70 @@ class Staff extends Component {
           </button>
           <div className="collapse navbar-collapse" id="navbarText">
             <ul className="navbar-nav mr-auto">
-              {this.state.isAuthenticated && <Fragment>
-                <li className="nav-item active">
-                  <button onClick={() => this.setState({ dashboardView: "upload" })} className="nav-link btn btn-sm bg-transparent text-white">
-                    <span className="h6-responsive">Upload</span>
-                  </button>
-                </li>
-                <li className="nav-item">
-                  <button onClick={() => this.setState({ dashboardView: "download" })} className="nav-link btn btn-sm bg-transparent text-white">
-                    <span className="h6-responsive">Download</span>
-                  </button>
-                </li>
-              </Fragment>
-              }
+              {this.state.isAuthenticated && (
+                <Fragment>
+                  <li className="nav-item active">
+                    <button
+                      onClick={() => this.setState({ dashboardView: "upload" })}
+                      className="nav-link btn btn-sm bg-transparent text-white"
+                    >
+                      <span className="h6-responsive">Upload</span>
+                    </button>
+                  </li>
+                  <li className="nav-item">
+                    <button
+                      onClick={() =>
+                        this.setState({ dashboardView: "download" })
+                      }
+                      className="nav-link btn btn-sm bg-transparent text-white"
+                    >
+                      <span className="h6-responsive">Download</span>
+                    </button>
+                  </li>
+                </Fragment>
+              )}
             </ul>
             <span className="navbar-text">
-              {!this.state.isAuthenticated ? <Fragment>
-
-                {!(this.state.swapLoginRegister === "register") && <button onClick={async () => { await this.setState({ swapLoginRegister: "register" }); this.swapHandler(); }} className="btn btn-sm btn-outline-light rounded text-white">Register</button>}
-                {!(this.state.swapLoginRegister === "login") && <button onClick={async () => { await this.setState({ swapLoginRegister: "login" }); this.swapHandler(); }} className="btn btn-sm btn-outline-light rounded text-white">Login</button>}
-              </Fragment> : <Fragment>
-                  <span className="text-white mr-3 pt-3">Hello {this.state.staffName} !</span>
-                  <button onClick={() => { this.logOutHandler(); }} className="btn btn-sm btn-outline-light rounded text-white">Logout</button>
+              {!this.state.isAuthenticated ? (
+                <Fragment>
+                  {!(this.state.swapLoginRegister === "register") && (
+                    <button
+                      onClick={async () => {
+                        await this.setState({ swapLoginRegister: "register" });
+                        this.swapHandler();
+                      }}
+                      className="btn btn-sm btn-outline-light rounded text-white"
+                    >
+                      Register
+                    </button>
+                  )}
+                  {!(this.state.swapLoginRegister === "login") && (
+                    <button
+                      onClick={async () => {
+                        await this.setState({ swapLoginRegister: "login" });
+                        this.swapHandler();
+                      }}
+                      className="btn btn-sm btn-outline-light rounded text-white"
+                    >
+                      Login
+                    </button>
+                  )}
                 </Fragment>
-              }
+              ) : (
+                <Fragment>
+                  <span className="text-white mr-3 pt-3">
+                    Hello {this.state.staffName} !
+                  </span>
+                  <button
+                    onClick={() => {
+                      this.logOutHandler();
+                    }}
+                    className="btn btn-sm btn-outline-light rounded text-white"
+                  >
+                    Logout
+                  </button>
+                </Fragment>
+              )}
             </span>
           </div>
         </nav>
@@ -646,6 +735,5 @@ class Staff extends Component {
     );
   }
 }
-
 
 export default withRouter(Staff);
