@@ -21,7 +21,14 @@ export default class Student extends Component {
         mobileNumber: ""
       },
       studentRegisterDetails: [],
+<<<<<<< HEAD
       studentLoginDetails: []
+=======
+      studentLoginDetails: [],
+      isAuthenticated: true,
+      swapLoginRegister: "login",
+      memory: "dashboard"
+>>>>>>> a910c4b8616c589d58fa95cc6393bc3ce7d177e0
     };
     this.validatingStudentDatails = this.validatingStudentDatails.bind(this);
     this.validatingStudentLoginDatails = this.validatingStudentLoginDatails.bind(
@@ -29,7 +36,7 @@ export default class Student extends Component {
     );
   }
 
-  // Validating and Adding the Registration_Form_Data
+  // Validating Registration form
   validatingStudentDatails() {
     let pass1 = this.state.studentRegister.passwordOne;
     let pass2 = this.state.studentRegister.passwordTwo;
@@ -373,6 +380,7 @@ export default class Student extends Component {
         </div>
         <div className="row mb-4">
           <div className="col text-left text-danger">
+<<<<<<< HEAD
             <button onClick={e => {}} className="bg-transparent text-primary">
               Forgot password?
             </button>
@@ -386,6 +394,13 @@ export default class Student extends Component {
               {" "}
               Register
             </button>
+=======
+            <button onClick={async () => await this.setState({ swapLoginRegister: '', memory: "forgot" })} className="bg-transparent text-primary">Forgot password?</button>
+          </div>
+          <div className="col text-right text-danger">
+            <span>Not a member?</span>
+            <button onClick={async () => { await this.setState({ swapLoginRegister: "register" }); this.swapHandler(); }} className="bg-transparent text-primary ml-2"> Register</button>
+>>>>>>> a910c4b8616c589d58fa95cc6393bc3ce7d177e0
           </div>
         </div>
         <div className="row">
@@ -401,15 +416,55 @@ export default class Student extends Component {
             </button>
           </div>
         </div>
-      </form>
+      </form >
     );
   }
+
+  getStudentDashboardBody() {
+    return (
+      <div>
+        dashboard
+      </div>
+    )
+  }
+
+
+  getForgotPasswordBody() {
+    return <div>
+
+    </div>
+  }
+
+  swapHandler() {
+    this.setState({ memory: this.state.swapLoginRegister });
+  }
+
+  logOutHandler() {
+    localStorage.clear();
+    this.setState({ memory: "login", isAuthenticated: false })
+  }
+
+  mainBodyRenderer() {
+    switch (this.state.memory) {
+      case "login":
+        return this.getStudentLoginBody();
+      case "register":
+        return this.getStudentRegisterBody();
+      case "forgot":
+        return this.getForgotPasswordBody();
+      case "dashboard":
+        return this.getStudentDashboardBody();
+      default:
+        break;
+    }
+
+  }
+
   render() {
     return (
       <Fragment>
         <nav className="navbar navbar-expand-lg shadow-sm student-corner-header">
           <Link className="navbar-brand text-white ml-2" to="/home">
-            {" "}
             <i className="fas fa-users" /> Students Corner
           </Link>
           <button
@@ -442,13 +497,15 @@ export default class Student extends Component {
               </li>
             </ul>
             <span className="navbar-text">
-              Navbar text with an inline element
+              {!this.state.isAuthenticated ? <Fragment>
+                {!(this.state.swapLoginRegister === "register") && <button onClick={async () => { await this.setState({ swapLoginRegister: "register" }); this.swapHandler(); }} className="btn btn-sm btn-outline-light rounded text-white">Register</button>}
+                {!(this.state.swapLoginRegister === "login") && <button onClick={async () => { await this.setState({ swapLoginRegister: "login" }); this.swapHandler(); }} className="btn btn-sm btn-outline-light rounded text-white">Login</button>}
+              </Fragment> : <button onClick={() => { this.logOutHandler(); }} className="btn btn-sm btn-outline-light rounded text-white">Logout</button>}
             </span>
           </div>
         </nav>
         <div className="student-corner-container">
-          {this.getStudentRegisterBody()}
-          {/* {this.getStudentLoginBody()} */}
+          {this.state && this.mainBodyRenderer()}
         </div>
       </Fragment>
     );
