@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from "react";
 import { toast } from "react-toastify";
+import { constants } from "../../components";
 import { Link } from "react-router-dom";
 
 export default class Staff extends Component {
@@ -19,6 +20,7 @@ export default class Staff extends Component {
         mailId: "",
         mobileNumber: ""
       },
+      staffsFilesUpload: {},
       staffRegisterDetails: [],
       staffLoginDetails: []
     };
@@ -402,6 +404,146 @@ export default class Staff extends Component {
     );
   }
 
+  getStaffsFilesUploadBody() {
+    return (
+      <div className="container-fluid p-2">
+        <div className="row">
+          <div className="col text-center text-danger h5">
+            Upload Files
+            <hr />
+          </div>
+        </div>
+        <div className="row" style={{ maxWidth: "100vw" }}>
+          <div className="col-md-6 " style={{ width: "100%" }}>
+            <div className="text-center text-danger">
+              Upload new Files
+              <hr />
+            </div>
+
+            <div className="d-flex justify-content-center">
+              <form className="was-validated" style={{ width: "350px" }}>
+                <label htmlFor="validatedCustomFile">Department</label>
+                <div className="form-control">
+                  <select
+                    className="form-control"
+                    id="validatedCustomFile"
+                    accept="application/pdf/ppt/image/word"
+                    onChange={e => {
+                      this.setState({
+                        uploadFile: e.target.files[0],
+                        uploadFileName: e.target.files[0].name
+                      });
+                    }}
+                    required
+                  >
+                    <option value="">Choose Department</option>
+                    <option value="mech">Mech</option>
+                    <option value="eee">EEE</option>
+                    <option value="ece">ECE</option>
+                    <option value="cse">CSE</option>
+                    <option value="hands">H &amp; S</option>
+                    <option value="mecse">ME-CSE</option>
+                    <option value="engdesign">Eng-Design</option>
+                    <option value="mba">MBA</option>
+                  </select>
+                  <label
+                    className="custom-file-label"
+                    htmlFor="validatedCustomFile"
+                  >
+                    {this.state.uploadFileName}
+                  </label>
+                </div>
+                <label className="mt-3" htmlFor="validatedCustomFile">Upload File</label>
+                <div className="custom-file">
+                  <input
+                    type="file"
+                    className="custom-file-input form-control"
+                    id="validatedCustomFile"
+                    accept="application/pdf"
+                    onChange={e => {
+                      this.setState({
+                        uploadFile: e.target.files[0],
+                        uploadFileName: e.target.files[0].name
+                      });
+                    }}
+                    required
+                  />
+                  <label
+                    className="custom-file-label"
+                    htmlFor="validatedCustomFile"
+                  >
+                    {this.state.uploadFileName}
+                  </label>
+                  <div className="invalid-feedback">
+                    Please choose the file <br />
+                  </div>
+                </div>
+
+                <div className="mt-2 mb-3">
+                  <button
+                    className="text-white btn btn-sm btn-danger"
+                    name="submit"
+                    onClick={e => {
+                      e.preventDefault();
+                      this.addNewUploadFile(e);
+                    }}
+                  >
+                    Upload
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+          <div className="col-md-6">
+            <div className="text-center text-danger">
+              Existing Uploaded Files
+              <hr />
+            </div>
+
+            {/*<div className="p-1 container">
+              {this.state.staffsFilesUpload.map((item, index) => {
+                return (
+                  <div className="row" key={index}>
+                    <div className="col-md-4 text-center d-flex justify-content-center align-items-center">
+                      <a
+                        href={`${constants.baseUrl}${item[1]}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <i className="far fa-file-pdf fa-5x text-danger" />
+                      </a>
+                    </div>
+                    <div className="col-md-4">
+                      File Name : {item[2]}
+                      <br />
+                      <hr />
+                      <br />
+                      uploaded At: {item[3]}
+                    </div>
+                    <div className="col-3 text-center d-flex justify-content-center align-items-center">
+                      <button
+                        value={item[0]}
+                        onClick={e => {
+                          this.removeUploadedFile(e.target.value);
+                        }}
+                        className="btn btn-sm btn-danger text-white"
+                      >
+                        delete
+                      </button>
+                    </div>
+                    <div className="col-12">
+                      <hr />
+                    </div>
+                  </div>
+                );
+              })}
+            </div>*/}
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   render() {
     return (
       <Fragment>
@@ -445,8 +587,9 @@ export default class Staff extends Component {
           </div>
         </nav>
         <div className="student-corner-container">
-          {this.getStaffRegisterBody()}
+          {/* {this.getStaffRegisterBody()} */}
           {/* {this.getStaffLoginBody()} */}
+          {this.getStaffsFilesUploadBody()}
         </div>
       </Fragment>
     );
