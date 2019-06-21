@@ -20,7 +20,7 @@ class Forgotpassword extends Component {
     componentWillMount() {
         this.setState({
             id: this.props.match.params.id,
-            hash: this.props.match.params.hash,
+            forgotPasswordHash: this.props.match.params.hash,
             isStaff: Number(this.props.match.params.id.slice(0, 3)) === 811 ? true : false
         })
 
@@ -43,14 +43,15 @@ class Forgotpassword extends Component {
         }
         formData.append("hash", this.state.forgotPasswordHash);
         formData.append("password", this.state.newPassword);
+
         axios
             .request({
                 url: url,
-                method: "post",
+                method: "POST",
                 data: formData
             })
             .then(data => {
-                console.log(data.data.status);
+                console.log(data);
                 if (data.data.status) {
                     toast.success("password changed successfully!", {
                         position: 'bottom-right'

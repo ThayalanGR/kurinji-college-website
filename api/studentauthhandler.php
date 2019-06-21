@@ -6,7 +6,6 @@ header("Content-Type: application/json; charset=UTF-8");
 require('./config/dbconfig.php');
 require("./phpmailer/class.phpmailer.php");
 
-
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if ($_POST['method'] === 'register') {
         $studentid = $_POST["studentid"];
@@ -32,7 +31,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         }
     } elseif ($_POST['method'] === 'login') {
         $studentid = $_POST['studentid'];
-        $password = $_POST['password'];
+        $password = md5($_POST['password']);
         $query = "SELECT `id`, `studentName`, `department`,`active` FROM tbl_stucorstudents WHERE studentid=".$studentid." AND password='".$password."'";
         $row = mysqli_query($DB, $query);
         if (mysqli_num_rows($row) > 0) {

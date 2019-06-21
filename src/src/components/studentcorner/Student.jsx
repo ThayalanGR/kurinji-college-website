@@ -1,9 +1,12 @@
 import React, { Component, Fragment } from "react";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import "../../css/studentcorner.css";
 import { toast } from "react-toastify";
+import axios from "axios";
+import constants from "../constants";
 
-export default class Student extends Component {
+
+class Student extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -20,24 +23,152 @@ export default class Student extends Component {
         mailId: "",
         mobileNumber: ""
       },
-      studentRegisterDetails: [],
-<<<<<<< HEAD
-      studentLoginDetails: []
-=======
-      studentLoginDetails: [],
-      isAuthenticated: true,
+      forgotPasswordStudentId: '',
+      isAuthenticated: false,
       swapLoginRegister: "login",
-      memory: "dashboard"
->>>>>>> a910c4b8616c589d58fa95cc6393bc3ce7d177e0
+      memory: "login",
+      studentName: '',
+      studentDepartment: '',
+      studentId: ''
     };
-    this.validatingStudentDatails = this.validatingStudentDatails.bind(this);
-    this.validatingStudentLoginDatails = this.validatingStudentLoginDatails.bind(
-      this
-    );
+    this.validatingStudentRegistrationDetails = this.validatingStudentRegistrationDetails.bind(this);
+    this.validatingStudentLoginDatails = this.validatingStudentLoginDatails.bind(this);
   }
 
-  // Validating Registration form
-  validatingStudentDatails() {
+  async componentWillMount() {
+    if (await localStorage.getItem("studentId")) {
+      await this.setState({ memory: "dashboard", isAuthenticated: true, studentId: await localStorage.getItem("studentId"), studentName: await localStorage.getItem("studentName"), studentDepartment: await localStorage.getItem("studentDepartment") })
+
+    }
+  }
+
+  registrationHandler() {
+    let formData = new FormData();
+    formData.append("method", "register");
+    formData.append("studentid", this.state.studentRegister.studentId);
+    formData.append("studentname", this.state.studentRegister.studentName);
+    formData.append("email", this.state.studentRegister.mailId);
+    formData.append("password", this.state.studentRegister.passwordOne);
+    formData.append("mobile", this.state.studentRegister.mobileNumber);
+    formData.append("department", this.state.studentRegister.department);
+
+    axios
+      .request({
+        url: `${constants.baseUrl}/api/studentauthhandler.php`,
+        method: "POST",
+        data: formData
+      })
+      .then(data => {
+        if (data.data.status) {
+          let temp = {
+            studentName: "",
+            studentId: "",
+            department: "",
+            passwordOne: "",
+            passwordTwo: "",
+            mailId: "",
+            mobileNumber: ""
+          }
+          this.setState({ studentRegister: temp, memory: "login" });
+          toast.success("Registration Success ! use your student id and password to login", {
+            position: "bottom-right"
+          })
+        } else {
+          toast.error(data.data.message, {
+            position: "bottom-right"
+          });
+        }
+      })
+      .catch(err => {
+        toast.error("something went wrong! try again later!", {
+          position: "bottom-right"
+        });
+        console.error(err)
+      });
+  }
+
+  loginHandler() {
+    let formData = new FormData();
+    formData.append("method", "login");
+    formData.append("studentid", this.state.studentLogin.studentLoginId);
+    formData.append("password", this.state.studentLogin.studentLoginPassword);
+
+    axios
+      .request({
+        url: `${constants.baseUrl}/api/studentauthhandler.php`,
+        method: "POST",
+        data: formData
+      })
+      .then(data => {
+        if (data.data.status) {
+          let temp = {
+            studentLoginId: "",
+            studentLoginPassword: ""
+          }
+          const {
+            id,
+            studentName,
+            department
+          } = data.data.studentDetails;
+          localStorage.setItem("studentId", id);
+          localStorage.setItem("studentName", studentName);
+          localStorage.setItem("studentDepartment", department);
+          this.setState({ studentLogin: temp, memory: "dashboard", isAuthenticated: true, studentId: id, studentName: studentName, studentDepartment: department });
+          toast.success("login Success!", {
+            position: "bottom-right"
+          })
+        } else {
+          toast.error(data.data.message, {
+            position: "bottom-right"
+          });
+        }
+      })
+      .catch(err => {
+        toast.error("something went wrong! try again later!", {
+          position: "bottom-right"
+        });
+        console.error(err)
+      });
+
+  }
+
+  forgotPasswordHandler() {
+    let formData = new FormData();
+    formData.append("method", "forgot");
+    formData.append("studentid", this.state.forgotPasswordStudentId);
+    formData.append("siteurl", constants.siteurl);
+
+    axios
+      .request({
+        url: `${constants.baseUrl}/api/studentauthhandler.php`,
+        method: "POST",
+        data: formData
+      })
+      .then(data => {
+        if (data.data.status) {
+          this.setState({ forgotPasswordStudentId: '', memory: "login", swapLoginRegister: "login", isAuthenticated: false });
+          toast.success("password resetting email has been sent to your email account, check your email to change the password", {
+            position: "bottom-right"
+          })
+        } else {
+          toast.error(data.data.message, {
+            position: "bottom-right"
+          });
+          const temp = document.getElementById("forgotSubmitButton"); temp.classList.remove("disabled"); temp.innerHTML = "Submit";
+        }
+      })
+      .catch(err => {
+        toast.error("something went wrong! try again later!", {
+          position: "bottom-right"
+        });
+        const temp = document.getElementById("forgotSubmitButton"); temp.classList.remove("disabled"); temp.innerHTML = "Submit";
+        console.error(err)
+      });
+
+  }
+
+
+  validatingStudentRegistrationDetails() {
     let pass1 = this.state.studentRegister.passwordOne;
     let pass2 = this.state.studentRegister.passwordTwo;
     if (
@@ -121,35 +252,7 @@ export default class Student extends Component {
         hideProgressBar: false
       });
     } else {
-      const name = this.state.studentRegister.studentName;
-      const sid = this.state.studentRegister.studentId;
-      const dept = this.state.studentRegister.department;
-      const password = this.state.studentRegister.passwordOne;
-      const email = this.state.studentRegister.mailId;
-      const mobile = this.state.studentRegister.mobileNumber;
-      this.setState({
-        studentId: "",
-        studentName: "",
-        department: "",
-        passwordOne: "",
-        passwordTwo: "",
-        mailId: "",
-        mobileNumber: ""
-      });
-      const temp = this.state.studentRegisterDetails;
-      temp.push({
-        studentId: sid,
-        studentName: name,
-        department: dept,
-        passwordOne: password,
-        mailId: email,
-        mobileNumber: mobile
-      });
-      this.setState({ studentRegisterDetails: temp });
-      console.log(
-        "current Registration Detail",
-        this.state.studentRegisterDetails
-      );
+      this.registrationHandler();
     }
   }
 
@@ -176,15 +279,7 @@ export default class Student extends Component {
         hideProgressBar: false
       });
     } else {
-      const loginId = this.state.studentLogin.studentLoginId;
-      const loginPassword = this.state.studentLogin.studentLoginPassword;
-      const tempArr = this.state.studentLoginDetails;
-      tempArr.push({
-        studentLoginId: loginId,
-        studentLoginPassword: loginPassword
-      });
-      this.setState({ studentLoginDetails: tempArr });
-      console.log("current Login Detail", this.state.studentLoginDetails);
+      this.loginHandler();
     }
   }
 
@@ -193,6 +288,7 @@ export default class Student extends Component {
       <form
         className="container shadow p-4 mt-4 mb-4"
         style={{ width: "450px" }}
+        onSubmit={(e) => { e.preventDefault(); this.validatingStudentRegistrationDetails() }}
       >
         <p
           className="h4-responsive mb-4 mt-2 text-center"
@@ -211,7 +307,7 @@ export default class Student extends Component {
             onChange={e => {
               let temp = this.state.studentRegister;
               temp.studentId = e.target.value;
-              this.setState({ studentId : temp });
+              this.setState({ studentId: temp });
             }}
           />
         </div>
@@ -323,11 +419,8 @@ export default class Student extends Component {
         </div>
         <div className="text-center">
           <button
+            type="submit"
             className="btn btn-sm btn-danger"
-            onClick={e => {
-              e.preventDefault();
-              this.validatingStudentDatails();
-            }}
           >
             Sign Up
           </button>
@@ -338,7 +431,12 @@ export default class Student extends Component {
 
   getStudentLoginBody() {
     return (
-      <form className="container shadow p-4 mt-5" style={{ width: "450px" }}>
+      <form className="container shadow p-4 mt-5" style={{ width: "450px" }}
+        onSubmit={e => {
+          e.preventDefault();
+          this.validatingStudentLoginDatails();
+        }}
+      >
         <div className="row">
           <div
             className="col h4-responsive mb-4 mt-2 text-center"
@@ -355,6 +453,7 @@ export default class Student extends Component {
               className="form-control mb-4"
               placeholder="Student Id"
               id="studentid"
+              value={this.state.studentLogin.studentLoginId}
               onChange={e => {
                 let temp = this.state.studentLogin;
                 temp.studentLoginId = e.target.value;
@@ -372,45 +471,29 @@ export default class Student extends Component {
               placeholder="Password"
               id="pass"
               required
+              value={this.state.studentLogin.studentLoginPassword}
               onChange={e => {
-                this.setState({ studentLoginPassword: e.target.value });
+                let temp = this.state.studentLogin;
+                temp.studentLoginPassword = e.target.value;
+                this.setState({ studentLoginPassword: temp });
               }}
             />
           </div>
         </div>
         <div className="row mb-4">
           <div className="col text-left text-danger">
-<<<<<<< HEAD
-            <button onClick={e => {}} className="bg-transparent text-primary">
-              Forgot password?
-            </button>
+            <button type="button" onClick={async () => await this.setState({ swapLoginRegister: '', memory: "forgot" })} className="bg-transparent text-primary">Forgot password?</button>
           </div>
           <div className="col text-right text-danger">
             <span>Not a member?</span>
-            <button
-              onClick={e => {}}
-              className="bg-transparent text-primary ml-2"
-            >
-              {" "}
-              Register
-            </button>
-=======
-            <button onClick={async () => await this.setState({ swapLoginRegister: '', memory: "forgot" })} className="bg-transparent text-primary">Forgot password?</button>
-          </div>
-          <div className="col text-right text-danger">
-            <span>Not a member?</span>
-            <button onClick={async () => { await this.setState({ swapLoginRegister: "register" }); this.swapHandler(); }} className="bg-transparent text-primary ml-2"> Register</button>
->>>>>>> a910c4b8616c589d58fa95cc6393bc3ce7d177e0
+            <button type="button" onClick={async () => { await this.setState({ swapLoginRegister: "register" }); this.swapHandler(); }} className="bg-transparent text-primary ml-2"> Register</button>
           </div>
         </div>
         <div className="row">
           <div className="col text-center">
             <button
+              type="submit"
               className="btn btn-sm btn-danger"
-              onClick={e => {
-                e.preventDefault();
-                this.validatingStudentLoginDatails();
-              }}
             >
               Login
             </button>
@@ -430,9 +513,48 @@ export default class Student extends Component {
 
 
   getForgotPasswordBody() {
-    return <div>
-
-    </div>
+    return <form className="container shadow p-4 mt-5" style={{ width: "450px" }}
+      onSubmit={e => {
+        e.preventDefault();
+        this.forgotPasswordHandler();
+      }}>
+      <div className="row">
+        <div
+          className="col h4-responsive mb-4 mt-2 text-center"
+          style={{ color: "#FF3547" }}
+        >
+          Students Corner - Forgot Password Helper
+      </div>
+      </div>
+      <div className="row">
+        <div className="col">
+          <p className="h6-responsive text-danger mb-1 mt-4">Enter your Student Id</p>
+          <input
+            type="number"
+            className="form-control mb-4"
+            placeholder="Student Id"
+            id="studentid"
+            value={this.state.forgotPasswordStudentId}
+            onChange={e => {
+              this.setState({ forgotPasswordStudentId: e.target.value });
+            }}
+            required
+          />
+        </div>
+      </div>
+      <div className="row">
+        <div className="col text-center">
+          <button
+            className="btn btn-sm btn-danger"
+            type="submit"
+            id="forgotSubmitButton"
+            onClick={(e) => { const temp = document.getElementById("forgotSubmitButton"); temp.classList.add("disabled"); temp.innerHTML = "please wait requesting!"; }}
+          >
+            Submit
+        </button>
+        </div>
+      </div>
+    </form >
   }
 
   swapHandler() {
@@ -511,3 +633,6 @@ export default class Student extends Component {
     );
   }
 }
+
+
+export default withRouter(Student);
