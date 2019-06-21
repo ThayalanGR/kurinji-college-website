@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { constants } from "../../components";
+import axios from 'axios';
 import { toast } from "react-toastify";
 
 export default class UploadHandler extends Component {
@@ -42,8 +43,6 @@ export default class UploadHandler extends Component {
       });
     } else if (this.state.uploadFileName) {
       let extension = this.state.uploadFileName.split(".").pop();
-      console.log(extension);
-
       if (
         extension === "mp3" ||
         extension === "exe" ||
@@ -56,32 +55,56 @@ export default class UploadHandler extends Component {
           autoClose: true,
           hideProgressBar: false
         });
+      } else {
+        console.log("IAMHERE");
+
+        this.fileUploadHandler();
       }
-    } else {
-      const uploadfile = this.state.uploadFile;
-      const uploadfiletitle = this.state.uploadFileTitle;
-      const uploadfilename = this.state.uploadFileName;
-      const uploaddepartment = this.state.uploadDepartment;
-      const uploadsemester = this.state.uploadSemester;
-      const tagname = this.state.tagName;
-      this.setState({
-        uploadFile: null,
-        uploadFileTitle: "",
-        uploadFileName: "",
-        uploadDepartment: "",
-        uploadSemester: "",
-        tagName: ""
-      });
-      this.setState({
-        uploadFile: uploadfile,
-        uploadFileTitle: uploadfiletitle,
-        uploadFileName: uploadfilename,
-        uploadDepartment: uploaddepartment,
-        uploadSemester: uploadsemester,
-        tagName: tagname
-      });
-      console.log(this.state);
     }
+  }
+
+  fileUploadHandler() {
+    let formData = new FormData();
+    formData.append("method", "upload");
+    formData.append("filename", this.state.uploadFileTitle);
+    formData.append("tag", this.state.tagName);
+    formData.append("department", this.state.uploadDepartment);
+    formData.append("staffid", this.props.staffId);
+    formData.append("staffname", this.props.staffName);
+    formData.append("semester", this.state.uploadSemester);
+    formData.append("file", this.state.uploadFile);
+    axios
+      .request({
+        url: `${constants.baseUrl}/api/studentcornerfilehandler.php`,
+        method: "POST",
+        data: formData
+      })
+      .then(data => {
+
+        if (data.data.status) {
+          this.setState({
+            uploadFile: null,
+            uploadFileTitle: "",
+            uploadFileName: "Choose a file",
+            uploadDepartment: "",
+            uploadSemester: "",
+            tagName: ""
+          })
+          toast.success("File uploaded successfully", {
+            position: "bottom-right"
+          });
+        } else {
+          toast.error(String(data.data.message), {
+            position: "bottom-right"
+          });
+        }
+      })
+      .catch(err => {
+        console.log(err);
+        toast.error("something went wrong!", {
+          position: "bottom-right"
+        });
+      })
   }
 
   render() {
@@ -95,7 +118,7 @@ export default class UploadHandler extends Component {
         </div>
         <div className="row" style={{ maxWidth: "100vw" }}>
           <div className="col-md-6 " style={{ width: "100%" }}>
-            <div className="text-center text-danger mt-0">Upload new Files</div>
+            <div className="text-center text-danger mt-0">Upload New File</div>
             <div className="row mt-1 pt-1">
               <div className="col">
                 <hr />
@@ -229,44 +252,46 @@ export default class UploadHandler extends Component {
             </div>
             <div className="p-1 container">
               {/* {this.state.map((item, index) => { */}
-                {/* return ( */}
-                  <div className="row">
-                    <div className="col-md-4 text-center d-flex justify-content-center align-items-center">
-                      <a
-                        // href={`${constants.baseUrl}${item[1]}`}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        <i className="far fa-file-pdf fa-5x text-danger" />
-                      </a>
-                    </div>
-                    <div className="col-md-4">
-                      Filename :- Javscript<br/>
-                      Department :- CSE <br/>
-                      Semester :- 6 <br/>
-                      Tag :- CS6601 <br/> 
-                      Uploaded By :- Chardru
+              {/* return ( */}
+              <div className="row">
+                <div className="col-md-4 text-center d-flex justify-content-center align-items-center">
+                  {/* eslint-disable-next-line */}
+                  <a
+
+                    // href={`${constants.baseUrl}${item[1]}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <i className="far fa-file-pdf fa-5x text-danger" />
+                  </a>
+                </div>
+                <div className="col-md-4">
+                  Filename :- Javscript<br />
+                  Department :- CSE <br />
+                  Semester :- 6 <br />
+                  Tag :- CS6601 <br />
+                  Uploaded By :- Chardru
                       <br />
-                      <hr />
-                      <br />
-                      uploaded At: 21-06-2019
+                  <hr />
+                  <br />
+                  uploaded At: 21-06-2019
                     </div>
-                    <div className="col-3 text-center d-flex justify-content-center align-items-center">
-                      <button
-                        // value={item[0]}
-                        onClick={e => {
-                          this.deleteUploadedFile(e.target.value);
-                        }}
-                        className="btn btn-sm btn-danger text-white"
-                      >
-                        delete
+                <div className="col-3 text-center d-flex justify-content-center align-items-center">
+                  <button
+                    // value={item[0]}
+                    onClick={e => {
+                      this.deleteUploadedFile(e.target.value);
+                    }}
+                    className="btn btn-sm btn-danger text-white"
+                  >
+                    delete
                       </button>
-                    </div>
-                    <div className="col-12">
-                      <hr />
-                    </div>
-                  </div>
-                {/* ); */}
+                </div>
+                <div className="col-12">
+                  <hr />
+                </div>
+              </div>
+              {/* ); */}
               {/* })} */}
             </div>
           </div>

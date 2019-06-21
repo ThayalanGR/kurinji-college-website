@@ -629,7 +629,11 @@ class Staff extends Component {
   getStaffDashboardBody() {
     return (
       <div>
-        {this.state.dashboardView === "upload" && <UploadHandler />}
+        {this.state.dashboardView === "upload" && <UploadHandler
+          staffId={this.state.staffId}
+          staffName={this.state.staffName}
+          staffDepartment={this.state.staffDepartment}
+        />}
         {this.state.dashboardView === "download" && (
           <DownloadHandler
             staffId={this.state.staffId}
@@ -711,20 +715,20 @@ class Staff extends Component {
                   )}
                 </Fragment>
               ) : (
-                <Fragment>
-                  <span className="text-white mr-3 pt-3">
-                    Hello {this.state.staffName} !
+                  <Fragment>
+                    <span className="text-white mr-3 pt-3">
+                      Hello {this.state.staffName} !
                   </span>
-                  <button
-                    onClick={() => {
-                      this.logOutHandler();
-                    }}
-                    className="btn btn-sm btn-outline-light rounded text-white"
-                  >
-                    Logout
+                    <button
+                      onClick={() => {
+                        this.logOutHandler();
+                      }}
+                      className="btn btn-sm btn-outline-light rounded text-white"
+                    >
+                      Logout
                   </button>
-                </Fragment>
-              )}
+                  </Fragment>
+                )}
             </span>
           </div>
         </nav>
