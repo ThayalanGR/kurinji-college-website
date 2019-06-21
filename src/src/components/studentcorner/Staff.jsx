@@ -5,6 +5,7 @@ import { toast } from "react-toastify";
 import axios from "axios";
 import constants from "../constants";
 import UploadHandler from "./UploadHandler";
+import DownloadHandler from "./DownloadHandler";
 
 class Staff extends Component {
   constructor(props) {
@@ -118,23 +119,23 @@ class Staff extends Component {
             staffLoginId: "",
             staffLoginPassword: ""
           };
-          const { id, staffName, department } = data.data.staffDetails;
-          localStorage.setItem("staffId", id);
-          localStorage.setItem("staffName", staffName);
+          const { staffid, staffname, department } = data.data.staffDetails;
+          localStorage.setItem("staffId", staffid);
+          localStorage.setItem("staffName", staffname);
           localStorage.setItem("staffDepartment", department);
           this.setState({
             staffLogin: temp,
             memory: "dashboard",
             isAuthenticated: true,
-            staffId: id,
-            staffName: staffName,
+            staffId: staffid,
+            staffName: staffname,
             staffDepartment: department
           });
           toast.success("login Success!", {
             position: "bottom-right"
           });
         } else {
-          toast.error(data.data.message, {
+          toast.error(String(data.data.message), {
             position: "bottom-right"
           });
         }
@@ -625,17 +626,17 @@ class Staff extends Component {
     }
   }
 
-
-  getDashboardDownloadBody() {
-    return <div>download</div>;
-  }
-
   getStaffDashboardBody() {
     return (
       <div>
         {this.state.dashboardView === "upload" && <UploadHandler />}
-        {this.state.dashboardView === "download" &&
-          this.getDashboardDownloadBody()}
+        {this.state.dashboardView === "download" && (
+          <DownloadHandler
+            staffId={this.state.staffId}
+            staffName={this.state.staffName}
+            staffDepartment={this.state.staffDepartment}
+          />
+        )}
       </div>
     );
   }
@@ -656,7 +657,7 @@ class Staff extends Component {
             aria-expanded="false"
             aria-label="Toggle navigation"
           >
-            <i className="fas fa-bars" />
+            <i className="fas fa-bars text-white" />
           </button>
           <div className="collapse navbar-collapse" id="navbarText">
             <ul className="navbar-nav mr-auto">
