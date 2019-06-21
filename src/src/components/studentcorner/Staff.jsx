@@ -4,6 +4,7 @@ import "../../css/studentcorner.css";
 import { toast } from "react-toastify";
 import axios from "axios";
 import constants from "../constants";
+import DownloadHandler from "./DownloadHandler";
 
 
 class Staff extends Component {
@@ -107,19 +108,19 @@ class Staff extends Component {
             staffLoginPassword: ""
           }
           const {
-            id,
-            staffName,
+            staffid,
+            staffname,
             department
           } = data.data.staffDetails;
-          localStorage.setItem("staffId", id);
-          localStorage.setItem("staffName", staffName);
+          localStorage.setItem("staffId", staffid);
+          localStorage.setItem("staffName", staffname);
           localStorage.setItem("staffDepartment", department);
-          this.setState({ staffLogin: temp, memory: "dashboard", isAuthenticated: true, staffId: id, staffName: staffName, staffDepartment: department });
+          this.setState({ staffLogin: temp, memory: "dashboard", isAuthenticated: true, staffId: staffid, staffName: staffname, staffDepartment: department });
           toast.success("login Success!", {
             position: "bottom-right"
           })
         } else {
-          toast.error(data.data.message, {
+          toast.error(String(data.data.message), {
             position: "bottom-right"
           });
         }
@@ -577,15 +578,16 @@ class Staff extends Component {
     return <div>upload</div>
   }
 
-  getDashboardDownloadBody() {
-    return <div>download</div>
-  }
-
   getStaffDashboardBody() {
     return (
       <div>
         {this.state.dashboardView === "upload" && this.getDashboardUploadBody()}
-        {this.state.dashboardView === "download" && this.getDashboardDownloadBody()}
+        {this.state.dashboardView === "download" &&
+          <DownloadHandler
+            staffId={this.state.staffId}
+            staffName={this.state.staffName}
+            staffDepartment={this.state.staffDepartment}
+          />}
       </div>
     )
   }
@@ -606,7 +608,7 @@ class Staff extends Component {
             aria-expanded="false"
             aria-label="Toggle navigation"
           >
-            <i className="fas fa-bars" />
+            <i className="fas fa-bars text-white" />
           </button>
           <div className="collapse navbar-collapse" id="navbarText">
             <ul className="navbar-nav mr-auto">
@@ -629,7 +631,7 @@ class Staff extends Component {
 
                 {!(this.state.swapLoginRegister === "register") && <button onClick={async () => { await this.setState({ swapLoginRegister: "register" }); this.swapHandler(); }} className="btn btn-sm btn-outline-light rounded text-white">Register</button>}
                 {!(this.state.swapLoginRegister === "login") && <button onClick={async () => { await this.setState({ swapLoginRegister: "login" }); this.swapHandler(); }} className="btn btn-sm btn-outline-light rounded text-white">Login</button>}
-                  </Fragment> : <Fragment>
+              </Fragment> : <Fragment>
                   <span className="text-white mr-3 pt-3">Hello {this.state.staffName} !</span>
                   <button onClick={() => { this.logOutHandler(); }} className="btn btn-sm btn-outline-light rounded text-white">Logout</button>
                 </Fragment>

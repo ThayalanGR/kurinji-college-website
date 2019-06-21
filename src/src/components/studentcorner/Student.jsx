@@ -107,14 +107,14 @@ class Student extends Component {
             studentLoginPassword: ""
           }
           const {
-            id,
-            studentName,
+            studentid,
+            studentname,
             department
           } = data.data.studentDetails;
-          localStorage.setItem("studentId", id);
-          localStorage.setItem("studentName", studentName);
+          localStorage.setItem("studentId", studentid);
+          localStorage.setItem("studentName", studentname);
           localStorage.setItem("studentDepartment", department);
-          this.setState({ studentLogin: temp, memory: "dashboard", isAuthenticated: true, studentId: id, studentName: studentName, studentDepartment: department });
+          this.setState({ studentLogin: temp, memory: "dashboard", isAuthenticated: true, studentId: studentid, studentName: studentname, studentDepartment: department });
           toast.success("login Success!", {
             position: "bottom-right"
           })
@@ -607,7 +607,7 @@ class Student extends Component {
             aria-expanded="false"
             aria-label="Toggle navigation"
           >
-            <i className="fas fa-bars" />
+            <i className="fas fa-bars text-white" />
           </button>
           <div className="collapse navbar-collapse" id="navbarText">
             <ul className="navbar-nav mr-auto">

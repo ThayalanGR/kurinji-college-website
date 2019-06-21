@@ -32,7 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     } elseif ($_POST['method'] === 'login') {
         $studentid = $_POST['studentid'];
         $password = md5($_POST['password']);
-        $query = "SELECT `id`, `studentName`, `department`,`active` FROM tbl_stucorstudents WHERE studentid=".$studentid." AND password='".$password."'";
+        $query = "SELECT `studentid`, `studentname`, `department`,`active` FROM tbl_stucorstudents WHERE studentid=".$studentid." AND password='".$password."'";
         $row = mysqli_query($DB, $query);
         if (mysqli_num_rows($row) > 0) {
             $studentDetails = mysqli_fetch_array($row);
