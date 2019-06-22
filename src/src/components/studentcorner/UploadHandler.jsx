@@ -169,6 +169,14 @@ export default class UploadHandler extends Component {
         return <i title={type} className="fas fa-4x text-danger fa-file-archive"></i>
       case "png" || "jpg" || "svg" || "jpeg":
         return <i title={type} className="far fa-4x text-warning fa-file-image"></i>
+      case "txt":
+        return <i title={type} className="far fa-4x text-warning fa-file-alt"></i>
+      case "ppt":
+        return <i title={type} className="far fa-4x text-warning fa-file-powerpoint"></i>
+      case "mp3" || "wav" || "wma" || "aif" || "ogg" || "mpeg":
+        return <i title={type} className="far fa-4x text-warning fa-file-audio"></i>
+      case "mp4" || "3gp" || "avi" || "mov" || "flv" || "wmv":
+        return <i title={type} className="far fa-4x text-warning fa-file-video"></i>
       default:
         return <i title={type} className="fas text-dark fa-4x fa-file"></i>
     }
@@ -279,7 +287,6 @@ export default class UploadHandler extends Component {
                       type="file"
                       className="custom-file-input form-control"
                       id="validatedCustomFile"
-                      accept=".txt,.doc,.docx,.pdf,.zip,.ppt,.xlsx,application/msword,aplication/vnd.openxmlformats-officedocument.wordprocessingml.document/image/*"
                       onChange={e => {
                         this.setState({
                           uploadFile: e.target.files[0],
