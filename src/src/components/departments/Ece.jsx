@@ -29,7 +29,6 @@ export default class Ece extends Component {
       .then(response => {
         const data = response.data;
         this.setState({ staffs: data });
-        console.log(data);
       })
       .catch(err => {
         console.log(err);
@@ -41,7 +40,6 @@ export default class Ece extends Component {
       .get(`${baseUrl}/api/deptevent.php?department=${dept}`)
       .then(response => {
         const data = response.data;
-        console.log(data);
         this.setState({ deptevent: data });
       })
       .catch(err => {
@@ -55,7 +53,6 @@ export default class Ece extends Component {
       .then(response => {
         const data = response.data;
         this.setState({ deptstuact: data });
-        console.log(data);
       })
       .catch(err => {
         console.log(err);
@@ -68,7 +65,6 @@ export default class Ece extends Component {
       .then(response => {
         const data = response.data;
         this.setState({ deptlab: data });
-        console.log(data);
       })
       .catch(err => {
         console.log(err);

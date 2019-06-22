@@ -35,7 +35,6 @@ export default class Login extends Component {
         const isValid = this.state.userName === 'admin' && this.state.password === 'admin' ? true : false;
         if (isValid) {
             localStorage.setItem("token", "alsdkfer234c1m0349");
-            console.log(this.state.userName, this.state.password);
             this.setState({userName: '', password: ''})
             toast.success("login success", {
                 position: "bottom-right"

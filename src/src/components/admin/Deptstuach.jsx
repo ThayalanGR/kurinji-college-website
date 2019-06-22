@@ -82,8 +82,6 @@ export default class Deptstuact extends Component {
             autoClose: 1000,
             hideProgressBar: true
           });
-          console.log(data);
-
           this.fetchEvents(this.state.filterChoice);
         })
         .catch(err => console.log(err));

@@ -4,7 +4,7 @@ import "../../css/studentcorner.css";
 import { toast } from "react-toastify";
 import axios from "axios";
 import constants from "../constants";
-
+import DownloadHandler from "./DownloadHandler";
 
 class Student extends Component {
   constructor(props) {
@@ -30,7 +30,7 @@ class Student extends Component {
       studentName: '',
       studentDepartment: '',
       studentId: '',
-      dashboardView: "upload"
+      dashboardView: "download"
     };
     this.validatingStudentRegistrationDetails = this.validatingStudentRegistrationDetails.bind(this);
     this.validatingStudentLoginDatails = this.validatingStudentLoginDatails.bind(this);
@@ -574,19 +574,10 @@ class Student extends Component {
 
   }
 
-  getDashboardUploadBody() {
-    return <div>upload</div>
-  }
-
-  getDashboardDownloadBody() {
-    return <div>download</div>
-  }
-
   getStudentDashboardBody() {
     return (
       <div>
-        {this.state.dashboardView === "upload" && this.getDashboardUploadBody()}
-        {this.state.dashboardView === "download" && this.getDashboardDownloadBody()}
+        {this.state.dashboardView === "download" && <DownloadHandler />}
       </div>
     )
   }
@@ -612,11 +603,11 @@ class Student extends Component {
           <div className="collapse navbar-collapse" id="navbarText">
             <ul className="navbar-nav mr-auto">
               {this.state.isAuthenticated && <Fragment>
-                <li className="nav-item active">
+                {/* <li className="nav-item active">
                   <button onClick={() => this.setState({ dashboardView: "upload" })} className="nav-link btn btn-sm bg-transparent text-white">
                     <span className="h6-responsive">Upload</span>
                   </button>
-                </li>
+                </li> */}
                 <li className="nav-item">
                   <button onClick={() => this.setState({ dashboardView: "download" })} className="nav-link btn btn-sm bg-transparent text-white">
                     <span className="h6-responsive">Download</span>

@@ -70,7 +70,6 @@ export default class Alumni extends Component {
       })
       .then(data => {
         if (data) {
-          console.log(data);
 
           toast.success("registration success!", {
             position: "bottom-left"

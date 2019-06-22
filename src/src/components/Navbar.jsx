@@ -145,7 +145,7 @@ export default class Navbar extends Component {
             </li>
             <li className="nav-item">
               <Link className="nav-link  text-light" title="Students Corner" to="/student">
-                <i className="fas fa-users"></i> Students Corner
+                <i className="fas fa-users"></i> Student's Corner
               </Link>
             </li>
           </ul>

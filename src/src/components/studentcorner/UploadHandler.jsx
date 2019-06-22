@@ -12,7 +12,8 @@ export default class UploadHandler extends Component {
       uploadFileName: "Choose a file",
       uploadDepartment: "",
       uploadSemester: "",
-      tagName: ""
+      tagName: "",
+      files: []
     };
   }
 
@@ -56,8 +57,6 @@ export default class UploadHandler extends Component {
           hideProgressBar: false
         });
       } else {
-        console.log("IAMHERE");
-
         this.fileUploadHandler();
       }
     }
@@ -88,11 +87,12 @@ export default class UploadHandler extends Component {
             uploadFileName: "Choose a file",
             uploadDepartment: "",
             uploadSemester: "",
-            tagName: ""
+            tagName: "",
           })
           toast.success("File uploaded successfully", {
             position: "bottom-right"
           });
+          this.fetchUploadedFiles()
         } else {
           toast.error(String(data.data.message), {
             position: "bottom-right"
@@ -105,6 +105,73 @@ export default class UploadHandler extends Component {
           position: "bottom-right"
         });
       })
+  }
+
+  fetchUploadedFiles() {
+    let formData = new FormData();
+    formData.append("method", "filter");
+    formData.append("filtertype", "3");
+    formData.append("staffid", this.props.staffId);
+    axios
+      .request({
+        url: `${constants.baseUrl}/api/studentcornerfilehandler.php`,
+        method: "POST",
+        data: formData
+      })
+      .then(data => {
+        this.setState({ files: data.data.data });
+      })
+      .catch(err => console.error(err))
+  }
+
+  componentDidMount() {
+    this.fetchUploadedFiles();
+  }
+
+  deleteUploadedFile(id) {
+    var data = new FormData();
+    data.append("method", "delete");
+    data.append("id", id);
+    axios
+      .request({
+        method: "POST",
+        url: `${constants.baseUrl}/api/studentcornerfilehandler.php`,
+        data: data
+      })
+      .then(data => {
+        if (data.data.status) {
+          this.fetchUploadedFiles();
+          toast.success("File deleted successfully!", {
+            position: "bottom-left"
+          });
+        } else {
+          toast.error("something went wrong !", {
+            position: "bottom-left"
+          });
+        }
+      })
+      .catch(err => {
+        toast.error("something went wrong !", {
+          position: "bottom-left"
+        });
+      });
+  }
+
+  fileTypeIconFiner(type) {
+    switch (type.toLowerCase()) {
+      case "pdf":
+        return <i title={type} className="fas fa-4x text-danger fa-file-pdf"></i>
+      case "docx":
+        return <i title={type} className="far fa-4x text-primary fa-file-word"></i>
+      case "xlsx":
+        return <i title={type} className="far fa-4x text-success fa-file-excel"></i>
+      case "zip" || "rar":
+        return <i title={type} className="fas fa-4x text-danger fa-file-archive"></i>
+      case "png" || "jpg" || "svg" || "jpeg":
+        return <i title={type} className="far fa-4x text-warning fa-file-image"></i>
+      default:
+        return <i title={type} className="fas text-dark fa-4x fa-file"></i>
+    }
   }
 
   render() {
@@ -212,7 +279,7 @@ export default class UploadHandler extends Component {
                       type="file"
                       className="custom-file-input form-control"
                       id="validatedCustomFile"
-                      accept=".txt,.doc,.docx,.pdf,.zip,.ppt,application/msword,aplication/vnd.openxmlformats-officedocument.wordprocessingml.document/image/*"
+                      accept=".txt,.doc,.docx,.pdf,.zip,.ppt,.xlsx,application/msword,aplication/vnd.openxmlformats-officedocument.wordprocessingml.document/image/*"
                       onChange={e => {
                         this.setState({
                           uploadFile: e.target.files[0],
@@ -242,8 +309,11 @@ export default class UploadHandler extends Component {
             </div>
           </div>
           <div className="col-md-6">
-            <div className="text-center d-flex justify-content-around">
-              <div className="text-danger">Uploaded Files</div>
+            <div className="row">
+              <div className="col text-danger d-flex justify-content-around align-items-center">
+                <div>Uploaded Files</div>
+                <div>Total Files: {this.state.files.length}</div>
+              </div>
             </div>
             <div className="row">
               <div className="col">
@@ -251,48 +321,43 @@ export default class UploadHandler extends Component {
               </div>
             </div>
             <div className="p-1 container">
-              {/* {this.state.map((item, index) => { */}
-              {/* return ( */}
-              <div className="row">
-                <div className="col-md-4 text-center d-flex justify-content-center align-items-center">
-                  {/* eslint-disable-next-line */}
-                  <a
-
-                    // href={`${constants.baseUrl}${item[1]}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <i className="far fa-file-pdf fa-5x text-danger" />
-                  </a>
-                </div>
-                <div className="col-md-4">
-                  Filename :- Javscript<br />
-                  Department :- CSE <br />
-                  Semester :- 6 <br />
-                  Tag :- CS6601 <br />
-                  Uploaded By :- Chardru
-                      <br />
-                  <hr />
-                  <br />
-                  uploaded At: 21-06-2019
-                    </div>
-                <div className="col-3 text-center d-flex justify-content-center align-items-center">
-                  <button
-                    // value={item[0]}
-                    onClick={e => {
-                      this.deleteUploadedFile(e.target.value);
-                    }}
-                    className="btn btn-sm btn-danger text-white"
-                  >
-                    delete
+              {this.state.files.map((item, key) => (
+                <div className="row" key={key}>
+                  <div className="col-md-1 d-flex justify-content-center align-items-center">{key + 1} .</div>
+                  <div className="col-md-3 text-center d-flex justify-content-center align-items-center">
+                    <a
+                      href={`${constants.baseUrl}${item[2]}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      {this.fileTypeIconFiner(item[2].split(".")[item[2].split(".").length - 1])}
+                    </a>
+                  </div>
+                  <div className="col-md-4">
+                    Filename :- {item[1]}<br />
+                    Department :- {item[4]} <br />
+                    Semester :- {item[7]} <br />
+                    Tag :- {item[3]} <br />
+                    Uploaded By :- {item[6]}
+                    uploaded At: {new Date(item[8]).toDateString()}
+                  </div>
+                  <div className="col-3 text-center d-flex justify-content-center align-items-center">
+                    <button
+                      value={item[0]}
+                      onClick={e => {
+                        this.deleteUploadedFile(e.target.value);
+                      }}
+                      className="btn btn-sm btn-danger text-white"
+                    >
+                      delete
                       </button>
+                  </div>
+                  <div className="col-12">
+                    <hr />
+                  </div>
                 </div>
-                <div className="col-12">
-                  <hr />
-                </div>
-              </div>
-              {/* ); */}
-              {/* })} */}
+              )
+              )}
             </div>
           </div>
         </div>

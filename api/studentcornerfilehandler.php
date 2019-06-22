@@ -73,27 +73,26 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $semester = $_POST['semester'];
             $sql = "SELECT * FROM `tbl_stucorfiles` WHERE staffid='".$staffid."' AND semester='".$semester."'";
         } elseif ($_POST['filtertype'] === '8') {
-            // (all dept, one staff, one semester)
-            $staffid = $_POST['staffid'];
-            $semester = $_POST['semester'];
-            $sql = "SELECT * FROM `tbl_stucorfiles` WHERE staffid='".$staffid."' AND semester='".$semester."'";
-        } elseif ($_POST['filtertype'] === '9') {
             // (one dept, one staff, one semester)
             $department = $_POST['department'];
             $staffid = $_POST['staffid'];
             $semester = $_POST['semester'];
             $sql = "SELECT * FROM `tbl_stucorfiles` WHERE department='".$department."' AND staffid='".$staffid."' AND semester='".$semester."'";
-        } elseif ($_POST['filtertype'] === '10') {
+        } elseif ($_POST['filtertype'] === '9') {
             // (one dept, one staff, one semester)
             $tag = $_POST['tag'];
             $sql = "SELECT * FROM `tbl_stucorfiles` WHERE tag='".$tag."'";
         }
         $row = mysqli_query($DB, $sql);
-        if (mysqli_num_rows($row)) {
-            $result = mysqli_fetch_all($row);
-            echo json_encode(array("status" => true, "data" => $result));
-        } else {
-            echo json_encode(array("status" => false, "message" => "No Data found!"));
-        }
+        $result = mysqli_fetch_all($row);
+        echo json_encode(array("status" => true, "data" => $result));
     }
+}
+
+
+if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+    $sql = "SELECT staffid, staffname from `tbl_stucorstaffs`";
+    $row = mysqli_query($DB, $sql);
+    $staffs = mysqli_fetch_all($row);
+    echo json_encode(array("status" => true, "data" => $staffs));
 }

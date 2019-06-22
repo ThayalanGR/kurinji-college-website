@@ -51,7 +51,7 @@ class Forgotpassword extends Component {
                 data: formData
             })
             .then(data => {
-                console.log(data);
+                
                 if (data.data.status) {
                     toast.success("password changed successfully!", {
                         position: 'bottom-right'
