@@ -57,21 +57,21 @@ export default class UploadHandler extends Component {
         extension === "wav" ||
         extension === "aif" ||
         extension === "ogg" ||
-        extension === "mpeg"||
-        extension === "mp4" || 
-        extension === "3gp" || 
-        extension === "wmv" || 
-        extension === "flv" || 
-        extension === "mov" 
-        ) {
-          toast.error("Audio/Video files not Supports", {
-            position: "bottom-right",
-            autoClose: true,
-            hideProgressBar: false
-          });
+        extension === "mpeg" ||
+        extension === "mp4" ||
+        extension === "3gp" ||
+        extension === "wmv" ||
+        extension === "flv" ||
+        extension === "mov"
+      ) {
+        toast.error("Audio/Video files not Supports", {
+          position: "bottom-right",
+          autoClose: true,
+          hideProgressBar: false
+        });
       } else {
         this.fileUploadHandler();
-    }
+      }
     }
   }
 
@@ -85,11 +85,25 @@ export default class UploadHandler extends Component {
     formData.append("staffname", this.props.staffName);
     formData.append("semester", this.state.uploadSemester);
     formData.append("file", this.state.uploadFile);
+    var toastId = null;
     axios
       .request({
         url: `${constants.baseUrl}/api/studentcornerfilehandler.php`,
         method: "POST",
-        data: formData
+        data: formData,
+        onUploadProgress: p => {
+          const progress = p.loaded / p.total;
+          if (toastId === null) {
+            toastId = toast("Upload in Progress", {
+              progress: progress,
+              position: "bottom-left"
+            });
+          } else {
+            toast.update(toastId, {
+              progress: progress
+            });
+          }
+        }
       })
       .then(data => {
         if (data.data.status) {
@@ -105,6 +119,8 @@ export default class UploadHandler extends Component {
             position: "bottom-right"
           });
           this.fetchUploadedFiles();
+          toast.done(toast.id);
+          toast.dismiss(toastId);
         } else {
           toast.error(String(data.data.message), {
             position: "bottom-right"
