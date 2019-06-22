@@ -14,6 +14,7 @@ export default class Ece extends Component {
       showMenu: "",
       staffs: []
     };
+    this.hideEceDepartmentNavbar = this.hideEceDepartmentNavbar.bind(this);
   }
 
   componentDidMount() {
@@ -308,6 +309,13 @@ export default class Ece extends Component {
     }
   }
 
+  hideEceDepartmentNavbar() {
+    this.state.showMenu === ""
+      ? this.setState({ showMenu: "d-none-custom" })
+      : this.setState({ showMenu: "" });
+    document.removeEventListener("click", this.hideEceDepartmentNavbar);
+  }
+
   render() {
     return (
       <div className="mtspace">
@@ -315,11 +323,12 @@ export default class Ece extends Component {
           <div className="side-header text-orange h2-responsive text-center">
             {deptName.toUpperCase()}
             <i
-              onClick={e =>
+              onClick={e => {
                 this.state.showMenu === ""
                   ? this.setState({ showMenu: "d-none-custom" })
-                  : this.setState({ showMenu: "" })
-              }
+                  : this.setState({ showMenu: "" });
+                document.addEventListener("click", this.hideEceDepartmentNavbar);
+              }}
               className="fa fa-caret-down text-white float-right mr-4 dropdown-custom"
             />
           </div>
@@ -364,14 +373,6 @@ export default class Ece extends Component {
             >
               Laboratories
             </li>
-            {/* <li
-              className="h5-responsive"
-              onClick={e => {
-                this.setState({ tab: "achivements" });
-              }}
-            >
-              Achievements{" "}
-            </li> */}
           </ul>
         </div>
         <div className="main-section">
