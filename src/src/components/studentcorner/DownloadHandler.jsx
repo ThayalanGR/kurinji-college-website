@@ -127,13 +127,13 @@ export default class StaffDownloadHandler extends Component {
             case "png" || "jpg" || "svg" || "jpeg":
                 return <i title={type} className="far fa-2x text-warning fa-file-image"></i>
             case "txt":
-                return <i title={type} className="far fa-4x text-warning fa-file-alt"></i>
+                return <i title={type} className="far fa-2x text-warning fa-file-alt"></i>
             case "ppt":
-                return <i title={type} className="far fa-4x text-warning fa-file-powerpoint"></i>
+                return <i title={type} className="far fa-2x text-warning fa-file-powerpoint"></i>
             case "mp3" || "wav" || "wma" || "aif" || "ogg" || "mpeg":
-                return <i title={type} className="far fa-4x text-warning fa-file-audio"></i>
+                return <i title={type} className="far fa-2x text-warning fa-file-audio"></i>
             case "mp4" || "3gp" || "avi" || "mov" || "flv" || "wmv":
-                return <i title={type} className="far fa-4x text-warning fa-file-video"></i>
+                return <i title={type} className="far fa-2x text-warning fa-file-video"></i>
             default:
                 return <i title={type} className="fas text-dark fa-2x fa-file"></i>
         }
