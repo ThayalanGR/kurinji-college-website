@@ -1,40 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <title>KCET</title>
 
-<head>
-  <meta charset="utf-8" />
-  <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.png" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="theme-color" content="#000000" />
-  <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-  <title>KCET</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="%PUBLIC_URL%/css/all.css" />
+    <!-- Bootstrap core CSS -->
+    <link href="%PUBLIC_URL%/css/bootstrap.min.css" rel="stylesheet" />
+    <!-- Material Design Bootstrap -->
+    <link href="%PUBLIC_URL%/css/mdb.min.css" rel="stylesheet" />
+  </head>
 
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="%PUBLIC_URL%/css/all.css">
-  <!-- Bootstrap core CSS -->
-  <link href="%PUBLIC_URL%/css/bootstrap.min.css" rel="stylesheet">
-  <!-- Material Design Bootstrap -->
-  <link href="%PUBLIC_URL%/css/mdb.min.css" rel="stylesheet">
-</head>
+  <body>
+    <div id="root"></div>
 
-<body>
-  <div id="root"></div>
+    <!-- JQuery -->
+    <script type="text/javascript" src="%PUBLIC_URL%/js/jquery.min.js"></script>
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript" src="%PUBLIC_URL%/js/popper.min.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script
+      type="text/javascript"
+      src="%PUBLIC_URL%/js/bootstrap.min.js"
+    ></script>
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript" src="%PUBLIC_URL%/js/mdb.min.js"></script>
 
-  <!-- JQuery -->
-  <script type="text/javascript" src="%PUBLIC_URL%/js/jquery.min.js"></script>
-  <!-- Bootstrap tooltips -->
-  <script type="text/javascript"
-    src="%PUBLIC_URL%/js/popper.min.js"></script>
-  <!-- Bootstrap core JavaScript -->
-  <script type="text/javascript"
-    src="%PUBLIC_URL%/js/bootstrap.min.js"></script>
-  <!-- MDB core JavaScript -->
-  <script type="text/javascript" src="%PUBLIC_URL%/js/mdb.min.js"></script>
-
-  <script>
-    // $('.carousel').carousel()
-
-  </script>
-</body>
-
+    <script>
+      $(document).on("click", function() {
+        $(".collapse").collapse("hide");
+      });
+      
+    </script>
+  </body>
 </html>

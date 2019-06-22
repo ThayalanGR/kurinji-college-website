@@ -14,6 +14,7 @@ export default class Mba extends Component {
       showMenu: "",
       staffs: []
     };
+    this.hideMbaDepartmentNavbar = this.hideMbaDepartmentNavbar.bind(this);
   }
 
   componentDidMount() {
@@ -29,7 +30,6 @@ export default class Mba extends Component {
       .then(response => {
         const data = response.data;
         this.setState({ staffs: data });
-        
       })
       .catch(err => {
         console.log(err);
@@ -41,7 +41,7 @@ export default class Mba extends Component {
       .get(`${baseUrl}/api/deptevent.php?department=${dept}`)
       .then(response => {
         const data = response.data;
-        
+
         this.setState({ deptevent: data });
       })
       .catch(err => {
@@ -55,7 +55,6 @@ export default class Mba extends Component {
       .then(response => {
         const data = response.data;
         this.setState({ deptstuact: data });
-        
       })
       .catch(err => {
         console.log(err);
@@ -68,7 +67,6 @@ export default class Mba extends Component {
       .then(response => {
         const data = response.data;
         this.setState({ deptlab: data });
-        
       })
       .catch(err => {
         console.log(err);
@@ -313,6 +311,13 @@ export default class Mba extends Component {
     }
   }
 
+  hideMbaDepartmentNavbar() {
+    this.state.showMenu === ""
+      ? this.setState({ showMenu: "d-none-custom" })
+      : this.setState({ showMenu: "" });
+    document.removeEventListener("click", this.hideMbaDepartmentNavbar);
+  }
+
   render() {
     return (
       <div className="mtspace">
@@ -320,11 +325,15 @@ export default class Mba extends Component {
           <div className="side-header text-orange h2-responsive text-center">
             {deptName.toUpperCase()}
             <i
-              onClick={e =>
+              onClick={e => {
                 this.state.showMenu === ""
                   ? this.setState({ showMenu: "d-none-custom" })
-                  : this.setState({ showMenu: "" })
-              }
+                  : this.setState({ showMenu: "" });
+                document.addEventListener(
+                  "click",
+                  this.hideMbaDepartmentNavbar
+                );
+              }}
               className="fa fa-caret-down text-white float-right mr-4 dropdown-custom"
             />
           </div>
@@ -369,14 +378,6 @@ export default class Mba extends Component {
             >
               Laboratories
             </li>
-            {/* <li
-              className="h5-responsive"
-              onClick={e => {
-                this.setState({ tab: "achivements" });
-              }}
-            >
-              Achievements{" "}
-            </li> */}
           </ul>
         </div>
         <div className="main-section">

@@ -14,6 +14,7 @@ export default class Mech extends Component {
       staffs: [],
       showMenu: ""
     };
+    this.hideHandsDepartmentNavbar = this.hideHandsDepartmentNavbar.bind(this);
   }
 
   componentDidMount() {
@@ -29,7 +30,6 @@ export default class Mech extends Component {
       .then(response => {
         const data = response.data;
         this.setState({ staffs: data });
-        
       })
       .catch(err => {
         console.log(err);
@@ -41,7 +41,7 @@ export default class Mech extends Component {
       .get(`${baseUrl}/api/deptevent.php?department=${dept}`)
       .then(response => {
         const data = response.data;
-        
+
         this.setState({ deptevent: data });
       })
       .catch(err => {
@@ -55,7 +55,6 @@ export default class Mech extends Component {
       .then(response => {
         const data = response.data;
         this.setState({ deptstuact: data });
-        
       })
       .catch(err => {
         console.log(err);
@@ -68,7 +67,6 @@ export default class Mech extends Component {
       .then(response => {
         const data = response.data;
         this.setState({ deptlab: data });
-        
       })
       .catch(err => {
         console.log(err);
@@ -350,6 +348,12 @@ export default class Mech extends Component {
         return <div>null</div>;
     }
   }
+  hideHandsDepartmentNavbar() {
+    this.state.showMenu === ""
+      ? this.setState({ showmenu: "d-none-custom" })
+      : this.setState({ showMenu: "" });
+    document.removeEventListener("click", this.hideHandsDepartmentNavbar);
+  }
 
   render() {
     return (
@@ -358,11 +362,12 @@ export default class Mech extends Component {
           <div className="side-header text-orange h2-responsive text-center">
             {deptName.toUpperCase()}
             <i
-              onClick={e =>
+              onClick={e => {
                 this.state.showMenu === ""
                   ? this.setState({ showMenu: "d-none-custom" })
-                  : this.setState({ showMenu: "" })
-              }
+                  : this.setState({ showMenu: "" });
+                  document.addEventListener("click", this.hideHandsDepartmentNavbar);
+              }}
               className="fa fa-caret-down text-white float-right mr-4 dropdown-custom"
             />
           </div>
@@ -407,14 +412,6 @@ export default class Mech extends Component {
             >
               Laboratories
             </li>
-            {/* <li
-              className="h5-responsive"
-              onClick={e => {
-                this.setState({ tab: "achivements" });
-              }}
-            >
-              Achievements{" "}
-            </li> */}
           </ul>
         </div>
         <div className="main-section">

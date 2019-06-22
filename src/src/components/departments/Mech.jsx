@@ -17,6 +17,7 @@ export default class Mech extends Component {
       deptlab: [],
       showMenu: ""
     };
+    this.hideMechDepartmentNavbar = this.hideMechDepartmentNavbar.bind(this);
   }
 
   componentDidMount() {
@@ -32,7 +33,6 @@ export default class Mech extends Component {
       .then(response => {
         const data = response.data;
         this.setState({ staffs: data });
-        
       })
       .catch(err => {
         console.log(err);
@@ -44,7 +44,7 @@ export default class Mech extends Component {
       .get(`${baseUrl}/api/deptevent.php?department=${dept}`)
       .then(response => {
         const data = response.data;
-        
+
         this.setState({ deptevent: data });
       })
       .catch(err => {
@@ -58,7 +58,6 @@ export default class Mech extends Component {
       .then(response => {
         const data = response.data;
         this.setState({ deptstuact: data });
-        
       })
       .catch(err => {
         console.log(err);
@@ -71,7 +70,6 @@ export default class Mech extends Component {
       .then(response => {
         const data = response.data;
         this.setState({ deptlab: data });
-        
       })
       .catch(err => {
         console.log(err);
@@ -373,6 +371,13 @@ export default class Mech extends Component {
     }
   }
 
+  hideMechDepartmentNavbar() {
+    this.state.showMenu === ""
+      ? this.setState({ showMenu: "d-none-custom" })
+      : this.setState({ showMenu: "" });
+    document.removeEventListener("click", this.hideMechDepartmentNavbar);
+  }
+
   render() {
     return (
       <div className="mtspace">
@@ -380,11 +385,12 @@ export default class Mech extends Component {
           <div className="side-header text-orange h2-responsive text-center">
             {deptName.toUpperCase()}
             <i
-              onClick={e =>
+              onClick={e => {
                 this.state.showMenu === ""
                   ? this.setState({ showMenu: "d-none-custom" })
-                  : this.setState({ showMenu: "" })
-              }
+                  : this.setState({ showMenu: "" });
+                  document.addEventListener("click", this.hideMechDepartmentNavbar);
+              }}
               className="fa fa-caret-down text-white float-right mr-4 dropdown-custom"
             />
           </div>
