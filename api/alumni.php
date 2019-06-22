@@ -24,9 +24,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $query = "DELETE FROM tbl_alumni WHERE id=" . $id;
 
         if (mysqli_query($DB, $query)) {
-            echo json_encode(array("response" => true));
+            echo json_encode(array("status" => true));
         } else {
-            echo json_encode(array("response" => false));
+            echo json_encode(array("status" => false));
         }
     }
 

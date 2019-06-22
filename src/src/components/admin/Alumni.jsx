@@ -3,6 +3,7 @@ import axios from "axios";
 import { constants } from "../index";
 import XLSX from "xlsx";
 import { saveAs } from "file-saver";
+import { toast } from "react-toastify";
 
 export default class Alumni extends Component {
   constructor(props) {
@@ -18,12 +19,12 @@ export default class Alumni extends Component {
 
   generateExcel() {
     var wb = XLSX.utils.table_to_book(document.getElementById("table"), {
-      sheet: "AlumniRegistrationDetails"
+      sheet: "AlumniRegistrationDetails",
     });
     var wbout = XLSX.write(wb, {
       bookType: "xlsx",
       bookSST: true,
-      type: "binary"
+      type: "binary",
     });
 
     var buf = new ArrayBuffer(wbout.length);
@@ -43,6 +44,31 @@ export default class Alumni extends Component {
         this.setState({ alumniDetails: data.data });
       })
       .catch(err => console.error(err));
+  }
+
+  deleteAlumni(id) {
+    let formData = new FormData();
+    formData.append("method", "delete");
+    formData.append("id", id);
+    axios
+      .request({
+        url: `${constants.baseUrl}/api/alumni.php`,
+        method: "POST",
+        data: formData
+      })
+      .then(data => {
+        if (data.data.status) {
+          toast.success("Alumni deleted successfully!", {
+            position: "bottom-left"
+          });
+          this.fetchAlumniRegistrationDetails();
+        } else {
+          toast.error("Something went wrong!", {
+            position: "bottom-left"
+          });
+        }
+      })
+      .catch(err => console.error(err))
   }
 
   render() {
@@ -80,6 +106,7 @@ export default class Alumni extends Component {
                   <th scope="col">Email</th>
                   <th scope="col">Employment</th>
                   <th scope="col">Registerd At</th>
+                  <th scope="col">Delete</th>
                 </tr>
               </thead>
               <tbody>
@@ -94,12 +121,18 @@ export default class Alumni extends Component {
                     <td>{item[6]}</td>
                     <td>{item[7]}</td>
                     <td>{new Date(item[8]).toDateString()}</td>
+                    <td><button className="bg-transparent" onClick={() => this.deleteAlumni(item[0])}><i className="fas fa-trash-alt text-danger"></i></button></td>
                   </tr>
                 ))}
               </tbody>
             </table>
           </div>
         </div>
+        {this.state.alumniDetails.length === 0 && <div className="row">
+          <div className="col alert alert-danger text-center">
+            No Data Found!
+          </div>
+        </div>}
       </div>
     );
   }
