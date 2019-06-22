@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { constants } from "../../components";
-import axios from 'axios';
+import axios from "axios";
 import { toast } from "react-toastify";
 
 export default class UploadHandler extends Component {
@@ -42,23 +42,36 @@ export default class UploadHandler extends Component {
         autoClose: true,
         hideProgressBar: false
       });
-    } else if (this.state.uploadFileName) {
-      let extension = this.state.uploadFileName.split(".").pop();
+    } else if (!this.state.uploadFileName) {
+      toast.error("Please choose the file", {
+        position: "bottom-right",
+        autoClose: true,
+        hideProgressBar: false
+      });
+    } else if (this.state.uploadFileName !== "") {
+      var extension = this.state.uploadFileName.split(".").pop();
+      console.log(extension);
       if (
         extension === "mp3" ||
-        extension === "exe" ||
         extension === "mp4" ||
-        extension === "3gp" ||
-        extension === "apk"
-      ) {
-        toast.error("Please check the file format ", {
-          position: "bottom-right",
-          autoClose: true,
-          hideProgressBar: false
-        });
+        extension === "wav" ||
+        extension === "aif" ||
+        extension === "ogg" ||
+        extension === "mpeg"||
+        extension === "mp4" || 
+        extension === "3gp" || 
+        extension === "wmv" || 
+        extension === "flv" || 
+        extension === "mov" 
+        ) {
+          toast.error("Audio/Video files not Supports", {
+            position: "bottom-right",
+            autoClose: true,
+            hideProgressBar: false
+          });
       } else {
         this.fileUploadHandler();
-      }
+    }
     }
   }
 
@@ -79,7 +92,6 @@ export default class UploadHandler extends Component {
         data: formData
       })
       .then(data => {
-
         if (data.data.status) {
           this.setState({
             uploadFile: null,
@@ -87,12 +99,12 @@ export default class UploadHandler extends Component {
             uploadFileName: "Choose a file",
             uploadDepartment: "",
             uploadSemester: "",
-            tagName: "",
-          })
+            tagName: ""
+          });
           toast.success("File uploaded successfully", {
             position: "bottom-right"
           });
-          this.fetchUploadedFiles()
+          this.fetchUploadedFiles();
         } else {
           toast.error(String(data.data.message), {
             position: "bottom-right"
@@ -104,7 +116,7 @@ export default class UploadHandler extends Component {
         toast.error("something went wrong!", {
           position: "bottom-right"
         });
-      })
+      });
   }
 
   fetchUploadedFiles() {
@@ -121,7 +133,7 @@ export default class UploadHandler extends Component {
       .then(data => {
         this.setState({ files: data.data.data });
       })
-      .catch(err => console.error(err))
+      .catch(err => console.error(err));
   }
 
   componentDidMount() {
@@ -160,25 +172,58 @@ export default class UploadHandler extends Component {
   fileTypeIconFiner(type) {
     switch (type.toLowerCase()) {
       case "pdf":
-        return <i title={type} className="fas fa-4x text-danger fa-file-pdf"></i>
+        return <i title={type} className="fas fa-4x text-danger fa-file-pdf" />;
       case "docx":
-        return <i title={type} className="far fa-4x text-primary fa-file-word"></i>
+        return (
+          <i title={type} className="far fa-4x text-primary fa-file-word" />
+        );
       case "xlsx":
-        return <i title={type} className="far fa-4x text-success fa-file-excel"></i>
-      case "zip" || "rar":
-        return <i title={type} className="fas fa-4x text-danger fa-file-archive"></i>
-      case "png" || "jpg" || "svg" || "jpeg":
-        return <i title={type} className="far fa-4x text-warning fa-file-image"></i>
+        return (
+          <i title={type} className="far fa-4x text-success fa-file-excel" />
+        );
+      case "zip":
+      case "rar":
+        return (
+          <i title={type} className="fas fa-4x text-danger fa-file-archive" />
+        );
+      case "png":
+      case "jpg":
+      case "svg":
+      case "jpeg":
+        return (
+          <i title={type} className="fas fa-4x text-warning fa-file-image" />
+        );
       case "txt":
-        return <i title={type} className="far fa-4x text-warning fa-file-alt"></i>
+        return (
+          <i title={type} className="far fa-4x text-warning fa-file-alt" />
+        );
       case "ppt":
-        return <i title={type} className="far fa-4x text-warning fa-file-powerpoint"></i>
-      case "mp3" || "wav" || "wma" || "aif" || "ogg" || "mpeg":
-        return <i title={type} className="far fa-4x text-warning fa-file-audio"></i>
-      case "mp4" || "3gp" || "avi" || "mov" || "flv" || "wmv":
-        return <i title={type} className="far fa-4x text-warning fa-file-video"></i>
+        return (
+          <i
+            title={type}
+            className="far fa-4x text-warning fa-file-powerpoint"
+          />
+        );
+      case "mp3":
+      case "wav":
+      case "wma":
+      case "aif":
+      case "ogg":
+      case "mpeg":
+        return (
+          <i title={type} className="far fa-4x text-warning fa-file-audio" />
+        );
+      case "mp4":
+      case "3gp":
+      case "avi":
+      case "mov":
+      case "flv":
+      case "wmv":
+        return (
+          <i title={type} className="far fa-4x text-warning fa-file-video" />
+        );
       default:
-        return <i title={type} className="fas text-dark fa-4x fa-file"></i>
+        return <i title={type} className="fas text-dark fa-4x fa-file" />;
     }
   }
 
@@ -330,18 +375,23 @@ export default class UploadHandler extends Component {
             <div className="p-1 container">
               {this.state.files.map((item, key) => (
                 <div className="row" key={key}>
-                  <div className="col-md-1 d-flex justify-content-center align-items-center">{key + 1} .</div>
+                  <div className="col-md-1 d-flex justify-content-center align-items-center">
+                    {key + 1} .
+                  </div>
                   <div className="col-md-3 text-center d-flex justify-content-center align-items-center">
                     <a
                       href={`${constants.baseUrl}${item[2]}`}
                       target="_blank"
                       rel="noopener noreferrer"
                     >
-                      {this.fileTypeIconFiner(item[2].split(".")[item[2].split(".").length - 1])}
+                      {this.fileTypeIconFiner(
+                        item[2].split(".")[item[2].split(".").length - 1]
+                      )}
                     </a>
                   </div>
                   <div className="col-md-4">
-                    Filename :- {item[1]}<br />
+                    Filename :- {item[1]}
+                    <br />
                     Department :- {item[4]} <br />
                     Semester :- {item[7]} <br />
                     Tag :- {item[3]} <br />
@@ -357,14 +407,13 @@ export default class UploadHandler extends Component {
                       className="btn btn-sm btn-danger text-white"
                     >
                       delete
-                      </button>
+                    </button>
                   </div>
                   <div className="col-12">
                     <hr />
                   </div>
                 </div>
-              )
-              )}
+              ))}
             </div>
           </div>
         </div>

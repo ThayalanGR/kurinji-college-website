@@ -122,17 +122,31 @@ export default class StaffDownloadHandler extends Component {
                 return <i title={type} className="far fa-2x text-primary fa-file-word"></i>
             case "xlsx":
                 return <i title={type} className="far fa-2x text-success fa-file-excel"></i>
-            case "zip" || "rar":
+            case "zip":
+            case "rar":
                 return <i title={type} className="fas fa-2x text-danger fa-file-archive"></i>
-            case "png" || "jpg" || "svg" || "jpeg":
+            case "png":
+            case "jpg":
+            case "svg":
+            case "jpeg":
                 return <i title={type} className="far fa-2x text-warning fa-file-image"></i>
             case "txt":
                 return <i title={type} className="far fa-2x text-warning fa-file-alt"></i>
             case "ppt":
                 return <i title={type} className="far fa-2x text-warning fa-file-powerpoint"></i>
-            case "mp3" || "wav" || "wma" || "aif" || "ogg" || "mpeg":
+            case "mp3":
+            case "wav": 
+            case "wma": 
+            case "aif": 
+            case "ogg": 
+            case "mpeg":
                 return <i title={type} className="far fa-2x text-warning fa-file-audio"></i>
-            case "mp4" || "3gp" || "avi" || "mov" || "flv" || "wmv":
+            case "mp4": 
+            case "3gp": 
+            case "avi": 
+            case "mov": 
+            case "flv": 
+            case "wmv":
                 return <i title={type} className="far fa-2x text-warning fa-file-video"></i>
             default:
                 return <i title={type} className="fas text-dark fa-2x fa-file"></i>
