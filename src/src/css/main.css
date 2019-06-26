@@ -44,6 +44,34 @@ body {
   text-align: justify;
 }
 
+.img-nav {
+  height: 50px;
+}
+.main-logo-sec-one {
+  width: 200px;
+}
+@media only screen and (max-width: 600px) {
+  .base-text {
+    font-size: 20px !important;
+  }
+  .img-nav {
+    height: 40px;
+  }
+
+  .caption-section-one {
+    font-size: 20px !important;
+  }
+  .main-logo-sec-one {
+    width: 100px;
+  }
+  .main-text-logo {
+    font-size: 30px !important;
+  }
+  .main-text-sub-logo {
+    font-size: 20px !important;
+  }
+}
+
 .imgstyle {
   width: 400px;
 }

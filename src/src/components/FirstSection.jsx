@@ -22,7 +22,7 @@ export default class FirstSection extends Component {
       isCarouselInitiated: false,
       isNewsInitiated: false,
       carouselInterval: null,
-      isUnmounted: false
+      isUnmounted: false,
     }
     this.fetchEvents = this.fetchEvents.bind(this);
     this.initiateCarousel = this.initiateCarousel.bind(this);
@@ -68,7 +68,7 @@ export default class FirstSection extends Component {
       <div className="row">
         <div className="col text-center font-weight-bold h5 mt-1">
           courses offered
-                  <hr className="white text-white" />
+          <hr className="white text-white" />
         </div>
       </div>
 
@@ -126,15 +126,15 @@ export default class FirstSection extends Component {
   }
 
   showNotification() {
-    if (window.pageYOffset === 0 && this.state.isUnmounted === false) {
+    const isMobile = !!navigator.userAgent.match(/iphone|android|blackberry/ig)
+    if (window.pageYOffset === 0 && this.state.isUnmounted === false && !isMobile) {
       this.toastHandler()
     } else {
       toast.dismiss();
     }
   }
 
-  componentDidMount() {
-
+  async componentDidMount() {
     window.addEventListener('scroll', this.showNotification, false);
 
     setTimeout(() => {
@@ -204,7 +204,7 @@ export default class FirstSection extends Component {
             <div className="bg-mask p-0 m-0"></div>
             <div className="col-md-6 col-sm-12 ">
               <div className="d-flex justify-content-center align-items-center flex-md-row main-header-one">
-                <img src={kurinji} className="img-fluid img-responsive pb-2 pl-4" height="90" alt="" />
+                <img src={kurinji} className="img img-fluid img-responsive pb-2 pl-4" height="90" alt="" />
                 <div className="text-center">
                   <h1 className="main-text-logo">
                     Kurinji
@@ -231,7 +231,7 @@ export default class FirstSection extends Component {
                 <div>
                   <i className="fas fa-phone text-orange fa-2x pr-3 mb-4"></i>
                 </div>
-                <p className="text-center h6 font-weight-bold text-white" style={{}}>
+                <p className="text-center h6 font-weight-bold text-white">
                   04332&nbsp;292338
                   76038&nbsp;44448
               </p>
@@ -240,7 +240,7 @@ export default class FirstSection extends Component {
                 <div>
                   <i className="fas fa-envelope text-orange fa-2x pr-3 mb-4"></i>
                 </div>
-                <p className="font-weight-bold text-white" style={{}}>
+                <p className="font-weight-bold text-white">
                   kcet@kurinjiengg.org
                   &nbsp;
                   principal@kurinjiengg.org
@@ -250,7 +250,7 @@ export default class FirstSection extends Component {
           </div>
           <div className="row">
             <div className="col text-left">
-              <div className="text-white" style={{ fontSize: "28px" }}>
+              <div className="text-white caption-section-one" style={{ fontSize: "28px" }}>
                 <div className="animated shake">
                   {this.state.carouselData.information}
                 </div>
@@ -260,7 +260,7 @@ export default class FirstSection extends Component {
           {/* latest news */}
           <div className="text-danger w-100" style={{ position: "absolute", bottom: "0px", left: "0px" }}>
             <div className="pattern-5" style={{ height: "70px", position: "relative" }}>
-              <div style={{ position: "absolute", height: "70px", zIndex: 1020 }} className="bg-dark d-flex justify-content-center align-items-center p-2 pl-3 pr-4">
+              <div style={{ position: "absolute", height: "70px", zIndex: 1020 }} className="bg-dark latest-news d-flex justify-content-center align-items-center p-2 pl-md-3 pr-md-4">
                 <span className="font-weight-bold animated flash text-warning  infinite slower delay-3s h6-responsive">
                   <i className="fas fa-star mr-2 animated heartBeat infinite"></i>
                   Latest News
