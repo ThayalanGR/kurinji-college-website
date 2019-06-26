@@ -8,6 +8,9 @@ import Deptstuach from "./Deptstuach";
 import Deptevent from "./Deptevent";
 import Deptlab from "./Deptlab";
 import Alumni from './Alumni';
+import Stucorstaffs from './Stucorstaffs'
+import Stucorstudents from './Stucorstudents'
+import Uploadedfiles from './Uploadedfiles'
 export {
 
   Staff,
@@ -19,5 +22,8 @@ export {
   Deptstuach,
   Deptevent,
   Deptlab,
-  Alumni
+  Alumni,
+  Stucorstaffs,
+  Stucorstudents,
+  Uploadedfiles
 };

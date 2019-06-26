@@ -91,7 +91,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 
 if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-    $sql = "SELECT staffid, staffname from `tbl_stucorstaffs`";
+    $sql = "SELECT * from `tbl_stucorfiles`";
     $row = mysqli_query($DB, $sql);
     $staffs = mysqli_fetch_all($row);
     echo json_encode(array("status" => true, "data" => $staffs));
