@@ -12,16 +12,15 @@ export default class Navbar extends Component {
         >
           <img
             src="./favicon.png"
-            className="rounded-circle bg-transparent mr-2 "
+            className="rounded-circle bg-transparent mr-2 img-nav"
             alt=""
-            height="50"
           />
           <div className="base-text h4-responsive"> Counselling code  </div>
           <div className="ml-1 mr-1 text-primary"> : </div>
           <div className="font-weight-bold base-text ml-1 h3-responsive"> 3809 </div>
         </Link>
         <button
-          className="navbar-toggler"
+          className="bg-transparent navbar-toggler"
           type="button"
           data-toggle="collapse"
           data-target="#navbarSupportedContent-555"

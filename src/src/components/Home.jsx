@@ -279,6 +279,7 @@ export default class Home extends Component {
               </div>
 
             </div>
+           
             <div className="row">
               <div className="col text-center p-3">
               <a
