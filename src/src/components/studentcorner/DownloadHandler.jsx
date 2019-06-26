@@ -155,7 +155,7 @@ export default class StaffDownloadHandler extends Component {
     render() {
         return (
             <div className="container-fluid" >
-                <div className="row shadow text-white rounded mt-2 pt-3 pb-3 fixed-top pl-md-2 pr-md-2" style={{ backgroundColor: "#FF3C00", top: "100px" }}>
+                <div className="row text-white rounded mt-2 pt-3 pb-3 fixed-top pl-md-2 pr-md-2" style={{ backgroundColor: "#FF3C00", top: "110px" }}>
                     <div className="col-12 text-center text-danger h5-responsive text-white mb-3">
                         <span className="text-white">
                             Students Corner - Download Materials
@@ -218,7 +218,7 @@ export default class StaffDownloadHandler extends Component {
                     </div>
                 </div>
                 <div className="row pl-3 pr-3 pb-4 mb-3" style={{ marginTop: "110px" }}>
-                    <div className="col shadow pt-4 mb-3 rounded">
+                    <div className="col shadow-sm pt-4 mb-3 rounded">
                         <div className="row text-danger text-center">
                             <div className="col-md-1 col-sm-12">
                                 S.no
