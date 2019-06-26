@@ -73,48 +73,48 @@ export default class FirstSection extends Component {
       </div>
 
       <div className="row">
-        <div className="col text-center font-weight-bold h5">
+        <div className="col text-center font-weight-bold h6">
           UG - Courses
                     <hr className="text-white white" />
         </div>
       </div>
       <div className="row">
-        <div className="col text-center font-weight-bolder">
+        <div className="col text-center" style={{ fontSize: "14px" }}>
           <span className="base-orange shadow-lg p-2 text-white rounded">MECH</span>
         </div>
-        <div className="col text-center font-weight-bolder">
+        <div className="col text-center" style={{ fontSize: "14px" }}>
           <span className="base-orange shadow-lg p-2 text-white rounded">EEE</span>
         </div>
       </div>
       <div className="row mt-2 pt-4">
-        <div className="col text-center font-weight-bolder">
+        <div className="col text-center" style={{ fontSize: "14px" }}>
           <span className="base-orange shadow-lg p-2 text-white rounded ">ECE</span>
         </div>
-        <div className="col text-center font-weight-bolder">
+        <div className="col text-center" style={{ fontSize: "14px" }}>
           <span className="base-orange shadow-lg p-2 text-white rounded ">CSE</span>
         </div>
-        <div className="col text-center font-weight-bolder">
+        <div className="col text-center" style={{ fontSize: "14px" }}>
           <span className="base-orange shadow-lg p-1 text-white rounded p-2">H &amp; S</span>
         </div>
       </div>
 
       <div className="row mt-2 pt-3">
-        <div className="col text-center font-weight-bold h5">
+        <div className="col text-center font-weight-bold h6">
           PG - Courses
                     <hr className="text-white white" />
         </div>
       </div>
 
       <div className="row">
-        <div className="col text-center font-weight-bolder">
+        <div className="col text-center" style={{ fontSize: "14px" }}>
           <span className="base-orange shadow-lg p-2 text-white rounded">ME - CSE</span>
         </div>
-        <div className="col text-center font-weight-bolder">
+        <div className="col text-center" style={{ fontSize: "14px" }}>
           <span className="base-orange shadow-lg p-2 text-white rounded">MBA</span>
         </div>
       </div>
       <div className="row mt-3 pt-3 mb-3">
-        <div className="col text-center font-weight-bolder">
+        <div className="col text-center" style={{ fontSize: "14px" }}>
           <span className="base-orange shadow-lg p-2 text-white rounded">ME - Eng Design</span>
         </div>
       </div>
@@ -198,37 +198,10 @@ export default class FirstSection extends Component {
   render() {
     return (
       <div className="row background-image" style={{ backgroundImage: `url(${this.state.carouselData.imageUrl})` }}>
-        <div className="col d-flex justify-content-between flex-column align-items-center p-0"
-          style={{ marginTop: "30vh" }}>
-          <div className="align-self-start">
-            <div className="mask pattern-5 rounded">
-              <div className="text-white alert" style={{ fontSize: "20px" }}>
-                <div className="text-center animated shake">
-                  {this.state.carouselData.information}
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div className="text-danger w-100" >
-
-            <div className="pattern-5" style={{ height: "70px", position: "relative" }}>
-              <div style={{ position: "absolute", height: "70px", zIndex: 1020 }} className="bg-dark d-flex justify-content-center align-items-center p-2 pl-3 pr-4">
-                <span className="font-weight-bold animated flash text-warning  infinite slower delay-3s h6-responsive">
-                  <i className="fas fa-star mr-2 animated heartBeat infinite"></i>
-                  Latest News
-                  </span>
-              </div>
-              {/* eslint-disable-next-line  */}
-              <marquee className="mt-3">
-                {this.state.newsText}
-              </marquee>
-            </div>
-
-          </div>
-          <div className="bg-mask p-0 m-0"></div>
-
-          <div className="row header-row" style={{ width: "100%" }}>
+        <div className="col" style={{ position: "relative", marginTop: "60px" }}>
+          {/* college details  */}
+          <div className="row header-row">
+            <div className="bg-mask p-0 m-0"></div>
             <div className="col-md-6 col-sm-12 ">
               <div className="d-flex justify-content-center align-items-center flex-md-row main-header-one">
                 <img src={kurinji} className="img-fluid img-responsive pb-2 pl-4" height="90" alt="" />
@@ -275,7 +248,30 @@ export default class FirstSection extends Component {
               </div>
             </div>
           </div>
-
+          <div className="row">
+            <div className="col text-left">
+              <div className="text-white" style={{ fontSize: "28px" }}>
+                <div className="animated shake">
+                  {this.state.carouselData.information}
+                </div>
+              </div>
+            </div>
+          </div>
+          {/* latest news */}
+          <div className="text-danger w-100" style={{ position: "absolute", bottom: "0px", left: "0px" }}>
+            <div className="pattern-5" style={{ height: "70px", position: "relative" }}>
+              <div style={{ position: "absolute", height: "70px", zIndex: 1020 }} className="bg-dark d-flex justify-content-center align-items-center p-2 pl-3 pr-4">
+                <span className="font-weight-bold animated flash text-warning  infinite slower delay-3s h6-responsive">
+                  <i className="fas fa-star mr-2 animated heartBeat infinite"></i>
+                  Latest News
+                  </span>
+              </div>
+              {/* eslint-disable-next-line  */}
+              <marquee className="mt-3">
+                {this.state.newsText}
+              </marquee>
+            </div>
+          </div>
         </div>
       </div>
     )
