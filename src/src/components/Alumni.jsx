@@ -69,7 +69,7 @@ export default class Alumni extends Component {
         data: formData
       })
       .then(data => {
-        if (data) {
+        if (data.data.status) {
 
           toast.success("registration success!", {
             position: "bottom-left"

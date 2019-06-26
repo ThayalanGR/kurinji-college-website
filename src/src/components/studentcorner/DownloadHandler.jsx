@@ -135,17 +135,17 @@ export default class StaffDownloadHandler extends Component {
             case "ppt":
                 return <i title={type} className="far fa-2x text-warning fa-file-powerpoint"></i>
             case "mp3":
-            case "wav": 
-            case "wma": 
-            case "aif": 
-            case "ogg": 
+            case "wav":
+            case "wma":
+            case "aif":
+            case "ogg":
             case "mpeg":
                 return <i title={type} className="far fa-2x text-warning fa-file-audio"></i>
-            case "mp4": 
-            case "3gp": 
-            case "avi": 
-            case "mov": 
-            case "flv": 
+            case "mp4":
+            case "3gp":
+            case "avi":
+            case "mov":
+            case "flv":
             case "wmv":
                 return <i title={type} className="far fa-2x text-warning fa-file-video"></i>
             default:
@@ -154,13 +154,13 @@ export default class StaffDownloadHandler extends Component {
     }
     render() {
         return (
-            <div className="container-fluid">
-                <div className="row">
-                    <div className="col text-center text-danger h5-responsive">
-                        Students Corner - Download Materials
+            <div className="container-fluid" >
+                <div className="row shadow text-white rounded mt-2 pt-3 pb-3 fixed-top pl-md-2 pr-md-2" style={{ backgroundColor: "#FF3C00", top: "100px" }}>
+                    <div className="col-12 text-center text-danger h5-responsive text-white mb-3">
+                        <span className="text-white">
+                            Students Corner - Download Materials
+                        </span>
                     </div>
-                </div>
-                <div className="row shadow text-white rounded mt-2 pt-3 pb-3" style={{ backgroundColor: "#FF3C00" }}>
                     <div className="col d-md-flex text-sm-center justify-content-between align-items-center h6-responsive ">
                         <div className=""><i className="fas fa-filter mr-2"></i> Filter</div>
                         <div className="d-flex">
@@ -217,7 +217,7 @@ export default class StaffDownloadHandler extends Component {
 
                     </div>
                 </div>
-                <div className="row pl-3 pr-3 pt-0 pb-4 mb-3">
+                <div className="row pl-3 pr-3 pb-4 mb-3" style={{ marginTop: "110px" }}>
                     <div className="col shadow pt-4 mb-3 rounded">
                         <div className="row text-danger text-center">
                             <div className="col-md-1 col-sm-12">
@@ -286,7 +286,7 @@ export default class StaffDownloadHandler extends Component {
                     </div>
                 </div>
 
-            </div>
+            </div >
         )
     }
 }

@@ -7,7 +7,6 @@ require('./config/dbconfig.php');
 
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-
     if ($_POST['method'] === 'post') {
         $name = $_POST["name"];
         $batch = $_POST["batch"];
@@ -17,9 +16,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $email = $_POST["email"];
         $employementDetails = $_POST["employment"];
         $sql = "INSERT INTO `tbl_alumni` ( `name`, `batch`, `department`, `address`, `mobile`, `email`, `employment_details`) VALUES ('" . $name . "','" . $batch . "','" . $department . "','" . $address . "','" . $mobile . "','" . $email . "', '" . $employementDetails . "')";
-        mysqli_query($DB, $sql);
-        echo json_encode($sql);
-    } else if ($_POST['method'] === 'delete') {
+        if (mysqli_query($DB, $sql)) {
+            echo json_encode(array("status" => true));
+        } else {
+            echo json_encode(array("status" => false));
+        }
+    } elseif ($_POST['method'] === 'delete') {
         $id = $_POST['id'];
         $query = "DELETE FROM tbl_alumni WHERE id=" . $id;
 
@@ -29,7 +31,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             echo json_encode(array("status" => false));
         }
     }
-
 }
 
 if ($_SERVER['REQUEST_METHOD'] == 'GET') {

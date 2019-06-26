@@ -50,7 +50,6 @@ export default class UploadHandler extends Component {
       });
     } else if (this.state.uploadFileName !== "") {
       var extension = this.state.uploadFileName.split(".").pop();
-      console.log(extension);
       if (
         extension === "mp3" ||
         extension === "mp4" ||
@@ -349,10 +348,15 @@ export default class UploadHandler extends Component {
                       className="custom-file-input form-control"
                       id="validatedCustomFile"
                       onChange={e => {
-                        this.setState({
-                          uploadFile: e.target.files[0],
-                          uploadFileName: e.target.files[0].name
-                        });
+                        if (e.target.files.length > 0)
+                          this.setState({
+                            uploadFile: e.target.files[0],
+                            uploadFileName: e.target.files[0].name
+                          });
+                        else
+                          toast.error("File is missing!", {
+                            position: "bottom-right"
+                          })
                       }}
                       required
                     />
