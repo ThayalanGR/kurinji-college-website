@@ -19,7 +19,7 @@ export default class Stucorstudents extends Component {
 
   generateExcel() {
     var wb = XLSX.utils.table_to_book(document.getElementById("stucorstudentstable"), {
-      sheet: "StucorstudentsRegistrationDetails"
+      sheet: "StucorstudentsDetails"
     });
     var wbout = XLSX.write(wb, {
       bookType: "xlsx",
@@ -33,7 +33,7 @@ export default class Stucorstudents extends Component {
 
     saveAs(
       new Blob([buf], { type: "application/octet-stream" }),
-      "StucorstudentsRegistrationDetails.xlsx"
+      "StucorstudentsDetails.xlsx"
     );
   }
 
