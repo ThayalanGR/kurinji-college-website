@@ -22,7 +22,20 @@ export default class Dashboard extends Component {
     super(props);
     this.state = {
       isLoading: true,
-      isAuthenticated: false
+      isAuthenticated: false,
+      eventimagekey: null,
+      newskey: null,
+      infrastructurekey: null,
+      gallerykey: null,
+      alumnikey: null,
+      disclosurekey: null,
+      staffskey: null,
+      depteventkey: null,
+      deptstuactkey: null,
+      deptlabkey: null,
+      stucorstudentskey: null,
+      stucorstaffskey: null,
+      uploadedfileskey: null
     };
     this.logout = this.logout.bind(this);
   }
@@ -99,6 +112,9 @@ export default class Dashboard extends Component {
               role="tab"
               aria-controls="home"
               aria-selected="true"
+              onClick={() => {
+                this.setState({ eventimagekey: Math.random() });
+              }}
             >
               MasterEvents
             </a>
@@ -113,6 +129,9 @@ export default class Dashboard extends Component {
               role="tab"
               aria-controls="profile"
               aria-selected="false"
+              onClick={() => {
+                this.setState({ newskey: Math.random() });
+              }}
             >
               News
             </a>
@@ -128,6 +147,9 @@ export default class Dashboard extends Component {
               role="tab"
               aria-controls="contact"
               aria-selected="false"
+              onClick={() => {
+                this.setState({ infrastructurekey: Math.random() });
+              }}
             >
               Infrastructure
             </a>
@@ -142,6 +164,9 @@ export default class Dashboard extends Component {
               role="tab"
               aria-controls="contact"
               aria-selected="false"
+              onClick={() => {
+                this.setState({ gallerykey: Math.random() });
+              }}
             >
               Gallery
             </a>
@@ -156,6 +181,9 @@ export default class Dashboard extends Component {
               role="tab"
               aria-controls="contact"
               aria-selected="false"
+              onClick={() => {
+                this.setState({ alumnikey: Math.random() });
+              }}
             >
               Alumni
             </a>
@@ -170,6 +198,9 @@ export default class Dashboard extends Component {
               role="tab"
               aria-controls="contact"
               aria-selected="false"
+              onClick={() => {
+                this.setState({ disclosurekey: Math.random() });
+              }}
             >
               Disclosure
             </a>
@@ -184,6 +215,9 @@ export default class Dashboard extends Component {
               role="tab"
               aria-controls="contact"
               aria-selected="false"
+              onClick={() => {
+                this.setState({ staffskey: Math.random() });
+              }}
             >
               DeptStaffs
             </a>
@@ -198,6 +232,9 @@ export default class Dashboard extends Component {
               role="tab"
               aria-controls="contact"
               aria-selected="false"
+              onClick={() => {
+                this.setState({ depteventkey: Math.random() });
+              }}
             >
               DeptEvents
             </a>
@@ -212,6 +249,9 @@ export default class Dashboard extends Component {
               role="tab"
               aria-controls="contact"
               aria-selected="false"
+              onClick={() => {
+                this.setState({ deptstuactkey: Math.random() });
+              }}
             >
               DeptStuAch
             </a>
@@ -226,6 +266,9 @@ export default class Dashboard extends Component {
               role="tab"
               aria-controls="contact"
               aria-selected="false"
+              onClick={() => {
+                this.setState({ deptlabkey: Math.random() });
+              }}
             >
               DeptLab
             </a>
@@ -240,6 +283,9 @@ export default class Dashboard extends Component {
               role="tab"
               aria-controls="contact"
               aria-selected="false"
+              onClick={() => {
+                this.setState({ stucorstudentskey: Math.random() });
+              }}
             >
               StucorStudents
             </a>
@@ -254,6 +300,9 @@ export default class Dashboard extends Component {
               role="tab"
               aria-controls="contact"
               aria-selected="false"
+              onClick={() => {
+                this.setState({ stucorstaffskey: Math.random() });
+              }}
             >
               StucorStaffs
             </a>
@@ -268,6 +317,9 @@ export default class Dashboard extends Component {
               role="tab"
               aria-controls="contact"
               aria-selected="false"
+              onClick={() => {
+                this.setState({ uploadedfileskey: Math.random() });
+              }}
             >
               UploadedFiles
             </a>
@@ -281,7 +333,7 @@ export default class Dashboard extends Component {
             role="tabpanel"
             aria-labelledby="eventimage-tab"
           >
-            <Eventimage />
+            <Eventimage key={this.state.eventimagekey} />
           </div>
           <div
             className="tab-pane fade"
@@ -289,7 +341,7 @@ export default class Dashboard extends Component {
             role="tabpanel"
             aria-labelledby="news-tab"
           >
-            <News />
+            <News key={this.state.newskey} />
           </div>
           <div
             className="tab-pane fade"
@@ -297,7 +349,7 @@ export default class Dashboard extends Component {
             role="tabpanel"
             aria-labelledby="staffs-tab"
           >
-            <Staff />
+            <Staff key={this.state.staffskey} />
           </div>
           <div
             className="tab-pane fade"
@@ -305,7 +357,7 @@ export default class Dashboard extends Component {
             role="tabpanel"
             aria-labelledby="infrastructure-tab"
           >
-            <Infrastructure />
+            <Infrastructure key={this.state.infrastructurekey} />
           </div>
           <div
             className="tab-pane fade"
@@ -313,7 +365,7 @@ export default class Dashboard extends Component {
             role="tabpanel"
             aria-labelledby="gallery-tab"
           >
-            <Gallery />
+            <Gallery key={this.state.gallerykey} />
           </div>
           <div
             className="tab-pane fade"
@@ -321,7 +373,7 @@ export default class Dashboard extends Component {
             role="tabpanel"
             aria-labelledby="disclosure-tab"
           >
-            <Disclosure />
+            <Disclosure key={this.state.disclosurekey} />
           </div>
           <div
             className="tab-pane fade"
@@ -329,7 +381,7 @@ export default class Dashboard extends Component {
             role="tabpanel"
             aria-labelledby="deptevent-tab"
           >
-            <Deptevent />
+            <Deptevent key={this.state.depteventkey} />
           </div>
           <div
             className="tab-pane fade"
@@ -337,7 +389,7 @@ export default class Dashboard extends Component {
             role="tabpanel"
             aria-labelledby="deptstuact-tab"
           >
-            <Deptstuach />
+            <Deptstuach key={this.state.deptstuactkey} />
           </div>
           <div
             className="tab-pane fade"
@@ -345,7 +397,7 @@ export default class Dashboard extends Component {
             role="tabpanel"
             aria-labelledby="deptlab-tab"
           >
-            <Deptlab />
+            <Deptlab key={this.state.deptlabkey} />
           </div>
           <div
             className="tab-pane fade mt-4 pt-4"
@@ -353,7 +405,7 @@ export default class Dashboard extends Component {
             role="tabpanel"
             aria-labelledby="alumni-tab"
           >
-            <Alumni />
+            <Alumni key={this.state.alumnikey} />
           </div>
           <div
             className="tab-pane fade mt-4 pt-4"
@@ -361,7 +413,7 @@ export default class Dashboard extends Component {
             role="tabpanel"
             aria-labelledby="stucorstudents-tab"
           >
-            <Stucorstudents />
+            <Stucorstudents key={this.state.stucorstudentskey} />
           </div>
           <div
             className="tab-pane fade mt-4 pt-4"
@@ -369,7 +421,7 @@ export default class Dashboard extends Component {
             role="tabpanel"
             aria-labelledby="stucorstaffs-tab"
           >
-            <Stucorstaffs />
+            <Stucorstaffs key={this.state.stucorstaffskey} />
           </div>
           <div
             className="tab-pane fade mt-4 pt-4"
@@ -377,7 +429,7 @@ export default class Dashboard extends Component {
             role="tabpanel"
             aria-labelledby="uploadedfiles-tab"
           >
-            <Uploadedfiles />
+            <Uploadedfiles key={this.state.uploadedfileskey} />
           </div>
         </div>
       </Fragment>
