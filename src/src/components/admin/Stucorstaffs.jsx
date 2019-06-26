@@ -18,7 +18,7 @@ export default class Stucorstaffs extends Component {
   }
 
   generateExcel() {
-    var wb = XLSX.utils.table_to_book(document.getElementById("table"), {
+    var wb = XLSX.utils.table_to_book(document.getElementById("stucorstaffstable"), {
       sheet: "StucorstaffsRegistrationDetails"
     });
     var wbout = XLSX.write(wb, {
@@ -94,7 +94,7 @@ export default class Stucorstaffs extends Component {
         <hr />
         <div className="row">
           <div className="col">
-            <table className="table table-hover text-center" id="table">
+            <table className="table table-hover text-center" id="stucorstaffstable">
               <thead className=" text-danger">
                 <tr>
                   <th scope="col">S.no</th>

@@ -18,7 +18,7 @@ export default class Uploadedfiles extends Component {
   }
 
   generateExcel() {
-    var wb = XLSX.utils.table_to_book(document.getElementById("table"), {
+    var wb = XLSX.utils.table_to_book(document.getElementById("uploadfilestable"), {
       sheet: "UploadedFilesDetails"
     });
     var wbout = XLSX.write(wb, {
@@ -153,7 +153,7 @@ export default class Uploadedfiles extends Component {
         <hr />
         <div className="row">
           <div className="col">
-            <table className="table table-hover text-center" id="table">
+            <table className="table table-hover text-center" id="uploadfilestable">
               <thead className=" text-danger">
                 <tr>
                   <th scope="col">S.no</th>
