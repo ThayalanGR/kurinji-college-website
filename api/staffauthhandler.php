@@ -116,6 +116,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         } else {
             echo json_encode(array("status" => false, "message" => "account not found !"));
         }
+    } elseif ($_POST['method'] === 'delete') {
+        $id = $_POST['id'];
+        $query = "DELETE FROM tbl_stucorstaffs WHERE id=" . $id;
+        if (mysqli_query($DB, $query)) {
+            echo json_encode(array("status" => true));
+        } else {
+            echo json_encode(array("status" => false));
+        }
     }
 }
 
