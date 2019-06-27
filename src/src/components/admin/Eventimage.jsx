@@ -1,7 +1,8 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import axios from 'axios';
 import { toast } from 'react-toastify';
-import { constants } from '../../components'
+import { constants } from '../../components';
+import imageCompression from 'browser-image-compression';
 const baseUrl = constants.baseUrl;
 
 export default class Eventimage extends Component {
@@ -30,17 +31,37 @@ export default class Eventimage extends Component {
             .catch(err => console.log(err))
     }
 
-    addNewEvent() {
+    async addNewEvent() {
+        var toastId = null;
+        toastId = toast('Upload in Progress', {
+            progress: 0,
+            position: "bottom-left"
+        });
         var data = new FormData()
         data.append("method", "post")
-        data.append('file', this.state.eventFile)
+
+        // compressing image
+        let options = {
+            maxSizeMB: 1,
+            useWebWorker: true
+        }
+
+        try {
+            const compressedFile = await imageCompression(this.state.eventFile, options);
+            data.append('file', compressedFile);
+        } catch (error) {
+            console.error(error);
+            data.append('file', this.state.eventFile);
+        }
+
+        data.append('fileName', this.state.eventFile.name);
         data.append('caption', this.state.eventCaption)
         this.setState({
             eventCaption: '',
             eventFile: null,
             eventFileName: 'Choose an Image..'
         })
-        var toastId = null;
+
         axios.request({
             method: "post",
             url: `${baseUrl}/api/homesectionone.php`,
@@ -59,12 +80,11 @@ export default class Eventimage extends Component {
                 }
             }
         }).then(data => {
+            console.log(data);
             this.fetchEvents();
             toast.done(toast.id)
             toast.dismiss(toastId);
         }).catch(err => console.log(err))
-
-
     }
 
     removeEvent(id) {
@@ -77,6 +97,8 @@ export default class Eventimage extends Component {
             url: `${baseUrl}/api/homesectionone.php`,
             data: data
         }).then(data => {
+            console.log(data);
+
             if (data.data.response) {
                 this.fetchEvents();
                 toast.success("event deleted successfully!", {
@@ -118,7 +140,12 @@ export default class Eventimage extends Component {
                         </div>
 
                         <div className="d-flex justify-content-center">
-                            <form className="was-validated" style={{ width: "350px" }}>
+                            <form className="was-validated" style={{ width: "350px" }} onSubmit={
+                                (e) => {
+                                    e.preventDefault();
+                                    this.addNewEvent();
+                                }
+                            }>
                                 <div className="mb-3">
                                     <label htmlFor="validationTextarea ">Event Caption</label>
                                     <textarea className="form-control is-invalid" id="validationTextarea" placeholder="Required  textarea"
@@ -136,10 +163,16 @@ export default class Eventimage extends Component {
                                     <input type="file" className="custom-file-input" id="validatedCustomFile"
                                         accept="image/*"
                                         onChange={(e) => {
-                                            this.setState({
-                                                eventFile: e.target.files[0],
-                                                eventFileName: e.target.files[0].name
-                                            })
+                                            if (e.target.files.length > 0) {
+                                                this.setState({
+                                                    eventFile: e.target.files[0],
+                                                    eventFileName: e.target.files[0].name
+                                                })
+                                            } else {
+                                                toast.error("cannot upload empty file!, please choose file again", {
+                                                    position: "bottom-left"
+                                                })
+                                            }
                                         }}
                                         required />
                                     <label className="custom-file-label" htmlFor="validatedCustomFile">{this.state.eventFileName}</label>
@@ -147,10 +180,7 @@ export default class Eventimage extends Component {
                                 </div>
 
                                 <div className="mt-2 mb-3">
-                                    <button className="text-white btn btn-sm btn-danger" name="submit" onClick={(e) => {
-                                        e.preventDefault();
-                                        this.addNewEvent();
-                                    }}> Upload </button>
+                                    <button className="text-white btn btn-sm btn-danger" name="submit" type="submit"> Upload </button>
                                 </div>
 
                             </form>

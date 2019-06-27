@@ -7,7 +7,6 @@ require('./config/dbconfig.php');
 
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-
     if ($_POST['method'] === 'post') {
         $title = $_POST["title"];
         $body = $_POST["body"];
@@ -15,6 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $department = $_POST["department"];
         if ($isBodyContainsImage === 'true') {
             $fileName = preg_replace("/[^a-zA-Z0-9.]/", "", $_FILES["file"]["name"]);
+            $fileName = time().'_'.$fileName;
             $fileTmpLoc = $_FILES["file"]["tmp_name"]; // File in the PHP tmp folder
             $fileType = $_FILES["file"]["type"]; // The type of file it is
             $fileSize = $_FILES["file"]["size"]; // File size in bytes
@@ -32,20 +32,29 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             mysqli_query($DB, $sql);
             echo json_encode($fileName);
         }
-    } else if ($_POST['method'] === 'delete') {
+    } elseif ($_POST['method'] === 'delete') {
         $id = $_POST['id'];
-        $query = "DELETE FROM tbl_deptevent WHERE id=" . $id;
-
-        if (mysqli_query($DB, $query)) {
-            echo json_encode(array("response" => true));
+        $sql = "SELECT `imagepath` FROM `tbl_deptevent` WHERE id=".$id;
+        if ($row = mysqli_query($DB, $sql)) {
+            $result = mysqli_fetch_assoc($row);
+            if ($result["imagepath"] !== "null") {
+                $resultSplit = explode("/", $result["imagepath"]);
+                $fileName = $resultSplit[count($resultSplit) - 1];
+                unlink('./uploads/deptevent/'.$fileName);
+            }
+            $query = "DELETE FROM tbl_deptevent WHERE id=".$id;
+            if (mysqli_query($DB, $query)) {
+                echo json_encode(array("response"=> true));
+            } else {
+                echo json_encode(array("response"=> false));
+            }
         } else {
-            echo json_encode(array("response" => false));
+            echo json_encode(array("response"=> false));
         }
     }
 }
 
 if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-
     if (isset($_GET['department'])) {
         $dept = $_GET['department'];
         $queryString = "SELECT * from tbl_deptevent WHERE dept = '" . $dept . "' ORDER BY id ASC";

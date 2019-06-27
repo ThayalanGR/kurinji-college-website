@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { constants } from "../../components";
+import imageCompression from 'browser-image-compression'
 const baseUrl = constants.baseUrl;
 
 export default class Gallery extends Component {
@@ -29,15 +30,34 @@ export default class Gallery extends Component {
       .catch(err => console.log(err));
   }
 
-  addNewGalleryImage() {
-    var data = new FormData();
-    data.append("method", "post");
-    data.append("file", this.state.GalleryFile);
+  async addNewGalleryImage() {
+    var toastId = null;
+    toastId = toast('Compressing Image...', {
+      progress: 0,
+      position: "bottom-left"
+    });
+    var data = new FormData()
+    data.append("method", "post")
+
+    // compressing image
+    let options = {
+      maxSizeMB: 1,
+      useWebWorker: true
+    }
+
+    try {
+      const compressedFile = await imageCompression(this.state.GalleryFile, options);
+      data.append('file', compressedFile);
+    } catch (error) {
+      console.error(error);
+      data.append('file', this.state.GalleryFile);
+    }
+
+    data.append('fileName', this.state.GalleryFile.name);
     this.setState({
       GalleryFile: null,
       GalleryFileName: "Choose an Image.."
     });
-    var toastId = null;
     axios
       .request({
         method: "post",
@@ -52,6 +72,7 @@ export default class Gallery extends Component {
             });
           } else {
             toast.update(toastId, {
+              render: 'upload in progress!',
               progress: progress
             });
           }
@@ -112,7 +133,20 @@ export default class Gallery extends Component {
             </div>
 
             <div className="d-flex justify-content-center">
-              <form className="was-validated" style={{ width: "350px" }}>
+              <form className="was-validated" style={{ width: "350px" }}
+                onSubmit={
+                  e => {
+                    e.preventDefault();
+                    if (this.state.GalleryFile) {
+                      this.addNewGalleryImage();
+                    } else {
+                      toast.error("cannot upload empty file!", {
+                        position: "bottom-left"
+                      })
+                    }
+                  }
+                }
+              >
                 <label htmlFor="validatedCustomFile">
                   Gallery Image
                 </label>
@@ -123,10 +157,16 @@ export default class Gallery extends Component {
                     id="validatedCustomFile"
                     accept="image/*"
                     onChange={e => {
-                      this.setState({
-                        GalleryFile: e.target.files[0],
-                        GalleryFileName: e.target.files[0].name
-                      });
+                      if (e.target.files.length > 0) {
+                        this.setState({
+                          GalleryFile: e.target.files[0],
+                          GalleryFileName: e.target.files[0].name
+                        });
+                      } else {
+                        toast.error("cannot upload empty file!", {
+                          position: "bottom-left"
+                        })
+                      }
                     }}
                     required
                   />
@@ -145,10 +185,7 @@ export default class Gallery extends Component {
                   <button
                     className="text-white btn btn-sm btn-danger"
                     name="submit"
-                    onClick={e => {
-                      e.preventDefault();
-                      this.addNewGalleryImage();
-                    }}
+                    type="submit"
                   >
                     {" "}
                     Upload{" "}

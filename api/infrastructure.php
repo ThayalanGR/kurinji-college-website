@@ -9,6 +9,7 @@ require('./config/dbconfig.php');
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if ($_POST['method'] === 'post') {
         $fileName = preg_replace("/[^a-zA-Z0-9.]/", "", $_FILES["file"]["name"]);
+        $fileName = time().'_'.$fileName;
         $fileTmpLoc = $_FILES["file"]["tmp_name"]; // File in the PHP tmp folder
         $fileType = $_FILES["file"]["type"]; // The type of file it is
         $fileSize = $_FILES["file"]["size"]; // File size in bytes
@@ -28,10 +29,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         }
     } elseif ($_POST['method'] === 'delete') {
         $id = $_POST['id'];
-        $query = "DELETE FROM tbl_infrastructure WHERE id=".$id;
-    
-        if (mysqli_query($DB, $query)) {
-            echo json_encode(array("response"=> true));
+        $sql = "SELECT `filepath` FROM `tbl_infrastructure` WHERE id=".$id;
+        if ($row = mysqli_query($DB, $sql)) {
+            $result = mysqli_fetch_assoc($row);
+            $resultSplit = explode("/", $result["filepath"]);
+            $fileName = $resultSplit[count($resultSplit) - 1];
+            unlink('./uploads/infrastructure/'.$fileName);
+            $query = "DELETE FROM tbl_infrastructure WHERE id=".$id;
+            if (mysqli_query($DB, $query)) {
+                echo json_encode(array("response"=> true));
+            } else {
+                echo json_encode(array("response"=> false));
+            }
         } else {
             echo json_encode(array("response"=> false));
         }

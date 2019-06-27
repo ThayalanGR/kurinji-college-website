@@ -18,7 +18,7 @@ export default class FirstSection extends Component {
         information: ''
       },
       news: [],
-      newsText: <div>test text</div>,
+      newsText: <div>No New News :-( Stay tuned!</div>,
       isCarouselInitiated: false,
       isNewsInitiated: false,
       carouselInterval: null,
@@ -174,12 +174,12 @@ export default class FirstSection extends Component {
 
   initiateNews() {
     let newsString = <div className="d-flex">
-      {this.state.news.map((item, key) => (
+      {this.state.news.length > 0 ? this.state.news.map((item, key) => (
         <div key={key} className="d-flex flex-column pr-4 mr-4" style={{ borderRight: `${key !== this.state.news.length - 1 ? "2px solid #FCBA35" : ''}` }}>
           <div style={{ fontSize: "18px" }} className="text-white font-weight-bold ">{item[1]}</div>
           <div style={{ fontSize: "15px" }} className="text-white font-weight-normal text-warning">Posted on:- <span className=" ml-1 text-light f">{new Date(item[2]).toDateString()}</span></div>
         </div>
-      ))}
+      )) : <div className="text-white">{this.state.newsText}</div>}
     </div>;
     this.setState({ newsText: <Fragment>{newsString}</Fragment> })
   }
