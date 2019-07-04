@@ -19,12 +19,12 @@ export default class Alumni extends Component {
 
   generateExcel() {
     var wb = XLSX.utils.table_to_book(document.getElementById("alimnitable"), {
-      sheet: "AlumniRegistrationDetails",
+      sheet: "AlumniRegistrationDetails"
     });
     var wbout = XLSX.write(wb, {
       bookType: "xlsx",
       bookSST: true,
-      type: "binary",
+      type: "binary"
     });
 
     var buf = new ArrayBuffer(wbout.length);
@@ -68,7 +68,7 @@ export default class Alumni extends Component {
           });
         }
       })
-      .catch(err => console.error(err))
+      .catch(err => console.error(err));
   }
 
   render() {
@@ -121,18 +121,27 @@ export default class Alumni extends Component {
                     <td>{item[6]}</td>
                     <td>{item[7]}</td>
                     <td>{new Date(item[8]).toDateString()}</td>
-                    <td><button className="bg-transparent" onClick={() => this.deleteAlumni(item[0])}><i className="fas fa-trash-alt text-danger"></i></button></td>
+                    <td>
+                      <button
+                        className="bg-transparent"
+                        onClick={() => this.deleteAlumni(item[0])}
+                      >
+                        <i className="fas fa-trash-alt text-danger" />
+                      </button>
+                    </td>
                   </tr>
                 ))}
               </tbody>
             </table>
           </div>
         </div>
-        {this.state.alumniDetails.length === 0 && <div className="row">
-          <div className="col alert alert-danger text-center">
-            No Data Found!
+        {this.state.alumniDetails.length === 0 && (
+          <div className="row">
+            <div className="col alert alert-danger text-center">
+              No Data Found!
+            </div>
           </div>
-        </div>}
+        )}
       </div>
     );
   }

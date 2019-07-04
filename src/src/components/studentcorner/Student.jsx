@@ -608,11 +608,11 @@ class Student extends Component {
                     <span className="h6-responsive">Upload</span>
                   </button>
                 </li> */}
-                <li className="nav-item">
+                {/* <li className="nav-item">
                   <button onClick={() => this.setState({ dashboardView: "download" })} className="nav-link btn btn-sm bg-transparent text-white">
                     <span className="h6-responsive">Download</span>
                   </button>
-                </li>
+                </li> */}
               </Fragment>
               }
             </ul>

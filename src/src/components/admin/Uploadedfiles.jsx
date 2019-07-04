@@ -57,7 +57,7 @@ export default class Uploadedfiles extends Component {
         data: formData
       })
       .then(data => {
-        if (data.data.status) {
+        if (data.status) {
           toast.success("Uploadedfiles deleted successfully!", {
             position: "bottom-left"
           });

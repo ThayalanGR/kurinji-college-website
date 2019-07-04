@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 import { constants } from '../../components';
-import imageCompression from 'browser-image-compression';
+import imageCompression from 'browser-image-compression'
 const baseUrl = constants.baseUrl;
 
 export default class Eventimage extends Component {
