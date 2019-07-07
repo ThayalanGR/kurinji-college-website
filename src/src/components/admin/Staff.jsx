@@ -102,7 +102,7 @@ export default class Staff extends Component {
 
     axios
       .request({
-        method: "post",
+        method: "POST",
         url: `${baseUrl}/api/staffhandler.php`,
         data: data
       })

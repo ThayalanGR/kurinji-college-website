@@ -155,7 +155,7 @@ export default class StaffDownloadHandler extends Component {
     render() {
         return (
             <div className="container-fluid" >
-                <div className="row text-white rounded mt-2 pt-3 pb-3 fixed-top pl-md-2 pr-md-2" style={{ backgroundColor: "#FF3C00", top: "110px" }}>
+                <div className="row text-white rounded mt-2 pt-3 pb-3 fixed-top pl-md-2 pr-md-2 " style={{ backgroundColor: "#FF3C00", top: "110px", zIndex: "1000" }}>
                     <div className="col-12 text-center text-danger h5-responsive text-white mb-3">
                         <span className="text-white">
                             Students Corner - Download Materials
@@ -195,7 +195,7 @@ export default class StaffDownloadHandler extends Component {
                                 onChange={(e) => this.setState({ selectedStaff: e.target.value.split(",") })}
                                 name="" id="">
                                 {this.state.staffs.map((item, key) => (
-                                    <option value={item} key={key}>{item[1]}</option>
+                                    <option value={item} key={key}>{item[6]}</option>
                                 ))}
                             </select>
                         </div>

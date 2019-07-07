@@ -105,7 +105,7 @@ export default class UploadHandler extends Component {
         }
       })
       .then(data => {
-        if (data.data.status) {
+        if (data.status) {
           this.setState({
             uploadFile: null,
             uploadFileTitle: "",
@@ -166,7 +166,7 @@ export default class UploadHandler extends Component {
         data: data
       })
       .then(data => {
-        if (data.data.status) {
+        if (data.status) {
           this.fetchUploadedFiles();
           toast.success("File deleted successfully!", {
             position: "bottom-left"
