@@ -585,7 +585,7 @@ class Student extends Component {
   render() {
     return (
       <Fragment>
-        <nav className="navbar navbar-expand-lg shadow-sm student-corner-header">
+        <nav className="navbar navbar-expand-lg shadow-sm student-corner-header ">
           <div className="navbar-brand text-white ml-2">
             <i className="fas fa-users" /> Students Corner
           </div>
@@ -619,8 +619,8 @@ class Student extends Component {
             <span className="navbar-text">
               {!this.state.isAuthenticated ? <Fragment>
 
-                {!(this.state.swapLoginRegister === "register") && <button onClick={async () => { await this.setState({ swapLoginRegister: "register" }); this.swapHandler(); }} className="btn btn-sm btn-outline-light rounded text-white">Register</button>}
-                {!(this.state.swapLoginRegister === "login") && <button onClick={async () => { await this.setState({ swapLoginRegister: "login" }); this.swapHandler(); }} className="btn btn-sm btn-outline-light rounded text-white">Login</button>}
+                {!(this.state.swapLoginRegister === "register") && <button onClick={async () => { await this.setState({ swapLoginRegister: "register" }); this.swapHandler(); }} className="btn btn-sm rounded text-white font-weight-bold">Register</button>}
+                {!(this.state.swapLoginRegister === "login") && <button onClick={async () => { await this.setState({ swapLoginRegister: "login" }); this.swapHandler(); }} className="btn btn-sm rounded text-white font-weight-bold">Login</button>}
               </Fragment> : <Fragment>
                   <span className="text-white mr-3 pt-3">Hello {this.state.studentName} !</span>
                   <button onClick={() => { this.logOutHandler(); }} className="btn btn-sm btn-outline-light rounded text-white">Logout</button>

@@ -697,7 +697,7 @@ class Staff extends Component {
                         await this.setState({ swapLoginRegister: "register" });
                         this.swapHandler();
                       }}
-                      className="btn btn-sm btn-outline-light rounded text-white"
+                      className="btn btn-sm font-weight-bold rounded text-white"
                     >
                       Register
                     </button>
@@ -708,7 +708,7 @@ class Staff extends Component {
                         await this.setState({ swapLoginRegister: "login" });
                         this.swapHandler();
                       }}
-                      className="btn btn-sm btn-outline-light rounded text-white"
+                      className="btn btn-sm  font-weight-bold rounded text-white"
                     >
                       Login
                     </button>

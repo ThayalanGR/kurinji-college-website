@@ -322,7 +322,7 @@ export default class Mba extends Component {
     return (
       <div className="mtspace">
         <div className="side-section p-3">
-          <div className="side-header text-orange h2-responsive text-center">
+          <div className="side-header  h2-responsive text-center">
             {deptName.toUpperCase()}
             <i
               onClick={e => {

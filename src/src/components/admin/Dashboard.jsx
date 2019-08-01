@@ -61,7 +61,7 @@ export default class Dashboard extends Component {
     ) : (
       <Fragment>
         <nav
-          className="navbar navbar-expand-lg fixed-top red"
+          className="navbar navbar-expand-lg fixed-top base-orange"
           style={{ height: "60px" }}
         >
           <a className="navbar-brand text-white" href="/admin">
@@ -98,7 +98,7 @@ export default class Dashboard extends Component {
         </nav>
 
         <ul
-          className="nav nav-tabs fixed-top nav-tabs-expanded nav-justified ul-scroll mt-5 pt-3"
+          className="nav nav-tabs fixed-top nav-tabs-expanded nav-justified base-orange ul-scroll mt-5 pt-3"
           id="myTab"
           role="tablist"
         >

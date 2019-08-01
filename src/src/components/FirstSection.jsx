@@ -66,16 +66,15 @@ export default class FirstSection extends Component {
     toast.dismiss();
     toast(<div className="container-fluid">
       <div className="row">
-        <div className="col text-center font-weight-bold h5 mt-1">
+        <div className="col text-center font-weight-bold h5 mt-1 pb-2">
           courses offered
-          <hr className="white text-white" />
         </div>
       </div>
 
       <div className="row">
         <div className="col text-center font-weight-bold h6">
           UG - Courses
-                    <hr className="text-white white" />
+          <hr className="bg-white" />
         </div>
       </div>
       <div className="row">
@@ -93,15 +92,12 @@ export default class FirstSection extends Component {
         <div className="col text-center" style={{ fontSize: "14px" }}>
           <span className="base-orange shadow-lg p-2 text-white rounded ">CSE</span>
         </div>
-        <div className="col text-center" style={{ fontSize: "14px" }}>
-          <span className="base-orange shadow-lg p-1 text-white rounded p-2">H &amp; S</span>
-        </div>
       </div>
 
       <div className="row mt-2 pt-3">
         <div className="col text-center font-weight-bold h6">
           PG - Courses
-                    <hr className="text-white white" />
+          <hr className="bg-white" />
         </div>
       </div>
 
@@ -113,7 +109,7 @@ export default class FirstSection extends Component {
           <span className="base-orange shadow-lg p-2 text-white rounded">MBA</span>
         </div>
       </div>
-      <div className="row mt-3 pt-3 mb-3">
+      <div className="row mt-3 pt-3 pb-3">
         <div className="col text-center" style={{ fontSize: "14px" }}>
           <span className="base-orange shadow-lg p-2 text-white rounded">ME - Eng Design</span>
         </div>
@@ -216,9 +212,9 @@ export default class FirstSection extends Component {
               </div>
             </div>
             <div className="col-md-6 d-flex flex-row justify-content-between headershow">
-              <div className="d-flex justify-content-center align-items-center header-info " >
+              <div className="d-flex flex-column justify-content-center align-items-center header-info " >
                 <div>
-                  <i className="fas fa-map-marker-alt text-orange fa-2x mb-4"></i>
+                  <i className="fas fa-map-marker-alt text-orange pr-2 fa-2x pb-3"></i>
                 </div>
                 <p className="text-center text-white font-weight-bold h6" style={{}}>
                   Trichy-Dindigul NH-Road,
@@ -227,20 +223,20 @@ export default class FirstSection extends Component {
                   Tamilnadu, India.
               </p>
               </div>
-              <div className="d-flex justify-content-center align-items-center header-info " >
+              <div className="d-flex flex-column justify-content-center align-items-center header-info " >
                 <div>
-                  <i className="fas fa-phone text-orange fa-2x pr-3 mb-4"></i>
+                  <i className="fas fa-phone text-orange fa-2x pr-2 mb-4"></i>
                 </div>
-                <p className="text-center h6 font-weight-bold text-white">
+                <p className="text-center text-white font-weight-bold">
                   04332&nbsp;292338
                   76038&nbsp;44448
               </p>
               </div>
-              <div className="d-flex justify-content-center align-items-center header-info " >
+              <div className="d-flex flex-column justify-content-center align-items-center header-info " >
                 <div>
-                  <i className="fas fa-envelope text-orange fa-2x pr-3 mb-4"></i>
+                  <i className="fas fa-envelope text-orange fa-2x pr-2 mb-3"></i>
                 </div>
-                <p className="font-weight-bold text-white">
+                <p className="font-weight-bold text-white text-center">
                   kcet@kurinjiengg.org
                   &nbsp;
                   principal@kurinjiengg.org

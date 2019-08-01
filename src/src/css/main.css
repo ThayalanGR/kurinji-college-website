@@ -47,9 +47,11 @@ body {
 .img-nav {
   height: 50px;
 }
+
 .main-logo-sec-one {
   width: 200px;
 }
+
 @media only screen and (max-width: 600px) {
   .base-text {
     font-size: 20px !important;
@@ -95,7 +97,7 @@ body {
 
 .bg-mask {
   position: absolute;
-  background: rgba(255, 60, 0, 0.5);
+  background: rgba(255, 204, 153, 0.6);
   /* background: url("../images/overlay1.png") fixed; */
   min-width: 100vw;
   overflow: hidden;
@@ -157,7 +159,7 @@ body {
 }
 
 .base-orange {
-  background-color: rgb(255, 60, 0);
+  background-color: rgb(176, 196, 222);
 }
 
 .orange-text {
@@ -165,7 +167,7 @@ body {
 }
 
 .text-orange {
-  color: #1f2073;
+  color: rgb(0, 51, 102);
   -webkit-text-stroke: 0.8px white;
 }
 
@@ -276,4 +278,36 @@ body {
 
 .dept-image {
   max-height: 300px;
+}
+
+/* for 1280 screens medium size */
+
+@media only screen and (max-width: 1325px) {
+  .img-nav {
+    height: 40px;
+  }
+  .base-text {
+    font-size: 24px !important;
+  }
+  .caption-section-one {
+    font-size: 22px !important;
+    font-weight: bold;
+  }
+  .main-text-logo {
+    font-size: 45px !important;
+  }
+  .main-text-sub-logo {
+    font-size: 25px !important;
+  }
+
+  .header-row {
+    /* top: 10px; */
+    position: relative !important;
+    z-index: 1000;
+    min-height: 165px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+  }
 }

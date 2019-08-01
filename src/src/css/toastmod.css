@@ -1,5 +1,15 @@
+
 .Toastify__toast1 {
     margin-bottom: 5.5rem !important;
     background: url("https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.7.7/img/overlays/05.png") fixed !important;
+}
 
+@media only screen and (max-width: 1325px) {
+    
+    .Toastify__toast1 {
+        margin-bottom: 3.3rem !important;
+        background: url("https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.7.7/img/overlays/05.png") fixed !important;
+
+    }
+    
 }

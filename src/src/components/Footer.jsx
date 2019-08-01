@@ -13,32 +13,32 @@ export default function Footer() {
 
               <ul className="navbar-nav ml-auto d-flex justify-content-around align-items-center" style={{ width: "100%" }}>
                 <li className="nav-item ">
-                  <Link className="nav-link  text-light footer-quick-links" to="/">Home
+                  <Link className="nav-link  text-white footer-quick-links" to="/">Home
                 </Link>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link  text-light footer-quick-links" to="/historyofcollege">About Us</Link>
+                  <Link className="nav-link  text-white footer-quick-links" to="/historyofcollege">About Us</Link>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link  text-light footer-quick-links" to="/chairmanmessage">Chairman'S Message</Link>
+                  <Link className="nav-link  text-white footer-quick-links" to="/chairmanmessage">Chairman'S Message</Link>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link  text-light footer-quick-links" to="/principalmessage">Principal'S Message</Link>
+                  <Link className="nav-link  text-white footer-quick-links" to="/principalmessage">Principal'S Message</Link>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link  text-light footer-quick-links" to="/mech">Courses</Link>
+                  <Link className="nav-link  text-white footer-quick-links" to="/mech">Courses</Link>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link  text-light footer-quick-links" to="/infrastructure">Infrastructure</Link>
+                  <Link className="nav-link  text-white footer-quick-links" to="/infrastructure">Infrastructure</Link>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link  text-light footer-quick-links" to="/gallery">Gallery</Link>
+                  <Link className="nav-link  text-white footer-quick-links" to="/gallery">Gallery</Link>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link  text-light footer-quick-links" to="/alumni">Alumini</Link>
+                  <Link className="nav-link  text-white footer-quick-links" to="/alumni">Alumini</Link>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link  text-light footer-quick-links" to="/contact">Contact Us</Link>
+                  <Link className="nav-link  text-white footer-quick-links" to="/contact">Contact Us</Link>
                 </li>
               </ul>
 

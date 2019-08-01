@@ -87,7 +87,7 @@ export default class Home extends Component {
                   <p className="card-text">
                     Mechanical engineering is one of the oldest and greatest courses of study in Engineering. The department of Mechanical Engineering in our Kurinji College of Engineering and Technology was estab....
                   </p>
-                  <Link to="/mech" type="button" className="btn  base-orange btn-md text-white">Read more</Link>
+                  <Link to="/mech" type="button" className="btn  base-orange btn-md text-white font-weight-bold">Read more</Link>
 
                 </div>
 
@@ -108,7 +108,7 @@ export default class Home extends Component {
                   <p className="card-text">
                   To impart training with the best of teaching expertise supported by excellent laboratory infrastructure and exposure to recent trends in the industry, to ensure that the students are moul...
                   </p>
-                  <Link to="/eee" type="button" className="btn  base-orange btn-md text-white">Read more</Link>
+                  <Link to="/eee" type="button" className="btn  base-orange btn-md text-white font-weight-bold">Read more</Link>
 
                 </div>
 
@@ -131,7 +131,7 @@ export default class Home extends Component {
                   To provide a quality education in the field of engineering, management, communication, information technology and other engineering fields.To set High standards of Compreh...
                   
                   </p>
-                  <Link to="/ece" type="button" className="btn  base-orange btn-md text-white">Read more</Link>
+                  <Link to="/ece" type="button" className="btn  base-orange btn-md text-white font-weight-bold">Read more</Link>
 
                 </div>
 
@@ -152,7 +152,7 @@ export default class Home extends Component {
                   <p className="card-text">
                   To dedicate the work to advance and communicate the specific knowledge and understanding to the Medicore and Excellent students with a systematic scientific approach and coordi...
                   </p>
-                  <Link to="/cse" type="button" className="btn base-orange btn-md text-white">Read more</Link>
+                  <Link to="/cse" type="button" className="btn base-orange btn-md text-white font-weight-bold">Read more</Link>
 
                 </div>
 
@@ -174,7 +174,7 @@ export default class Home extends Component {
               <div className="row">
                 <div className="col-md-4 p-3">
                   <div className="card card-image" style={{ backgroundImage: `url(${baseUrl}/api/uploads/departments/mecse.jpg)` }}>
-                    <div className="text-white text-center d-flex align-items-center rgba-black-strong py-5 px-4">
+                    <div className="text-white font-weight-bold text-center d-flex align-items-center rgba-black-strong py-5 px-4">
                       <div>
                         <h3 className="card-title pt-2"><strong> M.E. CSE</strong></h3>
                         <p> To dedicate the work to advance and communicate the specific knowledge and understanding to the Medicore and Excellent students with a systematic scientific approach and coordication of acti...</p>
@@ -186,7 +186,7 @@ export default class Home extends Component {
                 </div>
                 <div className="col-md-4 p-3">
                 <div className="card card-image" style={{ backgroundImage: `url(${baseUrl}/api/uploads/departments/design.jpg)` }}>
-                    <div className="text-white text-center d-flex align-items-center rgba-black-strong py-5 px-4">
+                    <div className="text-white font-weight-bold text-center d-flex align-items-center rgba-black-strong py-5 px-4">
                       <div>
                         <h3 className="card-title pt-2"><strong> M.E. Engineering Design</strong></h3>
                         <p>
@@ -199,7 +199,7 @@ export default class Home extends Component {
                 </div>
                 <div className="col-md-4 p-3">
                    <div className="card card-image" style={{ backgroundImage: `url(${baseUrl}/api/uploads/departments/mba.jpg)` }}>
-                    <div className="text-white text-center d-flex align-items-center rgba-black-strong py-5 px-4">
+                    <div className="text-white font-weight-bold text-center d-flex align-items-center rgba-black-strong py-5 px-4">
                       <div>
                         <h3 className="card-title pt-2"><strong>MBA</strong></h3>
                         <p>
