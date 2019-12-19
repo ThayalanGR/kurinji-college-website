@@ -11,7 +11,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $name = $_POST["name"];
         $batch = $_POST["batch"];
         $department = $_POST["department"];
-        $address = $_POST["address"];
+        $address = preg_replace("/'/", "", $_POST["address"]);
         $mobile = $_POST["mobile"];
         $email = $_POST["email"];
         $employementDetails = $_POST["employment"];

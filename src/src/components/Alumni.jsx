@@ -24,6 +24,8 @@ export default class Alumni extends Component {
   }
 
   validateRegistraion() {
+    console.log("iam called");
+
     if (
       this.state.name !== "" &&
       this.state.batch !== "" &&
@@ -32,9 +34,14 @@ export default class Alumni extends Component {
       this.state.mobile !== "" &&
       this.state.email !== ""
     ) {
+      console.log("passed");
+
       if (this.state.isEmployed && this.state.employment !== "") {
+        console.log("pass12");
+
         this.alumniRegistrationHandler();
       } else if (!this.state.isEmployed) {
+        console.log("pass12");
         this.alumniRegistrationHandler();
       } else {
         toast.error("something missing check the fields", {
@@ -49,6 +56,10 @@ export default class Alumni extends Component {
   }
 
   alumniRegistrationHandler() {
+    console.log("iamgher");
+    console.log(this.state);
+
+
     let formData = new FormData();
     formData.append("method", "post");
     formData.append("name", this.state.name);
@@ -69,6 +80,8 @@ export default class Alumni extends Component {
         data: formData
       })
       .then(data => {
+        console.log(data);
+
         if (data.data.status) {
 
           toast.success("registration success!", {
@@ -86,6 +99,11 @@ export default class Alumni extends Component {
             isEmployed: false
           })
           document.getElementById('isEmployed').checked = false;
+        } else {
+          toast.error("something went wrong try again later !", {
+            position: "bottom-left"
+          });
+
         }
       })
       .catch(err => {

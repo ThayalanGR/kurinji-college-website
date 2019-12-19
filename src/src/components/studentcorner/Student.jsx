@@ -623,7 +623,7 @@ class Student extends Component {
                 {!(this.state.swapLoginRegister === "login") && <button onClick={async () => { await this.setState({ swapLoginRegister: "login" }); this.swapHandler(); }} className="btn btn-sm rounded text-white font-weight-bold">Login</button>}
               </Fragment> : <Fragment>
                   <span className="text-white mr-3 pt-3">Hello {this.state.studentName} !</span>
-                  <button onClick={() => { this.logOutHandler(); }} className="btn btn-sm btn-outline-light rounded text-white">Logout</button>
+                  <button onClick={() => { this.logOutHandler(); }} className="btn btn-sm btn-outline font-weight-bold rounded text-white">Logout</button>
                 </Fragment>
               }
             </span>

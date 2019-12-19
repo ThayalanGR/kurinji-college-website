@@ -4,6 +4,7 @@ import constants from "../components/constants"
 import kurinji from "../images/favicon.png"
 import axios from 'axios';
 import '../css/toastmod.css'
+import defaultImg from "../images/default.jpg"
 
 const baseUrl = constants.baseUrl;
 
@@ -38,13 +39,20 @@ export default class FirstSection extends Component {
   fetchEvents() {
     axios
       .get(`${baseUrl}/api/homesectionone.php`)
-      .then(data => {
-        this.setState({ carouselDataStore: data.data })
-        if (!this.state.isInitiated) {
-          this.initiateCarousel()
-          this.setState({ isCarouselInitiated: true })
-        }
-
+      .then(async data => {
+        let arr = []
+        await data.data.map(async (item) => {
+          let img = new Image();
+          img.src = `${baseUrl}${item[2]}`;
+          img.onload = async () => {
+            await arr.push([item[1], `${baseUrl}${item[2]}`])
+            await this.setState({ carouselDataStore: arr })
+            if (!this.state.isInitiated) {
+              await this.initiateCarousel()
+              await this.setState({ isCarouselInitiated: true })
+            }
+          }
+        })
       })
       .catch(err => console.log(err))
   }
@@ -133,12 +141,12 @@ export default class FirstSection extends Component {
   async componentDidMount() {
     window.addEventListener('scroll', this.showNotification, false);
 
-    setTimeout(() => {
-      if (this.state.carouselData.length === 0)
-        this.fetchEvents()
-      if (this.state.news.length === 0)
-        this.fetchNews()
-    }, 3000)
+    // setTimeout(() => {
+    //   if (this.state.carouselData.length === 0)
+    //     this.fetchEvents()
+    //   if (this.state.news.length === 0)
+    //     this.fetchNews()
+    // }, 3000)
 
     this.showNotification();
   }
@@ -147,8 +155,8 @@ export default class FirstSection extends Component {
     let i = 0;
     this.setState({
       carouselData: {
-        imageUrl: `${baseUrl}${this.state.carouselDataStore[i][2]}`,
-        information: this.state.carouselDataStore[i][1]
+        imageUrl: this.state.carouselDataStore[i][1],
+        information: this.state.carouselDataStore[i][0]
       }
     })
     const carouselInterval = setInterval(() => {
@@ -159,11 +167,11 @@ export default class FirstSection extends Component {
       }
       this.setState({
         carouselData: {
-          imageUrl: `${baseUrl}${this.state.carouselDataStore[i][2]}`,
-          information: this.state.carouselDataStore[i][1]
+          imageUrl: this.state.carouselDataStore[i][1],
+          information: this.state.carouselDataStore[i][0]
         }
       })
-    }, 5000)
+    }, 6000)
 
     this.setState({ carouselInterval })
   }
@@ -193,7 +201,8 @@ export default class FirstSection extends Component {
 
   render() {
     return (
-      <div className="row background-image" style={{ backgroundImage: `url(${this.state.carouselData.imageUrl})` }}>
+      <div className="row background-image" style={{ position: "relative" }}>
+        <img className="img img-responsive animated fadeIn" src={this.state.carouselData.imageUrl} style={{ backgroundImage: `url(${defaultImg})`, backgroundSize: `cover`,backgroundRepeat: `no-repeat`, position: "absolute", width: "100vw", height: "100vh", zIndex: "-1", transition: "0.5s ease-in" }} alt="" srcSet="" />
         <div className="col" style={{ position: "relative", marginTop: "60px" }}>
           {/* college details  */}
           <div className="row header-row">
