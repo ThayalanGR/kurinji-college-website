@@ -5,7 +5,9 @@ import ReactDOM from 'react-dom';
 import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 import { toast } from 'react-toastify';
 
-
+import 'antd/dist/antd.css';
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 import './css/main.css';
 import 'react-toastify/dist/ReactToastify.css';
 import "react-image-gallery/styles/css/image-gallery.css";

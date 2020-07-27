@@ -1,6 +1,6 @@
 .side-section {
     height: 100vw;
-    background-color: rgb(176, 196, 222);
+    background-color: #F8CD04;
     left: 0;
     position: fixed;
     top: 60px;
@@ -35,7 +35,7 @@
     left: 290px;
     margin-top: -10px;
     padding: 50px;
-    margin-right: 250px;    
+    margin-right: 250px;
 }
 
 .staff-image {
@@ -56,17 +56,19 @@
         height: auto;
         transition: 0.5s ease-out;
     }
+
     .main-section {
         left: 0;
         margin-top: 130px;
         padding: 10px;
-        margin-right: 0px;  
+        margin-right: 0px;
     }
+
     .staff-image {
         width: 100px;
         height: 100px;
     }
-    
+
     .dropdown-custom {
         display: block;
     }
@@ -76,12 +78,12 @@
         padding-right: 20px;
     }
 
-    .side-nav-content li{
+    .side-nav-content li {
         font-size: 18px;
     }
 
 }
 
-.d-none-custom{
+.d-none-custom {
     display: block !important;
 }

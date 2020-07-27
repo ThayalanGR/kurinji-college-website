@@ -118,30 +118,8 @@ export default class Mech extends Component {
         <div className="row">
           <div className="col">
             <div className="text-left">
-              Humanities and Science is one of the oldest and greatest courses
-              of study in Engineering. The department provides excellent
-              learning opportunities for undergraduates in Humanities and
-              Science. This Course in Kurinji College is approved by the AICTE -
-              All India Council for Technical Education, which was established
-              for proper planning and co-ordinated development of technical
-              education system throughout the country
-            </div>
-            <hr />
-            <div className="h5-responsive text-success">
-              Humanities and Science-COURSE OVER VIEW
-            </div>
-            <hr />
-            <div className="text-left">
-              The student of Humanities and Science at KCET will research ,
-              develop, design, manufacture and test tools, engines, machines and
-              other mechanical devices. CAD/CAM courses assist the students in
-              designing components with greatest possible efficiencies. Students
-              are guided for Industrial Visit and for carrying out final year
-              their project at BHEL, a Public sector heavy industry at other
-              major industries in and around Tiruchirappalli. Humanities and
-              Science is the broadest and most diverse engineering discipline.
-              Not many people can perform their jobs without Mechanical
-              Engineers.
+              H&amp;S is not a course. It is a supporting department. It provides to study English Language
+              Basic Science including Mathematics, Physics and Chemistry departments.
             </div>
             <hr />
             <div className="h5-responsive text-success">
@@ -366,7 +344,7 @@ export default class Mech extends Component {
                 this.state.showMenu === ""
                   ? this.setState({ showMenu: "d-none-custom" })
                   : this.setState({ showMenu: "" });
-                  document.addEventListener("click", this.hideHandsDepartmentNavbar);
+                document.addEventListener("click", this.hideHandsDepartmentNavbar);
               }}
               className="fa fa-caret-down text-white float-right mr-4 dropdown-custom"
             />

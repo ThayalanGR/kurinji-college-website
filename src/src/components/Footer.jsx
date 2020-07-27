@@ -61,10 +61,10 @@ export default function Footer() {
         </div>
         <div className="row p-2">
           <div className="col-md-6 col-sm-12  text-center text-white font-weight-normal">
-            All rights reserved @ kurinjiengg.org © 2019
+            All rights reserved @ kurinjiengg.org © 2020
         </div>
           <div className="col-md-6 col-sm-12 text-center text-white font-weight-normal">
-            Designed and Developed by <a className="text-warning font-weight-bolder" style={{ fontSize: "18px" }} href="https://thayalangr.in" target="_blank" without="true" rel="noopener noreferrer"><strong>Thayalan GR</strong></a>
+            Designed and Developed by <a className="text-danger" href="https://github.com/ThayalanGR" target="_blank" without="true" rel="noopener noreferrer"><strong>Thayalan G R</strong></a>
           </div>
         </div>
       </div>

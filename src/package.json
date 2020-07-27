@@ -4,18 +4,22 @@
   "private": true,
   "homepage": "http://erp.epizy.com",
   "dependencies": {
+    "antd": "^4.4.3",
     "axios": "^0.19.0",
     "bootstrap": "^4.3.1",
     "browser-image-compression": "^1.0.5",
     "file-saver": "^2.0.2",
     "mdbreact": "^4.13.0",
+    "moment": "^2.27.0",
     "react": "^16.8.6",
     "react-bootstrap": "^1.0.0-beta.8",
     "react-dom": "^16.8.6",
     "react-image-gallery": "^0.8.16",
     "react-loading": "^2.0.3",
-    "react-scripts": "3.0.0",
+    "react-scripts": "^3.4.1",
+    "react-slick": "^0.27.1",
     "react-toastify": "^5.1.0",
+    "slick-carousel": "^1.8.1",
     "xlsx": "^0.14.3"
   },
   "scripts": {
