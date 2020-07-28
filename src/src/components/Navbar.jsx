@@ -32,7 +32,7 @@ export default class Navbar extends Component {
             aria-expanded="false"
             aria-label="Toggle navigation"
           >
-            <MenuOutlined />
+            <MenuOutlined style={{ color: "#003366", marginTop: "-8px", marginRight: "8px" }} />
           </button>
           <div
             className="collapse navbar-collapse base-orange"
