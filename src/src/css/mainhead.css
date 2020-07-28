@@ -33,14 +33,14 @@
     flex-direction: column;
     margin-left: 20px;
     font-weight: bold;
-    color: rgb(0, 51, 102);
-    -webkit-text-stroke: 0.3px white;
+    color: red;
+    /* -webkit-text-stroke: 0.3px white; */
     text-transform: uppercase;
     text-align: center;
 }
 
 .home-college-name-title {
-    font-size: 40px;
+    font-size: 50px;
     letter-spacing: 12px;
     margin-top: -10px;
 }
@@ -81,9 +81,9 @@
 
 
 .navbar-sticky-top {
-    position: sticky;
+    position: sticky !important;
     position: -webkit-sticky;
-    top: 0;
+    top: 0 !important;
     width: 100vw !important;
     margin: 0;
     box-sizing: border-box;
@@ -226,6 +226,8 @@
         padding-right: 10px;
         padding-top: 10px;
         padding-bottom: 10px;
+        width: 100vw;
+        overflow: hidden;
     }
 
     .home-main-header-college-name-logo-holder {
@@ -296,5 +298,9 @@
         align-items: center;
         justify-content: center;
         flex-direction: column;
+    }
+
+    .home-carousel-bg-image {
+        height: 300px;
     }
 }

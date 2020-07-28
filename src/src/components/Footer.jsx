@@ -63,9 +63,6 @@ export default function Footer() {
           <div className="col-md-6 col-sm-12  text-center text-white font-weight-normal">
             All rights reserved @ kurinjiengg.org © 2020
         </div>
-          <div className="col-md-6 col-sm-12 text-center text-white font-weight-normal">
-            Designed and Developed by <a className="text-danger" href="https://github.com/ThayalanGR" target="_blank" without="true" rel="noopener noreferrer"><strong>Thayalan G R</strong></a>
-          </div>
         </div>
       </div>
     </div>

@@ -122,7 +122,6 @@ export default class Deptlab extends Component {
       })
       .catch(err => {
         console.log(err);
-
         toast.error("something went wrong !", {
           position: "bottom-left"
         });

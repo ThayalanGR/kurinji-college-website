@@ -9,7 +9,7 @@ export default class Navbar extends Component {
     return (
       <>
         <FirstSection />
-        <nav className="navbar navbar-expand-lg nav-size base-orange lighten-1 navbar-sticky-top">
+        <nav className="navbar navbar-expand-lg nav-size base-orange navbar-sticky-top">
           <Link
             className="navbar-brand text-white animated pulse infinite slow d-flex justify-content-center align-items-center"
             to="/"
@@ -32,7 +32,7 @@ export default class Navbar extends Component {
             aria-expanded="false"
             aria-label="Toggle navigation"
           >
-            <MenuOutlined style={{ color: "#003366", marginTop: "-8px", marginRight: "8px" }} />
+            <MenuOutlined style={{ color: "#003366", paddingTop: "-8px", paddingRight: "5px" }} />
           </button>
           <div
             className="collapse navbar-collapse base-orange"

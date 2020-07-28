@@ -73,7 +73,6 @@ export default class Home extends Component {
     axios
       .get(`${baseUrl}/api/homesectionone.php`)
       .then(data => {
-        console.log(data);
         this.setState({ carouselDataStore: data.data })
       })
       .catch(err => console.log(err))
@@ -93,7 +92,7 @@ export default class Home extends Component {
     return (
       this.state.isLoading ? <Loader type={"bars"} /> :
         <Fragment>
-          <div className="container-fluid" style={{padding: 0}}>
+          <div className="container-fluid main-home-container" style={{padding: 0}}>
             <div className="row home-first-container">
               <div className="col-md-6 home-main-carousel-container">
                 <Carousel autoplay
@@ -119,7 +118,7 @@ export default class Home extends Component {
                       {
                         this.state.news.map((item, key) => {
                           return (
-                            <div className="home-news-container">
+                            <div className="home-news-container" key={key}>
                               <div className="home-news-title">
                                 {item[1]}
                               </div>

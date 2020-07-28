@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 
 import ReactDOM from 'react-dom';
 
@@ -22,7 +22,7 @@ toast.configure();
 
 ReactDOM.render(
     <BrowserRouter basename={process.env.PUBLIC_URL}>
-        <Fragment>
+        <div className="core-container">
             <Navbar />
             <Switch>
                 <Route exact path="/" component={Home} />
@@ -48,5 +48,5 @@ ReactDOM.render(
                 {/* <Route path='/404' component={My404Component} /> */}
                 <Redirect from='*' to='/' />
             </Switch>
-        </Fragment>
+        </div>
     </BrowserRouter>, document.getElementById('root'));

@@ -14,6 +14,7 @@ body {
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
   max-width: 100vw !important;
   overflow-x: hidden;
+  width: 100vw;
 }
 
 .background-image {
@@ -49,8 +50,27 @@ body {
 }
 
 .council-code-text {
-  color: #FF3547 !important;
-  font-size: 30px !important;
+  color: red !important;
+  font-size: 22px !important;
+  border: 2px solid white;
+  padding: 5px 5px;
+  border-radius: 30px;
+
+}
+
+.main-home-container {
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+.slick-dots {
+  max-width: 100vw;
+  overflow: hidden;
+}
+
+.core-container {
+  max-width: 100vw;
+  overflow-x: hidden;
 }
 
 @media only screen and (max-width: 600px) {

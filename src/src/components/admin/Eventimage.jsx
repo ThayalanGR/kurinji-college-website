@@ -80,7 +80,6 @@ export default class Eventimage extends Component {
                 }
             }
         }).then(data => {
-            console.log(data);
             this.fetchEvents();
             toast.done(toast.id)
             toast.dismiss(toastId);
@@ -97,8 +96,6 @@ export default class Eventimage extends Component {
             url: `${baseUrl}/api/homesectionone.php`,
             data: data
         }).then(data => {
-            console.log(data);
-
             if (data.data.response) {
                 this.fetchEvents();
                 toast.success("event deleted successfully!", {
