@@ -20,6 +20,7 @@
     width: 50%;
     user-select: none;
     cursor: pointer;
+    overflow: hidden;
 }
 
 .home-college-logo-image {
