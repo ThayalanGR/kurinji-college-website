@@ -5,7 +5,7 @@
   "homepage": "http://erp.epizy.com",
   "dependencies": {
     "antd": "^4.4.3",
-    "axios": "^0.19.0",
+    "axios": "^0.21.1",
     "bootstrap": "^4.3.1",
     "browser-image-compression": "^1.0.5",
     "file-saver": "^2.0.2",
