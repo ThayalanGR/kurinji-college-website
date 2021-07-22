@@ -20,7 +20,7 @@
     "react-slick": "^0.27.1",
     "react-toastify": "^5.1.0",
     "slick-carousel": "^1.8.1",
-    "xlsx": "^0.14.3"
+    "xlsx": "^0.17.0"
   },
   "scripts": {
     "start": "react-scripts start",
